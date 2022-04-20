@@ -1,0 +1,18 @@
+label{width: 3.5cm;}
+.inputWidth{ width:7cm;}
+.Button{    color: white;
+    background: red;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+}
+.outerdiv{
+    height: 100%;
+    width: 100%;
+    background: #00bcd4;
+}
+.errDisplay{border: 2px solid red;}
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px){
+    .inputWidth{ width:5cm;}
+    .Button{margin-left: 131px;}
+}

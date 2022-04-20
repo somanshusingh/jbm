@@ -1,0 +1,47 @@
+<div class="outerdiv" style="max-width: 540px;margin: 5% auto;">
+    <div style="padding: 15px;">
+        <div id="Message">{{Message}}</div>
+        <label>Book No</label>
+        <input type="text" placeholder="Book No" id="BookNo" class="inputWidth"><br>
+        <label>Vehicle No</label>
+        <input type="text" placeholder="Vehicle No" id="VehicleNo" class="inputWidth">&nbsp;<button class="Button"
+            (click)=checkHistory()>Check Vehicle</button><br>
+        <div id="hiddenFields" style="display: none;">
+            <label>Make</label>
+            <input type="text" placeholder="Make" id="Make" class="inputWidth" disabled><br>
+            <label>Model</label>
+            <input type="text" placeholder="Model" id="Model" class="inputWidth" disabled><br>
+            <label>Insurance exp date</label>
+            <input type="text" placeholder="Insurance exp date" id="Insurance_exp_date" class="inputWidth" disabled><br>
+            <label>PUC exp date</label>
+            <input type="text" placeholder="PUC exp date" id="PUC_exp_date" class="inputWidth" disabled><br>
+        </div>
+        <label>Material</label>
+        <input type="text" placeholder="Material" id="Material" class="inputWidth" disabled><br>
+        <label>Material Type</label>
+        <input type="text" placeholder="Material Type" id="Material_Type" class="inputWidth" disabled><br>
+        <label>Issued By</label>
+        <input type="text" placeholder="Issued By" id="Issued_By" class="inputWidth" disabled><br>
+        <label>Issued Date</label>
+        <input type="text" placeholder="Issued Date" id="Issued_Date" class="inputWidth" disabled><br>
+        <label>Driver Name</label>
+        <input type="text" placeholder="Driver Name" id="Driver_Name" class="inputWidth" disabled><br>
+        <label>Driver Number</label>
+        <input type="text" placeholder="Driver Number" id="Driver_Number" class="inputWidth" disabled><br>
+        <label>Time</label>
+        <input type="text" placeholder="Time" id="Time" class="inputWidth" disabled><br>
+        <label>Consignee Name</label>
+        <input type="text" placeholder="Consignee Name" id="Consignee_Name" class="inputWidth" disabled><br>
+        <label>Address</label>
+        <input type="text" placeholder="Address" id="Address" class="inputWidth" disabled><br>
+        <label>Trip No</label>
+        <input type="text" placeholder="Trip No" id="Trip_No" class="inputWidth" disabled><br>
+        <label>Gross Weight</label>
+        <input type="text" placeholder="Gross Weight" id="Gross_Weight" class="inputWidth" disabled><br>
+        <label>Tare Weight</label>
+        <input type="text" placeholder="Tare Weight" id="Tare_Weight" class="inputWidth" disabled><br>
+        <label>Net Weight</label>
+        <input type="text" placeholder="Net Weight" id="Net_Weight" class="inputWidth" disabled><br>
+        <button id="addVehicleData" class="Button" (click)="validate()" disabled>Add</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+body{background-color: #00bcd4 !important;height: 100% !important }
+.outerdiv{
+    height: 100%;
+    width: 100%;
+    background: #00bcd4;
+}
+html { height: 100% !important }
+.login-page {
+    background-color: #00BCD4;
+    padding-left: 0;
+    max-width: 360px;
+    margin: 5% auto;
+    overflow-x: hidden;
+}
+.mainBody{background-color: #00bcd4 !important;height: 100% !important }
