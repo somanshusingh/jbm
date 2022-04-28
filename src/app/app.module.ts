@@ -8,7 +8,9 @@ import { SigninComponent } from './signin/signin.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { HistoryComponent } from './history/history.component';
-//import { DataTablesModule } from 'angular-datatables';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { HistoryComponent } from './history/history.component';
     SignupComponent,
     SigninComponent,
     VehicleComponent,
-    HistoryComponent
+    HistoryComponent,
+    DashboardComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    //DataTablesModule
+    DataTablesModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

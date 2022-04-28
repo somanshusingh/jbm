@@ -25,26 +25,39 @@ export class SigninComponent implements OnInit {
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
         if (data.hasOwnProperty('status')) {
-          if (data['status'] == 1 && data['msg'] == 'user exist') {
+          if (data['status'] == 1) {
             this.Message = data['msg'];
-            this.Router.navigate(['/history']);
+            this.Router.navigate(['/dashboard']);
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');
+            $('.Error').html('Incorrect Username or Password!');
           } else if (data['status'] == 100) {
             this.Message = 'Technical Issue ,Please Retry';
           }
         } else {
-          this.Message = 'Technical Issue ,Please Retry'
+          this.Message = 'Technical Issue ,Please Retry';
+          $('.Error').html('Technical Issue ,Please Retry');
         }
       }
     )
   }
   validate(){
-    if($('#username').val() !=''){
-      
+    var err=0;
+    if($('#username').val() ==''){
+      $("#username").addClass('errDisplay');
+      err++
     }else{
-
+      $("#username").removeClass('errDisplay');
+    }
+    if($('#password').val() ==''){
+      $("#password").addClass('errDisplay');
+      err++
+    }else{
+      $("#password").removeClass('errDisplay');
+    }
+    if(err ==0 ){
+      this.signIn();
     }
   }
 

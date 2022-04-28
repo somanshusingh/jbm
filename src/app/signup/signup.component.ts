@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   signUp() {
     var url = '/registration/user';
     var post_data = {
-      "UserId": "ID3",
+      "UserId": "ID9",
       "Password": "12345",
       "Name": "Test Name",
       "Mobile": "9340179038",

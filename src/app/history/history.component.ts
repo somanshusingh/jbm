@@ -18,7 +18,7 @@ export class HistoryComponent implements OnInit {
   checkHistory(){
     if($("#VehicleNo").val() !== ''){
       let url = '/vehicle/view/' + $("#VehicleNo").val();
-      this.serviceCall.getService(url, ).subscribe(
+      this.serviceCall.getService(url).subscribe(
         data => {
           if(data['status'] == 1 && data['msg'] && data['msg'].length >0){
             $("#Material,#Material_Type, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight ,#addVehicleData").prop('disabled', false);
