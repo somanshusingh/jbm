@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-history',
@@ -11,7 +12,7 @@ export class HistoryComponent implements OnInit {
   isVehicleDataAvailable: any;
   Message='';
 
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,18 +23,18 @@ export class HistoryComponent implements OnInit {
         data => {
           if(data['status'] == 1 && data['msg'] && data['msg'].length >0){
             $("#Material,#Material_Type, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight ,#addVehicleData").prop('disabled', false);
-            $("#Make, #Model ,#Insurance_exp_date ,#PUC_exp_date").prop('disabled', true);
+            $("#Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', true);
             this.Message =''
              $('#Make').val(data['msg'][0]['Make']);
              $('#Model').val(data['msg'][0]['Model']);
-             $('#Insurance_exp_date').val(data['msg'][0]['Insurance_exp_date']);
+             $('#vehicleInsurance_exp_date').val(data['msg'][0]['vehicleInsurance_exp_date']);
              $('#PUC_exp_date').val(data['msg'][0]['PUC_exp_date']);
              $('#hiddenFields').show();
              this.isVehicleDataAvailable = true;
           }else if(data['status'] == 0){
             this.Message =data['msg'];
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#Insurance_exp_date ,#PUC_exp_date").prop('disabled', false);
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#Insurance_exp_date ,#PUC_exp_date").val('');
+            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', false);
+            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").val('');
             this.isVehicleDataAvailable = false;
             $('#hiddenFields').show();
           }else if(data['status'] == 100){
@@ -47,14 +48,14 @@ export class HistoryComponent implements OnInit {
   }
 
   addVehicleData(){
-    let url = '/history/inhouse_transport'
+    let url = '/history/outside_transport'
     let post_data = {
-      "BookNo": $('#BookNo').val(),
-      "VehicleNo": $('#VehicleNo').val(),
-      "Make": $('#Make').val(),
-      "Model": $('#Model').val(),
-      "Insurance_exp_date": $('#Insurance_exp_date').val(),
-      "PUC_exp_date": $('#PUC_exp_date').val(),
+      "BookNo": "JBM" + (Math.round(Math.random()*100000)),
+      "VehicleNo": $('#Vnumber').val(),
+      "Make": $('#vehicleMake').val(),
+      "Model": $('#VehicleModel').val(),
+      "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
+      "PUC_exp_date": $('#VPUC_exp_date').val(),
       "Material_Type": $('#Material_Type').val(),
       "Material": $('#Material').val(),
       "Issued_By": $('#Issued_By').val(),
@@ -64,19 +65,19 @@ export class HistoryComponent implements OnInit {
       "Time": $('#Time').val(),
       "Consignee_Name": $('#Consignee_Name').val(),
       "Address": $('#Address').val(),
-      "Trip_No": $('#Trip_No').val(),
+      "Trip_No": (Math.round(Math.random()*100000)),
       "Gross_Weight": $('#Gross_Weight').val(),
       "Tare_Weight": $('#Tare_Weight').val(),
       "Net_Weight": $('#Net_Weight').val()
   }
-    if(this.isVehicleDataAvailable == false){
-      url ='/history/outside_transport';
-    }
+
 
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
+        $(".Popup1").show();
         if(data['status'] == 1){
-          this.Message =JSON.stringify(data['msg']);
+          // this.Message =JSON.stringify(data['msg']);
+          this.Message = "Vehicle Added Successfully";
         }else if(data['status'] == 0){
           this.Message = 'Error - ' +JSON.stringify(data['msg']);
         }else if(data['status'] == 100){
@@ -89,29 +90,29 @@ export class HistoryComponent implements OnInit {
 
   validate(){
     var err = 0 
-    if($('#Make').val() == ''){
-      $('#Make').addClass('errDisplay');
+    if($('#vehicleMake').val() == ''){
+      $('#vehicleMake').addClass('errDisplay');
       err++
     }else{
-      $('#Make').removeClass('errDisplay');
+      $('#vehicleMake').removeClass('errDisplay');
     }
-    if($('#Model').val() == ''){
-      $('#Model').addClass('errDisplay');
+    if($('#VehicleModel').val() == ''){
+      $('#VehicleModel').addClass('errDisplay');
       err++
     }else{
-      $('#Model').removeClass('errDisplay');
+      $('#VehicleModel').removeClass('errDisplay');
     }
-    if($('#Insurance_exp_date').val() == ''){
-      $('#Insurance_exp_date').addClass('errDisplay');
+    if($('#vehicleInsurance_exp_date').val() == ''){
+      $('#vehicleInsurance_exp_date').addClass('errDisplay');
       err++
     }else{
-      $('#Insurance_exp_date').removeClass('errDisplay');
+      $('#vehicleInsurance_exp_date').removeClass('errDisplay');
     }
-    if($('#PUC_exp_date').val() == ''){
-      $('#PUC_exp_date').addClass('errDisplay');
+    if($('#VPUC_exp_date').val() == ''){
+      $('#VPUC_exp_date').addClass('errDisplay');
       err++
     }else{
-      $('#PUC_exp_date').removeClass('errDisplay');
+      $('#VPUC_exp_date').removeClass('errDisplay');
     }
     if($('#Material').val() == ''){
       $('#Material').addClass('errDisplay');
@@ -191,9 +192,21 @@ export class HistoryComponent implements OnInit {
     }else{
       $('#Net_Weight').removeClass('errDisplay');
     }
+    if($('#Vnumber').val() == ''){
+      $('#Vnumber').addClass('errDisplay');
+      err++
+    }else{
+      $('#Vnumber').removeClass('errDisplay');
+    }
 
     if(err == 0){
       this.addVehicleData();
+    }
+  }
+  hidePopup(){
+    $(".Popup1").hide();
+    if(this.Message == 'Vehicle Added Successfully'){
+      this.Router.navigate(['/outBoundDashboard']);
     }
   }
 

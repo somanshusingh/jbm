@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){
-    url = "https://jbm.herokuapp.com" + url; 
+    url = "https://jbmapp.herokuapp.com" + url; 
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post(url, JSON.stringify(post_data), { headers: headers });
   }
@@ -18,7 +18,7 @@ export class ApiService {
     return this.http.post(url, JSON.stringify(post_data), { headers: headers });
   }
   getService(url){
-    url = "https://jbm.herokuapp.com" + url; 
+    url = "https://jbmapp.herokuapp.com" + url; 
     return this.http.get(url);
   }
 }

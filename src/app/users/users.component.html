@@ -1,0 +1,24 @@
+<div id="outerDiv">
+    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap" [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" style="width:100%">
+        <thead>
+            <tr>
+                <th class="User_ID">User Id</th>
+                <th class="Created_By">Name</th>
+                <th class="Insurance_exp_date">Email</th>
+                <th class="Make">Mobile No</th>
+                <th class="Model">Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of data" height="55px">
+                <td class="Id">{{ user.UserId }}</td>
+                <td class="Created_By">{{ user.Name }}</td>
+                <td class="Insurance_exp_date">{{ user.Email }}</td>
+                <td class="Make">{{ user.Mobile }}</td>
+                <td class="Model">{{ user.Role }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="buttonCss" style="color: white;" routerLink="/signup">Add User</button>
+</div>

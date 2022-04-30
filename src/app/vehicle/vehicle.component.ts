@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { data } from '../data';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle',
@@ -13,7 +14,7 @@ export class VehicleComponent implements OnInit {
   data1;
   Message;
   //dtOptions:DataTables.Settings = {};
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
     this.data1 = data;
@@ -48,9 +49,10 @@ export class VehicleComponent implements OnInit {
      };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
+        $(".Popup1").show();
         if (data.hasOwnProperty('status')) {
-          if (data['status'] == 1 && data['msg'] == 'user exist') {
-            this.Message = data['msg'];
+          if (data['status'] == 1) {
+            this.Message = 'Vehicle Added Successfully';
            // this.Router.navigate(['/signin']);
           } else if (data['status'] == 0) {
             this.Message = data['msg'];
@@ -67,50 +69,56 @@ export class VehicleComponent implements OnInit {
   validate(){
     var err = 0 
     if($('#VehicleNo').val() == ''){
-      $('#VehicleNoDiv').addClass('errDisplay');
+      $('#VehicleNo').addClass('errDisplay');
       err++
     }else{
-      $('#VehicleNoDiv').removeClass('errDisplay');
+      $('#VehicleNo').removeClass('errDisplay');
     }
     if($('#Make').val() == ''){
-      $('#MakeDiv').addClass('errDisplay');
+      $('#Make').addClass('errDisplay');
       err++
     }else{
-      $('#MakeDiv').removeClass('errDisplay');
+      $('#Make').removeClass('errDisplay');
     }
     if($('#Model').val() == ''){
-      $('#ModelDiv').addClass('errDisplay');
+      $('#Model').addClass('errDisplay');
       err++
     }else{
-      $('#ModelDiv').removeClass('errDisplay');
+      $('#Model').removeClass('errDisplay');
     }
     if($('#Insurance_exp_date').val() == ''){
-      $('#Insurance_exp_dateDiv').addClass('errDisplay');
+      $('#Insurance_exp_date').addClass('errDisplay');
       err++
     }else{
-      $('#Insurance_exp_dateDiv').removeClass('errDisplay');
+      $('#Insurance_exp_date').removeClass('errDisplay');
     }
     if($('#PUC_exp_date').val() == ''){
-      $('#PUC_exp_dateDiv').addClass('errDisplay');
+      $('#PUC_exp_date').addClass('errDisplay');
       err++
     }else{
-      $('#PUC_exp_dateDiv').removeClass('errDisplay');
+      $('#PUC_exp_date').removeClass('errDisplay');
     }
     if($('#VehicleType').val() == ''){
-      $('#VehicleTypeDiv').addClass('errDisplay');
+      $('#VehicleType').addClass('errDisplay');
       err++
     }else{
-      $('#VehicleTypeDiv').removeClass('errDisplay');
+      $('#VehicleType').removeClass('errDisplay');
     }
     if($('#Status').val() == ''){
-      $('#StatusDiv').addClass('errDisplay');
+      $('#Status').addClass('errDisplay');
       err++
     }else{
-      $('#StatusDiv').removeClass('errDisplay');
+      $('#Status').removeClass('errDisplay');
     }
 
     if(err === 0){
       this.addVehcile();
+    }
+  }
+  hidePopup(){
+    $(".Popup1").hide();
+    if(this.Message == 'Vehicle Added Successfully'){
+      this.Router.navigate(['/dashboard']);
     }
   }
 

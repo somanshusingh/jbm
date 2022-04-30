@@ -1,103 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- META SECTION -->
-    <title>Dashboard</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <!-- END META SECTION -->
-</head>
-
-<body>
-    <div class="topBar"></div>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container">
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar">
-            <!-- START X-NAVIGATION -->
-            <ul class="x-navigation">
-                <li class="xn-logo" style="height: 40px;">
-                    <div><img src="assets/images/logo.png" style="width: 100px;margin-left: 58px;" alt="logo" /></div>
-                </li>
-                <li class="xn-profile">
-                    <a href="#" class="profile-mini">
-                        <img src="assets/images/profile.jpg" alt="Profile picture" />
-                    </a>
-                    <div class="profile">
-                        <!-- <div class="profile-image">
-                            <img src="assets/images/profile.jpg" alt="Profile picture" height="90px"/>
-                        </div> -->
-                        <div class="profile-data">
-                            <div class="profile-data-name" style="font-size: 15px;">Admin</div>
-                            <!-- <div class="profile-data-title">Web Developer/Designer</div> -->
-                        </div>
-                    </div>
-                </li>
-
-                <!-- <li class="xn-title">JBM</li> -->
-                <li><a routerLink="/vehicle" routerLinkActive="activeLink" id="vehicle">Add Vehicle</a></li>
-                <li><a routerLink="/signup" routerLinkActive="activeLink" id="signup">Add User</a></li>
-                <li><a routerLink="/history" routerLinkActive="activeLink" id="signup">Vehicle Entry</a></li>
-                <li>
-                    <a routerLink="/dashboard" routerLinkActive="activeLink" id="dashboard">Dashboard</a>
-                </li>
-                <!-- <li><a routerLink="/configuration" routerLinkActive="activeLink" id="configuration">Configuration</a>
-                </li> -->
-
-            </ul>
-            <!-- END X-NAVIGATION -->
-        </div>
-        <!-- END PAGE SIDEBAR -->
-
-        <!-- PAGE CONTENT -->
-        <div class="page-content">
-
-            <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel"
-                style="background-color: white;margin-bottom: 0px;">
-                <!-- TOGGLE NAVIGATION -->
-                <li class="xn-icon-button" style="background:#f0f2f5;">
-                    <a href="#" class="x-navigation-minimize"><span class="fa fa-bars"></span></a>
-                </li>
-                <!-- END TOGGLE NAVIGATION -->
-                <!-- SIGN OUT -->
-                <li class="xn-icon-button pull-right" style="border: 0px;">
-                    <a href="#" class="mb-control" data-box="#mb-signout"><span
-                            class="fa fa-solid fa-power-off"></span></a>
-                </li>
-                <!-- END SIGN OUT -->
-                <!-- MESSAGES -->
-                <li class="xn-icon-button pull-right" style="border: 0px;">
-                    <a href="#"><span class="fa fa-comments"></span></a>
-                </li>
-                <!-- END MESSAGES -->
-                <!-- TASKS -->
-                <li class="xn-icon-button pull-right" style="border: 0px;">
-                    <a href="#"><span class="fa fa-regular fa-circle-question"></span></a>
-                </li>
-                <li class="xn-icon-button pull-right" style="border: 0px;">
-                    <a class="fa fa-regular fa-bullhorn"></a>
-                </li>
-                <!-- END TASKS -->
-            </ul>
-            <!-- END X-NAVIGATION VERTICAL -->
-            <!-- PAGE CONTENT WRAPPER -->
-            <div id="outerDiv" style="padding: 35px;position: absolute;background-color: white;">
-    <table datatable class="table table-striped table-bordered table-sm row-border hover" [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger">
+<div id="outerDiv">
+    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap" [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" style="width:100%">
         <thead>
             <tr>
                 <th class="Created_By">Created<br>By</th>
-                <th class="Created_On">Created<br>On</th>
+                <!-- <th class="Created_On">Created<br>On</th> -->
                 <th class="Insurance_exp_date">Insurance <br>exp_date</th>
                 <th class="Make">Make</th>
                 <th class="Model">Model</th>
                 <th class="Modified_By">Modified_By</th>
-                <th class="Modified_On">Modified <br>On</th>
+                <!-- <th class="Modified_On">Modified <br>On</th> -->
                 <th class="PUC_exp_date">PUC_exp_date</th>
                 <th class="Status">Status</th>
                 <th class="VehicleNo">Vehicle<br>No</th>
@@ -107,12 +19,12 @@
         <tbody>
             <tr *ngFor="let vehicle of data" height="55px">
                 <td class="Created_By">{{ vehicle.Created_By }}</td>
-                <td class="Created_On">{{ vehicle.Created_On }}</td>
+                <!-- <td class="Created_On">{{ vehicle.Created_On }}</td> -->
                 <td class="Insurance_exp_date">{{ vehicle.Insurance_exp_date }}</td>
                 <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td>
                 <td class="Modified_By">{{ vehicle.Modified_By }}</td>
-                <td class="Modified_On">{{ vehicle.Modified_On }}</td>
+                <!-- <td class="Modified_On">{{ vehicle.Modified_On }}</td> -->
                 <td class="PUC_exp_date">{{ vehicle.PUC_exp_date }}</td>
                 <td class="Status">{{ vehicle.Status }}</td>
                 <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
@@ -120,14 +32,5 @@
             </tr>
         </tbody>
     </table>
-    <button class="buttonCss"><a style="color: white;" routerLink="/vehicle">Add Vehicle</a></button>
+    <button class="buttonCss" style="color: white;" routerLink="/vehicle">Add Vehicle</button>
 </div>
-
-            <!-- END PAGE CONTENT WRAPPER -->
-        </div>
-        <!-- END PAGE CONTENT -->
-    </div>
-    <!-- END PAGE CONTAINER -->
-</body>
-
-</html>

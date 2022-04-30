@@ -6,15 +6,28 @@ import { VehicleComponent } from '../app/vehicle/vehicle.component';
 import { HistoryComponent } from '../app/history/history.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MenuComponent } from './menu/menu.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { UsersComponent } from './users/users.component';
+import { OutboundDashboardComponent } from './outbound-dashboard/outbound-dashboard.component';
 
 
 const routes: Routes = [
-  { path: 'signup', component:SignupComponent},
+  { path: '', component:SigninComponent},
+  { path: 'signup', component:MenuComponent},
   { path: 'signin', component:SigninComponent},
-  { path: 'vehicle', component:VehicleComponent},
+  { path: 'vehicle', component:MenuComponent},
   { path: 'history', component:HistoryComponent},
-  { path: 'dashboard', component:DashboardComponent},
-  { path: 'forgotPassword', component:ForgotPasswordComponent}
+   { path: 'dashboard', component:MenuComponent},
+  { path: 'forgotPassword', component:ForgotPasswordComponent},
+  { path: 'menu', component:MenuComponent},
+  { path: 'users', component:MenuComponent},
+  { path: 'outbound', component:MenuComponent},
+  { path: 'outBoundDashboard', component:MenuComponent},
+  { path: 'inBoundDashboard', component:MenuComponent},
+  { path: 'inBound', component:MenuComponent},
+  { path: '**', component:ErrorpageComponent}
+
 ];
 
 @NgModule({

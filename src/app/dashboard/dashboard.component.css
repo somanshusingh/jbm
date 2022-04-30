@@ -1,9 +1,13 @@
+/* @media (max-width: 639px) {
+  #outerDiv{position: relative;}
+  } */
 .buttonCss{
     color: white;
-    background: red;
+    background: #1d40aa;
     border: none;
     border-radius: 4px;
     height: 30px;
+    padding: 5px;
 }
 @charset "UTF-8";
 
@@ -6960,6 +6964,7 @@ ul.jqueryFileTree a:hover {
 }
 /* END Animations */
 @media only screen and (max-width: 768px) {
+  #outerDiv{position: relative;}
   [class^='col-xs-'],
   [class^='col-sm-'],
   [class^='col-md-'],

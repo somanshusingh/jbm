@@ -1,0 +1,125 @@
+
+<div class="content">
+    <div class="intro-y flex items-center mt-8">
+        <span style="font-size: 20px;">Add Inbound</span>
+    </div>
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
+            <div class="intro-y box lg:mt-5">
+                <div class="p-5">
+                    <div class="grid grid-cols-12 gap-5">
+                        <div class="col-span-12 xl:col-span-6">
+                            <!-- <div class="">
+                                <label>Make</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Make" id="vehicleMake">
+                                <span class="vehicleMakeErr errMsg"></span>
+                            </div> -->
+                            <!-- <div class="mt-3">
+                                <label>Insurance exp date</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Insurance exp date" id="vehicleInsurance_exp_date">
+                                <span class="vehicleInsurance_exp_dateErr errMsg"></span>
+                            </div> -->
+                            <div >
+                                <label>Material</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material" id="inMaterial">
+                                <span class="MaterialErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Issued By</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By" id="inIssued_By">
+                                <span class="Issued_ByErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Driver Name</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Name" id="inDriver_Name">
+                                <span class="Driver_NameErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Consignee Name</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Consignee Name" id="inConsignee_Name" >
+                                <span class="Consignee_NameErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Gross Weight</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="inGross_Weight">
+                                <span class="Gross_WeightErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Net Weight</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Net Weight" id="inNet_Weight">
+                                <span class="Net_WeightErr errMsg"></span>
+                            </div>
+                        </div>
+                        <div class="col-span-12 xl:col-span-6">
+                            <div>
+                                <label>Vehicle No</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Vehicle No" id="inVnumber">
+                                <span class="VnumberErr errMsg"></span>
+                            </div>
+                            <!-- <div class="mt-3">
+                                <label>Model</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Model" id="VehicleModel">
+                                <span class="VehicleModelErr errMsg"></span>
+                            </div> -->
+                            <!-- <div class="mt-3">
+                                <label>PUC exp date</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="PUC exp date" id="VPUC_exp_date">
+                                <span class="VPUC_exp_dateErr errMsg"></span>
+                            </div> -->
+                            <div class="mt-3">
+                                <label>Material Type</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="inMaterial_Type">
+                                <span class="Material_TypeErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Issued Date</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued Date" id="inIssued_Date">
+                                <span class="Issued_DateErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Driver Number</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Number" id="inDriver_Number">
+                                <span class="Driver_NumberErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Address</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address" id="inAddress">
+                                <span class="AddressErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Tare Weight</label>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Tare Weight" id="inTare_Weight">
+                                <span class="Tare_WeightErr errMsg"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" (click)="validate()">Add</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Personal Information -->
+        </div>
+    </div>
+</div>
+
+ <!--  Popup start -->
+
+ <div class="addFieldPopupTop" id="addFieldPopupTop">
+    <div class="Popup1" id="addFieldPopup">
+      <div class="Popup2">
+        <div
+          style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
+          Note
+        </div>
+        <div style="padding: 28px;text-align: center;">
+         <b> {{Message}}</b>
+        </div>
+      </div>
+      <div class="Popup3" style="height: 30px;padding: 4px;">
+        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
+      </div>
+    </div>
+  </div>
+  <!--  Popup finish -->

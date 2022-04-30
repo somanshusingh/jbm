@@ -11,6 +11,12 @@ import { HistoryComponent } from './history/history.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MenuComponent } from './menu/menu.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { UsersComponent } from './users/users.component';
+import { OutboundDashboardComponent } from './outbound-dashboard/outbound-dashboard.component';
+import { InboundDashboardComponent } from './inbound-dashboard/inbound-dashboard.component';
+import { InboundComponent } from './inbound/inbound.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     VehicleComponent,
     HistoryComponent,
     DashboardComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    MenuComponent,
+    ErrorpageComponent,
+    UsersComponent,
+    OutboundDashboardComponent,
+    InboundDashboardComponent,
+    InboundComponent
   ],
   imports: [
     BrowserModule,

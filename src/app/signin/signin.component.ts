@@ -27,17 +27,20 @@ export class SigninComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];
-            this.Router.navigate(['/dashboard']);
+            this.Router.navigate(['/menu']);
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');
-            $('.Error').html('Incorrect Username or Password!');
+            if (typeof data['msg'] === "string"){
+              $('.Error').html(data['msg']);
+            } else {
+              $('.Error').html('Technical Issue! Please Retry');
+            }
           } else if (data['status'] == 100) {
-            this.Message = 'Technical Issue ,Please Retry';
+            $('.Error').html('Technical Issue! Please Retry');
           }
         } else {
-          this.Message = 'Technical Issue ,Please Retry';
-          $('.Error').html('Technical Issue ,Please Retry');
+          $('.Error').html('Technical Issue! Please Retry');
         }
       }
     )
