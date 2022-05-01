@@ -28,6 +28,8 @@ export class SigninComponent implements OnInit {
           if (data['status'] == 1) {
             this.Message = data['msg'];
             this.Router.navigate(['/menu']);
+            this.serviceCall.Role= data['msg']['Role'];
+            this.serviceCall.UserName= data['msg']['Name'];
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

@@ -1,10 +1,16 @@
+.rdiv{
+    width: 10cm;
+}
 label{width: 3.5cm;}
 .inputWidth{ width:7cm;}
-.Button{    color: white;
-    background: red;
+.buttonCss{
+    color: white;
+    background: #1d40aa;
     border: none;
     border-radius: 4px;
-    height: 30px;
+    height: 35px;
+    padding: 5px;
+    min-width: 80px;
 }
 .outerdiv{
     height: 100%;
@@ -13,8 +19,24 @@ label{width: 3.5cm;}
 }
 .errDisplay{box-shadow: 0px 0px 3px 0px red;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px){
-    .inputWidth{ width:5cm;}
-    .Button{margin-left: 131px;}
+    .inputWidth {
+        width: 7.5cm !important;
+    }
+    
+    .Button {
+        margin-left: 131px;
+    }
+    
+    .content {
+        padding: 0;
+        /* padding-left: 5px; */
+    }
+    .rdiv{
+        width: unset;
+    }
+    #checkVehicleNumber{width: 7.5cm;}
+    .Popup1{
+        margin-left: -153px !important;}
 }
 .Popup1{
   display: none;
@@ -48,3 +70,6 @@ label{width: 3.5cm;}
   line-height: 1.42857143;
   color: #333;}
 
+#inboundForm{
+    display: none;
+}

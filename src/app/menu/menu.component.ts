@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as feather from 'feather-icons';
+import { ApiService } from '../api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,11 +9,22 @@ import * as feather from 'feather-icons';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  UserName=' User Name';
+  Role='Role';
+  constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
     feather.replace();
+    if(this.serviceCall.Role !== 'Admin'){
+      $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').hide();
+    }
+    if(this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null){
+      this.Router.navigate(['/signin']);
+    }
+    if(this.serviceCall.UserName !==''){
+      this.UserName = this.serviceCall.UserName;
+      this.Role = this.serviceCall.Role;
+    }
     $('.dashboarddiv').hide();
     $('.signupdiv').hide();
     $('.vehiclediv').hide();
@@ -43,6 +56,17 @@ export class MenuComponent implements OnInit {
     //   $('.dashboarddiv').hide();
     //   $('.signupdiv').hide();
     // }
+  }
+  hideshowMobile(event,childName){
+    var target = event.currentTarget;
+    var pElement = target.className.split(" ")[1];
+    if($('.'+childName).hasClass('menu__sub-open')){
+      $('.'+childName).removeClass('smenu__sub-open');
+      $('.side-menu').find('.side-menu__sub-icon').removeClass('transform rotate-180');
+    }else{
+      $('.'+pElement).find('.side-menu__sub-icon').addClass('transform rotate-180');
+    $('.'+childName).addClass('menu__sub-open');
+    }
   }
   changeView(view){
     if(view == '/dashboard'){

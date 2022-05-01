@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-
+  Role;
+  UserName ='';
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){

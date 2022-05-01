@@ -2,50 +2,56 @@
     <!-- BEGIN: Mobile Menu -->
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
-            <a href="" class="flex mr-auto">
+            <a class="flex mr-auto">
                 <img  class="w-6" src="assets/new/dist/images/logo.svg">
             </a>
-            <a href="javascript:;" id="mobile-menu-toggler"(click)="menuToggleMobile()"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <a id="mobile-menu-toggler"(click)="menuToggleMobile()"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
         <ul class="border-t border-theme-24 py-5 hidden menuToggleMobile">
-            <li>
-                <a href="" class="menu">
+            <li class="mobileVehicles">
+                <a class="menu" (click)="hideshowMobile($event,'vehiclesOption')">
                     <div class="menu__icon"> <i data-feather="edit"></i> </div>
-                    <div class="menu__title"> VEHICLE DATA <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+                    <div class="menu__title"> Vehicles <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
                 </a>
-                <ul class="">
+                <ul class="vehiclesOption">
                     <li>
-                        <a href="" class="menu">
+                        <a class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title"> Inbound </div>
+                            <div class="menu__title" routerLink="/dashboard"> Dashboard </div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="menu">
+                        <a class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title"> Outbound </div>
+                            <div class="menu__title" routerLink="/inBoundDashboard"> Inbound </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title" routerLink="/outBoundDashboard"> Outbound </div>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;" class="menu">
+            <li class="mobileUsers">
+                <a class="menu" (click)="hideshowMobile($event,'usersOption')">
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
                     <div class="menu__title"> Users <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
                 </a>
-                <ul class="">
+                <ul class="usersOption">
                     <li>
-                        <a href="users.html" class="menu">
+                        <a class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title"> All Users </div>
+                            <div class="menu__title" routerLink="/users"> All Users </div>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="edit.html" class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
                             <div class="menu__title"> Register </div>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
         </ul>
@@ -54,13 +60,13 @@
     <div class="flex">
         <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
-            <a href="" class="intro-x flex items-center pl-5 pt-4">
+            <a  class="intro-x flex items-center pl-5 pt-4">
                 <img  class="w-6" src="assets/new/dist/images/logo.svg">
                 <span class="hidden xl:block text-white text-lg ml-3"> J<span class="font-medium">BM</span> </span>
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
-                <li>
+                <li class="desktopVehicles">
                     <a class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')"> 
                         <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                         <div class="side-menu__title side-menu--open" > Vehicles <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
@@ -86,7 +92,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="desktopUsers">
                     <a class="side-menu users" (click)="hideshow($event,'usersOption')">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Users <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
@@ -114,7 +120,7 @@
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href="" class="">JBM</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a href="" class="breadcrumb--active">Dashboard</a> </div>
+                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a class=""></a>  <a  class="breadcrumb--active"></a> </div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
@@ -124,8 +130,8 @@
                     <div class="dropdown-box w-56">
                         <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
                             <div class="p-4 border-b border-theme-40 dark:border-dark-3">
-                                <div class="font-medium">User Name</div>
-                                <div class="text-xs text-theme-41 dark:text-gray-600">Admin</div>
+                                <div class="font-medium">{{UserName}}</div>
+                                <div class="text-xs text-theme-41 dark:text-gray-600">{{Role}}</div>
                             </div>
                             <div class="p-2 border-t border-theme-40 dark:border-dark-3">
                                 <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>

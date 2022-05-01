@@ -17,34 +17,32 @@ export class InboundComponent implements OnInit {
   ngOnInit(): void {
   }
   checkHistory(){
-    if($("#VehicleNo").val() !== ''){
-      let url = '/vehicle/view/' + $("#VehicleNo").val();
+      let url = '/vehicle/view/' + $("#checkVehicleNumber").val();
       this.serviceCall.getService(url).subscribe(
         data => {
           if(data['status'] == 1 && data['msg'] && data['msg'].length >0){
-            $("#Material,#Material_Type, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight ,#addVehicleData").prop('disabled', false);
-            $("#Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', true);
             this.Message =''
-             $('#Make').val(data['msg'][0]['Make']);
-             $('#Model').val(data['msg'][0]['Model']);
-             $('#vehicleInsurance_exp_date').val(data['msg'][0]['vehicleInsurance_exp_date']);
-             $('#PUC_exp_date').val(data['msg'][0]['PUC_exp_date']);
-             $('#hiddenFields').show();
+            $('#VehicleNumberForm').hide();
+             $('#inboundForm').show();
+             $('#invehicleMake').val(data['msg'][0]['Make']);
+             $('#inVehicleModel').val(data['msg'][0]['Model']);
+             $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date']);
+             $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date']);
              this.isVehicleDataAvailable = true;
+             $('#inboundForm').show();
+             $('#VehicleNumberForm').hide();
           }else if(data['status'] == 0){
             this.Message =data['msg'];
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', false);
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").val('');
-            this.isVehicleDataAvailable = false;
-            $('#hiddenFields').show();
+            $('.Popup1').show();
           }else if(data['status'] == 100){
             this.Message = JSON.stringify(data['msg']);
+            $('.Popup1').show();
           }else{
             this.Message ='Something went wrong.';
+            $('.Popup1').show();
           }
         }
       )
-    }
   }
 
   addVehicleData(){
@@ -205,9 +203,19 @@ export class InboundComponent implements OnInit {
   }
   hidePopup(){
     $(".Popup1").hide();
-    if(this.Message == 'Vehicle Added Successfully'){
-      this.Router.navigate(['/inBoundDashboard']);
+  }
+  validateVehicleNumber(){
+    var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    if($('#checkVehicleNumber').val() !== ""){
+      // if(!vehicleNumberPatter.test($('#checkVehicleNumber').val().toString().toUpperCase())){
+      //   $('#checkVehicleNumber').addClass('errDisplay');
+      // }else{
+      //   $('#checkVehicleNumber').removeClass('errDisplay');
+      //   this.checkHistory();
+      // }
+      this.checkHistory();
+    }else{
+      $('#checkVehicleNumber').addClass('errDisplay');
     }
   }
-
 }
