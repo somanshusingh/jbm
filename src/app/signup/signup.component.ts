@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   signUp() {
     var url = '/registration/user';
     var post_data = {
-      "UserId": "ID" + (Math.round(Math.random()*100000)),
+      "UserId":  $('#sUserName').val(),
       "Password": $('#password').val(),
       "Name": $('#Name').val(),
       "Mobile": $('#mobile').val(),
@@ -50,6 +50,14 @@ export class SignupComponent implements OnInit {
     var emailPattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
 
+    if ($('#sUserName').val() !== '') {
+          $("#Name").removeClass('errDisplay');
+          $('.unameErr').html('');
+    } else {
+      err++;
+      $("#sUserName").addClass('errDisplay');
+      $('.unameErr').html('Enter Username');
+    }
     if (name !== '') {
       if (!namePattern.test(name)) {
         err++;
@@ -152,5 +160,22 @@ export class SignupComponent implements OnInit {
       this.Router.navigate(['/users']);
     }
   }
+  KeyPressEvent(event: any, type) {
+    let pattern;
+    switch (type) {
+        case 'Text': pattern = /[a-zA-Z ]/; break;
+        case 'OnlyText': pattern = /[a-zA-Z]/; break;
+        case 'Number': pattern = /[0-9\+\-\ ]/; break;
+        case 'Mobile': pattern = /[0-9\+\-\ ]/; break;
+        //case 'PAN':         pattern = /[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}/; break;
+    }
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) { event.preventDefault(); }
+}
+ValidateNumber(event) {
+  if (!(/^[0-9]*$/.test(event.target.value))) {
+      event.target.value = "";
+  }
+}
 
 }

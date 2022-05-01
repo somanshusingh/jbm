@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
       processing: true,
       order: [],
       columnDefs: [ {
-        'targets': [0,1,2,3,4,5,6,7,8], /* column index [0,1,2,3]*/
+        'targets': [0,1,2,3,4], /* column index [0,1,2,3]*/
         'orderable': false, /* true or false */
     }],
     responsive: true,

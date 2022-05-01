@@ -4,32 +4,28 @@
         [dtTrigger]="dtTrigger" style="width:100%">
         <thead>
             <tr>
-                <th class="Created_By">Created<br>By</th>
-                <!-- <th class="Created_On">Created<br>On</th> -->
-                <th class="Insurance_exp_date">Insurance <br>exp_date</th>
+                <th class="VehicleNo">Vehicle Number</th>
+                <!-- <th class="Created_By">Created<br>By</th> -->
+                <th class="Insurance_exp_date">Insurance Expire Date</th>
+                <th class="PUC_exp_date">PUCC Expire Date</th>
                 <th class="Make">Make</th>
                 <th class="Model">Model</th>
-                <th class="Modified_By">Modified_By</th>
-                <!-- <th class="Modified_On">Modified <br>On</th> -->
-                <th class="PUC_exp_date">PUC_exp_date</th>
+                <!-- <th class="Modified_By">Modified_By</th>
                 <th class="Status">Status</th>
-                <th class="VehicleNo">Vehicle<br>No</th>
-                <th class="VehicleType">Vehicle<br>Type</th>
+                <th class="VehicleType">Vehicle<br>Type</th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let vehicle of data" height="55px">
-                <td class="Created_By">{{ vehicle.Created_By }}</td>
-                <!-- <td class="Created_On">{{ vehicle.Created_On }}</td> -->
-                <td class="Insurance_exp_date">{{ vehicle.Insurance_exp_date }}</td>
+                <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
+                <!-- <td class="Created_By">{{ vehicle.Created_By }}</td> -->
+                <td class="Insurance_exp_date">{{ vehicle.Insurance_exp_date.split('T')[0] }}</td>
+                <td class="PUC_exp_date">{{ vehicle.PUC_exp_date.split('T')[0] }}</td>
                 <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td>
-                <td class="Modified_By">{{ vehicle.Modified_By }}</td>
-                <!-- <td class="Modified_On">{{ vehicle.Modified_On }}</td> -->
-                <td class="PUC_exp_date">{{ vehicle.PUC_exp_date }}</td>
+                <!-- <td class="Modified_By">{{ vehicle.Modified_By }}</td>
                 <td class="Status">{{ vehicle.Status }}</td>
-                <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
-                <td class="VehicleType">{{ vehicle.VehicleType }}</td>
+                <td class="VehicleType">{{ vehicle.VehicleType }}</td> -->
             </tr>
         </tbody>
     </table>

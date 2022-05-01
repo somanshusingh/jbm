@@ -4,24 +4,24 @@
         [dtTrigger]="dtTrigger" style="width:100%">
         <thead>
             <tr>
-                <th class="BookNo">BookNo</th>
-                <th class="Consignee_Name">Consignee_Name</th>
-                <th class="Driver_Name">Driver_Name</th>
+                <th class="BookNo">Book No.</th>
+                <th class="VehicleNo">Vehicle No.</th>
+                <th class="Driver_Name">Driver Name</th>
+                <th class="Consignee_Name">Consignee Name</th>
+                <th class="Trip_No">Trip No.</th>
                 <th class="Make">Make</th>
                 <th class="Model">Model</th>
-                <th class="VehicleNo">VehicleNo</th>
-                <th class="Trip_No">Trip_No</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let vehicle of data" height="55px">
                 <td class="BookNo">{{ vehicle.BookNo }}</td>
-                <td class="Consignee_Name">{{ vehicle.Consignee_Name }}</td>
+                <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
                 <td class="Driver_Name">{{ vehicle.Driver_Name }}</td>
+                <td class="Consignee_Name">{{ vehicle.Consignee_Name }}</td>
+                <td class="Trip_No">{{ vehicle.Trip_No }}</td>
                 <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td>
-                <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
-                <td class="Trip_No">{{ vehicle.Trip_No }}</td>
             </tr>
         </tbody>
     </table>
