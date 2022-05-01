@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];
-            this.Router.navigate(['/menu']);
+            this.Router.navigate(['/dashboard']);
             this.serviceCall.Role= data['msg']['Role'];
             this.serviceCall.UserName= data['msg']['Name'];
           } else if (data['status'] == 0) {
