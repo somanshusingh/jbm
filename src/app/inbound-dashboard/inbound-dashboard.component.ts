@@ -23,7 +23,7 @@ export class InboundDashboardComponent implements OnInit {
       processing: true,
       order: [],
       columnDefs: [{
-        'targets': [0, 1, 2, 3, 4], /* column index [0,1,2,3]*/
+        'targets': [0, 1, 2, 3], /* column index [0,1,2,3]*/
         'orderable': false, /* true or false */
       }],
       responsive: true,

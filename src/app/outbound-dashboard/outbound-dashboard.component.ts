@@ -23,23 +23,8 @@ export class OutboundDashboardComponent implements OnInit {
       lengthMenu: [10, 50, 100],
       processing: true,
       order: [],
-      columnDefs: [ {
-        'targets': [0,1,2,3,4,5,6], /* column index [0,1,2,3]*/
-        'orderable': false, /* true or false */
-    }],
     responsive: true,
     scrollX: true,
-      // columns: [
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" },
-      //   { "width": "5%" }
-      // ]
     };
   }
   getData(){

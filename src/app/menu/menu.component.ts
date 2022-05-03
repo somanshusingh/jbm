@@ -15,11 +15,17 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     feather.replace();
-    if(this.serviceCall.Role !== 'Admin'){
-      $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').hide();
+    if(this.serviceCall.Role == 'Admin'){
+       $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').show();
+    }
+    if(this.serviceCall.Role == 'Supervisor'){
+       $('.mobileInboundProcess,.mobileOutboundProcess,.desktopInboundProcess,.desktopOutboundProcess').show();
+    }
+    if(this.serviceCall.Role == 'GateUser'){
+       $('.mobileRegisterCard,.desktopRegisterCard').show();
     }
     if(this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null){
-      this.Router.navigate(['/signin']);
+       this.Router.navigate(['/signin']);
     }
     if(this.serviceCall.UserName !==''){
       this.UserName = this.serviceCall.UserName;
@@ -36,6 +42,7 @@ export class MenuComponent implements OnInit {
     this.changeView(window.location.pathname);
   }
   hideshow(event,childName){
+    // (click)="hideshow($event,'vehiclesOption')"
     var target = event.currentTarget;
     var pElement = target.className.split(" ")[1];
     if($('.'+childName).hasClass('side-menu__sub-open')){

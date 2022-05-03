@@ -17,40 +17,43 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
   }
   checkHistory(){
-    if($("#VehicleNo").val() !== ''){
-      let url = '/vehicle/view/' + $("#VehicleNo").val();
-      this.serviceCall.getService(url).subscribe(
-        data => {
-          if(data['status'] == 1 && data['msg'] && data['msg'].length >0){
-            $("#Material,#Material_Type, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight ,#addVehicleData").prop('disabled', false);
-            $("#Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', true);
-            this.Message =''
-             $('#Make').val(data['msg'][0]['Make']);
-             $('#Model').val(data['msg'][0]['Model']);
-             $('#vehicleInsurance_exp_date').val(data['msg'][0]['vehicleInsurance_exp_date']);
-             $('#PUC_exp_date').val(data['msg'][0]['PUC_exp_date']);
-             $('#hiddenFields').show();
-             this.isVehicleDataAvailable = true;
-          }else if(data['status'] == 0){
-            this.Message =data['msg'];
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").prop('disabled', false);
-            $("#Material, #Issued_By, #Issued_Date, #Driver_Name, #Driver_Number , #Time, #Consignee_Name, #Address, #Trip_No,#Gross_Weight,#Tare_Weight,#Net_Weight,#addVehicleData, #Message, #Make, #Model ,#vehicleInsurance_exp_date ,#PUC_exp_date").val('');
-            this.isVehicleDataAvailable = false;
-            $('#hiddenFields').show();
-          }else if(data['status'] == 100){
-            this.Message = JSON.stringify(data['msg']);
-          }else{
-            this.Message ='Something went wrong.';
-          }
+    let url = '/vehicle/view/' + $("#checkOutVehicleNumber").val();
+    this.serviceCall.getService(url).subscribe(
+      data => {
+        if(data['status'] == 1 && data['msg'] && data['msg'].length >0){
+          this.Message =''
+           $('#OutVehicleNumberForm').hide();
+           $('#outboundForm').show();
+           $('#vehicleMake').val(data['msg'][0]['Make']);
+           $('#VehicleModel').val(data['msg'][0]['Model']);
+           $('#vehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
+           $('#VPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
+           $('#Vnumber').val($('#checkOutVehicleNumber').val());
+           $("#vehicleMake,#VehicleModel,#vehicleInsurance_exp_date,#VPUC_exp_date,#Vnumber").attr('disabled','disabled');
+           this.isVehicleDataAvailable = true;
+        }else if(data['status'] == 0){
+          $('#OutVehicleNumberForm').hide();
+          $('#outboundForm').show();
+          this.isVehicleDataAvailable = false;
+          $('#Vnumber').val($('#checkOutVehicleNumber').val());
+          $("#Vnumber").attr('disabled','disabled');
+          // this.Message =data['msg'];
+          // $('.Popup1').show();
+        }else if(data['status'] == 100){
+          this.Message = JSON.stringify(data['msg']);
+          $('.Popup1').show();
+        }else{
+          this.Message ='Something went wrong.';
+          $('.Popup1').show();
         }
-      )
-    }
-  }
+      }
+    )
+}
 
   addVehicleData(){
     let url = '/history/outside_transport'
     let post_data = {
-      "BookNo": "JBM" + (Math.round(Math.random()*100000)),
+      "Trip_No": (Math.round(Math.random()*100000)),
       "VehicleNo": $('#Vnumber').val(),
       "Make": $('#vehicleMake').val(),
       "Model": $('#VehicleModel').val(),
@@ -65,10 +68,11 @@ export class HistoryComponent implements OnInit {
       "Time": $('#Time').val(),
       "Consignee_Name": $('#Consignee_Name').val(),
       "Address": $('#Address').val(),
-      "Trip_No": (Math.round(Math.random()*100000)),
-      "Gross_Weight": $('#Gross_Weight').val(),
-      "Tare_Weight": $('#Tare_Weight').val(),
-      "Net_Weight": $('#Net_Weight').val()
+      // "Gross_Weight": $('#Gross_Weight').val(),
+      // "Tare_Weight": $('#Tare_Weight').val(),
+      // "Net_Weight": $('#Net_Weight').val(),
+      "Qty_Mt_Weight": $('#outqty_mt_Weight').val(),
+      "Vehicle":this.isVehicleDataAvailable
   }
 
 
@@ -174,23 +178,29 @@ export class HistoryComponent implements OnInit {
     }else{
       $('#Trip_No').removeClass('errDisplay');
     }
-    if($('#Gross_Weight').val() == ''){
-      $('#Gross_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#Gross_Weight').removeClass('errDisplay');
-    }
-    if($('#Tare_Weight').val() == ''){
-      $('#Tare_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#Tare_Weight').removeClass('errDisplay');
-    }
-    if($('#Net_Weight').val() == ''){
-      $('#Net_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#Net_Weight').removeClass('errDisplay');
+    // if($('#Gross_Weight').val() == ''){
+    //   $('#Gross_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Gross_Weight').removeClass('errDisplay');
+    // }
+    // if($('#Tare_Weight').val() == ''){
+    //   $('#Tare_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Tare_Weight').removeClass('errDisplay');
+    // }
+    // if($('#Net_Weight').val() == ''){
+    //   $('#Net_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Net_Weight').removeClass('errDisplay');
+    // }
+    if($('#outqty_mt_Weight').val() == ''){
+        $('#outqty_mt_Weight').addClass('errDisplay');
+        err++
+      }else{
+        $('#outqty_mt_Weight').removeClass('errDisplay');
     }
     if($('#Vnumber').val() == ''){
       $('#Vnumber').addClass('errDisplay');
@@ -207,6 +217,20 @@ export class HistoryComponent implements OnInit {
     $(".Popup1").hide();
     if(this.Message == 'Vehicle Added Successfully'){
       this.Router.navigate(['/outBoundDashboard']);
+    }
+  }
+  validateVehicleNumber(){
+    var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    if($('#checkOutVehicleNumber').val() !== ""){
+      // if(!vehicleNumberPatter.test($('#checkOutVehicleNumber').val().toString().toUpperCase())){
+      //   $('#checkOutVehicleNumber').addClass('errDisplay');
+      // }else{
+      //   $('#checkOutVehicleNumber').removeClass('errDisplay');
+      //   this.checkHistory();
+      // }
+      this.checkHistory();
+    }else{
+      $('#checkOutVehicleNumber').addClass('errDisplay');
     }
   }
 

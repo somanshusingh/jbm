@@ -1,0 +1,12 @@
+.mobileUsers,
+.mobileVehicles,
+.mobileInboundProcess,
+.mobileOutboundProcess,
+.mobileRegisterCard,
+.desktopUsers,
+.desktopVehicles,
+.desktopInboundProcess,
+.desktopOutboundProcess,
+.desktopRegisterCard {
+    display: none;
+}

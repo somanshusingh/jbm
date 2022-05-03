@@ -39,7 +39,7 @@ Message
       $("#cPasswordErr").html('Confirm Password');
     }
     if (err == 0) {
-      var url = "/registration/update";
+      var url = "/registration/pwd/update";
       var post_data = {
         "UserId": $("#username").val(),
         "Password": $("#password").val(),

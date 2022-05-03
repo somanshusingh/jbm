@@ -8,12 +8,26 @@
             <a id="mobile-menu-toggler"(click)="menuToggleMobile()"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
         <ul class="border-t border-theme-24 py-5 hidden menuToggleMobile">
-            <li class="mobileVehicles">
-                <a class="menu" (click)="hideshowMobile($event,'vehiclesOption')">
-                    <div class="menu__icon"> <i data-feather="edit"></i> </div>
-                    <div class="menu__title"> Vehicles <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+            <li class="mobileUsers">
+                <a class="menu" (click)="hideshowMobile($event,'usersOption')">
+                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                    <div class="menu__title" routerLink="/users"> Users </div>
                 </a>
-                <ul class="vehiclesOption">
+                <!-- <ul class="usersOption">
+                    <li>
+                        <a class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title" routerLink="/users"> All Users </div>
+                        </a>
+                    </li>
+                </ul> -->
+            </li>
+            <li class="mobileVehicles">
+                <a class="menu">
+                    <div class="menu__icon"> <i data-feather="truck"></i> </div>
+                    <div class="menu__title" routerLink="/dashboard"> Vehicles </div>
+                </a>
+                <!-- <ul class="vehiclesOption">
                     <li>
                         <a class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
@@ -32,27 +46,25 @@
                             <div class="menu__title" routerLink="/outBoundDashboard"> Outbound Vehicles</div>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </li>
-            <li class="mobileUsers">
-                <a class="menu" (click)="hideshowMobile($event,'usersOption')">
-                    <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <div class="menu__title"> Users <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+            <li class="mobileInboundProcess">
+                <a class="menu">
+                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                    <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div>
                 </a>
-                <ul class="usersOption">
-                    <li>
-                        <a class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/users"> All Users </div>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a href="edit.html" class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title"> Register </div>
-                        </a>
-                    </li> -->
-                </ul>
+            </li>
+            <li class="mobileOutboundProcess">
+                <a class="menu" >
+                    <div class="menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
+                    <div class="menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
+                </a>
+            </li>
+            <li class="mobileRegisterCard">
+                <a class="menu">
+                    <div class="menu__icon"> <i data-feather="credit-card"></i> </div>
+                    <div class="menu__title"> Register Card </div>
+                </a>
             </li>
         </ul>
     </div>
@@ -66,12 +78,38 @@
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
-                <li class="desktopVehicles">
-                    <a class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')"> 
-                        <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
-                        <div class="side-menu__title side-menu--open" > Vehicles <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                <!-- <li class="desktopUsers">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__title"> Users <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="vehiclesOption">
+                    <ul class="usersOption">
+                        <li>
+                            <a class="side-menu">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title" routerLink="/users"> All Users </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="side-menu">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title" routerLink="/signup"> Register </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li class="desktopUsers">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__title" routerLink="/users"> Users </div>
+                    </a>
+                </li>
+                <li class="desktopVehicles">
+                    <a class="side-menu vehicles"> 
+                        <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
+                        <div class="side-menu__title side-menu--open" routerLink="/dashboard"> Vehicles</div>
+                    </a>
+                    <!-- <ul class="vehiclesOption">
                         <li>
                             <a class="side-menu">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
@@ -90,27 +128,25 @@
                                 <div class="side-menu__title"  routerLink="/outBoundDashboard"> Outbound Vehicles</div>
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
-                <li class="desktopUsers">
-                    <a class="side-menu users" (click)="hideshow($event,'usersOption')">
-                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                        <div class="side-menu__title"> Users <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                <li class="desktopInboundProcess">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                        <div class="side-menu__title" routerLink="/inBoundDashboard"> Inbound Process</div>
                     </a>
-                    <ul class="usersOption">
-                        <li>
-                            <a class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                <div class="side-menu__title" routerLink="/users"> All Users </div>
-                            </a>
-                        </li>
-                        <!-- <li>
-                            <a class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                <div class="side-menu__title" routerLink="/signup"> Register </div>
-                            </a>
-                        </li> -->
-                    </ul>
+                </li>
+                <li class="desktopOutboundProcess">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
+                        <div class="side-menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
+                    </a>
+                </li>
+                <li class="desktopRegisterCard">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon"> <i data-feather="credit-card"></i> </div>
+                        <div class="side-menu__title"> Register Card</div>
+                    </a>
                 </li>
             </ul>
         </nav>

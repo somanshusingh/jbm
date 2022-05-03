@@ -26,11 +26,10 @@ export class InboundComponent implements OnInit {
              $('#inboundForm').show();
              $('#invehicleMake').val(data['msg'][0]['Make']);
              $('#inVehicleModel').val(data['msg'][0]['Model']);
-             $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date']);
-             $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date']);
+             $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
+             $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
+             $('#inVnumber').val($("#checkVehicleNumber").val());
              this.isVehicleDataAvailable = true;
-             $('#inboundForm').show();
-             $('#VehicleNumberForm').hide();
           }else if(data['status'] == 0){
             this.Message =data['msg'];
             $('.Popup1').show();
@@ -48,7 +47,7 @@ export class InboundComponent implements OnInit {
   addVehicleData(){
     let url = '/history/inhouse_transport'
     let post_data = {
-      "BookNo": "JBM" + (Math.round(Math.random()*100000)),
+      "Trip_No": (Math.round(Math.random()*100000)),
       "VehicleNo": $('#inVnumber').val(),
       // "Make": $('#vehicleMake').val(),
       // "Model": $('#VehicleModel').val(),
@@ -63,10 +62,10 @@ export class InboundComponent implements OnInit {
       "Time": $('#inTime').val(),
       "Consignee_Name": $('#inConsignee_Name').val(),
       "Address": $('#inAddress').val(),
-      "Trip_No": (Math.round(Math.random()*100000)),
-      "Gross_Weight": $('#inGross_Weight').val(),
-      "Tare_Weight": $('#inTare_Weight').val(),
-      "Net_Weight": $('#inNet_Weight').val()
+      "Qty_Mt_Weight": $('#qty_mt_Weight').val(),
+      // "Gross_Weight": $('#inGross_Weight').val(),
+      // "Tare_Weight": $('#inTare_Weight').val(),
+      // "Net_Weight": $('#inNet_Weight').val()
   }
 
 
@@ -75,7 +74,7 @@ export class InboundComponent implements OnInit {
         $(".Popup1").show();
         if(data['status'] == 1){
           // this.Message =JSON.stringify(data['msg']);
-          this.Message = "Vehicle Added Successfully";
+          this.Message = "Trip Created Successfully";
         }else if(data['status'] == 0){
           this.Message = 'Error - ' +JSON.stringify(data['msg']);
         }else if(data['status'] == 100){
@@ -172,29 +171,35 @@ export class InboundComponent implements OnInit {
     }else{
       $('#inTrip_No').removeClass('errDisplay');
     }
-    if($('#inGross_Weight').val() == ''){
-      $('#inGross_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#inGross_Weight').removeClass('errDisplay');
-    }
-    if($('#inTare_Weight').val() == ''){
-      $('#inTare_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#inTare_Weight').removeClass('errDisplay');
-    }
-    if($('#inNet_Weight').val() == ''){
-      $('#inNet_Weight').addClass('errDisplay');
-      err++
-    }else{
-      $('#inNet_Weight').removeClass('errDisplay');
-    }
+    // if($('#inGross_Weight').val() == ''){
+    //   $('#inGross_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#inGross_Weight').removeClass('errDisplay');
+    // }
+    // if($('#inTare_Weight').val() == ''){
+    //   $('#inTare_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#inTare_Weight').removeClass('errDisplay');
+    // }
+    // if($('#inNet_Weight').val() == ''){
+    //   $('#inNet_Weight').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#inNet_Weight').removeClass('errDisplay');
+    // }
     if($('#inVnumber').val() == ''){
       $('#inVnumber').addClass('errDisplay');
       err++
     }else{
       $('#inVnumber').removeClass('errDisplay');
+    }
+    if($('#qty_mt_Weight').val() == ''){
+      $('#qty_mt_Weight').addClass('errDisplay');
+      err++
+    }else{
+      $('#qty_mt_Weight').removeClass('errDisplay');
     }
 
     if(err == 0){
@@ -203,6 +208,9 @@ export class InboundComponent implements OnInit {
   }
   hidePopup(){
     $(".Popup1").hide();
+    if(this.Message == 'Vehicle Added Successfully'){
+      this.Router.navigate(['/inBoundDashboard']);
+    }
   }
   validateVehicleNumber(){
     var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
