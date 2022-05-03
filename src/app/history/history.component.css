@@ -1,6 +1,6 @@
-/* label {
-  width: 3.5cm;
-} */
+label {
+  min-width: 2cm;
+}
 .rdiv{
   width: 10cm;
 }

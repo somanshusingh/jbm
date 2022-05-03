@@ -29,6 +29,7 @@ export class InboundComponent implements OnInit {
              $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
              $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
              $('#inVnumber').val($("#checkVehicleNumber").val());
+             $('#inIssued_By').val(this.serviceCall.Role);
              this.isVehicleDataAvailable = true;
           }else if(data['status'] == 0){
             this.Message =data['msg'];
@@ -208,7 +209,7 @@ export class InboundComponent implements OnInit {
   }
   hidePopup(){
     $(".Popup1").hide();
-    if(this.Message == 'Vehicle Added Successfully'){
+    if(this.Message == 'Trip Created Successfully'){
       this.Router.navigate(['/inBoundDashboard']);
     }
   }

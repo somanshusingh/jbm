@@ -29,6 +29,7 @@ export class HistoryComponent implements OnInit {
            $('#vehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
            $('#VPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
            $('#Vnumber').val($('#checkOutVehicleNumber').val());
+           $('#Issued_By').val(this.serviceCall.Role);
            $("#vehicleMake,#VehicleModel,#vehicleInsurance_exp_date,#VPUC_exp_date,#Vnumber").attr('disabled','disabled');
            this.isVehicleDataAvailable = true;
         }else if(data['status'] == 0){
@@ -81,7 +82,7 @@ export class HistoryComponent implements OnInit {
         $(".Popup1").show();
         if(data['status'] == 1){
           // this.Message =JSON.stringify(data['msg']);
-          this.Message = "Vehicle Added Successfully";
+          this.Message = "Trip Created Successfully";
         }else if(data['status'] == 0){
           this.Message = 'Error - ' +JSON.stringify(data['msg']);
         }else if(data['status'] == 100){
@@ -215,7 +216,7 @@ export class HistoryComponent implements OnInit {
   }
   hidePopup(){
     $(".Popup1").hide();
-    if(this.Message == 'Vehicle Added Successfully'){
+    if(this.Message == 'Trip Created Successfully'){
       this.Router.navigate(['/outBoundDashboard']);
     }
   }

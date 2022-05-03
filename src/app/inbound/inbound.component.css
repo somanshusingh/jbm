@@ -1,7 +1,7 @@
 .rdiv{
     width: 10cm;
 }
-/* label{width: 3.5cm;} */
+label{min-width: 2cm;}
 .inputWidth{ width:7cm;}
 .buttonCss{
     color: white;
