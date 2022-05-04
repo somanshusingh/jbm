@@ -17,6 +17,7 @@ export class SigninComponent implements OnInit {
   }
 
   signIn() {
+    $('#loginButton, #username, #password').attr("disabled", 'disabled');
     var url = '/registration/signin';
     var post_data = {
       "UserId": $('#username').val(),//"ID3",
@@ -24,6 +25,7 @@ export class SigninComponent implements OnInit {
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
+    $('#loginButton, #username, #password').removeAttr("disabled");
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];

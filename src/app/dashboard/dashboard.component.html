@@ -4,7 +4,7 @@
         [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="width:100%">
         <thead>
             <tr>
-                <th>&nbsp;&nbsp;&nbsp;</th>
+                <th class="imageDiv">&nbsp;&nbsp;&nbsp;</th>
                 <th class="VehicleNo">Vehicle Number</th>
                 <!-- <th class="Created_By">Created<br>By</th> -->
                 <th class="Insurance_exp_date">Insurance Expire Date</th>
@@ -20,9 +20,16 @@
         <tbody>
             <tr *ngFor="let vehicle of data" height="55px">
                 <td>
-                    <div style="display: flex;"><div (click)="viewData('edit',vehicle.VehicleNo)"><i data-feather="edit" style="height: 18px;"></i></div>
-                        <div (click)="viewData('view',vehicle.VehicleNo)"><i data-feather="eye"
-                            style="height: 18px;"></i></div></div>
+                    <div style="display: flex;" class="imageDiv">
+                        <div (click)="viewData('edit',vehicle.VehicleNo)">
+                            <!-- <i data-feather="edit" style="height: 18px;"></i> -->
+                            <img src="assets/images/edit-icon.png" style="height: 22px;">
+                        </div>&nbsp;&nbsp;
+                        <div (click)="viewData('view',vehicle.VehicleNo)">
+                            <!-- <i data-feather="eye" style="height: 18px;"></i> -->
+                            <img src="assets/images/eye-icon.png" style="height: 22px;">
+                        </div>
+                    </div>
                 </td>
                 <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
                 <!-- <td class="Created_By">{{ vehicle.Created_By }}</td> -->
@@ -45,80 +52,80 @@
     <div class="Popup1" id="addFieldPopup">
         <div class="Popup2">
             <div
-          style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-          Edit Vehicle Data
-        </div>
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+                Edit Vehicle Data
+            </div>
             <div style="padding: 0px 20px;text-align: center;">
-             <div class="editDiv"> 
-                <div class="grid grid-cols-8 gap-12">
-                    <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-                        <!-- BEGIN: Personal Information -->
-                        <div class="intro-y box lg:mt-5">
-                            <!-- <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <div class="editDiv">
+                    <div class="grid grid-cols-8 gap-12">
+                        <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
+                            <!-- BEGIN: Personal Information -->
+                            <div class="intro-y box lg:mt-5">
+                                <!-- <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
                                 <h2 class="font-medium text-base mr-auto">
                                     Personal Information
                                 </h2>
                             </div> -->
-                            <div class="p-5 mobileWidth" style="padding:11px !important;">
-                                <div class="grid grid-cols-12 gap-3">
-                                    <div class="col-span-12 xl:col-span-6">
-                                        <div>
-                                            <label>Vehicle No</label>
-                                            <input type="text" class="input w-full border mt-2 inputWidth"
-                                                placeholder="Vehicle No" id="editdVehicleNo" name="namesurname">
-                                            <span class="nameErr errMsg"></span>
+                                <div class="p-5 mobileWidth" style="padding:11px !important;">
+                                    <div class="grid grid-cols-12 gap-3">
+                                        <div class="col-span-12 xl:col-span-6">
+                                            <div>
+                                                <label>Vehicle No</label>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Vehicle No" id="editdVehicleNo" name="namesurname">
+                                                <span class="nameErr errMsg"></span>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>Make</label>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Make" id="editdMake" name="namesurname">
+                                                <span class="nameErr errMsg"></span>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>Model</label>
+                                                <input type="email" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Model" id="editdModel">
+                                                <span class="emailErr errMsg"></span>
+                                            </div>
                                         </div>
-                                        <div class="mt-3">
-                                            <label>Make</label>
-                                            <input type="text" class="input w-full border mt-2 inputWidth"
-                                                placeholder="Make" id="editdMake" name="namesurname">
-                                            <span class="nameErr errMsg"></span>
+                                        <div class="col-span-12 xl:col-span-6">
+                                            <div>
+                                                <label>Insurance Exp Date</label>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Insurance Exp Date" id="editdInsurance_exp_date">
+                                                <span class="mobileErr errMsg"></span>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>PUC exp date</label>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="PUC Exp Date" id="editdPUC_exp_date">
+                                                <span class="mobileErr errMsg"></span>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>Vehicle Type</label>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Vehicle Type" id="editdVehicleType">
+                                                <span class="editdVehicleTypeErr errMsg"></span>
+                                            </div>
                                         </div>
-                                        <div class="mt-3">
-                                            <label>Model</label>
-                                            <input type="email" class="input w-full border mt-2 inputWidth"
-                                                placeholder="Model" id="editdModel">
-                                            <span class="emailErr errMsg"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-span-12 xl:col-span-6">
-                                        <div>
-                                            <label>Insurance Exp Date</label>
-                                            <input type="text" class="input w-full border mt-2 inputWidth"
-                                                placeholder="Insurance Exp Date" id="editdInsurance_exp_date">
-                                            <span class="mobileErr errMsg"></span>
-                                        </div>
-                                        <div class="mt-3">
-                                            <label>PUC exp date</label>
-                                            <input type="text" class="input w-full border mt-2 inputWidth"
-                                                placeholder="PUC Exp Date" id="editdPUC_exp_date">
-                                            <span class="mobileErr errMsg"></span>
-                                        </div>
-                                        <div class="mt-3">
-                                            <label>Vehicle Type</label>
-                                            <input type="text" class="input w-full border mt-2 inputWidth"
-                                                placeholder="Vehicle Type" id="editdVehicleType">
-                                            <span class="editdVehicleTypeErr errMsg"></span>
-                                        </div>
-                                    </div>
-                                </div><br>
-                                <div class="" style="text-align: center;">
-                                    <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                                    <!-- <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
+                                    </div><br>
+                                    <div class="" style="text-align: center;">
+                                        <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+                                        <!-- <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
                                     <button type="button" class="buttonCss" (click)="closeEdit()">Close</button> -->
+                                    </div>
                                 </div>
                             </div>
+                            <!-- END: Personal Information -->
                         </div>
-                        <!-- END: Personal Information -->
                     </div>
                 </div>
-            </div> 
             </div>
         </div>
         <div class="Popup3" style="height: 45px;padding: 4px;">
             <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
             <button type="button" class="buttonCss" (click)="closeEdit()">Close</button>
-      </div>
+        </div>
     </div>
 </div>
 <!-- Edit Popup finish -->
@@ -129,12 +136,13 @@
     <div class="Popup1edit">
         <div class="Popup2">
             <div
-          style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-          Vehicle Data
-        </div>
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+                Vehicle Data
+            </div>
             <div style="padding: 28px;">
                 <b><label class="viewLabel">Vehicle Number:</label><span id="ViewVehicleNumber"></span><br></b>
-                <b><label class="viewLabel">Insurance Expire Date: </label> <span id="ViewInsuranceExpireDate"></span><br></b>
+                <b><label class="viewLabel">Insurance Expire Date: </label> <span
+                        id="ViewInsuranceExpireDate"></span><br></b>
                 <b><label class="viewLabel">PUCC Expire Date:</label><span id="ViewPUCCExpireDate"></span><br></b>
                 <b><label class="viewLabel">Make:</label><span id="ViewMake"></span><br></b>
                 <b><label class="viewLabel">Model: </label><span id="ViewModel"></span><br></b>
@@ -167,8 +175,8 @@
             </div>
         </div>
         <div class="Popup3 PopupMessagebutton" style="height: 30px;padding: 4px;">
-        <button class="PopupMessagebutton"  (click)="hideMessagePopup()">OK</button>
-      </div>
+            <button class="PopupMessagebutton" (click)="hideMessagePopup()">OK</button>
+        </div>
     </div>
 </div>
 <!-- Message Popup finish -->

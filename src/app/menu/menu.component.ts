@@ -111,5 +111,9 @@ export class MenuComponent implements OnInit {
       $('.menuToggleMobile').attr('style','display:block');
     }
   }
+  // addActive(className){
+  //   $('.desktopVehiclesOption, .desktopUsersOption').removeClass('side-menu--active');
+  //   $('.'+className).addClass('side-menu--active');
+  // }
 
 }
