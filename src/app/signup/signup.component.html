@@ -162,6 +162,26 @@
                                     <input id="confirmPassword" type="password" class="input w-full border mt-2 inputWidth" placeholder="Confirm Password">
                                     <span class="cpasswordErr errMsg"></span>
                                 </div>
+                                <div class="mt-3">
+                                    <label>Menu Options</label><br>
+                                    <div id="list1" class="dropdown-check-list mt-2 w-full inputWidth" tabindex="100">
+                                        <span class="anchor" (click)="showCheckbox()" style="height: 39px;width: 286px;border: none;">
+                                            <span id="menuOptionNone" >Select Menu Options </span>&nbsp;
+                                            <span id="menuOptionUsers" class="menuDisplay">Users </span>&nbsp;
+                                            <span id="menuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
+                                            <span id="menuOptionInbound" class="menuDisplay">InboundProcess </span>&nbsp;
+                                            <span id="menuOptionOutbound" class="menuDisplay">OutboundProcess </span>&nbsp;
+                                            <span id="menuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
+                                        </span>
+                                        <ul class="items" style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
+                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'users')"/>&nbsp;&nbsp;&nbsp;&nbsp;Users</li>
+                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"/>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles</li>
+                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'inboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Inbound Process </li>
+                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'outboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Outbound Process </li>
+                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
+                                        </ul>
+                                      </div>
+                                </div>
                             </div>
                         </div>
                         <div class="flex justify-end mt-4">

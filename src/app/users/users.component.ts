@@ -13,8 +13,15 @@ export class UsersComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   Message: string;
-  Edited=false;
-
+  Edited = false;
+  menuSelected = 0;
+  allowedMenu = {
+    users: 'no',
+    vehicles: 'no',
+    inboundPocess: 'no',
+    outboundProcess: 'no',
+    registerCard: 'no'
+  }
   constructor(private serviceCall: ApiService) { }
 
   ngOnInit(): void {
@@ -37,9 +44,9 @@ export class UsersComponent implements OnInit {
     this.serviceCall.getService(url).subscribe(data => {
       this.data = data['msg'];
       console.log(this.data);
-      if(this.Edited == false){
+      if (this.Edited == false) {
         this.dtTrigger.next();
-        }
+      }
     })
   }
   viewData(source, userid) {
@@ -92,10 +99,10 @@ export class UsersComponent implements OnInit {
       event.target.value = "";
     }
   }
-  closeEdit(){
+  closeEdit() {
     $('.userPopup1').hide();
   }
-  validateEdit(){
+  validateEdit() {
     var err = 0;
     var name = ($("#editName").val()).toString();
     var namePattern = new RegExp('^[a-zA-Z ]+$');
@@ -103,8 +110,8 @@ export class UsersComponent implements OnInit {
     var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
 
     if ($('#editsUserName').val() !== '') {
-          $("#editName").removeClass('errDisplay');
-          $('.unameErr').html('');
+      $("#editName").removeClass('errDisplay');
+      $('.unameErr').html('');
     } else {
       err++;
       $("#editsUserName").addClass('errDisplay');
@@ -159,11 +166,11 @@ export class UsersComponent implements OnInit {
       $("#editmobile").addClass('errDisplay');
       $('.mobileErr').html('Enter Correct Mobile number');
     }
-    if ($('#editrole').val() === null || $('#editrole').val() === ''){
+    if ($('#editrole').val() === null || $('#editrole').val() === '') {
       err++;
-          $("#editrole").addClass('errDisplay');
-          $('.roleErr').html('Select Role');
-    }else{
+      $("#editrole").addClass('errDisplay');
+      $('.roleErr').html('Select Role');
+    } else {
       $("#editrole").removeClass('errDisplay');
       $('.roleErr').html('');
     }
@@ -181,16 +188,16 @@ export class UsersComponent implements OnInit {
       $("#editpassword").addClass('errDisplay');
       $('.passwordErr').html('Enter Password');
     }
-    if($('#editconfirmPassword').val()!==""){
-      if($('#editconfirmPassword').val() !== $("#editpassword").val()){
+    if ($('#editconfirmPassword').val() !== "") {
+      if ($('#editconfirmPassword').val() !== $("#editpassword").val()) {
         err++;
-         $("#editconfirmPassword").addClass('errDisplay');
-         $('.cpasswordErr').html('Enter Same Password');
-      }else{
+        $("#editconfirmPassword").addClass('errDisplay');
+        $('.cpasswordErr').html('Enter Same Password');
+      } else {
         $("#editconfirmPassword").removeClass('errDisplay');
         $('.cpasswordErr').html('');
       }
-    }else{
+    } else {
       err++;
       $("#editconfirmPassword").addClass('errDisplay');
       $('.cpasswordErr').html('Enter Same Password');
@@ -199,20 +206,27 @@ export class UsersComponent implements OnInit {
       this.updateUser();
     }
   }
-  updateUser(){
+  updateUser() {
     $('.userPopup1').hide();
     $('.Usermessage').show();
     $('.UserPopupMessagebutton').hide();
-    this.Message ='Please Wait...'
+    this.Message = 'Please Wait...'
     var url = '/registration/data/update';
     var post_data = {
-      "UserId":  $('#editsUserName').val(),
+      "UserId": $('#editsUserName').val(),
       "Password": $('#editpassword').val(),
       "Name": $('#editName').val(),
       "Mobile": $('#editmobile').val(),
       "Email": $('#editemail').val(),
       "Address": "work",
-      "Role":$('#editrole').val()
+      "Role": $('#editrole').val(),
+      "Allowed_Menu": {
+        "users": this.allowedMenu.users,
+        "vehicles": this.allowedMenu.vehicles,
+        "inboundPocess": this.allowedMenu.inboundPocess,
+        "outboundProcess": this.allowedMenu.outboundProcess,
+        "registerCard": this.allowedMenu.registerCard
+      }
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
@@ -231,13 +245,73 @@ export class UsersComponent implements OnInit {
       }
     )
   }
-  hideView(){
+  hideView() {
     $('.userViewPopup1').hide();
   }
-  hideMessagePopup(){
+  hideMessagePopup() {
     $('.Usermessage').hide();
     this.Edited = true;
     this.getData();
+  }
+  showCheckbox() {
+    if (((<HTMLInputElement>document.getElementById("list2")).classList.contains('visible'))) {
+      (<HTMLInputElement>document.getElementById("list2")).classList.remove('visible');
+    }
+    else
+      (<HTMLInputElement>document.getElementById("list2")).classList.add('visible');
+  }
+  menuVal(isChecked, id) {
+
+    if (id == 'users' && isChecked) {
+      $('#editmenuOptionUsers').show();
+      this.menuSelected++;
+      this.allowedMenu.users = 'yes';
+    } else if (id == 'users') {
+      $('#editmenuOptionUsers').hide();
+      this.menuSelected--;
+      this.allowedMenu.users = 'no';
+    }
+    if (id == 'vehicles' && isChecked) {
+      $('#editmenuOptionVehicles').show();
+      this.menuSelected++;
+      this.allowedMenu.vehicles = 'yes';
+    } else if (id == 'vehicles') {
+      $('#editmenuOptionVehicles').hide();
+      this.menuSelected--;
+      this.allowedMenu.vehicles = 'no';
+    }
+    if (id == 'inboundProcess' && isChecked) {
+      $('#editmenuOptionInbound').show();
+      this.menuSelected++;
+      this.allowedMenu.inboundPocess = 'yes';
+    } else if (id == 'inboundProcess') {
+      $('#editmenuOptionInbound').hide();
+      this.menuSelected--;
+      this.allowedMenu.inboundPocess = 'no';
+    }
+    if (id == 'outboundProcess' && isChecked) {
+      $('#editmenuOptionOutbound').show();
+      this.menuSelected++;
+      this.allowedMenu.outboundProcess = 'yes';
+    } else if (id == 'outboundProcess') {
+      $('#editmenuOptionOutbound').hide();
+      this.menuSelected--;
+      this.allowedMenu.outboundProcess = 'no';
+    }
+    if (id == 'registerCard' && isChecked) {
+      $('#editmenuOptionRegister').show();
+      this.menuSelected++;
+      this.allowedMenu.registerCard = 'yes';
+    } else if (id == 'registerCard') {
+      $('#editmenuOptionRegister').hide();
+      this.menuSelected--;
+      this.allowedMenu.registerCard = 'no';
+    }
+    if (this.menuSelected == 0) {
+      $('#editmenuOptionNone').show();
+    } else {
+      $('#editmenuOptionNone').hide();
+    }
   }
 
 }

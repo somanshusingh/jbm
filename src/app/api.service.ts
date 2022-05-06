@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
   Role;
   UserName ='';
+  Allowed_Menu={};
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){

@@ -32,6 +32,7 @@ export class SigninComponent implements OnInit {
             this.Router.navigate(['/dashboard']);
             this.serviceCall.Role= data['msg']['Role'];
             this.serviceCall.UserName= data['msg']['Name'];
+            this.serviceCall.Allowed_Menu= data['msg']['Allowed_Menu'];
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

@@ -6,3 +6,119 @@
     height: 30px;
     padding: 5px;
 }
+.errDisplay {
+    box-shadow: 0px 0px 3px 0px red;
+  }
+  .editPopOut{
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 698px;
+    left: 50%;
+    margin-left: -282px;
+    top: 2%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+    height: 14cm;
+    overflow-y: scroll;
+  }
+  
+  .Popup2 {
+    font-size: 14px;
+    text-align: left;
+    box-sizing: border-box;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.42857143;
+    color: #333;
+    webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  .Popup3 {
+    text-align: center;
+    border-top: 1px solid #ccc;
+    -webkit-user-select: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+  }
+  .outDashmessage{
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 196px;
+    left: 50%;
+    margin-left: -50px;
+    top: 30%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+  }
+  
+  .outDashmessagebutton {
+    display: none;
+  }
+  .oviewPopup1edit {
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 488px;
+    left: 50%;
+    margin-left: -186px;
+    top: 10%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+  }
+  .viewLabel {
+    width: 5cm;
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    .editDiv {
+      width: unset;
+      padding: 0;
+      height: 11cm;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  
+    .editPopOut {
+      width: 300px !important;
+      margin-left: -150px !important;
+      top: 14%;
+      height: 12cm;
+    }
+  
+    .mobileWidth {
+      width: 7cm !important;
+    }
+    .oviewPopup1edit{
+      width: 300px !important;
+      margin-left: -151px !important;
+    }
+    .viewLabel {
+      width: 3.5cm !important;
+    }
+    .imageDiv{width: 55px;}
+      .outDashmessage{
+        margin-left: -97px !important;
+      }
+
+  }
