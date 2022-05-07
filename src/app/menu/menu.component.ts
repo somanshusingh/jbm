@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
     // if(this.serviceCall.Role == 'GateUser'){
     //    $('.mobileRegisterCard,.desktopRegisterCard').show();
     // }
-    //  this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
+    // this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
     if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
       if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
         $('.mobileUsers ,.desktopUsers').show();
@@ -86,7 +86,7 @@ export class MenuComponent implements OnInit {
     var target = event.currentTarget;
     var pElement = target.className.split(" ")[1];
     if ($('.' + childName).hasClass('menu__sub-open')) {
-      $('.' + childName).removeClass('smenu__sub-open');
+      $('.' + childName).removeClass('menu__sub-open');
       $('.side-menu').find('.side-menu__sub-icon').removeClass('transform rotate-180');
     } else {
       $('.' + pElement).find('.side-menu__sub-icon').addClass('transform rotate-180');

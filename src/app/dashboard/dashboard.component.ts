@@ -51,6 +51,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.data);
       if(this.Edited == false){
       this.dtTrigger.next();
+      $('[name="Datatable1_length"]').val('10');
       }
       setTimeout(() => {
         feather.replace();

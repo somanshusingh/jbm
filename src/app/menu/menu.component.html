@@ -3,11 +3,42 @@
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
             <a class="flex mr-auto">
-                <img  class="w-6" src="assets/new/dist/images/logo.svg">
+                <img class="w-6" src="assets/new/dist/images/logo.svg">
             </a>
-            <a id="mobile-menu-toggler"(click)="menuToggleMobile()"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <a id="mobile-menu-toggler" (click)="menuToggleMobile()"> <i data-feather="bar-chart-2"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
         <ul class="border-t border-theme-24 py-5 hidden menuToggleMobile">
+            <li class="mobileGate">
+                <a class="menu" (click)="hideshowMobile($event,'Gate1mobile')">
+                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                    <div class="menu__title" > Gate </div>
+                </a>
+                <ul class="Gate1mobile">
+                    <li>
+                        <a class="menu" (click)="hideshowMobile($event,'Gate2mobile')">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gate In </div>
+                        </a>
+                        <a class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gate Out </div>
+                        </a>
+                        <ul class="Gate2mobile">
+                            <li>
+                                <a class="menu">
+                                    <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="menu__title" routerLink="/inBoundDashboard"> Inhouse </div>
+                                </a>
+                                <a class="menu">
+                                    <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                                    <div class="menu__title" routerLink="/outBoundDashboard"> Outhouse </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <li class="mobileUsers">
                 <a class="menu" (click)="hideshowMobile($event,'usersOption')">
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
@@ -54,12 +85,12 @@
                     <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div>
                 </a>
             </li>
-            <li class="mobileOutboundProcess">
+            <!-- <li class="mobileOutboundProcess">
                 <a class="menu" >
                     <div class="menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
                     <div class="menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
                 </a>
-            </li>
+            </li> -->
             <li class="mobileRegisterCard">
                 <a class="menu">
                     <div class="menu__icon"> <i data-feather="credit-card"></i> </div>
@@ -72,8 +103,8 @@
     <div class="flex">
         <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
-            <a  class="intro-x flex items-center pl-5 pt-4">
-                <img  class="w-6" src="assets/new/dist/images/logo.svg">
+            <a class="intro-x flex items-center pl-5 pt-4">
+                <img class="w-6" src="assets/new/dist/images/logo.svg">
                 <span class="hidden xl:block text-white text-lg ml-3"> J<span class="font-medium">BM</span> </span>
             </a>
             <div class="side-nav__devider my-6"></div>
@@ -98,6 +129,40 @@
                         </li>
                     </ul>
                 </li> -->
+                <li class="desktopGate">
+                    <a class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')">
+                        <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
+                        <div class="side-menu__title side-menu--open"> Gate</div>
+                    </a>
+                    <ul class="vehiclesOption">
+                        <li>
+                            <a class="side-menu" (click)="hideshow($event,'Gate1Option')">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title"> Gate In </div>
+                            </a>
+                            <ul class="Gate1Option">
+                                <li>
+                                    <a class="side-menu">
+                                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                        <div class="side-menu__title" routerLink="/inBoundDashboard"> Inhouse </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="side-menu">
+                                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                        <div class="side-menu__title" routerLink="/outBoundDashboard"> Outhouse</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="side-menu">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title" routerLink="/outBoundDashboard"> Gate Out</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="desktopUsers">
                     <!-- <a class="side-menu users desktopUsersOption" (click)="addActive('desktopUsersOption')"> -->
                     <a class="side-menu users">
@@ -106,7 +171,7 @@
                     </a>
                 </li>
                 <li class="desktopVehicles">
-                    <a class="side-menu vehicles"> 
+                    <a class="side-menu vehicles">
                         <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
                         <div class="side-menu__title side-menu--open" routerLink="/dashboard"> Vehicles</div>
                     </a>
@@ -137,12 +202,12 @@
                         <div class="side-menu__title" routerLink="/inBoundDashboard"> Inbound Process</div>
                     </a>
                 </li>
-                <li class="desktopOutboundProcess">
+                <!-- <li class="desktopOutboundProcess">
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
                         <div class="side-menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
                     </a>
-                </li>
+                </li> -->
                 <li class="desktopRegisterCard">
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="credit-card"></i> </div>
@@ -157,12 +222,13 @@
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a class=""></a>  <a  class="breadcrumb--active"></a> </div>
+                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a class=""></a> <a
+                        class="breadcrumb--active"></a> </div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in">
-                        <img  src="assets/new/dist/images/profile-7.jpg">
+                        <img src="assets/new/dist/images/profile-7.jpg">
                     </div>
                     <div class="dropdown-box w-56">
                         <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
@@ -171,7 +237,9 @@
                                 <div class="text-xs text-theme-41 dark:text-gray-600">{{Role}}</div>
                             </div>
                             <div class="p-2 border-t border-theme-40 dark:border-dark-3">
-                                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                                <a href=""
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                                    <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
                             </div>
                         </div>
                     </div>
@@ -180,7 +248,7 @@
             </div>
             <!-- END: Top Bar -->
             <!-- <h2 class="intro-y text-lg font-medium mt-10"> -->
-                <!-- Dashboard -->
+            <!-- Dashboard -->
             <!-- </h2> -->
             <!-- <div class="grid grid-cols-12 gap-6 mt-5">
                 <app-dashboard></app-dashboard>
