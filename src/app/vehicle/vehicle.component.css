@@ -1,13 +1,4 @@
 label{width: 3.5cm;}
-@media (max-width: 639px) {
-.inputWidth{ width: 7.5cm !important;}
-/* label{width: 2cm;} */
-.Popup1{
-  margin-left: -153px !important;}
-  .content {
-    padding: 0;
-}
-}
 .addButton{    color: white;
     background: red;
     border: none;
@@ -52,3 +43,29 @@ label{width: 3.5cm;}
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;}
+  .addUser{
+    background-color:#abd3f4; margin: 0;
+  }
+  .smainDiv{background-color:white;weight: fit-content;}
+  .s1div{display:grid; grid-template-columns: 1fr 1fr;column-gap: 30px;}
+  .buttonCss{
+    color: white;
+    margin-left: 60px;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    padding: 5px;
+}
+.bigDiv{background-color:#abd3f4;padding: 20px;min-height: 100vh;}
+@media (max-width: 639px) {
+  .inputWidth{ width: 7cm !important;}
+  /* label{width: 2cm;} */
+  .Popup1{
+    margin-left: -153px !important;}
+    .content {
+      padding: 0;
+  }
+  .smainDiv{background-color:white;min-height: 100vh;}
+    .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
+    .bigDiv{background-color:#abd3f4;padding: 10px !important;min-height: 100vh;}
+  }

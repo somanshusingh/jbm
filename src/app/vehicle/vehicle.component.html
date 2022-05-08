@@ -51,24 +51,17 @@
 </table> -->
 
 <div class="content">
-    <div class="intro-y flex items-center mt-8">
+    <div class="bigDiv">
+    <div class="intro-y flex items-center mt-8 addUser">
         <span style="font-size: 20px;">Add Vehicle</span>
     </div>
-    <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <!-- BEGIN: Personal Information -->
-            <div class="intro-y box lg:mt-5">
-                <!-- <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                    <h2 class="font-medium text-base mr-auto">
-                        Personal Information
-                    </h2>
-                </div> -->
-                <div class="p-5" style="padding:11px !important;">
-                    <div class="grid grid-cols-12 gap-3">
-                        <div class="col-span-12 xl:col-span-6">
+    <div class="smainDiv">
+        <div style="padding:11px !important;">
+                    <div class="s1div">
+                        <div>
                             <div>
                                 <label>Vehicle No</label>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Vehicle No" id="VehicleNo" name="namesurname">
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="MH02AB1234" id="VehicleNo" name="namesurname">
                                 <span class="nameErr errMsg"></span>
                             </div>
                             <div>
@@ -82,7 +75,7 @@
                                 <span class="emailErr errMsg"></span>
                             </div>
                         </div>
-                        <div class="col-span-12 xl:col-span-6">
+                        <div>
                             <div >
                                 <label>Insurance Exp Date</label>
                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Insurance Exp Date" id="Insurance_exp_date">
@@ -100,15 +93,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-end mt-4">
-                        <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" (click)="validate()">Add</button>
-                    </div>
-                </div>
-            </div>
-            <!-- END: Personal Information -->
+                    
+        </div>
+        <div class="justify-end mt-4" style="background-color: #2569a1;">
+            <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+            <button type="button" class="buttonCss" (click)="validate()">Add</button>
+            <button type="button" class="buttonCss" style="color:#e58624">Reset</button>
         </div>
     </div>
+</div>
 </div>
   <!--  Popup start -->
 

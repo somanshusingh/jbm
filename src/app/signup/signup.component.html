@@ -75,21 +75,21 @@
         </div>
     </div>
 -->
-    <!-- Jquery Core Js -->
-    <!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->
+<!-- Jquery Core Js -->
+<!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->
 
-    <!-- Bootstrap Core Js -->
-    <!-- <script src="../../plugins/bootstrap/js/bootstrap.js"></script> -->
+<!-- Bootstrap Core Js -->
+<!-- <script src="../../plugins/bootstrap/js/bootstrap.js"></script> -->
 
-    <!-- Waves Effect Plugin Js -->
-    <!-- <script src="../../plugins/node-waves/waves.js"></script> -->
+<!-- Waves Effect Plugin Js -->
+<!-- <script src="../../plugins/node-waves/waves.js"></script> -->
 
-    <!-- Validation Plugin Js -->
-    <!-- <script src="../../plugins/jquery-validation/jquery.validate.js"></script> -->
+<!-- Validation Plugin Js -->
+<!-- <script src="../../plugins/jquery-validation/jquery.validate.js"></script> -->
 
-    <!-- Custom Js -->
-    <!-- <script src="../../js/admin.js"></script> -->
-    <!-- <script src="../../js/pages/examples/sign-up.js"></script> -->
+<!-- Custom Js -->
+<!-- <script src="../../js/admin.js"></script> -->
+<!-- <script src="../../js/pages/examples/sign-up.js"></script> -->
 <!-- </div> -->
 <!-- </div> -->
 
@@ -97,122 +97,144 @@
 
 
 
-    <!-- BEGIN: Content -->
-    <div class="content">
-        <div class="intro-y flex items-center mt-8">
+<!-- BEGIN: Content -->
+<div class="content">
+    <div class="bigDiv">
+        <div class="intro-y flex items-center mt-8 addUser">
             <h2 class="text-lg font-medium mr-auto">
                 Add User
             </h2>
         </div>
-        <div class="grid grid-cols-12 gap-6">
-            <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-                <!-- BEGIN: Personal Information -->
-                <div class="intro-y box lg:mt-5">
-                    <!-- <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                        <h2 class="font-medium text-base mr-auto">
-                            Personal Information
-                        </h2>
+        <div class="smainDiv">
+            <div style="padding:11px !important;">
+                <div class="s1div">
+                    <div>
+                        <!-- <div class="mt-3">
+                    <label>User Name</label>
+                    <input type="text" class="input w-full border mt-2 inputWidth" id="sUserName" name="UserName"
+                        placeholder="Userame">
+                    <span class="unameErr errMsg"></span>
                     </div> -->
-                    <div class="p-5" style="padding:11px !important;">
-                        <div class="grid grid-cols-12 gap-3">
-                            <div class="col-span-12 xl:col-span-6">
-                                <div class="mt-3">
-                                    <label>User Name</label>
-                                    <input type="text" class="input w-full border mt-2 inputWidth" id="sUserName" name="UserName" placeholder="Userame">
-                                    <span class="unameErr errMsg"></span>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Name</label>
-                                    <input type="text" class="input w-full border mt-2 inputWidth" id="Name" name="namesurname" placeholder="Name Surname">
-                                    <span class="nameErr errMsg"></span>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Email</label>
-                                    <input type="email" class="input w-full border mt-2 inputWidth" placeholder="Email" id="email">
-                                    <span class="emailErr errMsg"></span>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Mobile No.</label>
-                                    <input class="input w-full border mt-2 inputWidth"  id="mobile" placeholder="Mobile Number" (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)"
-                                    placeholder="Mobile" inputmode="numeric" onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*"
-                                    maxlength="10">
-                                    <span class="mobileErr errMsg"></span>
-                                </div>
-                            </div>
-                            <div class="col-span-12 xl:col-span-6">
-                                <div class="mt-3">
-                                    <label>Role</label>
-                                    <div class="mt-2 inputWidth">
-                                        <select data-search="true" class="tail-select w-full" id="role" style="height: 38px;">
-                                            <option value="">Select Role</option>
-                                            <option value="Admin">Admin</option>
-                                            <option value="Supervisor">Supervisor</option>
-                                            <option value="GateUser">Gate User</option>
-                                        </select>
-                                        <span class="roleErr errMsg"></span>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Password</label>
-                                    <input id="password" type="password" class="input w-full border mt-2 inputWidth" placeholder="Password">
-                                    <span class="passwordErr errMsg"></span>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Confirm Password</label>
-                                    <input id="confirmPassword" type="password" class="input w-full border mt-2 inputWidth" placeholder="Confirm Password">
-                                    <span class="cpasswordErr errMsg"></span>
-                                </div>
-                                <div class="mt-3">
-                                    <label>Menu Options</label><br>
-                                    <div id="list1" class="dropdown-check-list mt-2 w-full inputWidth" tabindex="100">
-                                        <span class="anchor" (click)="showCheckbox()" style="height: 39px;width: 286px;border: none;">
-                                            <span id="menuOptionNone" >Select Menu Options </span>&nbsp;
-                                            <span id="menuOptionUsers" class="menuDisplay">Users </span>&nbsp;
-                                            <span id="menuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
-                                            <span id="menuOptionInbound" class="menuDisplay">InboundProcess </span>&nbsp;
-                                            <span id="menuOptionOutbound" class="menuDisplay">OutboundProcess </span>&nbsp;
-                                            <span id="menuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
-                                        </span>
-                                        <ul class="items" style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
-                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'users')"/>&nbsp;&nbsp;&nbsp;&nbsp;Users</li>
-                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"/>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles</li>
-                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'inboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Inbound Process </li>
-                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'outboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Outbound Process </li>
-                                          <li><input type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
-                                        </ul>
-                                      </div>
-                                </div>
+                        <div class="mt-3">
+                            <label>Name</label>
+                            <input type="text" class="input w-full border mt-2 inputWidth" id="Name" name="names"
+                                placeholder="Name">
+                            <span class="nameErr errMsg"></span>
+                        </div>
+                        <div class="mt-3">
+                            <label>Surname</label>
+                            <input type="text" class="input w-full border mt-2 inputWidth" id="Surname" name="surname"
+                                placeholder="Surname">
+                            <span class="SurnameErr errMsg"></span>
+                        </div>
+                        <div class="mt-3">
+                            <label>Email</label>
+                            <input type="email" class="input w-full border mt-2 inputWidth" placeholder="Email"
+                                id="email">
+                            <span class="emailErr errMsg"></span>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="mt-3">
+                            <label>Mobile No.</label>
+                            <input class="input w-full border mt-2 inputWidth" id="mobile" placeholder="Mobile Number"
+                                (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)"
+                                placeholder="Mobile" inputmode="numeric"
+                                onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
+                            <span class="mobileErr errMsg"></span>
+                        </div>
+                        <div class="mt-3">
+                            <label>Password</label>
+                            <input id="password" type="password" class="input w-full border mt-2 inputWidth"
+                                placeholder="Password">
+                            <span class="passwordErr errMsg"></span>
+                        </div>
+                        <div class="mt-3">
+                            <label>Confirm Password</label>
+                            <input id="confirmPassword" type="password" class="input w-full border mt-2 inputWidth"
+                                placeholder="Confirm Password">
+                            <span class="cpasswordErr errMsg"></span>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="mt-3">
+                            <label>Role</label>
+                            <div class="mt-2 inputWidth">
+                                <select data-search="true" class="tail-select w-full" id="role" style="height: 38px;">
+                                    <option value="">Select Role</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="GateUser">Gate User</option>
+                                </select>
+                                <span class="roleErr errMsg"></span>
                             </div>
                         </div>
-                        <div class="flex justify-end mt-4">
-                            <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" (click)="validate()">Save</button>
+                        <div class="mt-3">
+                            <label>Menu Options</label><br>
+                            <div id="list1" class="dropdown-check-list mt-2 w-full inputWidth" tabindex="100">
+                                <span class="anchor inputWidth" (click)="showCheckbox()"
+                                    style="height: 39px;width: 286px;border: none;">
+                                    <span id="menuOptionNone">Select Menu Options </span>&nbsp;
+                                    <span id="menuOptionUsers" class="menuDisplay">Users </span>&nbsp;
+                                    <span id="menuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
+                                    <span id="menuOptionInbound" class="menuDisplay">InboundProcess </span>&nbsp;
+                                    <span id="menuOptionOutbound" class="menuDisplay">OutboundProcess </span>&nbsp;
+                                    <span id="menuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
+                                </span>
+                                <ul class="items"
+                                    style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
+                                    <li><input type="checkbox"
+                                            (click)="menuVal($event.target.checked,'users')" />&nbsp;&nbsp;&nbsp;&nbsp;Users
+                                    </li>
+                                    <li><input type="checkbox"
+                                            (click)="menuVal($event.target.checked,'vehicles')" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
+                                    </li>
+                                    <li><input type="checkbox"
+                                            (click)="menuVal($event.target.checked,'inboundProcess')" />&nbsp;&nbsp;&nbsp;&nbsp;Inbound
+                                        Process </li>
+                                    <li><input type="checkbox"
+                                            (click)="menuVal($event.target.checked,'outboundProcess')" />&nbsp;&nbsp;&nbsp;&nbsp;Outbound
+                                        Process </li>
+                                    <li><input type="checkbox"
+                                            (click)="menuVal($event.target.checked,'registerCard')" />&nbsp;&nbsp;&nbsp;&nbsp;Register
+                                        Card </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- END: Personal Information -->
+                
+
+            </div>
+            <div class="justify-end mt-4" style="background-color: #2569a1;">
+                <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+                <button type="button" class="buttonCss" (click)="validate()">Save</button>
+                <button type="button" class="buttonCss" style="color:#e58624">Reset</button>
             </div>
         </div>
     </div>
-    <!-- END: Content -->
+</div>
+<!-- END: Content -->
 
 
- <!--  Popup start -->
+<!--  Popup start -->
 
 <div class="addFieldPopupTop" id="addFieldPopupTop">
     <div class="Popup1" id="addFieldPopup">
-      <div class="Popup2">
-        <div
-          style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-          Note
+        <div class="Popup2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+                Note
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> {{Message}}</b>
+            </div>
         </div>
-        <div style="padding: 28px;text-align: center;">
-         <b> {{Message}}</b>
+        <div class="Popup3" style="height: 30px;padding: 4px;">
+            <button class="Popupbutton" (click)="hidePopup()">OK</button>
         </div>
-      </div>
-      <div class="Popup3" style="height: 30px;padding: 4px;">
-        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
-      </div>
     </div>
-  </div>
-  <!--  Popup finish -->
+</div>
+<!--  Popup finish -->

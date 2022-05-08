@@ -6476,9 +6476,10 @@ body.tabulator-print-fullscreen-hide > *:not(.tabulator-print-fullscreen) {
 }
 
 .top-bar {
-  height: 67px;
+  height: 45px;
   z-index: 51;
-  display: flex;
+  grid-template-columns: 65% 28% 2%;
+  display: grid;
   align-items: center;
   position: relative;
   border-bottom-width: 1px;
@@ -6526,6 +6527,12 @@ body.tabulator-print-fullscreen-hide > *:not(.tabulator-print-fullscreen) {
 @media (max-width: 1279px) {
   .login:before {
     display: none;
+  }
+  #header101{
+   display: none;
+  }
+  .top-bar{
+    grid-template-columns:  90% 10%;
   }
 }
 
@@ -7197,14 +7204,14 @@ html body {
 
 .content {
   border-radius: 30px;
-  padding: 0px 22px;
+  /* padding: 0px 22px; */
   min-width: 0;
   min-height: 100vh;
   --bg-opacity: 1;
   background-color: #F1F5F8;
   background-color: rgba(241, 245, 248, var(--bg-opacity));
   flex: 1 1 0%;
-  padding-bottom: 2.5rem;
+  /* padding-bottom: 2.5rem; */
 }
 
 @media (max-width: 767px) {
@@ -7233,16 +7240,19 @@ html body {
   position: relative;
 }
 
-@media (max-width: 767px) {
-  .top-nav {
-    display: none;
-  }
-}
-
 .top-nav > ul {
   padding: 0px 50px;
   display: flex;
 }
+@media (max-width: 767px) {
+        .top-nav {
+          /* display: none; */
+        }
+        .top-nav > ul {
+              padding: 0px 50px;
+              display: block;
+            }
+      }
 
 .top-nav > ul > li:nth-child(1) > a:not(.top-menu--active) {
   opacity: 0;

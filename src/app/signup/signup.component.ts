@@ -26,13 +26,15 @@ export class SignupComponent implements OnInit {
   signUp() {
     var url = '/registration/user';
     var post_data = {
-      "UserId": $('#sUserName').val(),
+      // "UserId": $('#sUserName').val(),
       "Password": $('#password').val(),
-      "Name": $('#Name').val(),
+      "FirstName": $('#Name').val(),
+      "LastName":$('#Surname').val(),
       "Mobile": $('#mobile').val(),
       "Email": $('#email').val(),
       "Address": "work",
       "Role": $('#role').val(),
+      "Created_By":this.serviceCall.UserName,
       "Allowed_Menu": {
         "users": this.allowedMenu.users,
         "vehicles": this.allowedMenu.vehicles,
@@ -66,34 +68,42 @@ export class SignupComponent implements OnInit {
     var emailPattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
 
-    if ($('#sUserName').val() !== '') {
-      $("#Name").removeClass('errDisplay');
-      $('.unameErr').html('');
-    } else {
-      err++;
-      $("#sUserName").addClass('errDisplay');
-      $('.unameErr').html('Enter Username');
-    }
+    // if ($('#sUserName').val() !== '') {
+    //   $("#Name").removeClass('errDisplay');
+    //   $('.unameErr').html('');
+    // } else {
+    //   err++;
+    //   $("#sUserName").addClass('errDisplay');
+    //   $('.unameErr').html('Enter Username');
+    // }
     if (name !== '') {
-      if (!namePattern.test(name)) {
-        err++;
-        $("#Name").addClass('errDisplay');
-        $('.nameErr').html('Enter full name');
-      } else {
-        var namearray = name.split(" ");
-        if (namearray[1] === "" || namearray[0] === "" || namearray[1] === undefined) {
-          err++;
-          $("#Name").addClass('errDisplay');
-          $('.nameErr').html('Enter full name')
-        } else {
+      // if (!namePattern.test(name)) {
+      //   err++;
+      //   $("#Name").addClass('errDisplay');
+      //   $('.nameErr').html('Enter full name');
+      // } else {
+      //   var namearray = name.split(" ");
+      //   if (namearray[1] === "" || namearray[0] === "" || namearray[1] === undefined) {
+      //     err++;
+      //     $("#Name").addClass('errDisplay');
+      //     $('.nameErr').html('Enter full name')
+      //   } else {
           $("#Name").removeClass('errDisplay');
           $('.nameErr').html('');
-        }
-      }
+        // }
+      // }
     } else {
       err++;
       $("#Name").addClass('errDisplay');
       $('.nameErr').html('Enter full name');
+    }
+    if ($("#Surname").val() !== '') {
+          $("#Surname").removeClass('errDisplay');
+          $('.SurnameErr').html('');
+    } else {
+      err++;
+      $("#Surname").addClass('errDisplay');
+      $('.SurnameErr').html('Enter Surname');
     }
     if ($("#email").val() !== '') {
       if (!emailPattern.test($("#email").val().toString())) {
