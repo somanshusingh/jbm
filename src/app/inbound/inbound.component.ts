@@ -15,7 +15,7 @@ export class InboundComponent implements OnInit {
   constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
-    $('#VehicleNumberForm').hide();
+    $('#MaterialIn, #DriverDetailsIn,.addButtonin').hide();
   }
   checkHistory(){
       let url = '/vehicle/view/' + $("#checkVehicleNumber").val();
@@ -230,10 +230,10 @@ export class InboundComponent implements OnInit {
   }
   active(className) {
     $('.vehicle, .Driver, .Material').removeClass('top-menu--active');
-    $('#MaterialIn, #DriverDetailsIn, #VehcileDataIn').hide();
+    $('#MaterialIn, #DriverDetailsIn, #VehcileDataIn,.addButtonin').hide();
     $('.' + className).addClass('top-menu--active');
     if(className =="Material"){
-      $('#MaterialIn').show();
+      $('#MaterialIn ,.addButtonin').show();
     }
     if(className =="Driver"){
       $('#DriverDetailsIn').show();

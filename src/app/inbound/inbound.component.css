@@ -21,7 +21,7 @@ label{min-width: 2cm;}
 .addUser{
     background-color:#abd3f4; margin: 0;
   }
-  .smainDiv{background-color:white;weight: fit-content;}
+  .smainDiv{background-color:white;}
   .s1div{display:grid; grid-template-columns: 1fr 1fr 1fr;column-gap: 30px;}
   .buttonCss{
     color: white;
@@ -32,10 +32,19 @@ label{min-width: 2cm;}
     padding: 5px;
 }
 .bigDiv{background-color:#abd3f4;padding: 20px;min-height: 100vh;}
-#MaterialIn, #DriverDetailsIn{display: none;}
+.vnin{
+    width: 8cm;
+    background-color:white;
+    border-radius: 2px;
+}
+#VehcileDataIn, #DriverDetailsIn ,#MaterialIn {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+/* #MaterialIn, #DriverDetailsIn{display: none;} */
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px){
     .inputWidth {
-        width: 7.5cm !important;
+        width: 7cm !important;
     }
     
     .Button {
@@ -52,6 +61,18 @@ label{min-width: 2cm;}
     #checkVehicleNumber{width: 7.5cm;}
     .Popup1{
         margin-left: -153px !important;}
+    .mobileHeight{height: 34px !important;}
+    .smainDiv{background-color:white;}
+  .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
+  .bigDiv{background-color:#abd3f4;padding: 10px;min-height: 100vh;}
+  .vnin{
+    width: fit-content;
+    background-color:white;
+    border-radius: 3px;
+}
+#VehcileDataIn, #DriverDetailsIn ,#MaterialIn {
+    display: block;
+}
 }
 .Popup1{
   display: none;
@@ -86,5 +107,5 @@ label{min-width: 2cm;}
   color: #333;}
 
 #inboundForm{
-    /* display: none; */
+    display: none;
 }
