@@ -15,6 +15,7 @@ export class HistoryComponent implements OnInit {
   constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
+    $('#MaterialOut, #DriverDetailsOut,.addButtonOut').hide();
   }
   checkHistory(){
     let url = '/vehicle/view/' + $("#checkOutVehicleNumber").val();
@@ -95,90 +96,42 @@ export class HistoryComponent implements OnInit {
 
   validate(){
     var err = 0 
-    if($('#vehicleMake').val() == ''){
-      $('#vehicleMake').addClass('errDisplay');
-      err++
-    }else{
-      $('#vehicleMake').removeClass('errDisplay');
-    }
-    if($('#VehicleModel').val() == ''){
-      $('#VehicleModel').addClass('errDisplay');
-      err++
-    }else{
-      $('#VehicleModel').removeClass('errDisplay');
-    }
-    if($('#vehicleInsurance_exp_date').val() == ''){
-      $('#vehicleInsurance_exp_date').addClass('errDisplay');
-      err++
-    }else{
-      $('#vehicleInsurance_exp_date').removeClass('errDisplay');
-    }
-    if($('#VPUC_exp_date').val() == ''){
-      $('#VPUC_exp_date').addClass('errDisplay');
-      err++
-    }else{
-      $('#VPUC_exp_date').removeClass('errDisplay');
-    }
-    if($('#Material').val() == ''){
-      $('#Material').addClass('errDisplay');
-      err++
-    }else{
-      $('#Material').removeClass('errDisplay');
-    }
+    // if($('#Material').val() == ''){
+    //   $('#Material').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Material').removeClass('errDisplay');
+    // }
     if($('#Material_Type').val() == ''){
       $('#Material_Type').addClass('errDisplay');
       err++
     }else{
       $('#Material_Type').removeClass('errDisplay');
     }
-    if($('#Issued_By').val() == ''){
-      $('#Issued_By').addClass('errDisplay');
-      err++
-    }else{
-      $('#Issued_By').removeClass('errDisplay');
-    }
-    if($('#Issued_Date').val() == ''){
-      $('#Issued_Date').addClass('errDisplay');
-      err++
-    }else{
-      $('#Issued_Date').removeClass('errDisplay');
-    }
-    if($('#Driver_Name').val() == ''){
-      $('#Driver_Name').addClass('errDisplay');
-      err++
-    }else{
-      $('#Driver_Name').removeClass('errDisplay');
-    }
-    if($('#Driver_Number').val() == ''){
-      $('#Driver_Number').addClass('errDisplay');
-      err++
-    }else{
-      $('#Driver_Number').removeClass('errDisplay');
-    }
-    if($('#Time').val() == ''){
-      $('#Time').addClass('errDisplay');
-      err++
-    }else{
-      $('#Time').removeClass('errDisplay');
-    }
-    if($('#Consignee_Name').val() == ''){
-      $('#Consignee_Name').addClass('errDisplay');
-      err++
-    }else{
-      $('#Consignee_Name').removeClass('errDisplay');
-    }
-    if($('#Address').val() == ''){
-      $('#Address').addClass('errDisplay');
-      err++
-    }else{
-      $('#Address').removeClass('errDisplay');
-    }
-    if($('#Trip_No').val() == ''){
-      $('#Trip_No').addClass('errDisplay');
-      err++
-    }else{
-      $('#Trip_No').removeClass('errDisplay');
-    }
+    // if($('#Issued_By').val() == ''){
+    //   $('#Issued_By').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Issued_By').removeClass('errDisplay');
+    // }
+    // if($('#Issued_Date').val() == ''){
+    //   $('#Issued_Date').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Issued_Date').removeClass('errDisplay');
+    // }
+    // if($('#Time').val() == ''){
+    //   $('#Time').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Time').removeClass('errDisplay');
+    // }
+    // if($('#Trip_No').val() == ''){
+    //   $('#Trip_No').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Trip_No').removeClass('errDisplay');
+    // }
     // if($('#Gross_Weight').val() == ''){
     //   $('#Gross_Weight').addClass('errDisplay');
     //   err++
@@ -203,15 +156,74 @@ export class HistoryComponent implements OnInit {
       }else{
         $('#outqty_mt_Weight').removeClass('errDisplay');
     }
+    if(err == 0){
+      this.addVehicleData();
+    }
+  }
+  validateVehicleDetails(){
+    var err = 0 
+    if($('#vehicleMake').val() == ''){
+      $('#vehicleMake').addClass('errDisplay');
+      err++
+    }else{
+      $('#vehicleMake').removeClass('errDisplay');
+    }
+    if($('#VehicleModel').val() == ''){
+      $('#VehicleModel').addClass('errDisplay');
+      err++
+    }else{
+      $('#VehicleModel').removeClass('errDisplay');
+    }
+    if($('#vehicleInsurance_exp_date').val() == ''){
+      $('#vehicleInsurance_exp_date').addClass('errDisplay');
+      err++
+    }else{
+      $('#vehicleInsurance_exp_date').removeClass('errDisplay');
+    }
+    if($('#VPUC_exp_date').val() == ''){
+      $('#VPUC_exp_date').addClass('errDisplay');
+      err++
+    }else{
+      $('#VPUC_exp_date').removeClass('errDisplay');
+    }
     if($('#Vnumber').val() == ''){
       $('#Vnumber').addClass('errDisplay');
       err++
     }else{
       $('#Vnumber').removeClass('errDisplay');
     }
-
     if(err == 0){
-      this.addVehicleData();
+      this.active('Driver');
+    }
+  }
+  validateDirverDetails(){
+    var err = 0 
+    if($('#Consignee_Name').val() == ''){
+      $('#Consignee_Name').addClass('errDisplay');
+      err++
+    }else{
+      $('#Consignee_Name').removeClass('errDisplay');
+    }
+    if($('#Address').val() == ''){
+      $('#Address').addClass('errDisplay');
+      err++
+    }else{
+      $('#Address').removeClass('errDisplay');
+    }
+    if($('#Driver_Name').val() == ''){
+      $('#Driver_Name').addClass('errDisplay');
+      err++
+    }else{
+      $('#Driver_Name').removeClass('errDisplay');
+    }
+    if($('#Driver_Number').val() == ''){
+      $('#Driver_Number').addClass('errDisplay');
+      err++
+    }else{
+      $('#Driver_Number').removeClass('errDisplay');
+    }
+    if(err == 0){
+      this.active('Material');
     }
   }
   hidePopup(){
@@ -232,6 +244,20 @@ export class HistoryComponent implements OnInit {
       this.checkHistory();
     }else{
       $('#checkOutVehicleNumber').addClass('errDisplay');
+    }
+  }
+  active(className) {
+    $('.vehicle, .Driver, .Material').removeClass('top-menu--active');
+    $('#MaterialOut, #DriverDetailsOut, #VehcileDataOut,.addButtonOut').hide();
+    $('.' + className).addClass('top-menu--active');
+    if(className =="Material"){
+      $('#MaterialOut ,.addButtonOut').show();
+    }
+    if(className =="Driver"){
+      $('#DriverDetailsOut').show();
+    }
+    if(className =="vehicle"){
+      $('#VehcileDataOut').show();
     }
   }
 

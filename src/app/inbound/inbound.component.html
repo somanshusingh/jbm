@@ -56,7 +56,7 @@
                             <div class="top-menu__title"> Driver Details </div>
                         </a>
                     </li>
-                    <li (click)="active('Material')">
+                    <li (click)="validateDirverDetails()">
                         <a class="top-menu Material mobileHeight">
                             <div class="top-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -195,7 +195,7 @@
                     <div class="flex justify-end mt-4 addButtonin">
                         <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
                         <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
-                            (click)="validate()">Add</button>
+                            (click)="validate('add')">Add</button>
                     </div>
                 </div>
             </div>

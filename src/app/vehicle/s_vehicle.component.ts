@@ -89,7 +89,7 @@ export class VehicleComponent implements OnInit {
       $('#VehicleNo').addClass('errDisplay');
       err++
     }else{
-      let tempVehicleNo = $('#VehicleNo').val() as any;
+      let tempVehicleNo = $('#VehicleNo').val();
       if ([9, 10, 11].indexOf(tempVehicleNo.length) > -1) {
         $('#VehicleNo').removeClass('errDisplay');
       } else{

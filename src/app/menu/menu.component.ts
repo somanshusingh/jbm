@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   UserName = ' User Name';
   Role = 'Role';
+  toggle='show';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class MenuComponent implements OnInit {
     // if(this.serviceCall.Role == 'GateUser'){
     //    $('.mobileRegisterCard,.desktopRegisterCard').show();
     // }
-    this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
+    // this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
     if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
       if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
         $('.mobileUsers ,.desktopUsers').show();
@@ -43,7 +44,7 @@ export class MenuComponent implements OnInit {
       }
     }
     if (this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null) {
-      //  this.Router.navigate(['/signin']);
+       this.Router.navigate(['/signin']);
     }
     if (this.serviceCall.UserName !== '') {
       this.UserName = this.serviceCall.UserName;
@@ -134,4 +135,24 @@ export class MenuComponent implements OnInit {
   //   $('.'+className).addClass('side-menu--active');
   // }
 
+  hideMenuNames(){
+    $('.hideMenuOnClick').toggle();
+    if(this.toggle =='show'){
+      this.toggle = 'hide';
+      $('.side-nav').attr('style','width: 88px;');
+    }else{
+      this.toggle = 'show';
+      $('.side-nav').attr('style','width: 230px;');
+    }
+
+  }
+  hideProfilePopup(){
+    $("#Popup1Profile").hide();
+  }
+  showChangeOpt(){
+    $(".changePass").show();
+  }
+  changePassword(){
+
+  }
 }

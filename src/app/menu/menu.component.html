@@ -1,4 +1,4 @@
-<div class="app light" style="background-color: #15329a;padding: 10px;">
+<div class="app light" style="background-color: #0067ac;padding: 10px;">
     <!-- BEGIN: Mobile Menu -->
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
@@ -104,8 +104,8 @@
         <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
             <a class="intro-x flex items-center pl-5 pt-4">
-                <img class="w-6" src="assets/new/dist/images/logo.svg">
-                <span class="hidden xl:block text-white text-lg ml-3"> J<span class="font-medium">BM</span> </span>
+                <img class="w-6" src="assets/new/dist/images/logo.svg" (click)="hideMenuNames()">
+                <span class="hidden xl:block text-white text-lg ml-3 hideMenuOnClick"> J<span class="font-medium">BM</span> </span>
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -132,7 +132,7 @@
                 <li class="desktopGate">
                     <a class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')">
                         <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
-                        <div class="side-menu__title side-menu--open"> Gate</div>
+                        <div class="side-menu__title side-menu--open hideMenuOnClick"> Gate</div>
                     </a>
                     <ul class="vehiclesOption">
                         <li>
@@ -167,13 +167,13 @@
                     <!-- <a class="side-menu users desktopUsersOption" (click)="addActive('desktopUsersOption')"> -->
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                        <div class="side-menu__title" routerLink="/users"> Users </div>
+                        <div class="side-menu__title hideMenuOnClick" routerLink="/users"> Users </div>
                     </a>
                 </li>
                 <li class="desktopVehicles">
                     <a class="side-menu vehicles">
                         <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
-                        <div class="side-menu__title side-menu--open" routerLink="/dashboard"> Vehicles</div>
+                        <div class="side-menu__title side-menu--open hideMenuOnClick" routerLink="/dashboard"> Vehicles</div>
                     </a>
                     <!-- <ul class="vehiclesOption">
                         <li>
@@ -199,7 +199,7 @@
                 <li class="desktopInboundProcess">
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title" routerLink="/inBoundDashboard"> Inbound Process</div>
+                        <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div>
                     </a>
                 </li>
                 <!-- <li class="desktopOutboundProcess">
@@ -211,7 +211,7 @@
                 <li class="desktopRegisterCard">
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="credit-card"></i> </div>
-                        <div class="side-menu__title"> Register Card</div>
+                        <div class="side-menu__title hideMenuOnClick"> Register Card</div>
                     </a>
                 </li>
             </ul>
@@ -235,6 +235,11 @@
                             <div class="p-4 border-b border-theme-40 dark:border-dark-3">
                                 <div class="font-medium">{{UserName}}</div>
                                 <div class="text-xs text-theme-41 dark:text-gray-600">{{Role}}</div>
+                            </div>
+                            <div class="p-2 border-t border-theme-40 dark:border-dark-3">
+                                <a 
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                                    <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
                             </div>
                             <div class="p-2 border-t border-theme-40 dark:border-dark-3">
                                 <a href=""
@@ -269,4 +274,34 @@
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script> -->
     <!-- <script src="dist/js/app.js"></script> -->
     <!-- END: JS Assets-->
+</div>
+
+<div class="" id="ProfilePopupTop" style="display:none;">
+    <div class="Popup1Profile">
+        <div class="Popup2">
+            <div style="padding: 28px;">
+              <b> Name: {{UserName}}<br>
+                Role: {{Role}}<br>
+               <span style="color:blue" (click)="showChangeOpt()"> Change Password?</span></b><br>
+                <div class="changePass" >
+                    <div>
+                        <label>Password</label>
+                        <input id="password" type="password" class="input w-full border mt-2 inputWidth"
+                            placeholder="Password">
+                        <span class="passwordErr errMsg"></span>
+                    </div>
+                    <div>
+                        <label>Confirm Password</label>
+                        <input id="confirmPassword" type="password" class="input w-full border mt-2 inputWidth"
+                            placeholder="Confirm Password">
+                        <span class="cpasswordErr errMsg"></span>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="Popup3 PopupMessagebutton" style="height: 30px;padding: 4px;">
+            <button class="PopupMessagebutton" (click)="changePassword()">Change</button>&nbsp;changePass
+            <button class="PopupMessagebutton" (click)="hideProfilePopup()">Close</button>
+        </div>
+    </div>
 </div>
