@@ -220,6 +220,12 @@ export class OutboundDashboardComponent implements OnInit {
       "Address": $('#outEditAddress').val(),
       "Qty_Mt_Weight": $('#outEditoutqty_mt_Weight').val()
     }
+    if($('#outEditlrDate').val() !== '' && $('#outEditlrDate').val() !== null &&$('#outEditlrDate').val() !== undefined ){
+      post_data['LrDate'] = $('#outEditlrDate').val();
+    }
+    if($('#outEditlrNumber').val() !== '' &&$('#outEditlrNumber').val() !== null&&$('#outEditlrNumber').val() !== undefined ){
+      post_data['LrNumber'] = $('#outEditlrNumber').val();
+    }
 
 
     this.serviceCall.signin(url, post_data).subscribe(

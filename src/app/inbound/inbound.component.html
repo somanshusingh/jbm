@@ -6,21 +6,22 @@
             </h2>
         </div>
         <div class="vnin">
-                    <div style="padding:11px !important;">
-                        <div class="">
-                            <div>
-                                <div>
-                                    <label>Vehicle Number</label><br>
-                                    <input type="text" class="input w-full border mt-2 inputWidth" id="checkVehicleNumber"
-                                        placeholder="Vehicle Number">
-                                    <span class="nameErr errMsg"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-start mt-1" style="padding-top: 12px;">
-                            <button type="button" class="buttonCss" (click)="validateVehicleNumber()">Check</button>
+            <div style="padding:11px !important;">
+                <div class="">
+                    <div>
+                        <div>
+                            <label>Vehicle Number</label><br>
+                            <input type="text" class="input w-full border mt-2 inputWidth" id="checkVehicleNumber"
+                                placeholder="Vehicle Number">
+                            <span class="nameErr errMsg"></span>
                         </div>
                     </div>
+                </div>
+                <div class="flex justify-start mt-1" style="padding-top: 12px;">
+                    <button type="button" class="buttonCss" (click)="validateVehicleNumber()">Check</button>&nbsp;&nbsp;
+                    <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -169,6 +170,18 @@
                                 </div>
                                 <span class="Material_TypeErr errMsg"></span>
                             </div>
+                            <div class="mt-3">
+                                <label>LR Number</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="LR Number" id="lrNumber">
+                                <span class="lrNumberErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>LR Date</label><br>
+                                <input type="date" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Gross Weight" id="lrDate">
+                                <span class="lrDateErr errMsg"></span>
+                            </div>
                             <!-- <div class="mt-3">
                                 <label>Issued By</label><br>
                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By"
@@ -182,36 +195,44 @@
                         <!-- <input type="image" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;"
                             (click)="validate('add')" src="assets/images/registerCard.png"/> -->
                         <div style="display:flex;">
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
-                        width: 65px;"
-                            (click)="validate('add')">
-                            <span class="registerCardHover">
-                                <img class="w-6" src="assets/images/registerCard.png" style="height:33px; width:39px;">
-                                <div class="hoverText">
-                                    Register Card
-                                </div>
-                            </span>
-                        </button>
-                    </div>
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
+                        width: 65px;" (click)="validate('add')">
+                                <span class="registerCardHover">
+                                    <img class="w-6" src="assets/images/registerCard.png"
+                                        style="height:33px; width:39px;">
+                                    <div class="hoverText">
+                                        Register Card
+                                    </div>
+                                </span>
+                            </button>
+                        </div>
                     </div>
                     <div class="flex justify-end mt-4 tab2">
                         <div style="display:flex;">
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('vehicle')">Previous</button>&nbsp;&nbsp;
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateDirverDetails()">Next</button>
-                    </div>
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="active('vehicle')">Previous</button>&nbsp;&nbsp;
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="validateDirverDetails()">Next</button>
+                        </div>
                     </div>
                     <div class="flex justify-end mt-4 tab1">
                         <div style="display:flex;">
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Next</button>
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="active('Driver')">Next</button>
+                        </div>
                     </div>
-                    </div>
-                
+
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <!--  Popup start -->
 
 <div class="addFieldPopupTop" id="addFieldPopupTop">
@@ -231,3 +252,27 @@
     </div>
 </div>
 <!--  Popup finish -->
+
+<!-- upload Doc Popup start -->
+
+<div>
+    <div class="uploadDoc">
+        <div class="Popup2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
+                Upload Documents
+            </div>
+            <div style="padding: 28px;text-align: center;">
+            <b>RC Copy</b><br><br>
+            <input type="file" id="Rc_copy1" (change)="getFiles($event)"/><br><br>
+            <input type="file" id="Rc_copy2" (change)="getFiles($event)"/><br><br>
+            <span id="errUploadDoc">Please Select Two Files</span>
+            </div>
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button class="Popupbutton" (click)="uploadDocs()">Upload</button>&nbsp;&nbsp;
+            <button class="Popupbutton" (click)="hideuploadPopup()">Close</button>
+        </div>
+    </div>
+</div>
+<!-- upload Doc Popup finish -->

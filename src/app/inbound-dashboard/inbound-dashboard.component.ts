@@ -14,7 +14,7 @@ export class InboundDashboardComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   Message;
   tripNo: any;
-  Edited=false;
+  Edited = false;
   constructor(private serviceCall: ApiService) { }
 
   ngOnInit(): void {
@@ -38,121 +38,121 @@ export class InboundDashboardComponent implements OnInit {
     this.serviceCall.getService(url).subscribe(data => {
       this.data = data['msg'];
       console.log(this.data);
-      if(this.Edited == false){
+      if (this.Edited == false) {
         this.dtTrigger.next();
-        }
+      }
     })
   }
-  closeEdit(){
+  closeEdit() {
     $('.editInPopup1').hide();
   }
-  validateEdit(){
-    var err = 0 
-    if($('#editinvehicleMake').val() == ''){
+  validateEdit() {
+    var err = 0
+    if ($('#editinvehicleMake').val() == '') {
       $('#editinvehicleMake').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinvehicleMake').removeClass('errDisplay');
     }
-    if($('#editinVehicleModel').val() == ''){
+    if ($('#editinVehicleModel').val() == '') {
       $('#editinVehicleModel').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinVehicleModel').removeClass('errDisplay');
     }
-    if($('#editinvehicleInsurance_exp_date').val() == ''){
+    if ($('#editinvehicleInsurance_exp_date').val() == '') {
       $('#editinvehicleInsurance_exp_date').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinvehicleInsurance_exp_date').removeClass('errDisplay');
     }
-    if($('#editinVPUC_exp_date').val() == ''){
+    if ($('#editinVPUC_exp_date').val() == '') {
       $('#editinVPUC_exp_date').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinVPUC_exp_date').removeClass('errDisplay');
     }
-    if($('#editinMaterial').val() == ''){
+    if ($('#editinMaterial').val() == '') {
       $('#editinMaterial').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinMaterial').removeClass('errDisplay');
     }
-    if($('#editinMaterial_Type').val() == ''){
+    if ($('#editinMaterial_Type').val() == '') {
       $('#editinMaterial_Type').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinMaterial_Type').removeClass('errDisplay');
     }
-    if($('#editinIssued_By').val() == ''){
+    if ($('#editinIssued_By').val() == '') {
       $('#editinIssued_By').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinIssued_By').removeClass('errDisplay');
     }
-    if($('#editinIssued_Date').val() == ''){
+    if ($('#editinIssued_Date').val() == '') {
       $('#editinIssued_Date').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinIssued_Date').removeClass('errDisplay');
     }
-    if($('#editinDriver_Name').val() == ''){
+    if ($('#editinDriver_Name').val() == '') {
       $('#editinDriver_Name').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinDriver_Name').removeClass('errDisplay');
     }
-    if($('#editinDriver_Number').val() == ''){
+    if ($('#editinDriver_Number').val() == '') {
       $('#editinDriver_Number').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinDriver_Number').removeClass('errDisplay');
     }
-    if($('#editinTime').val() == ''){
+    if ($('#editinTime').val() == '') {
       $('#editinTime').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinTime').removeClass('errDisplay');
     }
-    if($('#editinConsignee_Name').val() == ''){
+    if ($('#editinConsignee_Name').val() == '') {
       $('#editinConsignee_Name').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinConsignee_Name').removeClass('errDisplay');
     }
-    if($('#editinAddress').val() == ''){
+    if ($('#editinAddress').val() == '') {
       $('#editinAddress').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinAddress').removeClass('errDisplay');
     }
-    if($('#editinTrip_No').val() == ''){
+    if ($('#editinTrip_No').val() == '') {
       $('#editinTrip_No').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinTrip_No').removeClass('errDisplay');
     }
-    if($('#editinVnumber').val() == ''){
+    if ($('#editinVnumber').val() == '') {
       $('#editinVnumber').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editinVnumber').removeClass('errDisplay');
     }
-    if($('#editqty_mt_Weight').val() == ''){
+    if ($('#editqty_mt_Weight').val() == '') {
       $('#editqty_mt_Weight').addClass('errDisplay');
       err++
-    }else{
+    } else {
       $('#editqty_mt_Weight').removeClass('errDisplay');
     }
-    if(err == 0){
+    if (err == 0) {
       this.updateInboundData();
     }
   }
-  updateInboundData(){
+  updateInboundData() {
     $('.editInPopup1').hide();
     $('.inPopup1message').show();
     $('.inPopupMessagebutton').hide();
-    this.Message ='Please Wait...'
+    this.Message = 'Please Wait...'
     let url = '/history/inhouse_transport/update'
     let post_data = {
       "Trip_No": $('#editinTrip').val(),
@@ -167,17 +167,23 @@ export class InboundDashboardComponent implements OnInit {
       "Consignee_Name": $('#editinConsignee_Name').val(),
       "Address": $('#editinAddress').val(),
       "Qty_Mt_Weight": $('#editqty_mt_Weight').val()
-  }
+    }
+    if ($('#editinlrDate').val() !== '' && $('#editinlrDate').val() !== null && $('#editinlrDate').val() !== undefined) {
+      post_data['LrDate'] = $('#editinlrDate').val();
+    }
+    if ($('#editinlrNumber').val() !== '' && $('#editinlrNumber').val() !== null && $('#editinlrNumber').val() !== undefined) {
+      post_data['LrNumber'] = $('#editinlrNumber').val();
+    }
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
         $(".inPopupMessagebutton").show();
-        if(data['status'] == 1){
+        if (data['status'] == 1) {
           this.Message = "Data Updated Successfully";
-        }else if(data['status'] == 0){
+        } else if (data['status'] == 0) {
           this.Message = 'Update Failed';
-        }else if(data['status'] == 100){
+        } else if (data['status'] == 100) {
           this.Message = JSON.stringify(data['msg']);
-        }else{
+        } else {
           this.Message = 'Something went wrong.';
         }
       })
@@ -202,7 +208,7 @@ export class InboundDashboardComponent implements OnInit {
               $('#inViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
               $('#inViewTime').html(this.data[i]['Time']);
             }
-            if(source == 'edit'){
+            if (source == 'edit') {
               $('.editInPopup1').show();
               // $('#editinvehicleMake').val(this.data[i]['VehicleNo']);
               // $('#editinvehicleInsurance_exp_date').val(this.data[i]['Insurance_exp_date'].split('T')[0]);
@@ -215,7 +221,7 @@ export class InboundDashboardComponent implements OnInit {
               // $('#editinVehicleModel').val(this.data[i]['VehicleType']);
               // $('#editinVPUC_exp_date').val(this.data[i]['VehicleType']);
               $('#editinMaterial_Type').val(this.data[i]['Material']);
-              $('#editinIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
+              // $('#editinIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#editinDriver_Number').val(this.data[i]['Driver_Number']);
               $('#editinAddress').val(this.data[i]['Address']);
               $('#editinTime').val(this.data[i]['Time']);
@@ -226,12 +232,12 @@ export class InboundDashboardComponent implements OnInit {
       }
     }
   }
-  hideMessagePopup(){
+  hideMessagePopup() {
     $('.inPopup1message').hide();
     this.Edited = true;
     this.getData();
   }
-  hideView(){
+  hideView() {
     $('.inViewPopup1').hide();
   }
 }
