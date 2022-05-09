@@ -8,6 +8,7 @@ export class ApiService {
   Role;
   UserName ='';
   Allowed_Menu={};
+  UserId='';
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){

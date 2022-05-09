@@ -33,6 +33,7 @@ export class SigninComponent implements OnInit {
             this.serviceCall.Role= data['msg']['Role'];
             this.serviceCall.UserName= data['msg']['Name'];
             this.serviceCall.Allowed_Menu= data['msg']['Allowed_Menu'];
+            this.serviceCall.UserId= data['msg']['UserId'];
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

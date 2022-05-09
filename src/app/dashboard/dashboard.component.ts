@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
 import * as feather from 'feather-icons';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +19,12 @@ export class DashboardComponent implements OnInit {
   constructor(private serviceCall: ApiService) { }
 
   ngOnInit(): void {
+    let currentDate = moment().format('YYYY-MM-DD');
+    let lastDate = moment().add(3, 'years').format('YYYY-MM-DD');
+    $('#editdInsurance_exp_date').attr('Min', currentDate);
+    $('#editdInsurance_exp_date').attr('Max', lastDate);
+    $('#editdPUC_exp_date').attr('Min', currentDate);
+    $('#editdPUC_exp_date').attr('Max', lastDate);
     this.getData();
     this.dtOptions = {
       pagingType: 'simple_numbers',

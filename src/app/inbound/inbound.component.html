@@ -175,7 +175,7 @@
                                 <!-- <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="inMaterial_Type"> -->
                                 <div class="mt-2 inputWidth">
                                     <select data-search="true" class="tail-select w-full" id="inMaterial_Type"
-                                        style="height: 38px;">
+                                        style="height: 38px;border:1px solid #dee2e6;">
                                         <option value="">Select Material Type</option>
                                         <option value="Admin">Iron</option>
                                         <option value="Manager">Steel</option>
@@ -194,8 +194,18 @@
                     </div>
                     <div class="flex justify-end mt-4 addButtonin">
                         <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
-                            (click)="validate('add')">Add</button>
+                        <!-- <input type="image" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;"
+                            (click)="validate('add')" src="assets/images/registerCard.png"/> -->
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
+                        width: 65px;"
+                            (click)="validate('add')">
+                            <span class="registerCardHover">
+                                <img class="w-6" src="assets/images/registerCard.png" style="height:33px; width:39px;">
+                                <div class="hoverText">
+                                    Register Card
+                                </div>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>

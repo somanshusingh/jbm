@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit {
   UserName = ' User Name';
   Role = 'Role';
   toggle='show';
+  Message='';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -147,12 +148,64 @@ export class MenuComponent implements OnInit {
 
   }
   hideProfilePopup(){
-    $("#Popup1Profile").hide();
+    $(".Popup1Profile").hide();
   }
   showChangeOpt(){
-    $(".changePass").show();
+    $('.Popup1Profile,#popOptions,.PopupMessagebutton').show();
+    this.Message= '';
+      $('#popMessageReset,.PopupMessageShow').hide();
+      $("#menuPassword").val('');
+      $("#menuConfirmPassword").val('');
   }
   changePassword(){
-    
+    var err = 0
+    if ($("#menuPassword").val() !== '') {
+      $("#menuPassword").removeClass('errDisplay');
+      $("#menupasswordErr").html('');
+    } else {
+      err++;
+      $("#menuPassword").addClass('errDisplay');
+      $("#passwordErr").html('Enter Password');
+    }
+    if ($("#menuConfirmPassword").val() !== '' && $("#menuConfirmPassword").val() == $("#menuPassword").val() ) {
+      $("#menuConfirmPassword").removeClass('errDisplay');
+      $("#menucPasswordErr").html('');
+    } else {
+      err++;
+      $("#menuConfirmPassword").addClass('errDisplay');
+      $("#menucPasswordErr").html('Confirm Password');
+    }
+    if (err == 0) {
+      $('#popOptions,.PopupMessagebutton').hide();
+      this.Message= 'Please Wait...';
+      $('#popMessageReset').show();
+      var url = "/registration/pwd/update";
+      var post_data = {
+        "UserId": this.serviceCall.UserId,
+        "Password": $("#menuPassword").val(),
+        "Modified_By": this.serviceCall.UserId
+      }
+      this.serviceCall.signin(url, post_data).subscribe(data => {
+        $('.PopupMessageShow').show()
+        if (data.hasOwnProperty('status')) {
+          if (data['status'] == 1) {
+            this.Message = "Password Changed!";
+          }else{
+          this.Message = "User does not exists.";
+          }
+        }else{
+          this.Message = "Technical Issue.";
+        }
+      })
+    }
+  }
+  hidePopupMsg(){
+    if(this.Message == "Password Changed!" ){
+      $(".Popup1Profile").hide();
+    }else{
+      $('#popOptions,.PopupMessagebutton').show();
+      this.Message= '';
+      $('#popMessageReset,.PopupMessageShow').hide();
+    }
   }
 }

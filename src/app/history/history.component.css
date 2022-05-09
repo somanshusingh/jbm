@@ -51,6 +51,20 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.registerCardHover .hoverText{
+  visibility: hidden;
+  width: 85px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+.registerCardHover:hover .hoverText {
+    visibility: visible;
+  }
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
   .inputWidth {
     width: 7cm !important;

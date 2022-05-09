@@ -88,7 +88,7 @@
   .viewLabel {
     width: 5cm;
   }
-
+  #outerDiv{padding: 23px;}
   @media only screen and (max-width: 768px) {
 
     .editDiv {

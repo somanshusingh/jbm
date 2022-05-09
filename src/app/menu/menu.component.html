@@ -28,11 +28,11 @@
                             <li>
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="menu__title" routerLink="/inBoundDashboard"> Inhouse </div>
+                                    <div class="menu__title" routerLink="/inBound"> Inhouse </div>
                                 </a>
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="menu__title" routerLink="/outBoundDashboard"> Outhouse </div>
+                                    <div class="menu__title" routerLink="/outbound"> Outhouse </div>
                                 </a>
                             </li>
                         </ul>
@@ -144,13 +144,13 @@
                                 <li>
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                        <div class="side-menu__title" routerLink="/inBoundDashboard"> Inhouse </div>
+                                        <div class="side-menu__title" routerLink="/inBound"> Inhouse </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                        <div class="side-menu__title" routerLink="/outBoundDashboard"> Outhouse</div>
+                                        <div class="side-menu__title" routerLink="/outbound"> Outhouse</div>
                                     </a>
                                 </li>
                             </ul>
@@ -226,25 +226,29 @@
                 <div class="-intro-x breadcrumb mr-auto hidden sm:flex" style="padding-top: 17px;">USER : &nbsp;<b> {{UserName}} </b> &nbsp;|&nbsp; ROLE :&nbsp; <b> {{Role}} </b></div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Account Menu -->
-                <div class="intro-x dropdown w-8 h-8">
-                    <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in">
-                        <img src="assets/new/dist/images/profile-7.jpg">
+                <div class="intro-x dropdown w-8 h-8" style="padding-top: 5px;">
+                    <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" style="height: 23px;width: 23px;">
+                        <!-- <img src="assets/new/dist/images/profile-7.jpg"> -->
+                        <img src="assets/images/profileIcon.png">
                     </div>
                     <div class="dropdown-box w-56">
                         <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
-                            <div class="p-4 border-b border-theme-40 dark:border-dark-3">
+                            <div class="p-4 border-b border-theme-40 " style="background-color: #0067ac;">
                                 <div class="font-medium">{{UserName}}</div>
                                 <div class="text-xs text-theme-41 dark:text-gray-600">{{Role}}</div>
                             </div>
-                            <div class="p-2 border-t border-theme-40 dark:border-dark-3">
+                            <div class="p-2" style="background-color: #0067ac;" (click)="showChangeOpt()">
+                                <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock w-4 h-4 mr-2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span style="color: white;">Reset Password </span></a>
+                            </div>
+                            <!-- <div class="p-2 border-t border-theme-40 " style="background-color: #0067ac;">
                                 <a 
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                            </div>
-                            <div class="p-2 border-t border-theme-40 dark:border-dark-3">
+                            </div> -->
+                            <div class="p-2 border-t border-theme-40 " style="background-color: #0067ac;">
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                                    <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i><span style="color: white;">Logout</span> </a>
                             </div>
                         </div>
                     </div>
@@ -276,32 +280,42 @@
     <!-- END: JS Assets-->
 </div>
 
-<div class="" id="ProfilePopupTop" style="display:none;">
+<div class="" id="ProfilePopupTop">
     <div class="Popup1Profile">
         <div class="Popup2">
-            <div style="padding: 28px;">
-              <b> Name: {{UserName}}<br>
+            <div
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 4px;">
+                Reset Password
+            </div>
+            <div style="padding: 28px;" id="popOptions">
+              <!-- <b> Name: {{UserName}}<br>
                 Role: {{Role}}<br>
-               <span style="color:blue" (click)="showChangeOpt()"> Change Password?</span></b><br>
+               <span style="color:blue" (click)="showChangeOpt()"> Change Password?</span></b><br> -->
                 <div class="changePass" >
                     <div>
                         <label>Password</label>
-                        <input id="password" type="password" class="input w-full border mt-2 inputWidth"
+                        <input id="menuPassword" type="password" class="input w-full border mt-2 inputWidth"
                             placeholder="Password">
-                        <span class="passwordErr errMsg"></span>
+                        <span class="menupasswordErr errMsg"></span>
                     </div>
                     <div>
                         <label>Confirm Password</label>
-                        <input id="confirmPassword" type="password" class="input w-full border mt-2 inputWidth"
+                        <input id="menuConfirmPassword" type="password" class="input w-full border mt-2 inputWidth"
                             placeholder="Confirm Password">
-                        <span class="cpasswordErr errMsg"></span>
+                        <span class="menucpasswordErr errMsg"></span>
                     </div>  
                 </div>
             </div>
+            <div style="padding: 28px;" id="popMessageReset">
+                {{Message}}
+            </div>
         </div>
-        <div class="Popup3 PopupMessagebutton" style="height: 30px;padding: 4px;">
-            <button class="PopupMessagebutton" (click)="changePassword()">Change</button>&nbsp;changePass
+        <div class="Popup3 PopupMessagebutton" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button class="PopupMessagebutton" (click)="changePassword()">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="PopupMessagebutton" (click)="hideProfilePopup()">Close</button>
+        </div>
+        <div class="Popup3 PopupMessageShow" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button (click)="hidePopupMsg()">Ok</button>
         </div>
     </div>
 </div>

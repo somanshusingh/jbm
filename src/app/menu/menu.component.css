@@ -17,7 +17,7 @@
     width: 310px;
     left: 45%;
     margin-left: -50px;
-    top: 30%;
+    top: 20%;
     z-index: 1000;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -48,5 +48,12 @@
     color: #333;
   }
   .changePass{
-      display: none;
+      /* display: none; */
   }
+  .dropdown-toggle::after {display: none !important;}
+  #popMessageReset, .PopupMessageShow{display: none;}
+.errDisplay{box-shadow: 0px 0px 3px 0px red;}
+@media (max-width: 639px) {
+  .Popup1Profile {
+    left: 21%;}
+}

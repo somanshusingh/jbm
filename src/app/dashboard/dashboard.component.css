@@ -9,7 +9,7 @@
   height: 30px;
   padding: 5px;
 }
-
+#outerDiv{padding: 23px;}
 /* .editDiv{width: 26.5cm;} */
 @media only screen and (max-width: 768px) {
   #outerDiv {
