@@ -293,5 +293,22 @@ export class SignupComponent implements OnInit {
         this.menuVal(true,'SelectRole');
     }
   }
+  reset(){
+    $('#Name').val('');
+    $('#Surname').val('');
+    $('#email').val('');
+    $('#mobile').val('');
+    $('#password').val('');
+    $('#confirmPassword').val('');
+    $('#role').val('');
+    $('#emp_code').val('');
+    $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
+        this.menuVal(false,'users');
+        this.menuVal(false,'vehicles');
+        this.menuVal(false,'inboundProcess');
+        this.menuVal(false,'outboundProcess');
+        this.menuVal(false,'registerCard');
+        this.menuVal(true,'SelectRole');
+  }
 
 }
