@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
     // if(this.serviceCall.Role == 'GateUser'){
     //    $('.mobileRegisterCard,.desktopRegisterCard').show();
     // }
-    // this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
+    this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
     if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
       if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
         $('.mobileUsers ,.desktopUsers').show();
@@ -44,7 +44,7 @@ export class MenuComponent implements OnInit {
       }
     }
     if (this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null) {
-       this.Router.navigate(['/signin']);
+      //  this.Router.navigate(['/signin']);
     }
     if (this.serviceCall.UserName !== '') {
       this.UserName = this.serviceCall.UserName;
@@ -153,6 +153,6 @@ export class MenuComponent implements OnInit {
     $(".changePass").show();
   }
   changePassword(){
-
+    
   }
 }

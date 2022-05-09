@@ -69,12 +69,12 @@ export class InboundComponent implements OnInit {
       // "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
       // "PUC_exp_date": $('#VPUC_exp_date').val(),
       "Material_Type": $('#inMaterial_Type').val(),
-      // "Material": $('#inMaterial').val(),
-      // "Issued_By": $('#inIssued_By').val(),
-      // "Issued_Date": $('#inIssued_Date').val(),
+      "Material": $('#inMaterial').val(),
+      "Issued_By": $('#inIssued_By').val(),
+      "Issued_Date": $('#inIssued_Date').val(),
       "Driver_Name": $('#inDriver_Name').val(),
       "Driver_Number": $('#inDriver_Number').val(),
-      // "Time": $('#inTime').val(),
+      "Time": $('#inTime').val(),
       "Consignee_Name": $('#inConsignee_Name').val(),
       "Address": $('#inAddress').val(),
       "Qty_Mt_Weight": $('#qty_mt_Weight').val(),
@@ -100,7 +100,7 @@ export class InboundComponent implements OnInit {
       })
   }
 
-  validate(source){
+  validate(){
     var err = 0 
     // if($('#vehicleMake').val() == ''){
     //   $('#vehicleMake').addClass('errDisplay');
@@ -126,30 +126,30 @@ export class InboundComponent implements OnInit {
     // }else{
     //   $('#VPUC_exp_date').removeClass('errDisplay');
     // }
-    // if($('#inMaterial').val() == ''){
-    //   $('#inMaterial').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inMaterial').removeClass('errDisplay');
-    // }
+    if($('#inMaterial').val() == ''){
+      $('#inMaterial').addClass('errDisplay');
+      err++
+    }else{
+      $('#inMaterial').removeClass('errDisplay');
+    }
     if($('#inMaterial_Type').val() == ''){
       $('#inMaterial_Type').addClass('errDisplay');
       err++
     }else{
       $('#inMaterial_Type').removeClass('errDisplay');
     }
-    // if($('#inIssued_By').val() == ''){
-    //   $('#inIssued_By').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inIssued_By').removeClass('errDisplay');
-    // }
-    // if($('#inIssued_Date').val() == ''){
-    //   $('#inIssued_Date').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inIssued_Date').removeClass('errDisplay');
-    // }
+    if($('#inIssued_By').val() == ''){
+      $('#inIssued_By').addClass('errDisplay');
+      err++
+    }else{
+      $('#inIssued_By').removeClass('errDisplay');
+    }
+    if($('#inIssued_Date').val() == ''){
+      $('#inIssued_Date').addClass('errDisplay');
+      err++
+    }else{
+      $('#inIssued_Date').removeClass('errDisplay');
+    }
     if($('#inDriver_Name').val() == ''){
       $('#inDriver_Name').addClass('errDisplay');
       err++
@@ -162,12 +162,12 @@ export class InboundComponent implements OnInit {
     }else{
       $('#inDriver_Number').removeClass('errDisplay');
     }
-    // if($('#inTime').val() == ''){
-    //   $('#inTime').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inTime').removeClass('errDisplay');
-    // }
+    if($('#inTime').val() == ''){
+      $('#inTime').addClass('errDisplay');
+      err++
+    }else{
+      $('#inTime').removeClass('errDisplay');
+    }
     if($('#inConsignee_Name').val() == ''){
       $('#inConsignee_Name').addClass('errDisplay');
       err++
@@ -180,12 +180,12 @@ export class InboundComponent implements OnInit {
     }else{
       $('#inAddress').removeClass('errDisplay');
     }
-    // if($('#inTrip_No').val() == ''){
-    //   $('#inTrip_No').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inTrip_No').removeClass('errDisplay');
-    // }
+    if($('#inTrip_No').val() == ''){
+      $('#inTrip_No').addClass('errDisplay');
+      err++
+    }else{
+      $('#inTrip_No').removeClass('errDisplay');
+    }
     // if($('#inGross_Weight').val() == ''){
     //   $('#inGross_Weight').addClass('errDisplay');
     //   err++
@@ -204,12 +204,12 @@ export class InboundComponent implements OnInit {
     // }else{
     //   $('#inNet_Weight').removeClass('errDisplay');
     // }
-    // if($('#inVnumber').val() == ''){
-    //   $('#inVnumber').addClass('errDisplay');
-    //   err++
-    // }else{
-    //   $('#inVnumber').removeClass('errDisplay');
-    // }
+    if($('#inVnumber').val() == ''){
+      $('#inVnumber').addClass('errDisplay');
+      err++
+    }else{
+      $('#inVnumber').removeClass('errDisplay');
+    }
     if($('#qty_mt_Weight').val() == ''){
       $('#qty_mt_Weight').addClass('errDisplay');
       err++
@@ -219,36 +219,6 @@ export class InboundComponent implements OnInit {
 
     if(err == 0){
       this.addVehicleData();
-    }
-  }
-  validateDirverDetails(){
-    var err = 0 
-    if($('#inDriver_Name').val() == ''){
-      $('#inDriver_Name').addClass('errDisplay');
-      err++
-    }else{
-      $('#inDriver_Name').removeClass('errDisplay');
-    }
-    if($('#inDriver_Number').val() == ''){
-      $('#inDriver_Number').addClass('errDisplay');
-      err++
-    }else{
-      $('#inDriver_Number').removeClass('errDisplay');
-    }
-    if($('#inConsignee_Name').val() == ''){
-      $('#inConsignee_Name').addClass('errDisplay');
-      err++
-    }else{
-      $('#inConsignee_Name').removeClass('errDisplay');
-    }
-    if($('#inAddress').val() == ''){
-      $('#inAddress').addClass('errDisplay');
-      err++
-    }else{
-      $('#inAddress').removeClass('errDisplay');
-    }
-    if(err == 0){
-      this.active('Material');
     }
   }
   hidePopup(){

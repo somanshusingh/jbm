@@ -116,15 +116,15 @@
                     <span class="unameErr errMsg"></span>
                     </div> -->
                         <div class="mt-3">
-                            <label>Name</label>
+                            <label>First Name</label>
                             <input type="text" class="input w-full border mt-2 inputWidth" id="Name" name="names"
-                                placeholder="Name">
+                                placeholder="First Name">
                             <span class="nameErr errMsg"></span>
                         </div>
                         <div class="mt-3">
-                            <label>Surname</label>
+                            <label>Last Name</label>
                             <input type="text" class="input w-full border mt-2 inputWidth" id="Surname" name="surname"
-                                placeholder="Surname">
+                                placeholder="Last Name">
                             <span class="SurnameErr errMsg"></span>
                         </div>
                         <div class="mt-3">
@@ -162,7 +162,7 @@
                         <div class="mt-3">
                             <label>Role</label>
                             <div class="mt-2 inputWidth">
-                                <select data-search="true" class="tail-select w-full" id="role" style="height: 38px;">
+                                <select data-search="true" class="tail-select w-full" id="role" style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;" (change)="selectMenu()">
                                     <option value="">Select Role</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Supervisor">Supervisor</option>
@@ -175,7 +175,7 @@
                             <label>Menu Options</label><br>
                             <div id="list1" class="dropdown-check-list mt-2 w-full inputWidth" tabindex="100">
                                 <span class="anchor inputWidth" (click)="showCheckbox()"
-                                    style="height: 39px;width: 286px;border: none;">
+                                    style="min-height: 39px;max-height: fit-content;width: 100%;border: 1px solid #dee2e6;border-radius: 8px;">
                                     <span id="menuOptionNone">Select Menu Options </span>&nbsp;
                                     <span id="menuOptionUsers" class="menuDisplay">Users </span>&nbsp;
                                     <span id="menuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
@@ -186,22 +186,29 @@
                                 <ul class="items"
                                     style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'users')" />&nbsp;&nbsp;&nbsp;&nbsp;Users
+                                            (click)="menuVal($event.target.checked,'users')" id="checkUsers" />&nbsp;&nbsp;&nbsp;&nbsp;Users
                                     </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'vehicles')" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
+                                            (click)="menuVal($event.target.checked,'vehicles')" id="checkVehicles" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
                                     </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'inboundProcess')" />&nbsp;&nbsp;&nbsp;&nbsp;Inbound
+                                            (click)="menuVal($event.target.checked,'inboundProcess')" id="checkInbound" />&nbsp;&nbsp;&nbsp;&nbsp;Inbound
                                         Process </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'outboundProcess')" />&nbsp;&nbsp;&nbsp;&nbsp;Outbound
+                                            (click)="menuVal($event.target.checked,'outboundProcess')" id="checkOutbound" />&nbsp;&nbsp;&nbsp;&nbsp;Outbound
                                         Process </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'registerCard')" />&nbsp;&nbsp;&nbsp;&nbsp;Register
+                                            (click)="menuVal($event.target.checked,'registerCard')" id="checkRegister"/>&nbsp;&nbsp;&nbsp;&nbsp;Register
                                         Card </li>
                                 </ul>
                             </div>
+                        </div>
+                        <div class="mt-3">
+                            <label>Emp Code.</label>
+                            <input class="input w-full border mt-2 inputWidth" id="emp_code" placeholder="Emp Code"
+                                (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
+                                onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
+                            <span class="emp_codeErr errMsg"></span>
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,8 @@ export class SignupComponent implements OnInit {
         "inboundPocess": this.allowedMenu.inboundPocess,
         "outboundProcess": this.allowedMenu.outboundProcess,
         "registerCard": this.allowedMenu.registerCard
-      }
+      },
+      "EmpCode":$('emp_code').val()
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
@@ -64,7 +65,8 @@ export class SignupComponent implements OnInit {
   validate() {
     var err = 0;
     var name = ($("#Name").val()).toString();
-    var namePattern = new RegExp('^[a-zA-Z ]+$');
+    var Surname = ($("#Surname").val()).toString();
+    var namePattern =  new RegExp("^[A-Za-z]+$");
     var emailPattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
 
@@ -77,33 +79,32 @@ export class SignupComponent implements OnInit {
     //   $('.unameErr').html('Enter Username');
     // }
     if (name !== '') {
-      // if (!namePattern.test(name)) {
-      //   err++;
-      //   $("#Name").addClass('errDisplay');
-      //   $('.nameErr').html('Enter full name');
-      // } else {
-      //   var namearray = name.split(" ");
-      //   if (namearray[1] === "" || namearray[0] === "" || namearray[1] === undefined) {
-      //     err++;
-      //     $("#Name").addClass('errDisplay');
-      //     $('.nameErr').html('Enter full name')
-      //   } else {
+      if (!namePattern.test(name)) {
+        err++;
+        $("#Name").addClass('errDisplay');
+        $('.nameErr').html('Enter First Name');
+      } else {
           $("#Name").removeClass('errDisplay');
           $('.nameErr').html('');
-        // }
-      // }
+      }
     } else {
       err++;
       $("#Name").addClass('errDisplay');
-      $('.nameErr').html('Enter full name');
+      $('.nameErr').html('Enter First Name');
     }
-    if ($("#Surname").val() !== '') {
-          $("#Surname").removeClass('errDisplay');
-          $('.SurnameErr').html('');
+    if (Surname !== '') {
+      if (!namePattern.test(Surname)) {
+        err++;
+        $("#Surname").addClass('errDisplay');
+      $('.SurnameErr').html('Enter Last Name');
+      } else {
+        $("#Surname").removeClass('errDisplay');
+        $('.SurnameErr').html('');
+      }
     } else {
       err++;
       $("#Surname").addClass('errDisplay');
-      $('.SurnameErr').html('Enter Surname');
+      $('.SurnameErr').html('Enter Last Name');
     }
     if ($("#email").val() !== '') {
       if (!emailPattern.test($("#email").val().toString())) {
@@ -250,10 +251,46 @@ export class SignupComponent implements OnInit {
       this.menuSelected--;
       this.allowedMenu.registerCard = 'no';
     }
-    if (this.menuSelected == 0) {
+    if (this.menuSelected == 0 || (isChecked && id=='SelectRole')) {
       $('#menuOptionNone').show();
     } else {
       $('#menuOptionNone').hide();
+    }
+  }
+  selectMenu(){
+    if($('#role').val() === 'Admin'){
+      $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
+      this.menuVal(true,'users');
+      this.menuVal(true,'vehicles');
+      this.menuVal(true,'inboundProcess');
+      this.menuVal(true,'outboundProcess');
+      this.menuVal(true,'registerCard');
+    }
+    else if($('#role').val() === 'Supervisor'){
+      $('#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
+      $('#checkUsers,#checkVehicles').prop('checked', false);
+      this.menuVal(false,'users');
+      this.menuVal(false,'vehicles');
+      this.menuVal(true,'inboundProcess');
+      this.menuVal(true,'outboundProcess');
+      this.menuVal(true,'registerCard');
+    }
+    else if($('#role').val() === 'GateUser'){
+      $('#checkUsers').prop('checked', true);
+      $('#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
+      this.menuVal(true,'users');
+      this.menuVal(false,'vehicles');
+      this.menuVal(false,'inboundProcess');
+      this.menuVal(false,'outboundProcess');
+      this.menuVal(false,'registerCard');
+    }else{
+        $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
+        this.menuVal(false,'users');
+        this.menuVal(false,'vehicles');
+        this.menuVal(false,'inboundProcess');
+        this.menuVal(false,'outboundProcess');
+        this.menuVal(false,'registerCard');
+        this.menuVal(true,'SelectRole');
     }
   }
 
