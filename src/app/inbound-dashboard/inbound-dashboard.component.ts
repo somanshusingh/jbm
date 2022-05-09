@@ -155,15 +155,15 @@ export class InboundDashboardComponent implements OnInit {
     this.Message ='Please Wait...'
     let url = '/history/inhouse_transport/update'
     let post_data = {
-       "Trip_No": $('#editinTrip').val(),
+      "Trip_No": $('#editinTrip').val(),
       "VehicleNo": $('#editinVnumber').val(),
       // "Material_Type": $('#editinMaterial_Type').val(),
       "Material": $('#editinMaterial_Type').val(),
       "Issued_By": this.serviceCall.UserId,
-      "Issued_Date": '',
+      // "Issued_Date": '',
       "Driver_Name": $('#editinDriver_Name').val(),
       "Driver_Number": $('#editinDriver_Number').val(),
-      "Time": '',
+      // "Time": '',
       "Consignee_Name": $('#editinConsignee_Name').val(),
       "Address": $('#editinAddress').val(),
       "Qty_Mt_Weight": $('#editqty_mt_Weight').val()

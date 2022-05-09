@@ -68,7 +68,7 @@ export class InboundComponent implements OnInit {
       // "Model": $('#VehicleModel').val(),
       // "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
       // "PUC_exp_date": $('#VPUC_exp_date').val(),
-      "Material_Type": $('#inMaterial_Type').val(),
+      "Material": $('#inMaterial_Type').val(),
       // "Material": $('#inMaterial').val(),
       // "Issued_By": $('#inIssued_By').val(),
       // "Issued_Date": $('#inIssued_Date').val(),
