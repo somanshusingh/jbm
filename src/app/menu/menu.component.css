@@ -11,7 +11,7 @@
     display: none;
 }
 .Popup1Profile {
-    /* display: none; */
+    display: none;
     border-radius: 10px;
     position: fixed;
     width: 310px;
