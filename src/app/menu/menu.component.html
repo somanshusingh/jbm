@@ -3,7 +3,7 @@
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
             <a class="flex mr-auto">
-                <img class="w-6" src="assets/new/dist/images/logo.svg">
+                <img class="w-6" src="assets/images/JbmLogo.png" style="height: 28px;width: 62px;">
             </a>
             <a id="mobile-menu-toggler" (click)="menuToggleMobile()"> <i data-feather="bar-chart-2"
                     class="w-8 h-8 text-white transform -rotate-90"></i> </a>
@@ -104,11 +104,12 @@
         <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
             <a class="intro-x flex items-center pl-5 pt-4">
-                <img class="w-6" src="assets/new/dist/images/logo.svg" (click)="hideMenuNames()">
-                <span class="hidden xl:block text-white text-lg ml-3 hideMenuOnClick"> J<span class="font-medium">BM</span> </span>
+                <div (click)="hideMenuNames()"><i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i></div>
+                <a href=""><img class="w-6 hideMenuOnClick" src="assets/images/JbmLogo.png" style="height: 32px;width: 89px;"></a>
+                <!-- <span class="hidden xl:block text-white text-lg ml-3 hideMenuOnClick"> J<span class="font-medium">BM</span> </span> -->
             </a>
             <div class="side-nav__devider my-6"></div>
-            <ul style="padding-left: 0px;">
+            <ul class="disableOnClick" style="padding-left: 0px;">
                 <!-- <li class="desktopUsers">
                     <a class="side-menu users">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
@@ -131,10 +132,11 @@
                 </li> -->
                 <li class="desktopGate">
                     <a class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')">
-                        <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="truck"></i> </div>
                         <div class="side-menu__title side-menu--open hideMenuOnClick"> Gate</div>
                     </a>
-                    <ul class="vehiclesOption hideMenuOnClick">
+                    <ul class="vehiclesOption">
+                        <div id="subs">
                         <li>
                             <a class="side-menu" (click)="hideshow($event,'Gate1Option')">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
@@ -161,18 +163,19 @@
                                 <div class="side-menu__title" routerLink="/outBoundDashboard"> Gate Out</div>
                             </a>
                         </li>
+                    </div>
                     </ul>
                 </li>
                 <li class="desktopUsers">
                     <!-- <a class="side-menu users desktopUsersOption" (click)="addActive('desktopUsersOption')"> -->
                     <a class="side-menu users">
-                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title hideMenuOnClick" routerLink="/users"> Users </div>
                     </a>
                 </li>
                 <li class="desktopVehicles">
                     <a class="side-menu vehicles">
-                        <div class="side-menu__icon"> <i data-feather="truck"></i> </div>
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="truck"></i> </div>
                         <div class="side-menu__title side-menu--open hideMenuOnClick" routerLink="/dashboard"> Vehicles</div>
                     </a>
                     <!-- <ul class="vehiclesOption">
@@ -198,7 +201,7 @@
                 </li>
                 <li class="desktopInboundProcess">
                     <a class="side-menu users">
-                        <div class="side-menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
                         <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div>
                     </a>
                 </li>

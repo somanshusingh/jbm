@@ -36,34 +36,19 @@
                 <ul style="margin:0;">
                     <li (click)="active('vehicle')">
                         <a class="top-menu vehicle top-menu--active mobileHeight">
-                            <div class="top-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg> </div>
+                            <div class="top-menu__icon"> <i data-feather="truck"></i> </div>
                             <div class="top-menu__title"> Vehicle </div>
                         </a>
                     </li>
                     <li (click)="active('Driver')">
                         <a class="top-menu Driver mobileHeight">
-                            <div class="top-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg> </div>
+                            <div class="top-menu__icon"> <i data-feather="file-text"></i></div>
                             <div class="top-menu__title"> Driver Details </div>
                         </a>
                     </li>
                     <li (click)="validateDirverDetails()">
                         <a class="top-menu Material mobileHeight">
-                            <div class="top-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg> </div>
+                            <div class="top-menu__icon"><i data-feather="package"></i></div>
                             <div class="top-menu__title"> Material </div>
                         </a>
                     </li>
@@ -196,6 +181,8 @@
                         <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
                         <!-- <input type="image" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;"
                             (click)="validate('add')" src="assets/images/registerCard.png"/> -->
+                        <div style="display:flex;">
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
                         <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
                         width: 65px;"
                             (click)="validate('add')">
@@ -207,7 +194,19 @@
                             </span>
                         </button>
                     </div>
-                </div>
+                    </div>
+                    <div class="flex justify-end mt-4 tab2">
+                        <div style="display:flex;">
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('vehicle')">Previous</button>&nbsp;&nbsp;
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateDirverDetails()">Next</button>
+                    </div>
+                    </div>
+                    <div class="flex justify-end mt-4 tab1">
+                        <div style="display:flex;">
+                        <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Next</button>
+                    </div>
+                    </div>
+                
             </div>
         </div>
     </div>

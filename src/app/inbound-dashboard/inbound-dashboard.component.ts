@@ -155,15 +155,15 @@ export class InboundDashboardComponent implements OnInit {
     this.Message ='Please Wait...'
     let url = '/history/inhouse_transport/update'
     let post_data = {
-      "Trip_No": this.tripNo,
+       "Trip_No": $('#editinTrip').val(),
       "VehicleNo": $('#editinVnumber').val(),
-      "Material_Type": $('#editinMaterial_Type').val(),
-      "Material": $('#editinMaterial').val(),
-      "Issued_By": $('#editinIssued_By').val(),
-      "Issued_Date": $('#editinIssued_Date').val(),
+      // "Material_Type": $('#editinMaterial_Type').val(),
+      "Material": $('#editinMaterial_Type').val(),
+      "Issued_By": this.serviceCall.UserId,
+      "Issued_Date": '',
       "Driver_Name": $('#editinDriver_Name').val(),
       "Driver_Number": $('#editinDriver_Number').val(),
-      "Time": $('#editinTime').val(),
+      "Time": '',
       "Consignee_Name": $('#editinConsignee_Name').val(),
       "Address": $('#editinAddress').val(),
       "Qty_Mt_Weight": $('#editqty_mt_Weight').val()
@@ -214,11 +214,12 @@ export class InboundDashboardComponent implements OnInit {
               $('#editinVnumber').val(this.data[i]['VehicleNo']);
               // $('#editinVehicleModel').val(this.data[i]['VehicleType']);
               // $('#editinVPUC_exp_date').val(this.data[i]['VehicleType']);
-              $('#editinMaterial_Type').val(this.data[i]['Material_Type']);
+              $('#editinMaterial_Type').val(this.data[i]['Material']);
               $('#editinIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#editinDriver_Number').val(this.data[i]['Driver_Number']);
               $('#editinAddress').val(this.data[i]['Address']);
               $('#editinTime').val(this.data[i]['Time']);
+              $('#editinTrip').val(this.data[i]['Trip_No']);
             }
           }
         }

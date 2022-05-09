@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-history',
@@ -15,7 +16,13 @@ export class HistoryComponent implements OnInit {
   constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
-    $('#MaterialOut, #DriverDetailsOut,.addButtonOut').hide();
+    $('#MaterialOut, #DriverDetailsOut,.addButtonOut,.tab2').hide();
+    let currentDate = moment().format('YYYY-MM-DD');
+    let lastDate = moment().add(3, 'years').format('YYYY-MM-DD');
+    $('#vehicleInsurance_exp_date').attr('Min', currentDate);
+    $('#vehicleInsurance_exp_date').attr('Max', lastDate);
+    $('#VPUC_exp_date').attr('Min', currentDate);
+    $('#VPUC_exp_date').attr('Max', lastDate);
   }
   checkHistory(){
     let url = '/vehicle/view/' + $("#checkOutVehicleNumber").val();
@@ -248,16 +255,16 @@ export class HistoryComponent implements OnInit {
   }
   active(className) {
     $('.vehicle, .Driver, .Material').removeClass('top-menu--active');
-    $('#MaterialOut, #DriverDetailsOut, #VehcileDataOut,.addButtonOut').hide();
+    $('#MaterialOut, #DriverDetailsOut, #VehcileDataOut,.addButtonOut,.tab2,.tab1').hide();
     $('.' + className).addClass('top-menu--active');
     if(className =="Material"){
       $('#MaterialOut ,.addButtonOut').show();
     }
     if(className =="Driver"){
-      $('#DriverDetailsOut').show();
+      $('#DriverDetailsOut,.tab2').show();
     }
     if(className =="vehicle"){
-      $('#VehcileDataOut').show();
+      $('#VehcileDataOut,.tab1').show();
     }
   }
 

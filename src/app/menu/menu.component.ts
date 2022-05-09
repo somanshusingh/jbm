@@ -62,6 +62,7 @@ export class MenuComponent implements OnInit {
     this.changeView(window.location.pathname);
   }
   hideshow(event, childName) {
+    $('#subs').show();
     // (click)="hideshow($event,'vehiclesOption')"
     var target = event.currentTarget;
     var pElement = target.className.split(" ")[1];
@@ -141,9 +142,13 @@ export class MenuComponent implements OnInit {
     if(this.toggle =='show'){
       this.toggle = 'hide';
       $('.side-nav').attr('style','width: 88px;');
+      $('#subs').hide();
+      $('.disableOnClick').addClass('disabled');
+      $('.disableOnClick').attr('disabled','disabled');
     }else{
       this.toggle = 'show';
       $('.side-nav').attr('style','width: 230px;');
+      $('.disableOnClick').removeClass('disabled');
     }
 
   }
