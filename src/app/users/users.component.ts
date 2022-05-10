@@ -62,7 +62,7 @@ export class UsersComponent implements OnInit {
               $('#ViewUserMobile').html(this.data[i]['Mobile']);
               $('#ViewUserRole').html(this.data[i]['Role']);
               $('#ViewUserCreated_By').html(this.data[i]['Created_By']);
-              $('#ViewUserCreated_On').html(this.data[i]['Created_On']);
+              $('#ViewUserCreated_On').html(this.data[i]['Created_On'].split('T')[0]);
               $('#ViewUserModified_By').html(this.data[i]['Modified_By']);
               $('#ViewUserModified_On').html(this.data[i]['Modified_On']);
               $('#ViewUserStatus').html(this.data[i]['Status']);
@@ -72,7 +72,8 @@ export class UsersComponent implements OnInit {
               $('#editsUserName').val(this.data[i]['UserId']);
               $('#editpassword').val(this.data[i]['Password']);
               $('#editconfirmPassword').val(this.data[i]['Password']);
-              $('#editName').val(this.data[i]['Name']);
+              $('#editName').val(this.data[i]['FirstName']);
+              $('#editSurname').val(this.data[i]['LastName']);
               $('#editmobile').val(this.data[i]['Mobile']);
               $('#editemail').val(this.data[i]['Email']);
               $('#editrole').val(this.data[i]['Role']);
@@ -105,38 +106,38 @@ export class UsersComponent implements OnInit {
   validateEdit() {
     var err = 0;
     var name = ($("#editName").val()).toString();
-    var namePattern = new RegExp('^[a-zA-Z ]+$');
+    var Surname = ($("#editSurname").val()).toString();
+    var namePattern =  new RegExp("^[A-Za-z]+$");
     var emailPattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
 
-    if ($('#editsUserName').val() !== '') {
-      $("#editName").removeClass('errDisplay');
-      $('.unameErr').html('');
-    } else {
-      err++;
-      $("#editsUserName").addClass('errDisplay');
-      $('.unameErr').html('Enter Username');
-    }
     if (name !== '') {
       if (!namePattern.test(name)) {
         err++;
         $("#editName").addClass('errDisplay');
-        $('.nameErr').html('Enter full name');
+        $('.editnameErr').html('Enter First Name');
       } else {
-        var namearray = name.split(" ");
-        if (namearray[1] === "" || namearray[0] === "" || namearray[1] === undefined) {
-          err++;
-          $("#editName").addClass('errDisplay');
-          $('.nameErr').html('Enter full name')
-        } else {
           $("#editName").removeClass('errDisplay');
-          $('.nameErr').html('');
-        }
+          $('.editnameErr').html('');
       }
     } else {
       err++;
       $("#editName").addClass('errDisplay');
-      $('.nameErr').html('Enter full name');
+      $('.editnameErr').html('Enter First Name');
+    }
+    if (Surname !== '') {
+      if (!namePattern.test(Surname)) {
+        err++;
+        $("#editSurname").addClass('errDisplay');
+      $('.editSurnameErr').html('Enter Last Name');
+      } else {
+        $("#editSurname").removeClass('errDisplay');
+        $('.editSurnameErr').html('');
+      }
+    } else {
+      err++;
+      $("#editSurname").addClass('errDisplay');
+      $('.editSurnameErr').html('Enter Last Name');
     }
     if ($("#editemail").val() !== '') {
       if (!emailPattern.test($("#editemail").val().toString())) {
@@ -213,9 +214,10 @@ export class UsersComponent implements OnInit {
     this.Message = 'Please Wait...'
     var url = '/registration/data/update';
     var post_data = {
-      "UserId": $('#editsUserName').val(),
+      "UserId": $('#editemail').val(),
       "Password": $('#editpassword').val(),
-      "Name": $('#editName').val(),
+      "FirstName": $('#editName').val(),
+      "LastName":$('#editSurname').val(),
       "Mobile": $('#editmobile').val(),
       "Email": $('#editemail').val(),
       "Address": "work",
