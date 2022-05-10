@@ -215,7 +215,7 @@ export class MenuComponent implements OnInit {
     }
   }
   getSession() {
-    var url = "/session/get"
+    var url = "/get-session"
     this.serviceCall.getService(url).subscribe(data => {
       console.log(data);
     })

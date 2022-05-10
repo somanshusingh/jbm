@@ -65,7 +65,9 @@ label{width: 3.5cm;}
     .content {
       padding: 0;
   }
-  .smainDiv{background-color:white;min-height: 100vh;}
+  .smainDiv{background-color:white;
+    /* min-height: 100vh; */
+  }
     .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
     .bigDiv{background-color:#abd3f4;padding: 10px !important;min-height: 100vh;}
   }

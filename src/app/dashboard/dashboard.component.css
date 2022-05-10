@@ -11,36 +11,6 @@
 }
 #outerDiv{padding: 23px;}
 /* .editDiv{width: 26.5cm;} */
-@media only screen and (max-width: 768px) {
-  #outerDiv {
-    position: relative;
-  }
-
-  .editDiv {
-    width: unset;
-    padding: 0;
-    height: 11cm;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-
-  .Popup1 {
-    width: 300px !important;
-    margin-left: -150px !important;
-  }
-
-  .mobileWidth {
-    width: 7cm !important;
-  }
-  .Popup1edit{
-    width: 300px !important;
-    margin-left: -151px !important;
-  }
-  .viewLabel {
-    width: 3.5cm !important;
-  }
-  .imageDiv{width: 55px;}
-}
 
 .Popup1edit {
   display: none;
@@ -125,4 +95,35 @@
 
 .PopupMessagebutton {
   display: none;
+}
+@media only screen and (max-width: 768px) {
+  #outerDiv {
+    position: relative;
+    padding: 0px;
+  }
+
+  .editDiv {
+    width: unset;
+    padding: 0;
+    height: 11cm;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .Popup1 {
+    width: 300px !important;
+    margin-left: -150px !important;
+  }
+
+  .mobileWidth {
+    width: 7cm !important;
+  }
+  .Popup1edit{
+    width: 300px !important;
+    margin-left: -151px !important;
+  }
+  .viewLabel {
+    width: 3.5cm !important;
+  }
+  .imageDiv{width: 55px;}
 }

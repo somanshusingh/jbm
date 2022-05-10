@@ -168,4 +168,5 @@
   .viewLabel {
     width: 3.5cm !important;
   }
+  #outerDiv{padding: 0px;}
 }
