@@ -19,7 +19,7 @@
                 </div>
                 <div class="flex justify-start mt-1" style="padding-top: 12px;">
                     <button type="button" class="buttonCss" (click)="validateVehicleNumber()">Check</button>&nbsp;&nbsp;
-                    <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>
+                    <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button> -->
                 </div>
             </div>
         </div>
@@ -222,6 +222,7 @@
                     </div>
                     <div class="flex justify-end mt-4 tab1">
                         <div style="display:flex;">
+                            <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp;
                             <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
                                 style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
                                 (click)="active('Driver')">Next</button>

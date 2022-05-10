@@ -141,7 +141,7 @@
             </div>
             <div style="padding: 28px;">
                 <b><label class="viewLabel">Vehicle Number:</label><span id="ViewVehicleNumber"></span><br></b>
-                <b><label class="viewLabel">Insurance Expire Date: </label> <span
+                <b><label class="viewLabel">Ins Expire Date: </label> <span
                         id="ViewInsuranceExpireDate"></span><br></b>
                 <b><label class="viewLabel">PUCC Expire Date:</label><span id="ViewPUCCExpireDate"></span><br></b>
                 <b><label class="viewLabel">Make:</label><span id="ViewMake"></span><br></b>
@@ -149,8 +149,11 @@
                 <b><label class="viewLabel">Vehicle Type: </label><span id="ViewVehicleType"></span><br></b>
                 <b><label class="viewLabel">Created By:</label> <span id="ViewCreated_By"></span><br></b>
                 <b><label class="viewLabel">Created On: </label><span id="ViewCreated_On"></span><br></b>
-                <b><label class="viewLabel">Modified By:</label><span id="ViewModified_By"></span><br></b>
+                <div *ngIf="notUndefined == true">
+                <b><label class="viewLabel">Modified By:</label><span id="ViewModified_By"></span><br></b></div>
+                <!-- <div *ngIf="sourcenotUndefined == true"> -->
                 <b><label class="viewLabel">Source:</label><span id="ViewSource"></span><br></b>
+            <!-- </div> -->
                 <b><label class="viewLabel">Status:</label> <span id="ViewStatus"></span><br></b><br>
                 <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
             </div>

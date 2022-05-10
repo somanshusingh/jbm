@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit {
             if (source == 'view') {
               $('.userViewPopup1').show();
               $('#ViewUserUserId').html(this.data[i]['UserId']);
-              $('#ViewUserName').html(this.data[i]['Name']);
+              $('#ViewUserName').html(this.data[i]['FirstName'] +' '+ this.data[i]['LastName']);
               $('#ViewUserEmail').html(this.data[i]['Email']);
               $('#ViewUserMobile').html(this.data[i]['Mobile']);
               $('#ViewUserRole').html(this.data[i]['Role']);

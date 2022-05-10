@@ -73,11 +73,11 @@
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Insurance exp date" id="outEditvehicleIns_exp_date">
                                                 <span class="vehicleInsurance_exp_dateErr errMsg"></span>
                                             </div>
-                                            <div class="mt-3">
+                                            <!-- <div class="mt-3">
                                                 <label>Material</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material" id="outEditMaterial">
                                                 <span class="MaterialErr errMsg"></span>
-                                            </div>
+                                            </div> -->
                                             <!-- <div class="mt-3">
                                                 <label>Issued By</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By" id="outEditIssued_By">
@@ -122,12 +122,12 @@
                                                 <span class="VPUC_exp_dateErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>Material Type</label><br>
+                                                <label>Material</label><br>
                                                 <div class="mt-2 inputWidth">
                                                     <select data-search="true" class="tail-select w-full" id="outEditMaterial_Type" style="height: 38px;">
                                                         <option value="">Select Material Type</option>
-                                                        <option value="Admin">Iron</option>
-                                                        <option value="Manager">Steel</option>
+                                                        <option value="Iron">Iron</option>
+                                                        <option value="Steel">Steel</option>
                                                     </select>
                                                 </div>
                                                 <span class="Material_TypeErr errMsg"></span>
@@ -193,7 +193,7 @@
             <div style="padding: 28px;">
                 <b><label class="viewLabel">Trip_No:</label><span id="oViewTrip_No"></span><br></b>
                 <b><label class="viewLabel">Vehicle Number:</label><span id="oViewVehicleNo"></span><br></b>
-                <b><label class="viewLabel">Insurance Expire Date: </label> <span
+                <b><label class="viewLabel">Ins Expire Date: </label> <span
                         id="oViewInsurance_exp_date"></span><br></b>
                 <b><label class="viewLabel">PUCC Expire Date:</label><span id="oViewPUC_exp_date"></span><br></b>
                 <b><label class="viewLabel">Make:</label><span id="oViewMake"></span><br></b>
@@ -203,12 +203,12 @@
                 <b><label class="viewLabel">Driver_Name:</label> <span id="oViewDriver_Name"></span><br></b>
                 <b><label class="viewLabel">Driver_Number:</label> <span id="oViewDriver_Number"></span><br></b>
                 <!-- <b><label class="viewLabel">Gross_Weight:</label> <span id="oViewGross_Weight"></span><br></b> -->
-                <b><label class="viewLabel">Issued_By:</label> <span id="oViewIssued_By"></span><br></b>
-                <b><label class="viewLabel">Issued_Date:</label> <span id="oViewIssued_Date"></span><br></b>
-                <b><label class="viewLabel">Material:</label> <span id="oViewMaterial"></span><br></b>
-                <b><label class="viewLabel">Material_Type:</label><span id="oViewMaterial_Type"></span><br></b>
+                <!-- <b><label class="viewLabel">Issued_By:</label> <span id="oViewIssued_By"></span><br></b>
+                <b><label class="viewLabel">Issued_Date:</label> <span id="oViewIssued_Date"></span><br></b> -->
+                <!-- <b><label class="viewLabel">Material:</label> <span id="oViewMaterial"></span><br></b> -->
+                <b><label class="viewLabel">Material:</label><span id="oViewMaterial_Type"></span><br></b>
                 <b><label class="viewLabel">Qty_Mt_Weight:</label> <span id="oViewQty_Mt_Weight"></span><br></b>
-                <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b>
+                <!-- <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b> -->
                 <b><label class="viewLabel">Vehicle_Mapping:</label> <span id="oViewVehicle_Mapping"></span><br></b>
                 <br>
                 <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>

@@ -48,8 +48,8 @@ export class OutboundDashboardComponent implements OnInit {
               $('.oviewPopup1edit').show();
               $('#oViewTrip_No').html(this.data[i]['Trip_No']);
               $('#oViewVehicleNo').html(this.data[i]['VehicleNo']);
-              $('#oViewInsurance_exp_date').html(this.data[i]['Insurance_exp_date']);
-              $('#oViewPUC_exp_date').html(this.data[i]['PUC_exp_date']);
+              $('#oViewInsurance_exp_date').html(this.data[i]['Insurance_exp_date'].split('T')[0]);
+              $('#oViewPUC_exp_date').html(this.data[i]['PUC_exp_date'].split('T')[0]);
               $('#oViewMake').html(this.data[i]['Make']);
               $('#oViewModel').html(this.data[i]['Model']);
               $('#oViewAddress').html(this.data[i]['Address']);
@@ -59,7 +59,7 @@ export class OutboundDashboardComponent implements OnInit {
               $('#oViewIssued_By').html(this.data[i]['Issued_By']);
               $('#oViewIssued_Date').html(this.data[i]['Issued_Date']);
               $('#oViewMaterial').html(this.data[i]['Material']);
-              $('#oViewMaterial_Type').html(this.data[i]['Material_Type']);
+              $('#oViewMaterial_Type').html(this.data[i]['Material']);
               $('#oViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
               $('#oViewTime').html(this.data[i]['Time']);
               $('#oViewVehicle_Mapping').html(this.data[i]['Vehicle_Mapping']);
@@ -77,7 +77,7 @@ export class OutboundDashboardComponent implements OnInit {
               $('#outEditVnumber').val(this.data[i]['VehicleNo']);
               $('#outEditVehicleModel').val(this.data[i]['Model']);
               $('#outEditVPUC_exp_date').val(this.data[i]['PUC_exp_date'].split('T')[0]);
-              $('#outEditMaterial_Type').val(this.data[i]['Material_Type']);
+              $('#outEditMaterial_Type').val(this.data[i]['Material']);
               $('#outEditIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#outEditDriver_Number').val(this.data[i]['Driver_Number']);
               $('#outEditTrip_No').val(this.data[i]['Trip_No']);
@@ -209,8 +209,8 @@ export class OutboundDashboardComponent implements OnInit {
       "Model": $('#outEditVehicleModel').val(),
       "Insurance_exp_date": $('#outEditvehicleInsurance_exp_date').val(),
       "PUC_exp_date": $('#outEditVPUC_exp_date').val(),
-      "Material_Type": $('#outEditMaterial_Type').val(),
-      "Material": $('#outEditMaterial').val(),
+      // "Material_Type": $('#outEditMaterial_Type').val(),
+      "Material": $('#outEditMaterial_Type').val(),//$('#outEditMaterial').val(),
       "Issued_By":this.serviceCall.UserId,
       // "Issued_Date": $('#outEditIssued_Date').val(),
       "Driver_Name": $('#outEditDriver_Name').val(),

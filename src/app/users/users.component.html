@@ -25,7 +25,7 @@
                     </div>
                 </td>
                 <td class="Id">{{ user.UserId }}</td>
-                <td class="Created_By">{{ user.FirstName }}</td>
+                <td class="Created_By">{{ user.FirstName }}&nbsp;{{ user.LastName }}</td>
                 <td class="Insurance_exp_date">{{ user.Email }}</td>
                 <td class="Make">{{ user.Mobile }}</td>
                 <td class="Model">{{ user.Role }}</td>
@@ -159,10 +159,10 @@
                 <b><label class="viewLabel">Mobile Number:</label><span id="ViewUserMobile"></span><br></b>
                 <!-- <b><label class="viewLabel">Model: </label><span id="ViewModel"></span><br></b> -->
                 <b><label class="viewLabel">Role: </label><span id="ViewUserRole"></span><br></b>
-                <b><label class="viewLabel">Created By:</label> <span id="ViewUserCreated_By"></span><br></b>
-                <b><label class="viewLabel">Created On: </label><span id="ViewUserCreated_On"></span><br></b>
-                <b><label class="viewLabel">Modified By:</label><span id="ViewUserModified_By"></span><br></b>
-                <b><label class="viewLabel">Modified On:</label><span id="ViewUserModified_On"></span><br></b>
+                <!-- <b><label class="viewLabel">Created By:</label> <span id="ViewUserCreated_By"></span><br></b> -->
+                <!-- <b><label class="viewLabel">Created On: </label><span id="ViewUserCreated_On"></span><br></b> -->
+                <!-- <b><label class="viewLabel">Modified By:</label><span id="ViewUserModified_By"></span><br></b> -->
+                <!-- <b><label class="viewLabel">Modified On:</label><span id="ViewUserModified_On"></span><br></b> -->
                 <b><label class="viewLabel">Status:</label> <span id="ViewUserStatus"></span><br></b><br>
                 <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
             </div>

@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   Message;
   Edited=false;
+  notUndefined = true;
+  sourcenotUndefined = true;
   constructor(private serviceCall: ApiService) { }
 
   ngOnInit(): void {
@@ -66,6 +68,8 @@ export class DashboardComponent implements OnInit {
     })
   }
   viewData(source, vehicleNo) {
+    this.sourcenotUndefined = true;
+    this.notUndefined = true;
     for (var i = 0; i < this.data.length; i++) {
       for (var a in this.data[i]) {
         if (a == 'VehicleNo') {
@@ -73,16 +77,26 @@ export class DashboardComponent implements OnInit {
             if (source == 'view') {
               $('.Popup1edit').show();
               $('#ViewVehicleNumber').html(this.data[i]['VehicleNo']);
-              $('#ViewInsuranceExpireDate').html(this.data[i]['Insurance_exp_date']);
-              $('#ViewPUCCExpireDate').html(this.data[i]['PUC_exp_date']);
+              $('#ViewInsuranceExpireDate').html(this.data[i]['Insurance_exp_date'].split('T')[0]);
+              $('#ViewPUCCExpireDate').html(this.data[i]['PUC_exp_date'].split('T')[0]);
               $('#ViewMake').html(this.data[i]['Make']);
               $('#ViewModel').html(this.data[i]['Model']);
               $('#ViewVehicleType').html(this.data[i]['VehicleType']);
               $('#ViewCreated_By').html(this.data[i]['Created_By']);
               $('#ViewCreated_On').html(this.data[i]['Created_On']);
               $('#ViewModified_By').html(this.data[i]['Modified_By']);
+              if(this.data[i]['Modified_By'] == '' ||this.data[i]['Modified_By'] == null || this.data[i]['Modified_By'] == 'undefined'){
+                this.notUndefined = false;
+              }else{
+                this.notUndefined = true;
+              }
               $('#ViewModified_On').html(this.data[i]['Modified_On']);
               $('#ViewSource').html(this.data[i]['Source']);
+              if(this.data[i]['Source'] == '' ||this.data[i]['Source'] == null || this.data[i]['Source'] == 'undefined'){
+                this.sourcenotUndefined = false;
+              }else{
+                this.sourcenotUndefined = true;
+              }
               $('#ViewStatus').html(this.data[i]['Status']);
             }
             if(source == 'edit'){
