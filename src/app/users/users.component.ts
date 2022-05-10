@@ -77,6 +77,7 @@ export class UsersComponent implements OnInit {
               $('#editmobile').val(this.data[i]['Mobile']);
               $('#editemail').val(this.data[i]['Email']);
               $('#editrole').val(this.data[i]['Role']);
+              this.selectMenu();
             }
           }
         }
@@ -314,6 +315,46 @@ export class UsersComponent implements OnInit {
     } else {
       $('#editmenuOptionNone').hide();
     }
+    if (this.menuSelected == 0 || (isChecked && id=='SelectRole')) {
+      $('#menuOptionNone').show();
+    } else {
+      $('#menuOptionNone').hide();
+    }
   }
-
+  selectMenu(){
+    if($('#editrole').val() === 'Admin'){
+      $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
+      this.menuVal(true,'users');
+      this.menuVal(true,'vehicles');
+      this.menuVal(true,'inboundProcess');
+      this.menuVal(true,'outboundProcess');
+      this.menuVal(true,'registerCard');
+    }
+    else if($('#editrole').val() === 'Supervisor'){
+      $('#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', true);
+      $('#editcheckUsers,#editcheckVehicles').prop('checked', false);
+      this.menuVal(false,'users');
+      this.menuVal(false,'vehicles');
+      this.menuVal(true,'inboundProcess');
+      this.menuVal(true,'outboundProcess');
+      this.menuVal(true,'registerCard');
+    }
+    else if($('#editrole').val() === 'GateUser'){
+      $('#editcheckUsers').prop('checked', true);
+      $('#editcheckVehicles,#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', false);
+      this.menuVal(true,'users');
+      this.menuVal(false,'vehicles');
+      this.menuVal(false,'inboundProcess');
+      this.menuVal(false,'outboundProcess');
+      this.menuVal(false,'registerCard');
+    }else{
+        $('#editcheckUsers,#editcheckVehicles,#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', false);
+        this.menuVal(false,'users');
+        this.menuVal(false,'vehicles');
+        this.menuVal(false,'inboundProcess');
+        this.menuVal(false,'outboundProcess');
+        this.menuVal(false,'registerCard');
+        this.menuVal(true,'SelectRole');
+    }
+  }
 }

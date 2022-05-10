@@ -91,7 +91,7 @@
                                             <div class="mt-3">
                                                 <label>Role</label>
                                                 <div class="mt-2 inputWidth">
-                                                    <select data-search="true" class="tail-select w-full" id="editrole" style="height: 38px; border:1px solid #dee2e6;">
+                                                    <select data-search="true" (change)="selectMenu()" class="tail-select w-full" id="editrole" style="height: 38px; border:1px solid #dee2e6;">
                                                         <option value="">Select Role</option>
                                                         <option value="Admin">Admin</option>
                                                         <option value="Supervisor">Supervisor</option>
@@ -122,11 +122,11 @@
                                                         <span id="editmenuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
                                                     </span>
                                                     <ul class="items" style="position: absolute;background-color: white;width: 286px;padding-left: 13px;text-align:initial">
-                                                      <li><input type="checkbox" (click)="menuVal($event.target.checked,'users')"/>&nbsp;&nbsp;&nbsp;&nbsp;Users</li>
-                                                      <li><input type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"/>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles</li>
-                                                      <li><input type="checkbox" (click)="menuVal($event.target.checked,'inboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Inbound Process </li>
-                                                      <li><input type="checkbox" (click)="menuVal($event.target.checked,'outboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Outbound Process </li>
-                                                      <li><input type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
+                                                      <li><input id="editcheckUsers" type="checkbox" (click)="menuVal($event.target.checked,'users')"/>&nbsp;&nbsp;&nbsp;&nbsp;Users</li>
+                                                      <li><input id="editcheckVehicles" type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"/>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles</li>
+                                                      <li><input id="editcheckInbound" type="checkbox" (click)="menuVal($event.target.checked,'inboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Inbound Process </li>
+                                                      <li><input id="editcheckOutbound" type="checkbox" (click)="menuVal($event.target.checked,'outboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Outbound Process </li>
+                                                      <li><input id="editcheckRegister" type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
                                                     </ul>
                                                   </div>
                                             </div>
