@@ -14,6 +14,7 @@ export class InboundComponent implements OnInit {
   Message = '';
   uploadedFiles = [];
   uploadfile_name: any;
+  docStatus='';
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -302,6 +303,14 @@ export class InboundComponent implements OnInit {
   hideuploadPopup() {
     $(".uploadDoc").hide();
   }
+  hideuploadPopupok(){
+    if(this.docStatus !=='Documents Uploaded Successfully.'){
+      $('.afterUpload,.afterUploadButton').hide();
+      $(".toUpload").show();
+    }else{
+      $(".uploadDoc").hide();
+    }
+  }
   getFiles(event) {
     if (event.target.files.length != 0) {
       this.uploadedFiles.push(event.target.files[0]);
@@ -314,16 +323,27 @@ export class InboundComponent implements OnInit {
     if (this.uploadedFiles.length < 2) {
       $("#errUploadDoc").show();
     } else {
-      $("#errUploadDoc").hide();
+      $("#errUploadDoc, .toUpload").hide();
+      $('.afterUpload').show();
+      this.docStatus = 'Please Wait...'
       let formData = new FormData();
-      formData.append("file_1", this.uploadedFiles['0']);
-      console.log(JSON.stringify(formData))
-      formData.append("file_2", this.uploadedFiles['1'], this.uploadedFiles['1'].name);
-      console.log(JSON.stringify(formData))
-      let url = '';
-      this.serviceCall.signin(url, formData).subscribe(
+        formData.append("files[]", this.uploadedFiles[0],'rc.'+this.uploadedFiles['0'].name.split('.')[1]);
+        formData.append("files[]", this.uploadedFiles[1],'puc.'+this.uploadedFiles['1'].name.split('.')[1]);
+      // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
+      // formData.append("file_2", this.uploadedFiles['1'],'pucc');
+      formData.append("VehicleNo",$('#inVnumber').val().toString());
+      let url = '/vehicle/upload_document';
+      this.serviceCall.uploadFile(url, formData).subscribe(
         data => {
-
+          console.log(data);
+          $('.afterUploadButton').show();
+          if(data['status'] == 1){
+            this.docStatus ='Documents Uploaded Successfully.';
+          }else if(data['status'] == 0){
+            this.docStatus ='Documents Upload Failed.';
+          }else{
+            this.docStatus ="Technical issue, cannot upload."
+          }
         })
     }
   }

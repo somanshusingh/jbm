@@ -3732,7 +3732,7 @@
                                                 <i class="material-icons">lock</i>
                                             </span> -->
                                             <div class="form-line" style="width: 7cm;">
-                                                <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+                                                <input (keypress)="submit($event)" id="password" type="password" class="form-control" name="password" placeholder="Password" required>
                                             </div>
                                         </div>
                                         <div>

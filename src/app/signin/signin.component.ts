@@ -69,5 +69,11 @@ export class SigninComponent implements OnInit {
       this.signIn();
     }
   }
+  submit(event){
+    if(event.key === "Enter"){
+      event.preventDefault();
+      this.validate();
+    }
+  }
 
 }

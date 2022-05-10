@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     feather.replace();
+    this.getSession();
     // if(this.serviceCall.Role == 'Admin'){
     //    $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').show();
     // }
@@ -212,5 +213,11 @@ export class MenuComponent implements OnInit {
       this.Message= '';
       $('#popMessageReset,.PopupMessageShow').hide();
     }
+  }
+  getSession() {
+    var url = "/session/get"
+    this.serviceCall.getService(url).subscribe(data => {
+      console.log(data);
+    })
   }
 }

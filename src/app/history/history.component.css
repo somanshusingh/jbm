@@ -65,31 +65,24 @@ label {
 .registerCardHover:hover .hoverText {
     visibility: visible;
   }
-@media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
-  .inputWidth {
-    width: 7cm !important;
-  }
-  .Button {
-    margin-left: 131px;
-  }
-  .content {
-        padding: 0;
-    }
-    .Popup1{
-      margin-left: -153px !important;}
-      .mobileHeight{height: 34px !important;}
-      .smainDiv{background-color:white;}
-    .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
-    .bigDiv{background-color:#abd3f4;padding: 10px;min-height: 100vh;}
-    .vnin{
-      width: fit-content;
-      background-color:white;
-      border-radius: 3px;
-  }
-  #VehcileDataOut, #DriverDetailsOut ,#MaterialOut {
-      display: block;
-  }
+  .uploadDocOut {
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 310px;
+    left: 45%;
+    margin-left: -50px;
+    top: 20%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
 }
+#errUploadDoc{display: none;color: red;}
+.afterUploadOut,.afterUploadButtonOut{display: none;}
 
 .Popup1 {
   display: none;
@@ -126,4 +119,32 @@ label {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
+  .inputWidth {
+    width: 7cm !important;
+  }
+  .Button {
+    margin-left: 131px;
+  }
+  .content {
+        padding: 0;
+    }
+    .Popup1{
+      margin-left: -153px !important;}
+      .mobileHeight{height: 34px !important;}
+      .smainDiv{background-color:white;}
+    .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
+    .bigDiv{background-color:#abd3f4;padding: 10px;min-height: 100vh;}
+    .vnin{
+      width: fit-content;
+      background-color:white;
+      border-radius: 3px;
+  }
+  #VehcileDataOut, #DriverDetailsOut ,#MaterialOut {
+      display: block;
+  }
+  .uploadDocOut{
+    margin-left: -136px !important;
+}
 }

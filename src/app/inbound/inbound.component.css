@@ -149,6 +149,7 @@ label {
 #inboundForm {
     display: none;
 }
+.afterUpload,.afterUploadButton{display: none;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
     .inputWidth {
         width: 7cm !important;
@@ -172,7 +173,7 @@ label {
     }
 
     .Popup1 ,.uploadDoc{
-        margin-left: -153px !important;
+        margin-left: -136px !important;
     }
 
     .mobileHeight {

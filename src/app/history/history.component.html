@@ -233,6 +233,7 @@
                             </div>
                             <div class="flex justify-end mt-4 tab1">
                                 <div style="display:flex;">
+                                <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp;
                                 <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateVehicleDetails()">Next</button>
                             </div>
                             </div>
@@ -261,3 +262,34 @@
     </div>
 </div>
 <!--  Popup finish -->
+
+<!-- upload Doc Popup start -->
+
+<div>
+    <div class="uploadDocOut">
+        <div class="Popup2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
+                Upload Documents
+            </div>
+            <div style="padding: 28px;text-align: center;" class="toUploadOut">
+                <span style="float: left;"><b>RC Copy :</b></span><br>
+                <input type="file" id="Rc_copy1Out" (change)="getFiles($event)" /><br><br>
+                <span style="float: left;"><b>PUCC :</b></span><br>
+                <input type="file" id="Rc_copy2Out" (change)="getFiles($event)" /><br><br>
+                <span id="errUploadDocOut">Please Select Two Files</span>
+            </div>
+            <div style="padding: 28px;text-align: center;" class="afterUploadOut">
+                {{docStatus}}
+            </div>
+        </div>
+        <div class="Popup3 toUploadOut" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button class="Popupbutton" (click)="uploadDocs()">Upload</button>&nbsp;&nbsp;
+            <button class="Popupbutton" (click)="hideuploadPopup()">Close</button>
+        </div>
+        <div class="Popup3 afterUploadButtonOut" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button class="Popupbutton" (click)="hideuploadPopupok()">OK</button>
+        </div>
+    </div>
+</div>
+<!-- upload Doc Popup finish -->

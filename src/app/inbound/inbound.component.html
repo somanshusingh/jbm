@@ -172,8 +172,8 @@
                             </div>
                             <div class="mt-3">
                                 <label>LR Number</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth"
-                                    placeholder="LR Number" id="lrNumber">
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="LR Number"
+                                    id="lrNumber">
                                 <span class="lrNumberErr errMsg"></span>
                             </div>
                             <div class="mt-3">
@@ -222,7 +222,8 @@
                     </div>
                     <div class="flex justify-end mt-4 tab1">
                         <div style="display:flex;">
-                            <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="buttonCss" (click)="uploadDocument()">Upload
+                                Document</button>&nbsp;&nbsp;&nbsp;
                             <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
                                 style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
                                 (click)="active('Driver')">Next</button>
@@ -263,16 +264,23 @@
                 style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
                 Upload Documents
             </div>
-            <div style="padding: 28px;text-align: center;">
-            <b>RC Copy</b><br><br>
-            <input type="file" id="Rc_copy1" (change)="getFiles($event)"/><br><br>
-            <input type="file" id="Rc_copy2" (change)="getFiles($event)"/><br><br>
-            <span id="errUploadDoc">Please Select Two Files</span>
+            <div style="padding: 28px;text-align: center;" class="toUpload">
+                <span style="float: left;"><b>RC Copy :</b></span><br>
+                <input type="file" id="Rc_copy1" (change)="getFiles($event)" /><br><br>
+                <span style="float: left;"><b>PUCC :</b></span><br>
+                <input type="file" id="Rc_copy2" (change)="getFiles($event)" /><br><br>
+                <span id="errUploadDoc">Please Select Two Files</span>
+            </div>
+            <div style="padding: 28px;text-align: center;" class="afterUpload">
+                {{docStatus}}
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+        <div class="Popup3 toUpload" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
             <button class="Popupbutton" (click)="uploadDocs()">Upload</button>&nbsp;&nbsp;
             <button class="Popupbutton" (click)="hideuploadPopup()">Close</button>
+        </div>
+        <div class="Popup3 afterUploadButton" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+            <button class="Popupbutton" (click)="hideuploadPopupok()">OK</button>
         </div>
     </div>
 </div>
