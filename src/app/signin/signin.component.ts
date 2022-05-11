@@ -30,10 +30,10 @@ export class SigninComponent implements OnInit {
           if (data['status'] == 1) {
             this.Message = data['msg'];
             this.Router.navigate(['/dashboard']);
-            this.serviceCall.Role= data['msg']['Role'];
-            this.serviceCall.UserName= data['msg']['Name'];
-            this.serviceCall.Allowed_Menu= data['msg']['Allowed_Menu'];
-            this.serviceCall.UserId= data['msg']['UserId'];
+            // this.serviceCall.Role= data['msg']['Role'];
+            // this.serviceCall.UserName= data['msg']['Name'];
+            // this.serviceCall.Allowed_Menu= data['msg']['Allowed_Menu'];
+            // this.serviceCall.UserId= data['msg']['UserId'];
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

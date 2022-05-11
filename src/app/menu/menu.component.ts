@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   Role = 'Role';
   toggle='show';
   Message='';
+  data :any;
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -45,13 +46,13 @@ export class MenuComponent implements OnInit {
         $('.mobileOutboundProcess,.desktopOutboundProcess').show();
       }
     }
-    if (this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null) {
-       this.Router.navigate(['/signin']);
-    }
-    if (this.serviceCall.UserName !== '') {
-      this.UserName = this.serviceCall.UserName;
-      this.Role = this.serviceCall.Role;
-    }
+    // if (this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null) {
+    //    this.Router.navigate(['/signin']);
+    // }
+    // if (this.serviceCall.UserName !== '') {
+    //   this.UserName = this.serviceCall.UserName;
+    //   this.Role = this.serviceCall.Role;
+    // }
     $('.dashboarddiv').hide();
     $('.signupdiv').hide();
     $('.vehiclediv').hide();
@@ -218,6 +219,46 @@ export class MenuComponent implements OnInit {
     var url = "/get-session"
     this.serviceCall.getService(url).subscribe(data => {
       console.log(data);
+      this.data = data;
+      if(this.data.hasOwnProperty('status') && this.data['status'] == 1 ){
+        if(this.data.hasOwnProperty('msg') && this.data['msg'].hasOwnProperty('user')){
+          this.serviceCall.UserId =this.data['msg']['user'].hasOwnProperty('UserId') ? this.data['msg']['user']['UserId'] : '';
+          this.serviceCall.Role=this.data['msg']['user'].hasOwnProperty('Role') ? this.data['msg']['user']['Role'] : '';
+          this.serviceCall.UserName=this.data['msg']['user'].hasOwnProperty('Name') ? this.data['msg']['user']['Name'] : '';
+          this.serviceCall.Allowed_Menu=this.data['msg']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg']['user']['Allowed_Menu'] : {};
+          if(this.serviceCall.UserId == ''){
+            this.Router.navigate(['/signin']);
+          }
+        }else{
+          this.Router.navigate(['/signin'])
+        }
+      }else{
+        this.Router.navigate(['/signin'])
+      }
+      if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
+        if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
+          $('.mobileUsers ,.desktopUsers').show();
+        }
+        if (this.serviceCall.Allowed_Menu['vehicles'] == 'yes') {
+          $('.mobileVehicles ,.desktopVehicles').show();
+        }
+        if (this.serviceCall.Allowed_Menu['registerCard'] == 'yes') {
+          $('.mobileRegisterCard,.desktopRegisterCard').show();
+        }
+        if (this.serviceCall.Allowed_Menu['inboundPocess'] == 'yes') {
+          $('.mobileInboundProcess,.desktopInboundProcess').show();
+        }
+        if (this.serviceCall.Allowed_Menu['outboundProcess'] == 'yes') {
+          $('.mobileOutboundProcess,.desktopOutboundProcess').show();
+        }
+      }
+
+    })
+  }
+  endSession(){
+    var url = "/end-session"
+    this.serviceCall.getService(url).subscribe(data => {
+      this.Router.navigate(['/signin']);
     })
   }
 }
