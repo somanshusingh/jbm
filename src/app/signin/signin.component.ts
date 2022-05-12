@@ -18,12 +18,15 @@ export class SigninComponent implements OnInit {
 
   signIn() {
     $('#loginButton, #username, #password').attr("disabled", 'disabled');
-    var url = '/registration/signin';
+    // var url = '/registration/signin';
+    var url = '/registration/signin/'+$('#username').val() +'/'+ $('#password').val();
+
     var post_data = {
       "UserId": $('#username').val(),//"ID3",
       "Password": $('#password').val()//"12345"
     };
-    this.serviceCall.signin(url, post_data).subscribe(
+    // this.serviceCall.signin(url, post_data).subscribe(
+      this.serviceCall.getService(url).subscribe(
       data => {
     $('#loginButton, #username, #password').removeAttr("disabled");
         if (data.hasOwnProperty('status')) {

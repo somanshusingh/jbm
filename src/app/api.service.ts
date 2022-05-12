@@ -15,7 +15,7 @@ export class ApiService {
     // url = 'http://localhost:5000'+ url;
     url = "https://jbmapp.herokuapp.com" + url; 
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post(url, JSON.stringify(post_data), { headers: headers ,withCredentials: true });
+    return this.http.post(url, JSON.stringify(post_data), { headers: headers});
   }
   uploadFile(url,post_data){
     // url = 'http://localhost:5000'+ url;
