@@ -218,7 +218,7 @@ export class MenuComponent implements OnInit {
   }
   getSession() {
     var url = "/get-session"
-    this.serviceCall.session(url).subscribe(data => {
+    this.serviceCall.getService(url).subscribe(data => {
       debugger;
       console.log(data);
       this.data = data;
@@ -259,7 +259,7 @@ export class MenuComponent implements OnInit {
   }
   endSession() {
     var url = "/end-session"
-    this.serviceCall.session(url).subscribe(data => {
+    this.serviceCall.getService(url).subscribe(data => {
       // this.Router.navigate(['/signin']);
       console.log(data);
     })

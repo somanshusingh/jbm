@@ -15,30 +15,17 @@ export class ApiService {
     // url = 'http://localhost:5000'+ url;
     url = "https://jbmapp.herokuapp.com" + url; 
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post(url, JSON.stringify(post_data), { headers: headers });
+    return this.http.post(url, JSON.stringify(post_data), { headers: headers ,withCredentials: true });
   }
   uploadFile(url,post_data){
     // url = 'http://localhost:5000'+ url;
     url = "https://jbmapp.herokuapp.com" + url;
     return this.http.post(url,post_data);
   }
-  signup(url,post_data){
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post(url, JSON.stringify(post_data), { headers: headers });
-  }
   getService(url){
     // url = 'http://localhost:5000'+ url;
     
     url = "https://jbmapp.herokuapp.com" + url; 
-    return this.http.get(url);
-  }
-  session(url){
-    // url = 'http://localhost:5000'+ url;
-    // const headers = new HttpHeaders().set('Access-Control-Allow-Origin','http://localhost:5000');
-    url = "https://jbmapp.herokuapp.com" + url; 
-    // let options = { headers: new HttpHeaders({
-    //   'Access-Control-Allow-Origin':'http://localhost:4200'
-    // }), withCredentials: true };
     return this.http.get(url,{withCredentials: true });
   }
 }
