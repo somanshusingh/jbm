@@ -28,7 +28,17 @@ export class ApiService {
   }
   getService(url){
     // url = 'http://localhost:5000'+ url;
+    
     url = "https://jbmapp.herokuapp.com" + url; 
     return this.http.get(url);
+  }
+  session(url){
+    // url = 'http://localhost:5000'+ url;
+    // const headers = new HttpHeaders().set('Access-Control-Allow-Origin','http://localhost:5000');
+    url = "https://jbmapp.herokuapp.com" + url; 
+    // let options = { headers: new HttpHeaders({
+    //   'Access-Control-Allow-Origin':'http://localhost:4200'
+    // }), withCredentials: true };
+    return this.http.get(url,{withCredentials: true });
   }
 }

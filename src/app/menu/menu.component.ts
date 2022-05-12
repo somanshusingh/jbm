@@ -9,16 +9,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  UserName = ' User Name';
-  Role = 'Role';
-  toggle='show';
-  Message='';
-  data :any;
+  UserName;
+  Role = '';
+  toggle = 'show';
+  Message = '';
+  data: any;
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
     feather.replace();
     this.getSession();
+    this.getSessionAjax();
     // if(this.serviceCall.Role == 'Admin'){
     //    $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').show();
     // }
@@ -139,32 +140,32 @@ export class MenuComponent implements OnInit {
   //   $('.'+className).addClass('side-menu--active');
   // }
 
-  hideMenuNames(){
+  hideMenuNames() {
     $('.hideMenuOnClick').toggle();
-    if(this.toggle =='show'){
+    if (this.toggle == 'show') {
       this.toggle = 'hide';
-      $('.side-nav').attr('style','width: 88px;');
+      $('.side-nav').attr('style', 'width: 88px;');
       $('#subs').hide();
       $('.disableOnClick').addClass('disabled');
-      $('.disableOnClick').attr('disabled','disabled');
-    }else{
+      $('.disableOnClick').attr('disabled', 'disabled');
+    } else {
       this.toggle = 'show';
-      $('.side-nav').attr('style','width: 230px;');
+      $('.side-nav').attr('style', 'width: 230px;');
       $('.disableOnClick').removeClass('disabled');
     }
 
   }
-  hideProfilePopup(){
+  hideProfilePopup() {
     $(".Popup1Profile").hide();
   }
-  showChangeOpt(){
+  showChangeOpt() {
     $('.Popup1Profile,#popOptions,.PopupMessagebutton').show();
-    this.Message= '';
-      $('#popMessageReset,.PopupMessageShow').hide();
-      $("#menuPassword").val('');
-      $("#menuConfirmPassword").val('');
+    this.Message = '';
+    $('#popMessageReset,.PopupMessageShow').hide();
+    $("#menuPassword").val('');
+    $("#menuConfirmPassword").val('');
   }
-  changePassword(){
+  changePassword() {
     var err = 0
     if ($("#menuPassword").val() !== '') {
       $("#menuPassword").removeClass('errDisplay');
@@ -174,7 +175,7 @@ export class MenuComponent implements OnInit {
       $("#menuPassword").addClass('errDisplay');
       $("#passwordErr").html('Enter Password');
     }
-    if ($("#menuConfirmPassword").val() !== '' && $("#menuConfirmPassword").val() == $("#menuPassword").val() ) {
+    if ($("#menuConfirmPassword").val() !== '' && $("#menuConfirmPassword").val() == $("#menuPassword").val()) {
       $("#menuConfirmPassword").removeClass('errDisplay');
       $("#menucPasswordErr").html('');
     } else {
@@ -184,7 +185,7 @@ export class MenuComponent implements OnInit {
     }
     if (err == 0) {
       $('#popOptions,.PopupMessagebutton').hide();
-      this.Message= 'Please Wait...';
+      this.Message = 'Please Wait...';
       $('#popMessageReset').show();
       var url = "/registration/pwd/update";
       var post_data = {
@@ -197,42 +198,43 @@ export class MenuComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = "Password Changed!";
-          }else{
-          this.Message = "User does not exists.";
+          } else {
+            this.Message = "User does not exists.";
           }
-        }else{
+        } else {
           this.Message = "Technical Issue.";
         }
       })
     }
   }
-  hidePopupMsg(){
-    if(this.Message == "Password Changed!" ){
+  hidePopupMsg() {
+    if (this.Message == "Password Changed!") {
       $(".Popup1Profile").hide();
-    }else{
+    } else {
       $('#popOptions,.PopupMessagebutton').show();
-      this.Message= '';
+      this.Message = '';
       $('#popMessageReset,.PopupMessageShow').hide();
     }
   }
   getSession() {
     var url = "/get-session"
-    this.serviceCall.getService(url).subscribe(data => {
+    this.serviceCall.session(url).subscribe(data => {
+      debugger;
       console.log(data);
       this.data = data;
-      if(this.data.hasOwnProperty('status') && this.data['status'] == 1 ){
-        if(this.data.hasOwnProperty('msg') && this.data['msg'].hasOwnProperty('user')){
-          this.serviceCall.UserId =this.data['msg']['user'].hasOwnProperty('UserId') ? this.data['msg']['user']['UserId'] : '';
-          this.serviceCall.Role=this.data['msg']['user'].hasOwnProperty('Role') ? this.data['msg']['user']['Role'] : '';
-          this.serviceCall.UserName=this.data['msg']['user'].hasOwnProperty('Name') ? this.data['msg']['user']['Name'] : '';
-          this.serviceCall.Allowed_Menu=this.data['msg']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg']['user']['Allowed_Menu'] : {};
-          if(this.serviceCall.UserId == ''){
+      if (this.data.hasOwnProperty('status') && this.data['status'] == 1) {
+        if (this.data.hasOwnProperty('msg') && this.data['msg'].hasOwnProperty('user')) {
+          this.serviceCall.UserId = this.data['msg']['user'].hasOwnProperty('UserId') ? this.data['msg']['user']['UserId'] : '';
+          this.serviceCall.Role = this.data['msg']['user'].hasOwnProperty('Role') ? this.data['msg']['user']['Role'] : '';
+          this.serviceCall.UserName = this.data['msg']['user'].hasOwnProperty('Name') ? this.data['msg']['user']['Name'] : '';
+          this.serviceCall.Allowed_Menu = this.data['msg']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg']['user']['Allowed_Menu'] : {};
+          if (this.serviceCall.UserId == '') {
             this.Router.navigate(['/signin']);
           }
-        }else{
+        } else {
           this.Router.navigate(['/signin'])
         }
-      }else{
+      } else {
         this.Router.navigate(['/signin'])
       }
       if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
@@ -255,10 +257,25 @@ export class MenuComponent implements OnInit {
 
     })
   }
-  endSession(){
+  endSession() {
     var url = "/end-session"
-    this.serviceCall.getService(url).subscribe(data => {
-      this.Router.navigate(['/signin']);
+    this.serviceCall.session(url).subscribe(data => {
+      // this.Router.navigate(['/signin']);
+      console.log(data);
     })
+  }
+  getSessionAjax(){
+    $.ajax({
+      url: "https://jbmapp.herokuapp.com/get-session",
+      xhrFields: {
+        withCredentials: true
+      },
+      type: 'GET',
+      dataType: 'json', // added data type
+      success: function (res) {
+        // $(".resDataNew").html(JSON.stringify(res))
+        console.log('getSessionAjax ---------- '+ JSON.stringify(res));
+      }
+    });
   }
 }
