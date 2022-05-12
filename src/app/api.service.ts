@@ -25,6 +25,6 @@ export class ApiService {
   getService(url){
     // url = 'http://localhost:5000'+ url;
     url = "https://jbmapp.herokuapp.com" + url; 
-    return this.http.get(url);
+    return this.http.get(url, {withCredentials:true});
   }
 }
