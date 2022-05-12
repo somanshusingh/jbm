@@ -19,17 +19,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     feather.replace();
     this.getSession();
-    this.getSessionAjax();
-    // if(this.serviceCall.Role == 'Admin'){
-    //    $('.mobileVehicles, .mobileUsers ,.desktopVehicles ,.desktopUsers').show();
-    // }
-    // if(this.serviceCall.Role == 'Supervisor'){
-    //    $('.mobileInboundProcess,.mobileOutboundProcess,.desktopInboundProcess,.desktopOutboundProcess').show();
-    // }
-    // if(this.serviceCall.Role == 'GateUser'){
-    //    $('.mobileRegisterCard,.desktopRegisterCard').show();
-    // }
-    // this.serviceCall.Allowed_Menu = {"users":"yes","vehicles":"yes","registerCard":"yes","inboundPocess":"yes","outboundProcess":"yes"};
     if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
       if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
         $('.mobileUsers ,.desktopUsers').show();
@@ -76,17 +65,6 @@ export class MenuComponent implements OnInit {
       $('.' + pElement).find('.side-menu__sub-icon').addClass('transform rotate-180');
       $('.' + childName).addClass('side-menu__sub-open');
     }
-
-    // if(pElement === 'vehicles'){
-    //   $('.signupdiv').hide();
-    //   $('.dashboarddiv').fadeIn();
-    // } else if (pElement === 'users'){
-    //   $('.dashboarddiv').hide();
-    //   $('.signupdiv').fadeIn();
-    // } else{
-    //   $('.dashboarddiv').hide();
-    //   $('.signupdiv').hide();
-    // }
   }
   hideshowMobile(event, childName) {
     var target = event.currentTarget;
@@ -135,10 +113,6 @@ export class MenuComponent implements OnInit {
       $('.menuToggleMobile').attr('style', 'display:block');
     }
   }
-  // addActive(className){
-  //   $('.desktopVehiclesOption, .desktopUsersOption').removeClass('side-menu--active');
-  //   $('.'+className).addClass('side-menu--active');
-  // }
 
   hideMenuNames() {
     $('.hideMenuOnClick').toggle();
@@ -218,15 +192,17 @@ export class MenuComponent implements OnInit {
   }
   getSession() {
     var url = "/get-session"
-    this.serviceCall.getService(url).subscribe(data => {
-      debugger;
+    this.serviceCall.getSession(url).subscribe(data => {
+      // debugger;
       console.log(data);
       this.data = data;
       if (this.data.hasOwnProperty('status') && this.data['status'] == 1) {
         if (this.data.hasOwnProperty('msg') && this.data['msg'].hasOwnProperty('user')) {
           this.serviceCall.UserId = this.data['msg']['user'].hasOwnProperty('UserId') ? this.data['msg']['user']['UserId'] : '';
           this.serviceCall.Role = this.data['msg']['user'].hasOwnProperty('Role') ? this.data['msg']['user']['Role'] : '';
+          this.Role =this.serviceCall.Role;
           this.serviceCall.UserName = this.data['msg']['user'].hasOwnProperty('Name') ? this.data['msg']['user']['Name'] : '';
+          this.UserName = this.serviceCall.UserName;
           this.serviceCall.Allowed_Menu = this.data['msg']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg']['user']['Allowed_Menu'] : {};
           if (this.serviceCall.UserId == '') {
             this.Router.navigate(['/signin']);
@@ -259,23 +235,10 @@ export class MenuComponent implements OnInit {
   }
   endSession() {
     var url = "/end-session"
-    this.serviceCall.getService(url).subscribe(data => {
+    this.serviceCall.getSession(url).subscribe(data => {
       // this.Router.navigate(['/signin']);
       console.log(data);
+      window.location.reload();
     })
-  }
-  getSessionAjax(){
-    $.ajax({
-      url: "https://jbmapp.herokuapp.com/get-session",
-      xhrFields: {
-        withCredentials: true
-      },
-      type: 'GET',
-      dataType: 'json', // added data type
-      success: function (res) {
-        // $(".resDataNew").html(JSON.stringify(res))
-        console.log('getSessionAjax ---------- '+ JSON.stringify(res));
-      }
-    });
   }
 }

@@ -26,7 +26,7 @@ position: absolute;top:17px;left:818px;font-style:normal;font-family:Montserrat;
     position: absolute ;background-color: #00aeef;
     -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;
     text-align:center;top:294px;left:102px;text-align:center;font-weight:400;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:13px;line-height:36px;color:#ffffff;letter-spacing:0.5px;border-radius:6px;white-space:normal;}
-.envimg{height: 100%;}
+.envimg{height: 100%;width: 100%;}
 #layerslider_1_61w4xch7dyhe{height:100vh;margin:0 auto;margin-bottom: 0px;}
 @media only screen and (max-width: 768px) {
     .sign{position: absolute;top:118px;left:59px !important;font-style:normal;font-family:Montserrat;color:#ffffff;border-left: 0px solid white;padding: 0;}

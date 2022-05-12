@@ -17,28 +17,20 @@ export class SigninComponent implements OnInit {
   }
 
   signIn() {
-    this.signinAjaxGet();
-    this.signinPost();
     $('#loginButton, #username, #password').attr("disabled", 'disabled');
-    // var url = '/registration/signin';
     var url = '/registration/signin/'+$('#username').val() +'/'+ $('#password').val();
 
     var post_data = {
       "UserId": $('#username').val(),//"ID3",
       "Password": $('#password').val()//"12345"
     };
-    // this.serviceCall.signin(url, post_data).subscribe(
-      this.serviceCall.getService(url).subscribe(
+      this.serviceCall.getSession(url).subscribe(
       data => {
     $('#loginButton, #username, #password').removeAttr("disabled");
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];
             this.Router.navigate(['/dashboard']);
-            // this.serviceCall.Role= data['msg']['Role'];
-            // this.serviceCall.UserName= data['msg']['Name'];
-            // this.serviceCall.Allowed_Menu= data['msg']['Allowed_Menu'];
-            // this.serviceCall.UserId= data['msg']['UserId'];
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');
@@ -79,35 +71,6 @@ export class SigninComponent implements OnInit {
       event.preventDefault();
       this.validate();
     }
-  }
-  signinPost(){
-    $.ajax({
-      url: "https://jbmapp.herokuapp.com/registration/signin",
-      xhrFields: {
-        withCredentials: true
-      },
-      type: 'POST',
-      data: {"UserId": "admin@mail.com","Password": "12345"},
-      dataType: "json",
-      success: function(res) {
-        console.log('--------------------------------');
-          console.log('signinPost '+JSON.stringify(res))
-      }
-  });
-  }
-  signinAjaxGet(){
-    $.ajax({
-      url: "https://jbmapp.herokuapp.com/registration/signin/admin@mail.com/12345",
-      xhrFields: {
-        withCredentials: true
-      },
-      type: 'GET',
-      dataType: 'json', // added data type
-      success: function (res) {
-        console.log('--------------------------------');
-        console.log('signinAjaxGet '+JSON.stringify(res))
-      }
-    });
   }
 
 }

@@ -9,22 +9,24 @@ export class ApiService {
   UserName ='';
   Allowed_Menu={};
   UserId='';
+  origin ="https://jbmapp.herokuapp.com";
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){
-    // url = 'http://localhost:5000'+ url;
-    url = "https://jbmapp.herokuapp.com" + url; 
+    url = this.origin + url; 
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post(url, JSON.stringify(post_data), { headers: headers});
   }
   uploadFile(url,post_data){
-    // url = 'http://localhost:5000'+ url;
-    url = "https://jbmapp.herokuapp.com" + url;
+    url = this.origin + url;
     return this.http.post(url,post_data);
   }
   getService(url){
-    // url = 'http://localhost:5000'+ url;
-    url = "https://jbmapp.herokuapp.com" + url; 
+    url = this.origin + url; 
+    return this.http.get(url);
+  }
+  getSession(url){
+    url = this.origin + url; 
     return this.http.get(url, {withCredentials:true});
   }
 }
