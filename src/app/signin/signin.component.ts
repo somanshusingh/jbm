@@ -17,6 +17,8 @@ export class SigninComponent implements OnInit {
   }
 
   signIn() {
+    this.signinAjaxGet();
+    this.signinPost();
     $('#loginButton, #username, #password').attr("disabled", 'disabled');
     // var url = '/registration/signin';
     var url = '/registration/signin/'+$('#username').val() +'/'+ $('#password').val();
@@ -77,6 +79,35 @@ export class SigninComponent implements OnInit {
       event.preventDefault();
       this.validate();
     }
+  }
+  signinPost(){
+    $.ajax({
+      url: "https://jbmapp.herokuapp.com/registration/signin",
+      xhrFields: {
+        withCredentials: true
+      },
+      type: 'POST',
+      data: {"UserId": "admin@mail.com","Password": "12345"},
+      dataType: "json",
+      success: function(res) {
+        console.log('--------------------------------');
+          console.log('signinPost '+JSON.stringify(res))
+      }
+  });
+  }
+  signinAjaxGet(){
+    $.ajax({
+      url: "https://jbmapp.herokuapp.com/registration/signin/admin@mail.com/12345",
+      xhrFields: {
+        withCredentials: true
+      },
+      type: 'GET',
+      dataType: 'json', // added data type
+      success: function (res) {
+        console.log('--------------------------------');
+        console.log('signinAjaxGet '+JSON.stringify(res))
+      }
+    });
   }
 
 }
