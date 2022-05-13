@@ -80,17 +80,17 @@
                                             </div> -->
                                             <div>
                                                 <label>Driver Name</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Name" id="editinDriver_Name">
+                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Name" id="editinDriver_Name" maxlength="50"  (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Driver_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Consignee Name</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Consignee Name" id="editinConsignee_Name" >
+                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Consignee Name" id="editinConsignee_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Consignee_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Quantity Material Weight</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="editqty_mt_Weight">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="editqty_mt_Weight" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
                                                 <span class="qty_mt_WeightErr errMsg"></span>
                                             </div>
                                             <!-- <div class="mt-3">
@@ -100,13 +100,13 @@
                                             </div> -->
                                             <div class="mt-3">
                                                 <label>Address</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address" id="editinAddress">
+                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address" id="editinAddress" maxlength="150">
                                                 <span class="AddressErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>LR Number</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="LR Number" id="editinlrNumber">
+                                                    placeholder="LR Number" id="editinlrNumber" maxlength="10" (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="editinlrNumberErr errMsg"></span>
                                             </div>
                                         </div>
@@ -131,8 +131,8 @@
                                                 <div class="mt-2 inputWidth">
                                                     <select data-search="true" class="tail-select w-full" id="editinMaterial_Type" style="height: 38px;border:1px solid #dee2e6;">
                                                         <option value="">Select Material Type</option>
-                                                        <option value="Iron">Iron</option>
-                                                        <option value="Steel">Steel</option>
+                                                        <!-- <option value="Iron">Iron</option>
+                                                        <option value="Steel">Steel</option> -->
                                                     </select>
                                                     <span class="roleErr errMsg"></span>
                                                 </div>
@@ -145,7 +145,7 @@
                                             </div> -->
                                             <div class="mt-3">
                                                 <label>Driver Number</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Number" id="editinDriver_Number">
+                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Number" id="editinDriver_Number" (keyup)="ValidateNumber($event)" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Mobile')">
                                                 <span class="Driver_NumberErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">

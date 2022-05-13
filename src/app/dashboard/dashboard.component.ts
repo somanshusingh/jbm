@@ -146,6 +146,9 @@ export class DashboardComponent implements OnInit {
         } else {
           this.Message = 'Technical Issue ,Please Retry'
         }
+      },(error)=>{
+        $('.PopupMessagebutton').show();
+        this.Message = 'Technical Issue ,Please Retry';
       }
     )
   }
@@ -197,6 +200,7 @@ export class DashboardComponent implements OnInit {
   hideMessagePopup(){
     $('.Popup1message').hide();
     this.Edited = true;
-    this.getData();
+    // this.getData();
+    window.location.reload();
   }
 }

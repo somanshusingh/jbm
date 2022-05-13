@@ -58,6 +58,9 @@ export class InboundComponent implements OnInit {
           this.Message = 'Something went wrong.';
           $('.Popup1').show();
         }
+      },(error)=>{
+        this.Message = 'Something went wrong.';
+        $('.Popup1').show();
       }
     )
   }
@@ -108,6 +111,9 @@ export class InboundComponent implements OnInit {
         } else {
           this.Message = 'Something went wrong.';
         }
+      },(error)=>{
+        this.Message = 'Something went wrong.';
+        $('.Popup1').show();
       })
   }
 
@@ -288,6 +294,13 @@ export class InboundComponent implements OnInit {
     $('.' + className).addClass('top-menu--active');
     if (className == "Material") {
       $('#MaterialIn ,.addButtonin').show();
+      if(this.serviceCall.Material.length >0){
+        $('#inMaterial_Type').empty();
+        $('#inMaterial_Type').append("<option value=''>Select Material Type</option>");
+        for(var a in this.serviceCall.Material){
+          $('#inMaterial_Type').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
+      }
+      }
     }
     if (className == "Driver") {
       $('#DriverDetailsIn,.tab2').show();
@@ -344,7 +357,29 @@ export class InboundComponent implements OnInit {
           }else{
             this.docStatus ="Technical issue, cannot upload."
           }
+        },(error)=>{
+          $('.afterUploadButton').show();
+          this.docStatus ="Technical issue, cannot upload."
         })
     }
+  }
+  ValidateNumber(event) {
+    if (!(/^[0-9]*$/.test(event.target.value))) {
+      event.target.value = "";
+    }
+  }
+  KeyPressEvent(event: any, type) {
+    let pattern;
+    switch (type) {
+      case 'Text': pattern = /[a-zA-Z ]/; break;
+      case 'OnlyText': pattern = /[a-zA-Z]/; break;
+      case 'Number': pattern = /[0-9\+\-\ ]/; break;
+      case 'Mobile': pattern = /[0-9\+\-\ ]/; break;
+      case 'Double': pattern = /^[0-9]*[.]?[0-9]*$/; break;
+      case 'VarChar': pattern = /[a-zA-Z0-9 ]/; break;
+      //case 'PAN':         pattern = /[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}/; break;
+    }
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) { event.preventDefault(); }
   }
 }

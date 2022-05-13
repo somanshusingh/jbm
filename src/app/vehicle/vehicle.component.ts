@@ -71,6 +71,10 @@ export class VehicleComponent implements OnInit {
         } else {
           this.Message = 'Technical Issue ,Please Retry'
         }
+      },
+      (error)=>{
+        $(".Popup1").show();
+        this.Message = 'Technical Issue ,Please Retry'
       }
     )
   }

@@ -245,6 +245,10 @@ export class UsersComponent implements OnInit {
         } else {
           this.Message = 'Technical Issue ,Please Retry'
         }
+      },
+      (error)=>{
+        $(".UserPopupMessagebutton").show();
+        this.Message = 'Technical Issue ,Please Retry'
       }
     )
   }
@@ -254,7 +258,8 @@ export class UsersComponent implements OnInit {
   hideMessagePopup() {
     $('.Usermessage').hide();
     this.Edited = true;
-    this.getData();
+    // this.getData();
+    window.location.reload();
   }
   showCheckbox() {
     if (((<HTMLInputElement>document.getElementById("list2")).classList.contains('visible'))) {

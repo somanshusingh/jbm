@@ -86,6 +86,13 @@ export class OutboundDashboardComponent implements OnInit {
               $('#outEditIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#outEditDriver_Number').val(this.data[i]['Driver_Number']);
               $('#outEditTrip_No').val(this.data[i]['Trip_No']);
+              if(this.serviceCall.Material.length >0){
+                $('#outEditM').empty();
+                $('#outEditM').append("<option value=''>Select Material Type</option>")
+                for(var a in this.serviceCall.Material){
+                  $('#outEditM').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
+              }
+              }
             }
           }
         }
@@ -246,12 +253,36 @@ export class OutboundDashboardComponent implements OnInit {
         } else {
           this.Message = 'Something went wrong.';
         }
+      },
+      (error)=>{
+        $('.outDashmessagebutton').show();
+        this.Message = 'Something went wrong.';
       })
   }
   hideMessagePopup(){
     $('.outDashmessage').hide();
     this.Edited = true;
-    this.getData();
+    // this.getData();
+    window.location.reload();
+  }
+  ValidateNumber(event) {
+    if (!(/^[0-9]*$/.test(event.target.value))) {
+      event.target.value = "";
+    }
+  }
+  KeyPressEvent(event: any, type) {
+    let pattern;
+    switch (type) {
+      case 'Text': pattern = /[a-zA-Z ]/; break;
+      case 'OnlyText': pattern = /[a-zA-Z]/; break;
+      case 'Number': pattern = /[0-9\+\-\ ]/; break;
+      case 'Mobile': pattern = /[0-9\+\-\ ]/; break;
+      case 'Double': pattern = /^[0-9]*[.]?[0-9]*$/; break;
+      case 'VarChar': pattern = /[a-zA-Z0-9 ]/; break;
+      //case 'PAN':         pattern = /[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}/; break;
+    }
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) { event.preventDefault(); }
   }
 
 }

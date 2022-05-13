@@ -18,8 +18,8 @@ export class SigninComponent implements OnInit {
 
   signIn() {
     $('#loginButton, #username, #password').attr("disabled", 'disabled');
-    var url = '/registration/signin/'+$('#username').val() +'/'+ $('#password').val();
-
+    // var url = '/registration/signin/'+ btoa($('#username').val().toString()) +'/'+ btoa($('#password').val().toString());
+    var url = '/registration/signin/'+ $('#username').val().toString() +'/'+ $('#password').val().toString();
     var post_data = {
       "UserId": $('#username').val(),//"ID3",
       "Password": $('#password').val()//"12345"
@@ -45,6 +45,9 @@ export class SigninComponent implements OnInit {
         } else {
           $('.Error').html('Technical Issue! Please Retry');
         }
+      },
+      (error)=>{
+        $('#loginButton, #username, #password').removeAttr("disabled");
       }
     )
   }

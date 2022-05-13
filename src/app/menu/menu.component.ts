@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     feather.replace();
     this.getSession();
+    this.getMaterial();
     if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
       if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
         $('.mobileUsers ,.desktopUsers').show();
@@ -231,14 +232,29 @@ export class MenuComponent implements OnInit {
         }
       }
 
-    })
+    },
+    (error)=>{
+      this.Router.navigate(['/signin']);
+    }
+    )
   }
   endSession() {
+    debugger;
     var url = "/end-session"
     this.serviceCall.getSession(url).subscribe(data => {
       // this.Router.navigate(['/signin']);
       console.log(data);
       window.location.reload();
+    })
+  }
+  getMaterial(){
+    let url="/master/material/view"
+    this.serviceCall.getService(url).subscribe(data=>{
+      for(var i in data['msg']){
+        this.serviceCall.Material.push(data['msg'][i]);
+      }
+    },(error)=>{
+
     })
   }
 }

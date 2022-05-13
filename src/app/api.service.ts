@@ -9,7 +9,8 @@ export class ApiService {
   UserName ='';
   Allowed_Menu={};
   UserId='';
-  origin ="https://jbmapp.herokuapp.com";
+  Material=[];
+  origin ="https://jbmapp.herokuapp.com";//"http://localhost:5000"
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){
@@ -22,11 +23,11 @@ export class ApiService {
     return this.http.post(url,post_data);
   }
   getService(url){
-    url = this.origin + url; 
+    url = this.origin + url;
     return this.http.get(url);
   }
   getSession(url){
-    url = this.origin + url; 
+    url = this.origin + url;
     return this.http.get(url, {withCredentials:true});
   }
 }
