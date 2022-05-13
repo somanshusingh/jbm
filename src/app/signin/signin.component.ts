@@ -48,6 +48,7 @@ export class SigninComponent implements OnInit {
       },
       (error)=>{
         $('#loginButton, #username, #password').removeAttr("disabled");
+        $('.Error').html('Technical Issue! Please Retry');
       }
     )
   }

@@ -249,9 +249,22 @@ export class MenuComponent implements OnInit {
   }
   getMaterial(){
     let url="/master/material/view"
+    var same= false;
     this.serviceCall.getService(url).subscribe(data=>{
-      for(var i in data['msg']){
-        this.serviceCall.Material.push(data['msg'][i]);
+      for (var i in data['msg']) {
+        same= false;
+        if (this.serviceCall.Material.length > 0) {
+          for (var a in this.serviceCall.Material) {
+            if (this.serviceCall.Material[a]['MaterialName'] === data['msg'][i]['MaterialName']) {
+              same = true;
+            }
+          }
+          if(same == false){
+          this.serviceCall.Material.push(data['msg'][i]);
+          }
+        }else{
+          this.serviceCall.Material.push(data['msg'][i]);
+        }
       }
     },(error)=>{
 
