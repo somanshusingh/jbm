@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-users',
@@ -22,7 +24,7 @@ export class UsersComponent implements OnInit {
     outboundProcess: 'no',
     registerCard: 'no'
   }
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -361,5 +363,8 @@ export class UsersComponent implements OnInit {
         this.menuVal(false,'registerCard');
         this.menuVal(true,'SelectRole');
     }
+  }
+  navigate(path){
+    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
   }
 }

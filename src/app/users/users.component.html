@@ -1,5 +1,6 @@
 <div id="outerDiv">
-    <button class="buttonCss" style="color: white;" routerLink="/signup">Add User</button><br><br>
+    <!-- <button class="buttonCss" style="color: white;" routerLink="/signup">Add User</button><br><br> -->
+    <button class="buttonCss" style="color: white;" (click)="navigate('/signup')">Add User</button><br><br>
     <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap" [dtOptions]="dtOptions"
         [dtTrigger]="dtTrigger" style="width:100%">
         <thead>

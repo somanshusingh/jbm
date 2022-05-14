@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inbound-dashboard',
@@ -15,7 +16,7 @@ export class InboundDashboardComponent implements OnInit {
   Message;
   tripNo: any;
   Edited = false;
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -275,6 +276,9 @@ export class InboundDashboardComponent implements OnInit {
     if (!(/^[0-9]*$/.test(event.target.value))) {
       event.target.value = "";
     }
+  }
+  navigate(path){
+    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
   }
 }
 

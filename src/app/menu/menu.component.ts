@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     var fullUrl= window.location.href.split('?')[1]; 
-    this.serviceCall.sessionID= fullUrl.split('=')[1];
+    this.serviceCall.sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
     feather.replace();
     this.getSession();
     this.getMaterial();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class OutboundDashboardComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   Message;
   Edited=false;
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -283,6 +284,9 @@ export class OutboundDashboardComponent implements OnInit {
     }
     const inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode !== 8 && !pattern.test(inputChar)) { event.preventDefault(); }
+  }
+  navigate(path){
+    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
   }
 
 }

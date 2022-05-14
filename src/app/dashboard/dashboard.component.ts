@@ -4,6 +4,8 @@ import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
 import * as feather from 'feather-icons';
 import * as moment from 'moment';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,7 @@ export class DashboardComponent implements OnInit {
   Edited=false;
   notUndefined = true;
   sourcenotUndefined = true;
-  constructor(private serviceCall: ApiService) { }
+  constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
     let currentDate = moment().format('YYYY-MM-DD');
@@ -202,5 +204,8 @@ export class DashboardComponent implements OnInit {
     this.Edited = true;
     // this.getData();
     window.location.reload();
+  }
+  navigate(path){
+    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
   }
 }
