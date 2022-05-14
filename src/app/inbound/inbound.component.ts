@@ -15,6 +15,7 @@ export class InboundComponent implements OnInit {
   uploadedFiles = [];
   uploadfile_name: any;
   docStatus = '';
+  carNoAdded = false;
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -280,6 +281,9 @@ export class InboundComponent implements OnInit {
     if (this.Message == 'Trip Created Successfully') {
       this.Router.navigate(['/inBoundDashboard'], { queryParams:{sessionID:sessionID}});
     }
+    if (this.carNoAdded == true) {
+      window.location.reload();
+    }
   }
   validateVehicleNumber() {
     var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
@@ -472,7 +476,8 @@ export class InboundComponent implements OnInit {
         $('#qty_mt_Weight').val(Trip['Qty_Mt_Weight']);
         $('#inMaterial_Type').val(Trip['Material']);
         $('#lrNumber').val(Trip['LrNumber']);
-        $('#lrDate').val(Trip['LrDate'].split('T')[0]);
+        if(Trip['LrDate'] !== null && Trip['LrDate'] !== undefined && Trip['LrDate'] !== ''){
+        $('#lrDate').val(Trip['LrDate'].split('T')[0]);}
         $("#inTripDasboard").val(Trip['Trip_No']);
       } else {
         this.Message = 'Vehicle Data Not Found';
@@ -497,7 +502,7 @@ export class InboundComponent implements OnInit {
     }
     if (err == 0) {
       let url = '/history/inhouse_transport/update'
-      let post_data = {
+      let post_data = { 
         "Trip_No": $("#inTripDasboard").val(),
         "Card_Number": $("#PopUpCardNo").val()
       }
@@ -506,6 +511,7 @@ export class InboundComponent implements OnInit {
         if (data['status'] == 1) {
           this.Message = "Card Added Successfully.";
           $('.Popup1').show();
+          this.carNoAdded = true;
         }else{
           this.Message = 'Unable to add card.';
         $('.Popup1').show();
