@@ -271,8 +271,10 @@ export class HistoryComponent implements OnInit {
   }
   hidePopup() {
     $(".Popup1").hide();
+    let fullUrl= window.location.href.split('?')[1];
+    let sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
     if (this.Message == 'Trip Created Successfully') {
-      this.Router.navigate(['/outBoundDashboard']);
+      this.Router.navigate(['/outBoundDashboard'], { queryParams:{sessionID:sessionID}});
     }
   }
   validateVehicleNumber() {

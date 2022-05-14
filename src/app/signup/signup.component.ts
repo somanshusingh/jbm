@@ -180,8 +180,10 @@ export class SignupComponent implements OnInit {
   }
   hidePopup() {
     $(".Popup1").hide();
+    let fullUrl= window.location.href.split('?')[1];
+    let sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
     if (this.Message == 'User Added Successfully!') {
-      this.Router.navigate(['/users']);
+      this.Router.navigate(['/users'], { queryParams:{sessionID:sessionID}});
     }
   }
   KeyPressEvent(event: any, type) {

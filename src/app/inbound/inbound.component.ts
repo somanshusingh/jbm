@@ -275,8 +275,10 @@ export class InboundComponent implements OnInit {
   }
   hidePopup() {
     $(".Popup1").hide();
+    let fullUrl= window.location.href.split('?')[1];
+    let sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
     if (this.Message == 'Trip Created Successfully') {
-      this.Router.navigate(['/inBoundDashboard']);
+      this.Router.navigate(['/inBoundDashboard'], { queryParams:{sessionID:sessionID}});
     }
   }
   validateVehicleNumber() {
