@@ -203,6 +203,11 @@ export class SignupComponent implements OnInit {
       event.target.value = "";
     }
   }
+  ValidateText(event) {
+    if (!(/^[A-Za-z]+$/.test(event.target.value))) {
+      event.target.value = "";
+    }
+  }
   showCheckbox() {
     if (((<HTMLInputElement>document.getElementById("list1")).classList.contains('visible'))) {
       (<HTMLInputElement>document.getElementById("list1")).classList.remove('visible');
