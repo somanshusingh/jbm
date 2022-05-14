@@ -17,6 +17,8 @@ export class MenuComponent implements OnInit {
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
+    var fullUrl= window.location.href.split('?')[1]; 
+    this.serviceCall.sessionID= fullUrl.split('=')[1];
     feather.replace();
     this.getSession();
     this.getMaterial();
@@ -192,19 +194,20 @@ export class MenuComponent implements OnInit {
     }
   }
   getSession() {
-    var url = "/get-session"
-    this.serviceCall.getSession(url).subscribe(data => {
+    var url = "/session/get/" +this.serviceCall.sessionID;
+    // this.serviceCall.getSession(url).subscribe(data => {
+      this.serviceCall.getService(url).subscribe(data => {
       // debugger;
       console.log(data);
       this.data = data;
       if (this.data.hasOwnProperty('status') && this.data['status'] == 1) {
-        if (this.data.hasOwnProperty('msg') && this.data['msg'].hasOwnProperty('user')) {
-          this.serviceCall.UserId = this.data['msg']['user'].hasOwnProperty('UserId') ? this.data['msg']['user']['UserId'] : '';
-          this.serviceCall.Role = this.data['msg']['user'].hasOwnProperty('Role') ? this.data['msg']['user']['Role'] : '';
+        if (this.data.hasOwnProperty('msg') && this.data['msg'].length>0 && this.data['msg'][0].hasOwnProperty('data') &&this.data['msg'][0]['data'].hasOwnProperty('user')) {
+          this.serviceCall.UserId = this.data['msg'][0]['data']['user'].hasOwnProperty('UserId') ? this.data['msg'][0]['data']['user']['UserId'] : '';
+          this.serviceCall.Role = this.data['msg'][0]['data']['user'].hasOwnProperty('Role') ? this.data['msg'][0]['data']['user']['Role'] : '';
           this.Role =this.serviceCall.Role;
-          this.serviceCall.UserName = this.data['msg']['user'].hasOwnProperty('Name') ? this.data['msg']['user']['Name'] : '';
+          this.serviceCall.UserName = this.data['msg'][0]['data']['user'].hasOwnProperty('Name') ? this.data['msg'][0]['data']['user']['Name'] : '';
           this.UserName = this.serviceCall.UserName;
-          this.serviceCall.Allowed_Menu = this.data['msg']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg']['user']['Allowed_Menu'] : {};
+          this.serviceCall.Allowed_Menu = this.data['msg'][0]['data']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg'][0]['data']['user']['Allowed_Menu'] : {};
           if (this.serviceCall.UserId == '') {
             this.Router.navigate(['/signin']);
           }
@@ -240,8 +243,8 @@ export class MenuComponent implements OnInit {
   }
   endSession() {
     debugger;
-    var url = "/end-session"
-    this.serviceCall.getSession(url).subscribe(data => {
+    var url = "/session/end/"+this.serviceCall.sessionID;
+    this.serviceCall.getService(url).subscribe(data => {
       // this.Router.navigate(['/signin']);
       console.log(data);
       window.location.reload();
@@ -269,5 +272,8 @@ export class MenuComponent implements OnInit {
     },(error)=>{
 
     })
+  }
+  navigate(path){
+    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
   }
 }

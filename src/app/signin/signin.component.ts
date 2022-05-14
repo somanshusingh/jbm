@@ -24,13 +24,13 @@ export class SigninComponent implements OnInit {
       "UserId": $('#username').val(),//"ID3",
       "Password": $('#password').val()//"12345"
     };
-      this.serviceCall.getSession(url).subscribe(
+      this.serviceCall.getService(url).subscribe(
       data => {
     $('#loginButton, #username, #password').removeAttr("disabled");
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];
-            this.Router.navigate(['/dashboard']);
+            this.Router.navigate(['/dashboard'], { queryParams:{sessionID:data['msg']['sessionID']}});
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

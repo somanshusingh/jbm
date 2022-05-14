@@ -22,17 +22,20 @@
                         </a>
                         <a class="menu">
                             <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/outBoundDashboard"> Gate Out </div>
+                            <!-- <div class="menu__title" routerLink="/outBoundDashboard" > Gate Out </div> -->
+                            <div class="menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out </div>
                         </a>
                         <ul class="Gate2mobile">
                             <li>
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="menu__title" routerLink="/inBound/inhouse"> Inhouse </div>
+                                    <!-- <div class="menu__title" routerLink="/inBound/inhouse"> Inhouse </div> -->
+                                    <div class="menu__title" (click)="navigate('/inBound/inhouse')"> Inhouse </div>
                                 </a>
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="menu__title" routerLink="/outbound"> Outhouse </div>
+                                    <!-- <div class="menu__title" routerLink="/outbound"> Outhouse </div> -->
+                                    <div class="menu__title" (click)="navigate('/outbound')"> Outhouse </div>
                                 </a>
                             </li>
                         </ul>
@@ -42,7 +45,8 @@
             <li class="mobileUsers">
                 <a class="menu" (click)="hideshowMobile($event,'usersOption')">
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <div class="menu__title" routerLink="/users"> Users </div>
+                    <!-- <div class="menu__title" routerLink="/users"> Users </div> -->
+                    <div class="menu__title" (click)="navigate('/users')"> Users </div>
                 </a>
                 <!-- <ul class="usersOption">
                     <li>
@@ -56,7 +60,8 @@
             <li class="mobileVehicles">
                 <a class="menu">
                     <div class="menu__icon"> <i data-feather="truck"></i> </div>
-                    <div class="menu__title" routerLink="/dashboard"> Vehicles </div>
+                    <!-- <div class="menu__title" routerLink="/dashboard"> Vehicles </div> -->
+                    <div class="menu__title" (click)="navigate('/dashboard')"> Vehicles </div>
                 </a>
                 <!-- <ul class="vehiclesOption">
                     <li>
@@ -82,7 +87,8 @@
             <li class="mobileInboundProcess">
                 <a class="menu">
                     <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                    <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div>
+                    <!-- <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div> -->
+                    <div class="menu__title" (click)="navigate('/inBoundDashboard')"> Inbound Process </div>
                 </a>
             </li>
             <!-- <li class="mobileOutboundProcess">
@@ -146,13 +152,15 @@
                                 <li>
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                        <div class="side-menu__title" routerLink="/inBound/inhouse"> Inhouse </div>
+                                        <!-- <div class="side-menu__title" routerLink="/inBound/inhouse" [queryParams]="{sessionID:{{serviceCall.sessionID}} }"> Inhouse </div> -->
+                                        <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> Inhouse </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                        <div class="side-menu__title" routerLink="/outbound"> Outhouse</div>
+                                        <!-- <div class="side-menu__title" routerLink="/outbound"> Outhouse</div> -->
+                                        <div class="side-menu__title" (click)="navigate('/outbound')"> Outhouse</div>
                                     </a>
                                 </li>
                             </ul>
@@ -160,7 +168,8 @@
                         <li>
                             <a class="side-menu">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                <div class="side-menu__title" routerLink="/outBoundDashboard"> Gate Out</div>
+                                <!-- <div class="side-menu__title" routerLink="/outBoundDashboard"> Gate Out</div> -->
+                                <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out</div>
                             </a>
                         </li>
                     </div>
@@ -170,13 +179,15 @@
                     <!-- <a class="side-menu users desktopUsersOption" (click)="addActive('desktopUsersOption')"> -->
                     <a class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="users"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick" routerLink="/users"> Users </div>
+                        <!-- <div class="side-menu__title hideMenuOnClick" routerLink="/users"> Users </div> -->
+                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/users')"> Users </div>
                     </a>
                 </li>
                 <li class="desktopVehicles">
                     <a class="side-menu vehicles">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="truck"></i> </div>
-                        <div class="side-menu__title side-menu--open hideMenuOnClick" routerLink="/dashboard"> Vehicles</div>
+                        <!-- <div class="side-menu__title side-menu--open hideMenuOnClick" routerLink="/dashboard"> Vehicles</div> -->
+                        <div class="side-menu__title side-menu--open hideMenuOnClick" (click)="navigate('/dashboard')"> Vehicles</div>
                     </a>
                     <!-- <ul class="vehiclesOption">
                         <li>
@@ -202,7 +213,8 @@
                 <li class="desktopInboundProcess">
                     <a class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div>
+                        <!-- <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div> -->
+                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/inBoundDashboard')"> Inbound Process</div>
                     </a>
                 </li>
                 <!-- <li class="desktopOutboundProcess">

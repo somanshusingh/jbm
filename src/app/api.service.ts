@@ -10,6 +10,7 @@ export class ApiService {
   Allowed_Menu={};
   UserId='';
   Material=[];
+  sessionID='';
   origin ="https://jbmapp.herokuapp.com";//"http://localhost:5000"
   constructor(private http: HttpClient) { }
 
