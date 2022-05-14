@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="flex justify-start mt-1" style="padding-top: 12px;">
-                    <button type="button" class="buttonCss" (click)="validateVehicleNumber()">Check</button>&nbsp;&nbsp;
+                    <button type="button" class="buttonCss" (click)="validateVehicleNumber()">Ok</button>&nbsp;&nbsp;
                     <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button> -->
                 </div>
             </div>
@@ -157,7 +157,7 @@
                                 <span class="MaterialErr errMsg"></span>
                             </div> -->
                             <div class="mt-3">
-                                <label>Material Type</label><br>
+                                <label>Material</label><br>
                                 <!-- <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="inMaterial_Type"> -->
                                 <div class="mt-2 inputWidth">
                                     <select data-search="true" class="tail-select w-full" id="inMaterial_Type"
@@ -181,6 +181,11 @@
                                 <input type="date" class="input w-full border mt-2 inputWidth"
                                     placeholder="Gross Weight" id="lrDate">
                                 <span class="lrDateErr errMsg"></span>
+                            </div>
+                            <div class="mt-3" style="display: none;">
+                                <label>Trip NO</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="LR Number"
+                                    id="inTripDasboard">
                             </div>
                             <!-- <div class="mt-3">
                                 <label>Issued By</label><br>
@@ -285,3 +290,26 @@
     </div>
 </div>
 <!-- upload Doc Popup finish -->
+
+<!-- RegNo Popup start -->
+
+<div>
+    <div class="RegNo">
+        <div class="Popup2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
+                Card Number
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> Enter Card NUmber</b>
+                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Card Number" id="PopUpCardNo">
+            </div>
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;">
+            <button class="Popupbutton" (click)="SendCardNo()">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="Popupbutton" (click)="hideCardPopup()">Close</button>
+        </div>
+    </div>
+</div>
+<!-- RegNo Popup finish -->

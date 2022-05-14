@@ -107,6 +107,22 @@ label {
     animation: alertshow .2s ease;
     border-radius: 10px;
 }
+.RegNo {
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 310px;
+    left: 45%;
+    margin-left: -50px;
+    top: 20%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+}
 .uploadDoc {
     display: none;
     border-radius: 10px;
@@ -172,7 +188,7 @@ label {
         width: 7.5cm;
     }
 
-    .Popup1 ,.uploadDoc{
+    .Popup1 ,.uploadDoc,.RegNo{
         margin-left: -136px !important;
     }
 

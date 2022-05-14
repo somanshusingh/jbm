@@ -100,6 +100,7 @@ export class HistoryComponent implements OnInit {
       // "Net_Weight": $('#Net_Weight').val(),
       "Qty_Mt_Weight": $('#outqty_mt_Weight').val(),
       "Vehicle": this.isVehicleDataAvailable,
+      "Card_Number":$('#outCardNumber').val()
       // "LrNumber":$('#outlrNumber').val(),
       // "LrDate":$('#outlrDate').val()
     }
@@ -191,6 +192,12 @@ export class HistoryComponent implements OnInit {
       err++
     } else {
       $('#outqty_mt_Weight').removeClass('errDisplay');
+    }
+    if ($('#outCardNumber').val() == '') {
+      $('#outCardNumber').addClass('errDisplay');
+      err++
+    } else {
+      $('#outCardNumber').removeClass('errDisplay');
     }
     if (err == 0) {
       this.addVehicleData();

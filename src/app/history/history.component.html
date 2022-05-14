@@ -207,6 +207,12 @@
                                         <input type="date" class="input w-full border mt-2 inputWidth" id="outlrDate">
                                         <span class="outlrDateErr errMsg"></span>
                                     </div>
+                                    <div class="mt-3">
+                                        <label>Card Number</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth"
+                                            placeholder="Card Number" id="outCardNumber"  (keypress)="KeyPressEvent($event,'VarChar')">
+                                        <span class="outCardErr errMsg"></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex justify-end mt-4 addButtonOut">

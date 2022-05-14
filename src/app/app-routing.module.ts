@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'outBoundDashboard', component:MenuComponent},
   { path: 'inBoundDashboard', component:MenuComponent},
   { path: 'inBound', component:MenuComponent},
+  { path: 'inBound/inhouse', component:MenuComponent},
   { path: '**', component:ErrorpageComponent}
 
 ];

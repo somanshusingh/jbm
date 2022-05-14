@@ -100,7 +100,7 @@ export class MenuComponent implements OnInit {
     } else if (view == '/inBoundDashboard') {
       $('.dashboarddiv, .signupdiv').hide();
       $('.inBoundDashboarddiv').fadeIn();
-    } else if (view == '/inBound') {
+    } else if (view == '/inBound' || view == '/inBound/inhouse') {
       $('.dashboarddiv, .signupdiv').hide();
       $('.inbounddiv').fadeIn();
     } else {

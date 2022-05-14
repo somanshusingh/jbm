@@ -14,7 +14,7 @@ export class InboundComponent implements OnInit {
   Message = '';
   uploadedFiles = [];
   uploadfile_name: any;
-  docStatus='';
+  docStatus = '';
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -58,7 +58,7 @@ export class InboundComponent implements OnInit {
           this.Message = 'Something went wrong.';
           $('.Popup1').show();
         }
-      },(error)=>{
+      }, (error) => {
         this.Message = 'Something went wrong.';
         $('.Popup1').show();
       }
@@ -76,7 +76,7 @@ export class InboundComponent implements OnInit {
       // "PUC_exp_date": $('#VPUC_exp_date').val(),
       "Material": $('#inMaterial_Type').val(),
       // "Material": $('#inMaterial').val(),
-      // "Issued_By": $('#inIssued_By').val(),
+      "Issued_By": this.serviceCall.UserId,
       // "Issued_Date": $('#inIssued_Date').val(),
       "Driver_Name": $('#inDriver_Name').val(),
       "Driver_Number": $('#inDriver_Number').val(),
@@ -111,7 +111,7 @@ export class InboundComponent implements OnInit {
         } else {
           this.Message = 'Something went wrong.';
         }
-      },(error)=>{
+      }, (error) => {
         this.Message = 'Something went wrong.';
         $('.Popup1').show();
       })
@@ -235,7 +235,12 @@ export class InboundComponent implements OnInit {
     }
 
     if (err == 0) {
-      this.addVehicleData();
+      if (window.location.pathname == '/inBound/inhouse') {
+        $('.RegNo').show();
+      }
+      else {
+        this.addVehicleData();
+      }
     }
   }
   validateDirverDetails() {
@@ -283,7 +288,12 @@ export class InboundComponent implements OnInit {
       //   $('#checkVehicleNumber').removeClass('errDisplay');
       //   this.checkHistory();
       // }
-      this.checkHistory();
+      // this.checkHistory();
+      if (window.location.pathname == '/inBound/inhouse') {
+        this.getInHouseStatus();
+      } else {
+        this.getInboundStatus();
+      }
     } else {
       $('#checkVehicleNumber').addClass('errDisplay');
     }
@@ -294,12 +304,12 @@ export class InboundComponent implements OnInit {
     $('.' + className).addClass('top-menu--active');
     if (className == "Material") {
       $('#MaterialIn ,.addButtonin').show();
-      if(this.serviceCall.Material.length >0){
+      if (this.serviceCall.Material.length > 0) {
         $('#inMaterial_Type').empty();
         $('#inMaterial_Type').append("<option value=''>Select Material Type</option>");
-        for(var a in this.serviceCall.Material){
-          $('#inMaterial_Type').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
-      }
+        for (var a in this.serviceCall.Material) {
+          $('#inMaterial_Type').append("<option value=" + this.serviceCall.Material[a]['MaterialName'] + ">" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
+        }
       }
     }
     if (className == "Driver") {
@@ -316,11 +326,11 @@ export class InboundComponent implements OnInit {
   hideuploadPopup() {
     $(".uploadDoc").hide();
   }
-  hideuploadPopupok(){
-    if(this.docStatus !=='Documents Uploaded Successfully.'){
+  hideuploadPopupok() {
+    if (this.docStatus !== 'Documents Uploaded Successfully.') {
       $('.afterUpload,.afterUploadButton').hide();
       $(".toUpload").show();
-    }else{
+    } else {
       $(".uploadDoc").hide();
     }
   }
@@ -340,26 +350,26 @@ export class InboundComponent implements OnInit {
       $('.afterUpload').show();
       this.docStatus = 'Please Wait...'
       let formData = new FormData();
-        formData.append("files[]", this.uploadedFiles[0],'rc.'+this.uploadedFiles['0'].name.split('.')[1]);
-        formData.append("files[]", this.uploadedFiles[1],'puc.'+this.uploadedFiles['1'].name.split('.')[1]);
+      formData.append("files[]", this.uploadedFiles[0], 'rc.' + this.uploadedFiles['0'].name.split('.')[1]);
+      formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);
       // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
       // formData.append("file_2", this.uploadedFiles['1'],'pucc');
-      formData.append("VehicleNo",$('#inVnumber').val().toString());
+      formData.append("VehicleNo", $('#inVnumber').val().toString());
       let url = '/vehicle/upload_document';
       this.serviceCall.uploadFile(url, formData).subscribe(
         data => {
           console.log(data);
           $('.afterUploadButton').show();
-          if(data['status'] == 1){
-            this.docStatus ='Documents Uploaded Successfully.';
-          }else if(data['status'] == 0){
-            this.docStatus ='Documents Upload Failed.';
-          }else{
-            this.docStatus ="Technical issue, cannot upload."
+          if (data['status'] == 1) {
+            this.docStatus = 'Documents Uploaded Successfully.';
+          } else if (data['status'] == 0) {
+            this.docStatus = 'Documents Upload Failed.';
+          } else {
+            this.docStatus = "Technical issue, cannot upload."
           }
-        },(error)=>{
+        }, (error) => {
           $('.afterUploadButton').show();
-          this.docStatus ="Technical issue, cannot upload."
+          this.docStatus = "Technical issue, cannot upload."
         })
     }
   }
@@ -381,5 +391,128 @@ export class InboundComponent implements OnInit {
     }
     const inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode !== 8 && !pattern.test(inputChar)) { event.preventDefault(); }
+  }
+  getInboundStatus() {
+    let vehicelStatus = 0;
+    let TripsAvailable = [];
+    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val();
+    this.serviceCall.getService(url).subscribe(
+      data => {
+        if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
+          for (var i in data['msg']) {
+            if (data['msg'][i]['Status'] == 'open') {
+              vehicelStatus++;
+              TripsAvailable.push(data['msg'][i]);
+            }
+          }
+          if (vehicelStatus > 0) {
+            this.Message = 'Please Complete The Existing Trip.';
+            $('.Popup1').show();
+          } else {
+            this.checkHistory();
+          }
+        } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
+          this.checkHistory();
+        }
+      }, (error) => {
+        this.Message = 'Something went wrong.';
+        $('.Popup1').show();
+      })
+  }
+
+  getInHouseStatus() {
+    let vehicelStatus = 0;
+    let TripsAvailable = [];
+    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val();
+    this.serviceCall.getService(url).subscribe(
+      data => {
+        if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
+          for (var i in data['msg']) {
+            if (data['msg'][i]['Status'] == 'open') {
+              vehicelStatus++;
+              TripsAvailable.push(data['msg'][i]);
+            }
+          }
+          if (TripsAvailable.length > 0) {
+            this.checkHistoryInhouse(TripsAvailable[0]);
+          } else {
+            this.Message = 'No Trip Available.';
+            $('.Popup1').show();
+          }
+        } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
+          this.Message = 'No Trip Available.';
+          $('.Popup1').show();
+        }
+      }, (error) => {
+        this.Message = 'Something went wrong.';
+        $('.Popup1').show();
+      })
+  }
+
+  checkHistoryInhouse(Trip) {
+    $("#inTripDasboard").val('');
+    console.log(Trip);
+    let url = '/vehicle/view/' + Trip['VehicleNo'];
+    this.serviceCall.getService(url).subscribe(data => {
+      if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
+        $('#VehicleNumberForm').hide();
+        $('#inboundForm').show();
+        $('#invehicleMake').val(data['msg'][0]['Make']);
+        $('#inVehicleModel').val(data['msg'][0]['Model']);
+        $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
+        $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
+        $('#inVnumber').val($("#checkVehicleNumber").val());
+        // $('#inIssued_By').val(this.serviceCall.Role);
+        $('#inDriver_Name').val(Trip['Driver_Name']);
+        $('#inDriver_Number').val(Trip['Driver_Number']);
+        $('#inConsignee_Name').val(Trip['Consignee_Name']);
+        $('#inAddress').val(Trip['Address']);
+        $('#qty_mt_Weight').val(Trip['Qty_Mt_Weight']);
+        $('#inMaterial_Type').val(Trip['Material']);
+        $('#lrNumber').val(Trip['LrNumber']);
+        $('#lrDate').val(Trip['LrDate'].split('T')[0]);
+        $("#inTripDasboard").val(Trip['Trip_No']);
+      } else {
+        this.Message = 'Vehicle Data Not Found';
+        $('.Popup1').show();
+      }
+    }, (error) => {
+      this.Message = 'Something went wrong.';
+      $('.Popup1').show();
+    })
+
+  }
+  hideCardPopup() {
+    $('.RegNo').hide();
+  }
+  SendCardNo() {
+    var err = 0;
+    if ($('#PopUpCardNo').val() == '') {
+      $('#PopUpCardNo').addClass('errDisplay');
+      err++
+    } else {
+      $('#PopUpCardNo').removeClass('errDisplay');
+    }
+    if (err == 0) {
+      let url = '/history/inhouse_transport/update'
+      let post_data = {
+        "Trip_No": $("#inTripDasboard").val(),
+        "Card_Number": $("#PopUpCardNo").val()
+      }
+      this.serviceCall.signin(url, post_data).subscribe(data => {
+        $('.RegNo').hide();
+        if (data['status'] == 1) {
+          this.Message = "Card Added Successfully.";
+          $('.Popup1').show();
+        }else{
+          this.Message = 'Unable to add card.';
+        $('.Popup1').show();
+        }
+      }, (error) => {
+        $('.RegNo').hide();
+        this.Message = 'Something went wrong.';
+        $('.Popup1').show();
+      })
+    }
   }
 }
