@@ -92,6 +92,7 @@
     width: 5cm;
   }
   #outerDiv{padding: 23px;}
+  .ViewDisaplayOutbound{display: grid;grid-template-columns: 12cm 12cm;}
   @media only screen and (max-width: 768px) {
 
     .editDiv {
@@ -113,8 +114,10 @@
       width: 7cm !important;
     }
     .oviewPopup1edit{
-      width: 300px !important;
-      margin-left: -151px !important;
+      /* width: 300px !important; */
+      /* margin-left: -151px !important; */
+      left: 0;
+      right: 0;
     }
     .viewLabel {
       width: 3.5cm !important;
@@ -124,4 +127,5 @@
         margin-left: -97px !important;
       }
     #outerDiv{padding: 0px;}
+    .ViewDisaplayOutbound{display: grid;grid-template-columns: 1fr;}
   }

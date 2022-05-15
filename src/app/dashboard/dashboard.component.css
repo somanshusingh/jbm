@@ -95,6 +95,9 @@
   animation: alertshow .2s ease;
   border-radius: 10px;
 }
+.ViewDisaplayDashboard{
+  display: grid;grid-template-columns: 12cm 12cm;column-gap: 30px;
+}
 
 .PopupMessagebutton {
   display: none;
@@ -122,8 +125,10 @@
     width: 7cm !important;
   }
   .Popup1edit{
-    width: 300px !important;
-    margin-left: -151px !important;
+    /* width: 300px !important; */
+    /* margin-left: -151px !important; */
+    left: 0;
+    right: 0;
   }
   .viewLabel {
     width: 3.5cm !important;
@@ -132,4 +137,8 @@
   .Popup1message {
     margin-left: -93px !important;
   }
+  .ViewDisaplayDashboard{
+    display: grid;grid-template-columns: 1fr;column-gap: 10px;
+  }
+  
 }
