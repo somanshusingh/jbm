@@ -169,6 +169,7 @@ label {
 .uploadErr{
     float: right;color: red;display: none;
 }
+#tabErr{color:red;display: none;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
     .inputWidth {
         width: 7cm !important;

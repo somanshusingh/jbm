@@ -17,8 +17,8 @@ export class MenuComponent implements OnInit {
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
-    var fullUrl= window.location.href.split('?')[1]; 
-    this.serviceCall.sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
+    var fullUrl = window.location.href.split('?')[1];
+    this.serviceCall.sessionID = (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1] : '';
     feather.replace();
     this.getSession();
     this.getMaterial();
@@ -67,6 +67,20 @@ export class MenuComponent implements OnInit {
     } else {
       $('.' + pElement).find('.side-menu__sub-icon').addClass('transform rotate-180');
       $('.' + childName).addClass('side-menu__sub-open');
+    }
+    if (childName == 'vehiclesOption') {
+      if ($(".gateprocess").attr('class') == "fa-solid fa-chevron-left gateprocess") {
+        $(".gateprocess").attr('class', 'fa-solid fa-chevron-down gateprocess');
+      } else {
+        $(".gateprocess").attr('class', 'fa-solid fa-chevron-left gateprocess');
+      }
+    }
+    if (childName == 'Gate1Option') {
+      if ($(".gatein").attr('class') == "fa-solid fa-chevron-left gatein") {
+        $(".gatein").attr('class', 'fa-solid fa-chevron-down gatein');
+      } else {
+        $(".gatein").attr('class', 'fa-solid fa-chevron-left gatein');
+      }
     }
   }
   hideshowMobile(event, childName) {
@@ -194,17 +208,17 @@ export class MenuComponent implements OnInit {
     }
   }
   getSession() {
-    var url = "/session/get/" +this.serviceCall.sessionID;
+    var url = "/session/get/" + this.serviceCall.sessionID;
     // this.serviceCall.getSession(url).subscribe(data => {
-      this.serviceCall.getService(url).subscribe(data => {
+    this.serviceCall.getService(url).subscribe(data => {
       // debugger;
       console.log(data);
       this.data = data;
       if (this.data.hasOwnProperty('status') && this.data['status'] == 1) {
-        if (this.data.hasOwnProperty('msg') && this.data['msg'].length>0 && this.data['msg'][0].hasOwnProperty('data') &&this.data['msg'][0]['data'].hasOwnProperty('user')) {
+        if (this.data.hasOwnProperty('msg') && this.data['msg'].length > 0 && this.data['msg'][0].hasOwnProperty('data') && this.data['msg'][0]['data'].hasOwnProperty('user')) {
           this.serviceCall.UserId = this.data['msg'][0]['data']['user'].hasOwnProperty('UserId') ? this.data['msg'][0]['data']['user']['UserId'] : '';
           this.serviceCall.Role = this.data['msg'][0]['data']['user'].hasOwnProperty('Role') ? this.data['msg'][0]['data']['user']['Role'] : '';
-          this.Role =this.serviceCall.Role;
+          this.Role = this.serviceCall.Role;
           this.serviceCall.UserName = this.data['msg'][0]['data']['user'].hasOwnProperty('Name') ? this.data['msg'][0]['data']['user']['Name'] : '';
           this.UserName = this.serviceCall.UserName;
           this.serviceCall.Allowed_Menu = this.data['msg'][0]['data']['user'].hasOwnProperty('Allowed_Menu') ? this.data['msg'][0]['data']['user']['Allowed_Menu'] : {};
@@ -236,44 +250,51 @@ export class MenuComponent implements OnInit {
       }
 
     },
-    (error)=>{
-      this.Router.navigate(['/signin']);
-    }
+      (error) => {
+        this.Router.navigate(['/signin']);
+      }
     )
   }
   endSession() {
     debugger;
-    var url = "/session/end/"+this.serviceCall.sessionID;
+    var url = "/session/end/" + this.serviceCall.sessionID;
     this.serviceCall.getService(url).subscribe(data => {
       // this.Router.navigate(['/signin']);
       console.log(data);
       window.location.reload();
     })
   }
-  getMaterial(){
-    let url="/master/material/view"
-    var same= false;
-    this.serviceCall.getService(url).subscribe(data=>{
+  getMaterial() {
+    let url = "/master/material/view"
+    var same = false;
+    this.serviceCall.getService(url).subscribe(data => {
       for (var i in data['msg']) {
-        same= false;
+        same = false;
         if (this.serviceCall.Material.length > 0) {
           for (var a in this.serviceCall.Material) {
             if (this.serviceCall.Material[a]['MaterialName'] === data['msg'][i]['MaterialName']) {
               same = true;
             }
           }
-          if(same == false){
-          this.serviceCall.Material.push(data['msg'][i]);
+          if (same == false) {
+            this.serviceCall.Material.push(data['msg'][i]);
           }
-        }else{
+        } else {
           this.serviceCall.Material.push(data['msg'][i]);
         }
       }
-    },(error)=>{
+    }, (error) => {
 
     })
   }
-  navigate(path){
-    this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
+  navigate(path) {
+    this.Router.navigate([path], { queryParams: { sessionID: this.serviceCall.sessionID } })
+  }
+  gateProcessClick() {
+    if ($("#id_gateprocess").attr('class') == "fa-solid fa-chevron-left") {
+      $("#id_gateprocess").attr('class', 'fa-solid fa-chevron-down');
+    } else {
+      $("#id_gateprocess").attr('class', 'fa-solid fa-chevron-left');
+    }
   }
 }

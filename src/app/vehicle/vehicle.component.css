@@ -57,6 +57,25 @@ label{width: 3.5cm;}
     padding: 5px;
 }
 .bigDiv{background-color:#abd3f4;padding: 20px;min-height: 100vh;}
+.uploadErrVehicle{display: none;color: red;}
+.uploadDocV {
+  display: none;
+  border-radius: 10px;
+  position: fixed;
+  width: 310px;
+  left: 45%;
+  margin-left: -50px;
+  top: 20%;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+  background: #fff;
+  animation: alertshow .2s ease;
+  border-radius: 10px;
+}
+.afterUpload,.afterUploadButton{display: none;}
+.docErr{background-color:red;}
 @media (max-width: 639px) {
   .inputWidth{ width: 7cm !important;}
   /* label{width: 2cm;} */
@@ -70,4 +89,5 @@ label{width: 3.5cm;}
   }
     .s1div{display:grid; grid-template-columns: 1fr ;column-gap: 0px;}
     .bigDiv{background-color:#abd3f4;padding: 10px !important;min-height: 100vh;}
+    .uploadDoc{margin-left: -136px !important;}
   }
