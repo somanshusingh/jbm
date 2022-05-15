@@ -50,10 +50,12 @@ export class HistoryComponent implements OnInit {
             } else {
               this.Message = "Vehicle PUC Expire";
               $('.Popup1').show();
+              $('#checkVehicleOut').attr('disabled','disabled');
             }
           } else {
             this.Message = "Vehicle Insurance Expire";
             $('.Popup1').show();
+            $('#checkVehicleOut').attr('disabled','disabled');
           }
         } else if (data['status'] == 0) {
           $('#OutVehicleNumberForm').hide();

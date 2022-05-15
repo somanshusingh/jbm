@@ -73,7 +73,7 @@
                                             <div>
                                                 <label>Vehicle No</label>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="MH02AB1234" id="editdVehicleNo" name="namesurname" maxlength="15">
+                                                    placeholder="MH02AB1234" id="editdVehicleNo" name="namesurname" maxlength="15" style="text-transform:uppercase">
                                                 <span class="nameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -136,10 +136,12 @@
 <div class="addFieldPopupTop" id="viewPopupTop">
     <div class="Popup1edit">
         <div class="Popup2">
-            <div
+            <!-- <div
                 style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-                Vehicle Data
-            </div>
+                Vehicle Details
+            </div> -->
+            <span style="padding: 27px;font-size: 20px;font-weight: 700;">Vehicle Details</span>
+            <div style="display: grid;grid-template-columns: 12cm 12cm;column-gap: 30px;">
             <div style="padding: 28px;">
                 <b><label class="viewLabel">Vehicle Number:</label><span id="ViewVehicleNumber"></span><br></b>
                 <b><label class="viewLabel">Ins Expire Date: </label> <span
@@ -156,12 +158,20 @@
                 <b><label class="viewLabel">Source:</label><span id="ViewSource"></span><br></b>
             <!-- </div> -->
                 <b><label class="viewLabel">Status:</label> <span id="ViewStatus"></span><br></b><br>
-                <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
+            </div>
+            <div style="display: grid; column-gap: 30px;">
+                <span id="docViewStatus"></span>
+                <label id="doc1Name"></label><br>
+                <img  class="docImg" id="docImage1" style="max-height: 185px;"><br><br>
+                <label id="doc2Name"></label><br>
+                <img  class="docImg" id="docImage2" style="max-height: 185px;">
             </div>
         </div>
-        <!-- <div class="Popup3" style="height: 30px;padding: 4px;">
-        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
-      </div> -->
+            <div style="text-align: center;"></div>
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:10px;">
+            <button class="buttonCss" (click)="hideView()">Close</button>
+      </div>
     </div>
 </div>
 <!-- View Popup finish -->

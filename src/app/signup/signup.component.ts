@@ -174,6 +174,14 @@ export class SignupComponent implements OnInit {
       $("#confirmPassword").addClass('errDisplay');
       $('.cpasswordErr').html('Enter Same Password');
     }
+    if ($('#userType').val() === null || $('#userType').val() === '') {
+      err++;
+      $("#userType").addClass('errDisplay');
+      $('.userTypeErr').html('Select User Type');
+    } else {
+      $("#userType").removeClass('errDisplay');
+      $('.userTypeErr').html('');
+    }
     if (err === 0) {
       this.signUp();
     }
@@ -313,6 +321,7 @@ export class SignupComponent implements OnInit {
     $('#confirmPassword').val('');
     $('#role').val('');
     $('#emp_code').val('');
+    $('#userType').val('');
     $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
         this.menuVal(false,'users');
         this.menuVal(false,'vehicles');

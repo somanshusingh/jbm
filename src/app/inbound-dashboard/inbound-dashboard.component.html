@@ -183,11 +183,13 @@
 <div class="addFieldPopupTop" id="viewPopupTop">
     <div class="inViewPopup1">
         <div class="Popup2">
-            <div
+            <!-- <div
                 style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
                 Vehicle Data
-            </div>
-            <div style="padding: 28px;">
+            </div> -->
+            <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span>
+            <div style="display: grid;grid-template-columns: 12cm 12cm;">
+            <div style="padding: 28px;border-right: 1px solid;border-bottom: 1px solid;">
                 <b><label class="viewLabel">Trip Number:</label><span id="inViewTrip_No"></span><br></b>
                 <b><label class="viewLabel">Vehicle Number: </label> <span id="inViewVehicleNo"></span><br></b>
                 <b><label class="viewLabel">Driver Name:</label><span id="inViewDriver_Name"></span><br></b>
@@ -199,12 +201,26 @@
                 <b><label class="viewLabel">Material:</label><span id="inViewMaterial_Type"></span><br></b>
                 <b><label class="viewLabel">Qty_Mt_Weight:</label><span id="inViewQty_Mt_Weight"></span><br></b>
                 <!-- <b><label class="viewLabel">Time:</label> <span id="inViewTime"></span><br></b><br> -->
-                <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
+                <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
+            </div>
+            <div style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;border-bottom: 1px solid;">
+                <div>
+                <span id="docViewStatusIn"></span>
+                <label id="doc1NameIn"></label><br>
+                <img  class="docImgIn" id="docImage1In" style="max-height: 185px;"><br><br></div>
+                <div>
+                <label id="doc2NameIn"></label><br>
+                <img  class="docImgIn" id="docImage2In" style="max-height: 185px;"></div>
+            </div>
+            <div style="border-right: 1px solid;">   
+            </div>
+            <div>
             </div>
         </div>
-        <!-- <div class="Popup3" style="height: 30px;padding: 4px;">
-        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
-      </div> -->
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:10px;">
+            <button class="buttonCss" (click)="hideView()">Close</button>
+      </div>
     </div>
 </div>
 <!-- View Popup finish -->

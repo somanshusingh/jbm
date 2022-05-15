@@ -11,7 +11,7 @@ export class ApiService {
   UserId='';
   Material=[];
   sessionID='';
-  origin ="https://jbmapp.herokuapp.com";//"http://localhost:5000"
+  origin = "https://jbmapp.herokuapp.com";//"http://localhost:5000"
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){

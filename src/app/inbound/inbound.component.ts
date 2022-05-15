@@ -16,6 +16,7 @@ export class InboundComponent implements OnInit {
   uploadfile_name: any;
   docStatus = '';
   carNoAdded = false;
+  storeTrip;
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -44,10 +45,12 @@ export class InboundComponent implements OnInit {
             } else {
               this.Message = "Vehicle PUC Expire";
               $('.Popup1').show();
+              $('#checkVehicleIn').attr('disabled','disabled');
             }
           } else {
             this.Message = "Vehicle Insurance Expire";
             $('.Popup1').show();
+            $('#checkVehicleIn').attr('disabled','disabled');
           }
         } else if (data['status'] == 0) {
           this.Message = data['msg'];
@@ -314,9 +317,10 @@ export class InboundComponent implements OnInit {
         $('#inMaterial_Type').empty();
         $('#inMaterial_Type').append("<option value=''>Select Material Type</option>");
         for (var a in this.serviceCall.Material) {
-          $('#inMaterial_Type').append("<option value=" + this.serviceCall.Material[a]['MaterialName'] + ">" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
+          $('#inMaterial_Type').append("<option value='" + this.serviceCall.Material[a]['MaterialName'] + "'>" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
         }
       }
+      $('#inMaterial_Type').val(this.storeTrip['Material']);
     }
     if (className == "Driver") {
       $('#DriverDetailsIn,.tab2').show();
@@ -419,6 +423,9 @@ export class InboundComponent implements OnInit {
           }
         } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
           this.checkHistory();
+        }else{
+          this.Message = 'Something went wrong.';
+          $('.Popup1').show(); 
         }
       }, (error) => {
         this.Message = 'Something went wrong.';
@@ -479,6 +486,8 @@ export class InboundComponent implements OnInit {
         if(Trip['LrDate'] !== null && Trip['LrDate'] !== undefined && Trip['LrDate'] !== ''){
         $('#lrDate').val(Trip['LrDate'].split('T')[0]);}
         $("#inTripDasboard").val(Trip['Trip_No']);
+        this.storeTrip = Trip;
+        this.active('Material');
       } else {
         this.Message = 'Vehicle Data Not Found';
         $('.Popup1').show();
@@ -521,6 +530,16 @@ export class InboundComponent implements OnInit {
         this.Message = 'Something went wrong.';
         $('.Popup1').show();
       })
+    }
+  }
+  validateDoc(){
+    if(this.docStatus !== 'Documents Uploaded Successfully.' && (window.location.pathname !== '/inBound/inhouse')){
+      $('.buttonCss').css('background-color','red');
+      $('.uploadErr').show();
+    }else{
+      $('.buttonCss').css('background-color','#1d40aa');
+      $('.uploadErr').hide();
+      this.active('Driver');
     }
   }
 }

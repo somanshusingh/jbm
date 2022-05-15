@@ -109,7 +109,7 @@
                                         <div class="col-span-12 xl:col-span-6">
                                             <div>
                                                 <label>Vehicle No</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Vehicle No" id="outEditVnumber" maxlength="15">
+                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Vehicle No" id="outEditVnumber" maxlength="15" style="text-transform:uppercase">
                                                 <span class="VnumberErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -187,11 +187,13 @@
 <div class="addFieldPopupTop" id="viewPopupTop">
     <div class="oviewPopup1edit">
         <div class="Popup2">
-            <div
+            <!-- <div
                 style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-                Vehicle Data
-            </div>
-            <div style="padding: 28px;">
+                Vehicle Details
+            </div> -->
+            <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span>
+            <div style="display: grid;grid-template-columns: 12cm 12cm;">
+            <div style="padding: 28px;border-right: 1px solid;border-bottom: 1px solid;">
                 <b><label class="viewLabel">Trip_No:</label><span id="oViewTrip_No"></span><br></b>
                 <b><label class="viewLabel">Vehicle Number:</label><span id="oViewVehicleNo"></span><br></b>
                 <b><label class="viewLabel">Ins Expire Date: </label> <span
@@ -200,6 +202,19 @@
                 <b><label class="viewLabel">Make:</label><span id="oViewMake"></span><br></b>
                 <b><label class="viewLabel">Model: </label><span id="oViewModel"></span><br></b>
                 <b><label class="viewLabel">Address:</label> <span id="oViewAddress"></span><br></b>
+                <br>
+                <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
+            </div>
+            <div style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;border-bottom: 1px solid;">
+                <div>
+                <span id="docViewStatusOut"></span>
+                <label id="doc1NameOut"></label><br>
+                <img  class="docImgOut" id="docImage1Out" style="max-height: 185px;"><br><br></div>
+                <div>
+                <label id="doc2NameOut"></label><br>
+                <img  class="docImgOut" id="docImage2Out" style="max-height: 185px;"></div>
+            </div>
+            <div style="border-right: 1px solid;padding: 28px;"> 
                 <b><label class="viewLabel">Consignee_Name:</label> <span id="oViewConsignee_Name"></span><br></b>
                 <b><label class="viewLabel">Driver_Name:</label> <span id="oViewDriver_Name"></span><br></b>
                 <b><label class="viewLabel">Driver_Number:</label> <span id="oViewDriver_Number"></span><br></b>
@@ -210,14 +225,15 @@
                 <b><label class="viewLabel">Material:</label><span id="oViewMaterial_Type"></span><br></b>
                 <b><label class="viewLabel">Qty_Mt_Weight:</label> <span id="oViewQty_Mt_Weight"></span><br></b>
                 <!-- <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b> -->
-                <b><label class="viewLabel">Vehicle_Mapping:</label> <span id="oViewVehicle_Mapping"></span><br></b>
-                <br>
-                <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
+                <b><label class="viewLabel">Vehicle_Mapping:</label> <span id="oViewVehicle_Mapping"></span><br></b>  
+            </div>
+            <div>
             </div>
         </div>
-        <!-- <div class="Popup3" style="height: 30px;padding: 4px;">
-        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
-      </div> -->
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:10px;">
+            <button class="buttonCss" (click)="hideView()">Close</button>
+      </div>
     </div>
 </div>
 <!-- View Popup finish -->

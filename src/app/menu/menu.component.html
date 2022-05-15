@@ -30,12 +30,12 @@
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                     <!-- <div class="menu__title" routerLink="/inBound/inhouse"> Inhouse </div> -->
-                                    <div class="menu__title" (click)="navigate('/inBound/inhouse')"> Inhouse </div>
+                                    <div class="menu__title" (click)="navigate('/inBound/inhouse')"> JBM Vehicle </div>
                                 </a>
                                 <a class="menu">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                     <!-- <div class="menu__title" routerLink="/outbound"> Outhouse </div> -->
-                                    <div class="menu__title" (click)="navigate('/outbound')"> Outhouse </div>
+                                    <div class="menu__title" (click)="navigate('/outbound')"> Other Vehicle </div>
                                 </a>
                             </li>
                         </ul>
@@ -88,7 +88,19 @@
                 <a class="menu">
                     <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
                     <!-- <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div> -->
-                    <div class="menu__title" (click)="navigate('/inBoundDashboard')"> Inbound Process </div>
+                    <div class="menu__title" (click)="navigate('/inBoundDashboard')"> Trip Master </div>
+                </a>
+            </li>
+            <li class="mobileGetCardInfo">
+                <a class="menu">
+                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                    <div class="menu__title"> Get Card Info </div>
+                </a>
+            </li>
+            <li class="mobileTripReprint">
+                <a class="menu">
+                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                    <div class="menu__title"> Trip Reprint </div>
                 </a>
             </li>
             <!-- <li class="mobileOutboundProcess">
@@ -153,14 +165,14 @@
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                         <!-- <div class="side-menu__title" routerLink="/inBound/inhouse" [queryParams]="{sessionID:{{serviceCall.sessionID}} }"> Inhouse </div> -->
-                                        <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> Inhouse </div>
+                                        <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> JBM Vehicle </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="side-menu">
                                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                         <!-- <div class="side-menu__title" routerLink="/outbound"> Outhouse</div> -->
-                                        <div class="side-menu__title" (click)="navigate('/outbound')"> Outhouse</div>
+                                        <div class="side-menu__title" (click)="navigate('/outbound')"> Other Vehicle</div>
                                     </a>
                                 </li>
                             </ul>
@@ -214,7 +226,19 @@
                     <a class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
                         <!-- <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div> -->
-                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/inBoundDashboard')"> Inbound Process</div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/inBoundDashboard')"> Trip Master</div>
+                    </a>
+                </li>
+                <li class="desktopGetCardInfo">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
+                        <div class="side-menu__title hideMenuOnClick"> Get Card Info</div>
+                    </a>
+                </li>
+                <li class="desktopTripReprint">
+                    <a class="side-menu users">
+                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
+                        <div class="side-menu__title hideMenuOnClick"> Trip Reprint</div>
                     </a>
                 </li>
                 <!-- <li class="desktopOutboundProcess">

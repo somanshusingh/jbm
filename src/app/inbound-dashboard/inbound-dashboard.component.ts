@@ -217,6 +217,19 @@ export class InboundDashboardComponent implements OnInit {
               $('#inViewMaterial_Type').html(this.data[i]['Material_Type']);
               $('#inViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
               $('#inViewTime').html(this.data[i]['Time']);
+              if(this.data[i]['Document'] !== '' && this.data[i]['Document'] !== undefined && this.data[i]['Document'] !== null){
+                $('#doc1NameIn').html(this.data[i]['Document']['Doc1_Name']);
+                $('#docImage1In').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc1_Data']);
+                $('#doc2NameIn').html(this.data[i]['Document']['Doc2_Name']);
+                $('#docImage2In').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc2_Data']);
+                $('#docViewStatusIn').html('');
+              }else{
+                $('#doc1NameIn').html('');
+                $('#docImage1In').attr('src','');
+                $('#doc2NameIn').html('');
+                $('#docImage2In').attr('src','');
+                $('#docViewStatusIn').html('Documents Not Available.')
+              }
             }
             if (source == 'edit') {
               $('.editInPopup1').show();

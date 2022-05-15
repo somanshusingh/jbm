@@ -100,6 +100,19 @@ export class DashboardComponent implements OnInit {
                 this.sourcenotUndefined = true;
               }
               $('#ViewStatus').html(this.data[i]['Status']);
+              if(this.data[i]['Document'] !== '' && this.data[i]['Document'] !== undefined && this.data[i]['Document'] !== null){
+                $('#doc1Name').html(this.data[i]['Document']['Doc1_Name']);
+                $('#docImage1').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc1_Data']);
+                $('#doc2Name').html(this.data[i]['Document']['Doc2_Name']);
+                $('#docImage2').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc2_Data']);
+                $('#docViewStatus').html('');
+              }else{
+                $('#doc1Name').html('');
+                $('#docImage1').attr('src','');
+                $('#doc2Name').html('');
+                $('#docImage2').attr('src','');
+                $('#docViewStatus').html('Documents Not Available.')
+              }
             }
             if(source == 'edit'){
               $('.Popup1').show();
