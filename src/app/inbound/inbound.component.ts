@@ -42,6 +42,8 @@ export class InboundComponent implements OnInit {
               $('#inVnumber').val($("#checkVehicleNumber").val());
               $('#inIssued_By').val(this.serviceCall.Role);
               this.isVehicleDataAvailable = true;
+              $('#inboundRegisterFinal').hide();
+              $("#inboundSubmitFinal").show();
             } else {
               this.Message = "Vehicle PUC Expire";
               $('.Popup1').show();
@@ -488,6 +490,8 @@ export class InboundComponent implements OnInit {
         $("#inTripDasboard").val(Trip['Trip_No']);
         this.storeTrip = Trip;
         this.active('Material');
+        $('#inboundRegisterFinal').show();
+        $("#inboundSubmitFinal").hide();
       } else {
         this.Message = 'Vehicle Data Not Found';
         $('.Popup1').show();
