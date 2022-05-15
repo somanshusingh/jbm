@@ -58,6 +58,8 @@ export class UsersComponent implements OnInit {
           if (this.data[i][a] == userid) {
             if (source == 'view') {
               $('.userViewPopup1').show();
+              $('.userPopup1').hide();
+              $('.Usermessage').hide();
               $('#ViewUserUserId').html(this.data[i]['UserId']);
               $('#ViewUserName').html(this.data[i]['FirstName'] +' '+ this.data[i]['LastName']);
               $('#ViewUserEmail').html(this.data[i]['Email']);
@@ -71,6 +73,8 @@ export class UsersComponent implements OnInit {
             }
             if (source == 'edit') {
               $('.userPopup1').show();
+              $('.userViewPopup1').hide();
+              $('.Usermessage').hide();
               $('#editsUserName').val(this.data[i]['UserId']);
               $('#editpassword').val(this.data[i]['Password']);
               $('#editconfirmPassword').val(this.data[i]['Password']);
@@ -212,6 +216,7 @@ export class UsersComponent implements OnInit {
   }
   updateUser() {
     $('.userPopup1').hide();
+    $('.userViewPopup1').hide();
     $('.Usermessage').show();
     $('.UserPopupMessagebutton').hide();
     this.Message = 'Please Wait...'

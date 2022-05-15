@@ -78,6 +78,7 @@ export class DashboardComponent implements OnInit {
           if (this.data[i][a] == vehicleNo) {
             if (source == 'view') {
               $('.Popup1edit').show();
+              $('.Popup1').hide();
               $('#ViewVehicleNumber').html(this.data[i]['VehicleNo']);
               $('#ViewInsuranceExpireDate').html(this.data[i]['Insurance_exp_date'].split('T')[0]);
               $('#ViewPUCCExpireDate').html(this.data[i]['PUC_exp_date'].split('T')[0]);
@@ -116,6 +117,7 @@ export class DashboardComponent implements OnInit {
             }
             if(source == 'edit'){
               $('.Popup1').show();
+              $('.Popup1edit').hide();
               $('#editdVehicleNo').val(this.data[i]['VehicleNo']);
               $('#editdInsurance_exp_date').val(this.data[i]['Insurance_exp_date'].split('T')[0]);
               $('#editdPUC_exp_date').val(this.data[i]['PUC_exp_date'].split('T')[0]);
@@ -133,6 +135,7 @@ export class DashboardComponent implements OnInit {
   }
   updateVehicle(){
     $('.Popup1').hide();
+    $('.Popup1edit').hide();
     $('.Popup1message').show();
     $('.PopupMessagebutton').hide();
     this.Message ='Please Wait...'

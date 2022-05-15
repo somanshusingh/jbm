@@ -156,6 +156,7 @@ export class InboundDashboardComponent implements OnInit {
   }
   updateInboundData() {
     $('.editInPopup1').hide();
+    $('.inViewPopup1').hide();
     $('.inPopup1message').show();
     $('.inPopupMessagebutton').hide();
     this.Message = 'Please Wait...'
@@ -206,6 +207,7 @@ export class InboundDashboardComponent implements OnInit {
           if (this.data[i][a] == tripNo) {
             if (source == 'view') {
               $('.inViewPopup1').show();
+              $('.editInPopup1').hide();
               $('#inViewTrip_No').html(this.data[i]['Trip_No']);
               $('#inViewVehicleNo').html(this.data[i]['VehicleNo']);
               $('#inViewDriver_Name').html(this.data[i]['Driver_Name']);
@@ -233,6 +235,7 @@ export class InboundDashboardComponent implements OnInit {
             }
             if (source == 'edit') {
               $('.editInPopup1').show();
+              $('.inViewPopup1').hide();
               // $('#editinvehicleMake').val(this.data[i]['VehicleNo']);
               // $('#editinvehicleInsurance_exp_date').val(this.data[i]['Insurance_exp_date'].split('T')[0]);
               $('#editinMaterial').val(this.data[i]['Material']);

@@ -49,6 +49,9 @@
 }
 .viewLabel {
     width: 5cm;
+    font-family: sans-serif;
+    min-height: 28px;
+    font-size: 15px;
   }
 
 .userViewPopup1{

@@ -193,7 +193,7 @@
                                     <div class="mt-3">
                                         <label>Quantity Material Weight</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Gross Weight" id="outqty_mt_Weight" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
+                                            placeholder="Quantity Material Weight" id="outqty_mt_Weight" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
                                         <span class="outqty_mt_WeightErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
@@ -219,15 +219,15 @@
                                 <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
                                 <div style="display:flex;">
                                     <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
-                                <button type="button" class="button w-20 bg-theme-1 text-white ml-auto " style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
+                                <button type="button" class="button w-20 bg-theme-1 ml-auto " style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;color: black !important;
                                 width: 65px;"
-                                    (click)="validate()">
-                                    <span class="registerCardHover">
+                                    (click)="validate()">Submit
+                                    <!-- <span class="registerCardHover">
                                         <img class="w-6" src="assets/images/registerCard.png" style="height:33px; width:39px;">
                                         <div class="hoverText">
                                             Register Card
                                         </div>
-                                    </span>
+                                    </span> -->
                                 </button>
                             </div>
                             </div>
@@ -255,15 +255,15 @@
     <div class="Popup1" id="addFieldPopup">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #abd3f4;padding: 3px;font-weight: 700;color: #5a5656;">
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 
             </div>
             <div style="padding: 28px;text-align: center;">
                 <b> {{Message}}</b>
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;">
-            <button class="Popupbutton" (click)="hidePopup()"><i style="background-color: green;color: white;border-radius: 14px;" data-feather="check"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button  (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
             <!-- <button class="Popupbutton" (click)="hidePopup()"><i style="background-color: red;color: white;border-radius: 14px;" data-feather="x"></i></button> -->
         </div>
     </div>
@@ -276,7 +276,7 @@
     <div class="uploadDocOut">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;">
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Upload Documents
             </div>
             <div style="padding: 28px;text-align: center;" class="toUploadOut">
@@ -290,12 +290,12 @@
                 {{docStatus}}
             </div>
         </div>
-        <div class="Popup3 toUploadOut" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
-            <button class="Popupbutton" (click)="uploadDocs()">Upload</button>&nbsp;&nbsp;
-            <button class="Popupbutton" (click)="hideuploadPopup()">Close</button>
+        <div class="Popup3 toUploadOut" tyle="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button  (click)="uploadDocs()" style="color:white;width: 3cm;">Upload</button>&nbsp;&nbsp;
+            <button  (click)="hideuploadPopup()" style="color:white;width: 3cm;">Cancel</button>
         </div>
-        <div class="Popup3 afterUploadButtonOut" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
-            <button class="Popupbutton" (click)="hideuploadPopupok()">OK</button>
+        <div class="Popup3 afterUploadButtonOut" tyle="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hideuploadPopupok()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>
 </div>

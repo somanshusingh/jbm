@@ -22,7 +22,7 @@ label{width: 3.5cm;}
   z-index: 1000;
   border: 1px
   solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 0 15px rgb(0 0 0 / 30%);
   background: #fff;
   animation: alertshow .2s ease;}

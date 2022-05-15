@@ -33,7 +33,9 @@ export class OutboundDashboardComponent implements OnInit {
   getData(){
     var url = "/history/outside_transport/view"
     this.serviceCall.getService(url).subscribe(data=>{
+      if(data['msg'] !=='No trip available'){
       this.data = data['msg'];
+      }
       // for(var i in data['msg']){
       //   if(data['msg'][i].hasOwnProperty('Status') && data['msg'][i]['Status'] == 'open'){
       //     this.data.push(data['msg'][i]);
@@ -52,6 +54,7 @@ export class OutboundDashboardComponent implements OnInit {
           if (this.data[i][a] == Trip_No) {
             if (source == 'view') {
               $('.oviewPopup1edit').show();
+              $('.editPopOut').hide();
               $('#oViewTrip_No').html(this.data[i]['Trip_No']);
               $('#oViewVehicleNo').html(this.data[i]['VehicleNo']);
               $('#oViewInsurance_exp_date').html(this.data[i]['Insurance_exp_date'].split('T')[0]);
@@ -85,6 +88,7 @@ export class OutboundDashboardComponent implements OnInit {
             }
             if(source == 'edit'){
               $('.editPopOut').show();
+              $('.oviewPopup1edit').hide();
               $('#outEditvehicleMake').val(this.data[i]['Make']);
               $('#outEditvehicleIns_exp_date').val(this.data[i]['Insurance_exp_date'].split('T')[0]);
               $('#outEditAddress').val(this.data[i]['Address']);

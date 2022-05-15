@@ -1,8 +1,10 @@
 <div id="outerDiv">
     <!-- <button class="buttonCss" routerLink="/outbound">Create Trip</button><br><br> -->
-    <button class="buttonCss" (click)="navigate('/outbound')">Create Trip</button><br><br>
-    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap" [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger" style="width:100%">
+    <button (click)="navigate('/outbound')"
+        style="color: white;background: #1d40aa;border: none;border-radius: 4px;height: 36px;padding: 5px 5px 5px 5px;width: 110px;">Create
+        Trip</button><br><br>
+    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap"
+        [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="width:100%">
         <thead>
             <tr>
                 <th class="imageDiv">&nbsp;&nbsp;&nbsp;</th>
@@ -47,8 +49,8 @@
     <div class="editPopOut" id="addFieldPopup">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
-                Edit Vehicle Data
+                style="height: 35px;text-align: center ;background-color: #2569a1;padding-top: 7px;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                Vehicle Details
             </div>
             <div style="padding: 0px 20px;text-align: center;">
                 <div class="editDiv">
@@ -66,12 +68,15 @@
                                         <div class="col-span-12 xl:col-span-6">
                                             <div class="">
                                                 <label>Make</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Make" id="outEditvehicleMake" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Make" id="outEditvehicleMake" maxlength="25"
+                                                    (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="vehicleMakeErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Insurance exp date</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Insurance exp date" id="outEditvehicleIns_exp_date">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Insurance exp date" id="outEditvehicleIns_exp_date">
                                                 <span class="vehicleInsurance_exp_dateErr errMsg"></span>
                                             </div>
                                             <!-- <div class="mt-3">
@@ -86,46 +91,61 @@
                                             </div> -->
                                             <div class="mt-3">
                                                 <label>Driver Name</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Name" id="outEditDriver_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Driver Name" id="outEditDriver_Name" maxlength="50"
+                                                    (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Driver_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Consignee Name</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Consignee Name" id="outEditConsignee_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Consignee Name" id="outEditConsignee_Name"
+                                                    maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Consignee_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Quantity Material Weight</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="outEditoutqty_mt_Weight"  pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Quantity Material Weight" id="outEditoutqty_mt_Weight"
+                                                    pattern="[0-9]*" inputmode="numeric"
+                                                    (keypress)="KeyPressEvent($event,'Double')">
                                                 <span class="outqty_mt_WeightErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>LR Number</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="LR Number" id="outEditlrNumber" maxlength="10" (keypress)="KeyPressEvent($event,'VarChar')">
+                                                    placeholder="LR Number" id="outEditlrNumber" maxlength="10"
+                                                    (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="outEditlrNumberErr errMsg"></span>
                                             </div>
                                         </div>
                                         <div class="col-span-12 xl:col-span-6">
                                             <div>
                                                 <label>Vehicle No</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Vehicle No" id="outEditVnumber" maxlength="15" style="text-transform:uppercase">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Vehicle No" id="outEditVnumber" maxlength="15"
+                                                    style="text-transform:uppercase">
                                                 <span class="VnumberErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Model</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Model" id="outEditVehicleModel" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Model" id="outEditVehicleModel" maxlength="25"
+                                                    (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="VehicleModelErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>PUC exp date</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="PUC exp date" id="outEditVPUC_exp_date">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="PUC exp date" id="outEditVPUC_exp_date">
                                                 <span class="VPUC_exp_dateErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Material</label><br>
                                                 <div class="mt-2 inputWidth">
-                                                    <select data-search="true" class="tail-select w-full" id="outEditMaterial_Type" style="height: 38px;border:1px solid #dee2e6;" id="outEditM">
+                                                    <select data-search="true" class="tail-select w-full"
+                                                        id="outEditMaterial_Type"
+                                                        style="height: 38px;border:1px solid #dee2e6;" id="outEditM">
                                                         <option value="">Select Material Type</option>
                                                         <!-- <option value="Iron">Iron</option>
                                                         <option value="Steel">Steel</option> -->
@@ -140,12 +160,16 @@
                                             </div> -->
                                             <div class="mt-3">
                                                 <label>Driver Number</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Number" id="outEditDriver_Number" (keyup)="ValidateNumber($event)" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Mobile')">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Driver Number" id="outEditDriver_Number"
+                                                    (keyup)="ValidateNumber($event)" pattern="[0-9]*"
+                                                    inputmode="numeric" (keypress)="KeyPressEvent($event,'Mobile')">
                                                 <span class="Driver_NumberErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Address</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address" id="outEditAddress"  maxlength="150">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Address" id="outEditAddress" maxlength="150">
                                                 <span class="AddressErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -156,16 +180,16 @@
                                             </div>
                                             <div class="" style="display:none;">
                                                 <label>Trip No</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Make" id="outEditTrip_No">
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Make" id="outEditTrip_No">
                                                 <span class="vehicleMakeErr errMsg"></span>
                                             </div>
                                         </div>
                                     </div><br>
-                                    <div class="" style="text-align: center;">
-                                        <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+                                    <!-- <div class="" style="text-align: center;">
                                         <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
                                     <button type="button" class="buttonCss" (click)="closeEdit()">Close</button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- END: Personal Information -->
@@ -174,85 +198,126 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="Popup3" style="height: 45px;padding: 4px;"> -->
-            <!-- <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp; -->
-            <!-- <button type="button" class="buttonCss" (click)="closeEdit()">Close</button> -->
-        <!-- </div> -->
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button type="button" (click)="validateEdit()" style="color:white;width: 3cm;">Update</button>&nbsp;&nbsp;
+            <button type="button" (click)="closeEdit()" style="color:white;width: 3cm;">Cancel</button>
+            <!-- </div> -->
+        </div>
     </div>
-</div>
-<!-- Edit Popup finish -->
+    <!-- Edit Popup finish -->
 
-<!-- View Popup start -->
+    <!-- View Popup start -->
 
-<div class="addFieldPopupTop" id="viewPopupTop">
-    <div class="oviewPopup1edit">
-        <div class="Popup2">
-            <!-- <div
+    <div class="addFieldPopupTop" id="viewPopupTop">
+        <div class="oviewPopup1edit">
+            <div class="Popup2">
+                <div
+            style="height: 35px;text-align: center ;background-color: #2569a1;padding-top: 7px;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                Trip Details
+            </div>
+                <!-- <div
                 style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
                 Vehicle Details
             </div> -->
-            <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span>
-            <div class="ViewDisaplayOutbound">
-            <div style="padding: 28px;border-right: 1px solid;border-bottom: 1px solid;">
-                <b><label class="viewLabel">Trip_No:</label><span id="oViewTrip_No"></span><br></b>
-                <b><label class="viewLabel">Vehicle Number:</label><span id="oViewVehicleNo"></span><br></b>
-                <b><label class="viewLabel">Ins Expire Date: </label> <span
-                        id="oViewInsurance_exp_date"></span><br></b>
-                <b><label class="viewLabel">PUCC Expire Date:</label><span id="oViewPUC_exp_date"></span><br></b>
-                <b><label class="viewLabel">Make:</label><span id="oViewMake"></span><br></b>
-                <b><label class="viewLabel">Model: </label><span id="oViewModel"></span><br></b>
-                <b><label class="viewLabel">Address:</label> <span id="oViewAddress"></span><br></b>
-                <br>
-                <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
-            </div>
-            <div style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;border-bottom: 1px solid;">
-                <div>
-                <span id="docViewStatusOut"></span>
-                <label id="doc1NameOut"></label><br>
-                <img  class="docImgOut" id="docImage1Out" style="max-height: 185px;"><br><br></div>
-                <div>
-                <label id="doc2NameOut"></label><br>
-                <img  class="docImgOut" id="docImage2Out" style="max-height: 185px;"></div>
-            </div>
-            <div style="border-right: 1px solid;padding: 28px;"> 
-                <b><label class="viewLabel">Consignee_Name:</label> <span id="oViewConsignee_Name"></span><br></b>
-                <b><label class="viewLabel">Driver_Name:</label> <span id="oViewDriver_Name"></span><br></b>
-                <b><label class="viewLabel">Driver_Number:</label> <span id="oViewDriver_Number"></span><br></b>
-                <!-- <b><label class="viewLabel">Gross_Weight:</label> <span id="oViewGross_Weight"></span><br></b> -->
-                <!-- <b><label class="viewLabel">Issued_By:</label> <span id="oViewIssued_By"></span><br></b>
+                <!-- <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span> -->
+                <div class="ViewDisaplayOutbound">
+                    <div style="padding: 10px;">
+                        <!-- <b> -->
+                            <label class="viewLabel">Trip_No:</label><span id="oViewTrip_No"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Vehicle Number:</label><span id="oViewVehicleNo"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Ins Expire Date: </label> <span
+                                id="oViewInsurance_exp_date"></span><br>
+                            <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">PUCC Expire Date:</label><span
+                                id="oViewPUC_exp_date"></span><br>
+                            <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Make:</label><span id="oViewMake"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Model: </label><span id="oViewModel"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Address:</label> <span id="oViewAddress"></span><br>
+                        <!-- </b> -->
+                        <br>
+                        <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
+                    </div>
+                    <div
+                        style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;">
+                        <div>
+                            <span id="docViewStatusOut"></span>
+                            <label id="doc1NameOut"></label><br>
+                            <img class="docImgOut" id="docImage1Out" style="max-height: 185px;"><br><br>
+                        </div>
+                        <div>
+                            <label id="doc2NameOut"></label><br>
+                            <img class="docImgOut" id="docImage2Out" style="max-height: 185px;">
+                        </div>
+                    </div>
+                    <div style="padding: 10px;">
+                        <!-- <b> -->
+                            <label class="viewLabel">Consignee_Name:</label> <span
+                                id="oViewConsignee_Name"></span><br>
+                            <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Driver_Name:</label> <span id="oViewDriver_Name"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Driver_Number:</label> <span id="oViewDriver_Number"></span><br>
+                        <!-- </b> -->
+                        <!-- <b><label class="viewLabel">Gross_Weight:</label> <span id="oViewGross_Weight"></span><br></b> -->
+                        <!-- <b><label class="viewLabel">Issued_By:</label> <span id="oViewIssued_By"></span><br></b>
                 <b><label class="viewLabel">Issued_Date:</label> <span id="oViewIssued_Date"></span><br></b> -->
-                <!-- <b><label class="viewLabel">Material:</label> <span id="oViewMaterial"></span><br></b> -->
-                <b><label class="viewLabel">Material:</label><span id="oViewMaterial_Type"></span><br></b>
-                <b><label class="viewLabel">Qty_Mt_Weight:</label> <span id="oViewQty_Mt_Weight"></span><br></b>
-                <!-- <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b> -->
-                <b><label class="viewLabel">Vehicle_Mapping:</label> <span id="oViewVehicle_Mapping"></span><br></b>  
+                        <!-- <b><label class="viewLabel">Material:</label> <span id="oViewMaterial"></span><br></b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Material:</label><span id="oViewMaterial_Type"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Qty_Mt_Weight:</label> <span id="oViewQty_Mt_Weight"></span><br>
+                        <!-- </b> -->
+                        <!-- <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b> -->
+                        <!-- <b> -->
+                            <label class="viewLabel">Vehicle_Mapping:</label> <span
+                                id="oViewVehicle_Mapping"></span><br>
+                            <!-- </b> -->
+                    </div>
+                    <div>
+                    </div>
+                </div>
             </div>
-            <div>
+            <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+                <button (click)="hideView()"  style="color:white;width: 3cm;">OK</button>
             </div>
         </div>
-        </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:10px;">
-            <button class="buttonCss" (click)="hideView()">Close</button>
-      </div>
     </div>
-</div>
-<!-- View Popup finish -->
+    <!-- View Popup finish -->
 
-<!-- Message Popup start -->
-<div class="" id="messagePopupTop">
-    <div class="outDashmessage">
-        <div class="Popup2">
-            <!-- <div
+    <!-- Message Popup start -->
+    <div class="" id="messagePopupTop">
+        <div class="outDashmessage">
+            <div class="Popup2">
+                <div
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                    
+                </div>
+                <!-- <div
           style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
           Vehicle Data
         </div> -->
-            <div style="padding: 28px;">
-                {{Message}}
+                <div style="padding: 28px;">
+                    {{Message}}
+                </div>
+            </div>
+            <div class="Popup3 outDashmessagebutton" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+                <button  style="color:white;width: 3cm;" (click)="hideMessagePopup()">OK</button>
             </div>
         </div>
-        <div class="Popup3 outDashmessagebutton" style="height: 30px;padding: 4px;">
-            <button class="PopupMessagebutton" (click)="hideMessagePopup()">OK</button>
-        </div>
     </div>
-</div>
-<!-- Message Popup finish -->
+    <!-- Message Popup finish -->

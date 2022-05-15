@@ -27,7 +27,7 @@
   height: 100%; */
   left: 50%;
   margin-left: -186px;
-  top: 20%;
+  top: 15%;
   /* top: 0%; */
   z-index: 1000;
   border: 1px solid #ccc;
@@ -79,6 +79,9 @@
 
 .viewLabel {
   width: 5cm;
+    font-family: sans-serif;
+    min-height: 28px;
+    font-size: 15px;
 }
 
 .errDisplay {
