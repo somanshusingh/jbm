@@ -15,7 +15,7 @@
 /* .mainBody{background-color: #00bcd4 !important;height: 100% !important } */
 .errDisplay{box-shadow: 0px 0px 3px 0px red!important;}
 .dl-menuwrapper{display: block !important;}
-.env{position: absolute ;text-shadow: 5px 5px 10px rgba(0, 0, 0, .8);top:118px;left:98px;text-align:initial;font-weight:900;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:53px;line-height:60px;color:#ffffff;width:769px;letter-spacing:0.5px;height:193px;white-space:normal;}
+.env{position: absolute ;text-shadow: 5px 5px 10px rgba(0, 0, 0, .8);top:153px;left:76px;text-align:initial;font-weight:900;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:53px;line-height:60px;color:#ffffff;width:769px;letter-spacing:0.5px;height:193px;white-space:normal;}
 .sign{
     padding: 85px;
     height: 11cm;
@@ -28,10 +28,10 @@ position: absolute;top:17px;left:818px;font-style:normal;font-family:Montserrat;
     text-align:center;top:294px;left:102px;text-align:center;font-weight:400;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:13px;line-height:36px;color:#ffffff;letter-spacing:0.5px;border-radius:6px;white-space:normal;}
 .envimg{height: 100%;width: 100%;}
 #layerslider_1_61w4xch7dyhe{height:100vh;margin:0 auto;margin-bottom: 0px;}
-.truckImg{height: 112%;}
+.truckImg{height: 78%;opacity: 0.8;border-radius: 10px 0px 71px 0px;}
 @media only screen and (max-width: 768px) {
     .sign{position: absolute;top:118px;left:59px !important;font-style:normal;font-family:Montserrat;color:#ffffff;border-left: 0px solid white;padding: 0;}
-.env{position: absolute ;text-shadow: 5px 5px 10px rgba(0, 0, 0, .8);top:0;left:62px;text-align:initial;font-weight:900;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:16px;line-height:60px;color:#ffffff;width:769px;letter-spacing:0.5px;height:193px;white-space:normal;}
+.env{position: absolute ;text-shadow: 5px 5px 10px rgba(0, 0, 0, .8);top: 8px;left:62px;text-align:initial;font-weight:900;font-style:normal;text-decoration:none;mix-blend-mode:normal;font-family:Montserrat;font-size:16px;line-height:60px;color:#ffffff;width:769px;letter-spacing:0.5px;height:193px;white-space:normal;}
 .waste{position: absolute ;text-shadow: 5px 5px 10px rgba(0, 0, 0, .8);top:37px;left:62px;background-size:inherit;background-position:inherit;color:#ffffff;font-size:15px;}
 .learn{ width: 2.5cm;
     position: absolute ;background-color: #00aeef;
@@ -41,5 +41,5 @@ position: absolute;top:17px;left:818px;font-style:normal;font-family:Montserrat;
         width: 34cm;
         margin-left: -446px;}
     #layerslider_1_61w4xch7dyhe{width:1920px;height:100vh;margin:0 auto;margin-bottom: 0px;}
-    .truckImg{    height: 49%;}
+    .truckImg{height: 44%;border-radius: 10px 0px 33px 0px;}
 }

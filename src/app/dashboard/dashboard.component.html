@@ -24,11 +24,11 @@
                     <div style="display: flex;" class="imageDiv">
                         <div (click)="viewData('edit',vehicle.VehicleNo)">
                             <!-- <i data-feather="edit" style="height: 18px;"></i> -->
-                            <img src="assets/images/edit-icon.png" style="height: 22px;">
+                            <img src="assets/images/edit-icon3.png" style="height: 22px;">
                         </div>&nbsp;&nbsp;
                         <div (click)="viewData('view',vehicle.VehicleNo)">
                             <!-- <i data-feather="eye" style="height: 18px;"></i> -->
-                            <img src="assets/images/eye-icon.png" style="height: 22px;">
+                            <img src="assets/images/eye-icon2.png" style="height: 20px;">
                         </div>
                     </div>
                 </td>
@@ -53,7 +53,7 @@
     <div class="Popup1" id="addFieldPopup">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+                style="height: 27px;text-align: center ;background-color: #0067ac;;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Edit Vehicle Data
             </div>
             <div style="padding: 0px 20px;text-align: center;">
@@ -73,13 +73,15 @@
                                             <div>
                                                 <label>Vehicle No</label>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="MH02AB1234" id="editdVehicleNo" name="namesurname" maxlength="15" style="text-transform:uppercase">
+                                                    placeholder="MH02AB1234" id="editdVehicleNo" name="namesurname"
+                                                    maxlength="15" style="text-transform:uppercase">
                                                 <span class="nameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
                                                 <label>Make</label>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Honda" id="editdMake" name="namesurname" maxlength="25">
+                                                    placeholder="Honda" id="editdMake" name="namesurname"
+                                                    maxlength="25">
                                                 <span class="nameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -123,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="Popup3" style="height: 45px;padding: 4px;">
+        <div class="Popup3" style="height: 30px;padding: 4px;width: 100%;background-color: #0067ac;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
             <button type="button" class="buttonCss" (click)="closeEdit()">Close</button>
         </div>
@@ -136,42 +138,44 @@
 <div class="addFieldPopupTop" id="viewPopupTop">
     <div class="Popup1edit">
         <div class="Popup2">
-            <!-- <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+            <div
+                style="height: 27px;text-align: center ;background-color: #0067ac;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Vehicle Details
-            </div> -->
-            <span style="padding: 27px;font-size: 20px;font-weight: 700;">Vehicle Details</span>
-            <div class="ViewDisaplayDashboard">
-            <div style="padding: 28px;">
-                <b><label class="viewLabel">Vehicle Number:</label><span id="ViewVehicleNumber"></span><br></b>
-                <b><label class="viewLabel">Ins Expire Date: </label> <span
-                        id="ViewInsuranceExpireDate"></span><br></b>
-                <b><label class="viewLabel">PUCC Expire Date:</label><span id="ViewPUCCExpireDate"></span><br></b>
-                <b><label class="viewLabel">Make:</label><span id="ViewMake"></span><br></b>
-                <b><label class="viewLabel">Model: </label><span id="ViewModel"></span><br></b>
-                <b><label class="viewLabel">Vehicle Type: </label><span id="ViewVehicleType"></span><br></b>
-                <b><label class="viewLabel">Created By:</label> <span id="ViewCreated_By"></span><br></b>
-                <b><label class="viewLabel">Created On: </label><span id="ViewCreated_On"></span><br></b>
-                <div *ngIf="notUndefined == true">
-                <b><label class="viewLabel">Modified By:</label><span id="ViewModified_By"></span><br></b></div>
-                <!-- <div *ngIf="sourcenotUndefined == true"> -->
-                <b><label class="viewLabel">Source:</label><span id="ViewSource"></span><br></b>
+            </div>
+            <!-- <span style="padding: 27px;font-size: 20px;font-weight: 700;">Vehicle Details</span> -->
+            <!-- <div class="ViewDisaplayDashboard"> -->
+                <div style="padding: 28px;">
+                    <b><label class="viewLabel">Vehicle Number:</label><span id="ViewVehicleNumber"></span><br></b>
+                    <b><label class="viewLabel">Ins Expire Date: </label> <span
+                            id="ViewInsuranceExpireDate"></span><br></b>
+                    <b><label class="viewLabel">PUCC Expire Date:</label><span id="ViewPUCCExpireDate"></span><br></b>
+                    <b><label class="viewLabel">Make:</label><span id="ViewMake"></span><br></b>
+                    <b><label class="viewLabel">Model: </label><span id="ViewModel"></span><br></b>
+                    <b><label class="viewLabel">Vehicle Type: </label><span id="ViewVehicleType"></span><br></b>
+                    <b><label class="viewLabel">Created By:</label> <span id="ViewCreated_By"></span><br></b>
+                    <b><label class="viewLabel">Created On: </label><span id="ViewCreated_On"></span><br></b>
+                    <div *ngIf="notUndefined == true">
+                        <b><label class="viewLabel">Modified By:</label><span id="ViewModified_By"></span><br></b>
+                    </div>
+                    <!-- <div *ngIf="sourcenotUndefined == true"> -->
+                    <b><label class="viewLabel">Source:</label><span id="ViewSource"></span><br></b>
+                    <!-- </div> -->
+                    <b><label class="viewLabel">Status:</label> <span id="ViewStatus"></span><br></b><br>
+                </div>
+                <!-- <div style="display: grid; column-gap: 30px;">
+                    <span id="docViewStatus"></span>
+                    <label id="doc1Name"></label><br>
+                    <img class="docImg" id="docImage1" style="max-height: 185px;"><br><br>
+                    <label id="doc2Name"></label><br>
+                    <img class="docImg" id="docImage2" style="max-height: 185px;">
+                </div> -->
             <!-- </div> -->
-                <b><label class="viewLabel">Status:</label> <span id="ViewStatus"></span><br></b><br>
-            </div>
-            <div style="display: grid; column-gap: 30px;">
-                <span id="docViewStatus"></span>
-                <label id="doc1Name"></label><br>
-                <img  class="docImg" id="docImage1" style="max-height: 185px;"><br><br>
-                <label id="doc2Name"></label><br>
-                <img  class="docImg" id="docImage2" style="max-height: 185px;">
-            </div>
-        </div>
             <div style="text-align: center;"></div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:10px;">
-            <button class="buttonCss" (click)="hideView()">Close</button>
-      </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;position: absolute;bottom:0;width: 100%;background-color: #0067ac;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button class="button2Css" (click)="hideView()"><img src="assets/images/ok-icon.png" style="height: 20px;"></button>&nbsp;&nbsp;&nbsp;
+            <button class="button2Css" (click)="hideView()"><img src="assets/images/cancel-icon.png" style="height: 20px;"></button>
+        </div>
     </div>
 </div>
 <!-- View Popup finish -->

@@ -18,10 +18,10 @@
                 <td>
                     <div style="display: flex;" class="imageDiv">
                         <div (click)="viewData('edit',user.UserId)">
-                            <img src="assets/images/edit-icon.png" style="height: 22px;">
+                            <img src="assets/images/edit-icon3.png" style="height: 22px;">
                         </div>&nbsp;&nbsp;
                         <div (click)="viewData('view',user.UserId)">
-                            <img src="assets/images/eye-icon.png" style="height: 22px;">
+                            <img src="assets/images/eye-icon2.png" style="height: 20px;">
                         </div>
                     </div>
                 </td>
@@ -41,7 +41,7 @@
     <div class="userPopup1">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+            style="height: 27px;text-align: center ;background-color: #0067ac;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Edit User Data
             </div>
             <div style="padding: 0px 20px;text-align: center;">
@@ -143,7 +143,7 @@
                 </div>
             </div>
         </div>
-        <div class="Popup3" style="height: 45px;padding: 4px;">
+        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #0067ac;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button type="button" class="buttonCss" (click)="validateEdit()">Update</button>&nbsp;&nbsp;
             <button type="button" class="buttonCss" (click)="closeEdit()">Close</button>
         </div>
@@ -157,7 +157,7 @@
     <div class="userViewPopup1">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 10px;">
+            style="height: 27px;text-align: center ;background-color: #0067ac;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 User Data
             </div>
             <div style="padding: 28px;">
@@ -172,12 +172,14 @@
                 <!-- <b><label class="viewLabel">Modified By:</label><span id="ViewUserModified_By"></span><br></b> -->
                 <!-- <b><label class="viewLabel">Modified On:</label><span id="ViewUserModified_On"></span><br></b> -->
                 <b><label class="viewLabel">Status:</label> <span id="ViewUserStatus"></span><br></b><br>
-                <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div>
+                <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
             </div>
         </div>
-        <!-- <div class="Popup3" style="height: 30px;padding: 4px;">
-        <button class="Popupbutton"  (click)="hidePopup()">OK</button>
-      </div> -->
+        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #0067ac;height: 30px;border-radius: 0px 0px 8px 8px;">
+        <!-- <button class="Popupbutton"  (click)="hidePopup()">OK</button> -->
+        <button class="button2Css" (click)="hideView()"><img src="assets/images/ok-icon.png" style="height: 20px;"></button>&nbsp;&nbsp;&nbsp;
+        <button class="button2Css" (click)="hideView()"><img src="assets/images/cancel-icon.png" style="height: 20px;"></button>
+      </div>
     </div>
 </div>
 <!-- View Popup finish -->
@@ -186,12 +188,18 @@
 <div>
     <div class="Usermessage">
         <div class="Popup2">
+            <div
+            style="height: 27px;text-align: center ;background-color: #0067ac;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                
+            </div>
             <div style="padding: 28px;">
                 {{Message}}
             </div>
         </div>
-        <div class="Popup3 UserPopupMessagebutton" style="height: 30px;padding: 4px;">
-            <button class="" (click)="hideMessagePopup()">OK</button>
+        <div class="Popup3 UserPopupMessagebutton" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #0067ac;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <!-- <button class="" (click)="hideMessagePopup()">OK</button> -->
+            <button class="button2Css" (click)="hideMessagePopup()"><img src="assets/images/ok-icon.png" style="height: 20px;"></button>&nbsp;&nbsp;&nbsp;
+            <button class="button2Css" (click)="hideMessagePopup()"><img src="assets/images/cancel-icon.png" style="height: 20px;"></button>
         </div>
     </div>
 </div>

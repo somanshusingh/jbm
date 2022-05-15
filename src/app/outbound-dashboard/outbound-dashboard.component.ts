@@ -33,12 +33,12 @@ export class OutboundDashboardComponent implements OnInit {
   getData(){
     var url = "/history/outside_transport/view"
     this.serviceCall.getService(url).subscribe(data=>{
-      // this.data = data['msg'];
-      for(var i in data['msg']){
-        if(data['msg'][i].hasOwnProperty('Status') && data['msg'][i]['Status'] == 'open'){
-          this.data.push(data['msg'][i]);
-        }
-      }
+      this.data = data['msg'];
+      // for(var i in data['msg']){
+      //   if(data['msg'][i].hasOwnProperty('Status') && data['msg'][i]['Status'] == 'open'){
+      //     this.data.push(data['msg'][i]);
+      //   }
+      // }
       console.log(this.data);
       if(this.Edited == false){
         this.dtTrigger.next();
