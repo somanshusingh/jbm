@@ -8,9 +8,10 @@
                 <th class="imageDiv">&nbsp;&nbsp;&nbsp;</th>
                 <th class="User_ID">User Id</th>
                 <th class="Created_By">Name</th>
-                <th class="Insurance_exp_date">Email</th>
+                <!-- <th class="Insurance_exp_date">Email</th> -->
                 <th class="Make">Mobile No</th>
                 <th class="Model">Role</th>
+                <th class="UserType">User Type</th>
             </tr>
         </thead>
         <tbody>
@@ -26,10 +27,11 @@
                     </div>
                 </td>
                 <td class="Id">{{ user.UserId }}</td>
-                <td class="Created_By">{{ user.FirstName }}&nbsp;{{ user.LastName }}</td>
-                <td class="Insurance_exp_date">{{ user.Email }}</td>
-                <td class="Make">{{ user.Mobile }}</td>
-                <td class="Model">{{ user.Role }}</td>
+                <td class="Name">{{ user.FirstName }}&nbsp;{{ user.LastName }}</td>
+                <!-- <td class="Insurance_exp_date">{{ user.Email }}</td> -->
+                <td class="Mobile">{{ user.Mobile }}</td>
+                <td class="Role">{{ user.Role }}</td>
+                <td class="User_Type">{{ user.User_Type }}</td>
             </tr>
         </tbody>
     </table>

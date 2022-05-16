@@ -31,4 +31,8 @@ export class ApiService {
     url = this.origin + url;
     return this.http.get(url, {withCredentials:true});
   }
+  getCardNumber(url){
+    url = "https://jbmapp.herokuapp.com" + url;
+    return this.http.get(url);
+  }
 }

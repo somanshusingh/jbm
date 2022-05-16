@@ -52,7 +52,7 @@ export class VehicleComponent implements OnInit {
   addVehcile() {
     var url = '/vehicle/registration';
     var post_data = {
-     "VehicleNo":$('#VehicleNo').val(),
+     "VehicleNo":$('#VehicleNo').val().toString().toUpperCase(),
      "Make":$('#Make').val(),
      "Model":$('#Model').val(),
      "Insurance_exp_date":$('#Insurance_exp_date').val(),

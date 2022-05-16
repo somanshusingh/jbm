@@ -239,8 +239,8 @@ export class UsersComponent implements OnInit {
         "outboundProcess": this.allowedMenu.outboundProcess,
         "registerCard": this.allowedMenu.registerCard
       },
-      "EmpCode":$('emp_codeDash').val(),
-      "User_Type":$('userTypeDash').val()
+      "EmpCode":$('#emp_codeDash').val(),
+      "User_Type":$('#userTypeDash').val()
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {

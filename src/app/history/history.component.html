@@ -207,12 +207,12 @@
                                         <input type="date" class="input w-full border mt-2 inputWidth" id="outlrDate">
                                         <span class="outlrDateErr errMsg"></span>
                                     </div>
-                                    <div class="mt-3">
+                                    <!-- <div class="mt-3">
                                         <label>Card Number</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
                                             placeholder="Card Number" id="outCardNumber"  (keypress)="KeyPressEvent($event,'VarChar')">
                                         <span class="outCardErr errMsg"></span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="flex justify-end mt-4 addButtonOut">
@@ -300,3 +300,26 @@
     </div>
 </div>
 <!-- upload Doc Popup finish -->
+
+<!-- RegNo Popup start -->
+
+<div>
+    <div class="RegNoOut">
+        <div class="Popup2">
+            <div
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> Please show your card</b>
+                <!-- <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Card Number" id="PopUpCardNo"> -->
+            </div>
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button class="Popupbutton" (click)="SendCardNo()" style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
+        </div>
+    </div>
+</div>
+<!-- RegNo Popup finish -->

@@ -45,14 +45,14 @@ export class InboundComponent implements OnInit {
               $('#inboundRegisterFinal').hide();
               $("#inboundSubmitFinal").show();
             } else {
-              this.Message = "Vehicle PUC Expire";
+              this.Message = "Vehicle PUC Expired";
               $('.Popup1').show();
-              $('#checkVehicleIn').attr('disabled','disabled');
+              $('#checkVehicleIn').attr('disabled', 'disabled');
             }
           } else {
-            this.Message = "Vehicle Insurance Expire";
+            this.Message = "Vehicle Insurance Expired";
             $('.Popup1').show();
-            $('#checkVehicleIn').attr('disabled','disabled');
+            $('#checkVehicleIn').attr('disabled', 'disabled');
           }
         } else if (data['status'] == 0) {
           this.Message = data['msg'];
@@ -90,7 +90,7 @@ export class InboundComponent implements OnInit {
       "Consignee_Name": $('#inConsignee_Name').val(),
       "Address": $('#inAddress').val(),
       "Qty_Mt_Weight": $('#qty_mt_Weight').val(),
-      "Status":"In transit"
+      "Status": "In transit"
       // "Gross_Weight": $('#inGross_Weight').val(),
       // "Tare_Weight": $('#inTare_Weight').val(),
       // "Net_Weight": $('#inNet_Weight').val()
@@ -279,16 +279,16 @@ export class InboundComponent implements OnInit {
     if (err == 0) {
       this.active('Material');
       $('#tabErr').hide();
-    }else{
+    } else {
       $('#tabErr').show();
     }
   }
   hidePopup() {
     $(".Popup1").hide();
-    let fullUrl= window.location.href.split('?')[1];
-    let sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
+    let fullUrl = window.location.href.split('?')[1];
+    let sessionID = (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1] : '';
     if (this.Message == 'Trip Created Successfully') {
-      this.Router.navigate(['/inBoundDashboard'], { queryParams:{sessionID:sessionID}});
+      this.Router.navigate(['/inBoundDashboard'], { queryParams: { sessionID: sessionID } });
     }
     if (this.carNoAdded == true) {
       window.location.reload();
@@ -417,25 +417,35 @@ export class InboundComponent implements OnInit {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
           for (var i in data['msg']) {
             // if (data['msg'][i]['Status'] == 'open') {
-              if (data['msg'][i].hasOwnProperty('Status') && (data['msg'][i]['Status'].toLowerCase() !== 'completed' || data['msg'][i]['Status'].toLowerCase() !== 'close') && data['msg'][i]['Status'].toLowerCase() !== "") {
+            if (data['msg'][i].hasOwnProperty('Status') && data['msg'][i]['Status'].toLowerCase() !== 'completed' && data['msg'][i]['Status'].toLowerCase() !== 'close' && data['msg'][i]['Status'].toLowerCase() !== "") {
               vehicelStatus++;
               TripsAvailable.push(data['msg'][i]);
+              if(data['msg'][i]['Status'].toLowerCase() == 'in transit' ){
+                this.Message = 'Vehicle In Transit';
+                $('.Popup1').show();
+              }else if(data['msg'][i]['Status'].toLowerCase() == 'in plant'){
+                this.Message = 'Vehicle In Plant';
+                $('.Popup1').show();
+              }else{
+                this.Message = 'Please Complete The Existing Trip.';
+                $('.Popup1').show();
+              }
             }
           }
           if (vehicelStatus > 0) {
-            this.Message = 'Please Complete The Existing Trip.';
-            $('.Popup1').show();
+            // this.Message = 'Please Complete The Existing Trip.';
+            // $('.Popup1').show();
           } else {
             this.checkHistory();
           }
         } else if (data['status'] == 0 && data['msg'].toLowerCase() == 'no trip available') {
           this.checkHistory();
-        }else if (data['status'] == 0 && data['msg'].toLowerCase() == 'trip already exists') {
+        } else if (data['status'] == 0 && data['msg'].toLowerCase() == 'trip already exists') {
           this.Message = 'Please Complete The Existing Trip.';
-          $('.Popup1').show(); 
-        }else{
+          $('.Popup1').show();
+        } else {
           this.Message = 'Something went wrong.';
-          $('.Popup1').show(); 
+          $('.Popup1').show();
         }
       }, (error) => {
         this.Message = 'Something went wrong.';
@@ -493,8 +503,9 @@ export class InboundComponent implements OnInit {
         $('#qty_mt_Weight').val(Trip['Qty_Mt_Weight']);
         $('#inMaterial_Type').val(Trip['Material']);
         $('#lrNumber').val(Trip['LrNumber']);
-        if(Trip['LrDate'] !== null && Trip['LrDate'] !== undefined && Trip['LrDate'] !== ''){
-        $('#lrDate').val(Trip['LrDate'].split('T')[0]);}
+        if (Trip['LrDate'] !== null && Trip['LrDate'] !== undefined && Trip['LrDate'] !== '') {
+          $('#lrDate').val(Trip['LrDate'].split('T')[0]);
+        }
         $("#inTripDasboard").val(Trip['Trip_No']);
         this.storeTrip = Trip;
         this.active('Material');
@@ -522,21 +533,35 @@ export class InboundComponent implements OnInit {
     //   $('#PopUpCardNo').removeClass('errDisplay');
     // }
     // if (err == 0) {
-      let url = '/history/inhouse_transport/update'
-      let post_data = { 
-        "Trip_No": $("#inTripDasboard").val(),
-        "Card_Number": 'CARD10',//$("#PopUpCardNo").val(),
-        "Status":'In plant'
-      }
-      this.serviceCall.signin(url, post_data).subscribe(data => {
+    let url = '/getData';
+    this.serviceCall.getCardNumber(url).subscribe(
+      data => {
         $('.RegNo').hide();
-        if (data['status'] == 1) {
-          this.Message = "Card Updated Successfully.";
+        if (data['status'] == 1 && data['msg']) {
+          let url = '/history/inhouse_transport/update'
+          let post_data = {
+            "Trip_No": $("#inTripDasboard").val(),
+            "Card_Number": data['msg'],//$("#PopUpCardNo").val(),
+            "Status": 'In plant'
+          }
+          this.serviceCall.signin(url, post_data).subscribe(data => {
+            $('.RegNo').hide();
+            if (data['status'] == 1) {
+              this.Message = "Card Updated Successfully.";
+              $('.Popup1').show();
+              this.carNoAdded = true;
+            } else {
+              this.Message = 'Unable to update card.';
+              $('.Popup1').show();
+            }
+          }, (error) => {
+            $('.RegNo').hide();
+            this.Message = 'Something went wrong.';
+            $('.Popup1').show();
+          })
+        } else {
+          this.Message = 'Unable to get card.';
           $('.Popup1').show();
-          this.carNoAdded = true;
-        }else{
-          this.Message = 'Unable to update card.';
-        $('.Popup1').show();
         }
       }, (error) => {
         $('.RegNo').hide();
@@ -545,12 +570,12 @@ export class InboundComponent implements OnInit {
       })
     // }
   }
-  validateDoc(){
-    if(this.docStatus !== 'Documents Uploaded Successfully.' && (window.location.pathname !== '/inBound/inhouse')){
-      $('.buttonCss').css('background-color','red');
+  validateDoc() {
+    if (this.docStatus !== 'Documents Uploaded Successfully.' && (window.location.pathname !== '/inBound/inhouse')) {
+      $('.buttonCss').css('background-color', 'red');
       $('.uploadErr').show();
-    }else{
-      $('.buttonCss').css('background-color','#1d40aa');
+    } else {
+      $('.buttonCss').css('background-color', '#1d40aa');
       $('.uploadErr').hide();
       this.active('Driver');
     }

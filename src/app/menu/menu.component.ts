@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   toggle = 'show';
   Message = '';
   data: any;
+  cardStatus='';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -296,5 +297,44 @@ export class MenuComponent implements OnInit {
     } else {
       $("#id_gateprocess").attr('class', 'fa-solid fa-chevron-left');
     }
+  }
+  OpenCardPopup(){
+    $('.CardMenu').show();
+  }
+  hideCardPopup(){
+    $('.CardMenu').hide();
+  }
+  SendCardNo() {
+    let url = '/getData';
+    this.serviceCall.getCardNumber(url).subscribe(
+      data => {
+        $('.CardMenu').hide();
+        if (data['status'] == 1 && data['msg']) {
+          let url = '/history/card/out/' + data['msg'];//'27002298E479'
+          this.serviceCall.getService(url).subscribe(data=>{
+            if (data['status'] == 1) {
+              this.cardStatus = 'Trip Closed Successfully.';
+              $('.PopupMenu').show();
+            }else{
+              this.cardStatus = 'Error - '+JSON.stringify(data['msg']);
+              $('.PopupMenu').show();
+            }
+          }, (error) => {
+            this.cardStatus = 'Something went wrong.';
+            $('.PopupMenu').show();
+          }
+          )
+        } else {
+          this.cardStatus = 'Unable to get card number.';
+          $('.PopupMenu').show();
+        }
+      }, (error) => {
+        $('.CardMenu').hide();
+        this.cardStatus = 'Something went wrong.';
+        $('.PopupMenu').show();
+      })
+  }
+  hidePopup(){
+    $('.PopupMenu').hide();
   }
 }

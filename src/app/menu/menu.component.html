@@ -28,8 +28,8 @@
                         </span>
                         <span class="menu">
                             <div class="menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
-                            <!-- <div class="menu__title" routerLink="/outBoundDashboard" > Gate Out </div> -->
-                            <div class="menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out </div>
+                            <!-- <div class="menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out </div> -->
+                            <div class="menu__title" (click)="OpenCardPopup()"> Gate Out </div>
                         </span>
                         <ul class="Gate2mobile">
                             <li>
@@ -106,7 +106,7 @@
             <li class="mobileGetCardInfo">
                 <span class="menu">
                     <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                    <div class="menu__title"> Get Card Info </div>
+                    <div class="menu__title" (click)="OpenCardPopup()"> Get Card Info </div>
                 </span>
             </li>
             <li class="mobileTripReprint">
@@ -209,8 +209,8 @@
                             <li>
                                 <span class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
-                                    <!-- <div class="side-menu__title" routerLink="/outBoundDashboard"> Gate Out</div> -->
-                                    <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out
+                                    <!-- <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out -->
+                                    <div class="side-menu__title" (click)="OpenCardPopup()"> Gate Out
                                     </div>
                                 </span>
                             </li>
@@ -264,7 +264,7 @@
                 <li class="desktopGetCardInfo">
                     <span class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick"> Get Card Info</div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="OpenCardPopup()"> Get Card Info</div>
                     </span>
                 </li>
                 <li class="desktopTripReprint">
@@ -365,7 +365,7 @@
     <div class="Popup1Profile">
         <div class="Popup2">
             <div
-                style="height: 27px;text-align: center ;background-color: #f6f6f6;padding: 3px;font-weight: 700;color: #5a5656;border-radius: 4px;">
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Reset Password
             </div>
             <div style="padding: 28px;" id="popOptions">
@@ -392,13 +392,55 @@
             </div>
         </div>
         <div class="Popup3 PopupMessagebutton"
-            style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
+        style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button class="PopupMessagebutton"
-                (click)="changePassword()">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="PopupMessagebutton" (click)="hideProfilePopup()">Close</button>
+                (click)="changePassword()" style="color:white;width: 3cm;">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="PopupMessagebutton" (click)="hideProfilePopup()" style="color:white;width: 3cm;">Close</button>
         </div>
-        <div class="Popup3 PopupMessageShow" style="height: 30px;padding: 4px;background-color: #0067ac;color: white;">
-            <button (click)="hidePopupMsg()">Ok</button>
+        <div class="Popup3 PopupMessageShow" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hidePopupMsg()" style="color:white;width: 3cm;">Ok</button>
         </div>
     </div>
 </div>
+
+<!-- Card Popup start -->
+
+<div>
+    <div class="CardMenu">
+        <div class="Popup2">
+            <div
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> Please show your card</b>
+                <!-- <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Card Number" id="PopUpCardNo"> -->
+            </div>
+        </div>
+        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
+            <button class="Popupbutton" (click)="SendCardNo()" style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
+        </div>
+    </div>
+</div>
+<!-- Card Popup finish -->
+
+<!--Message  Popup start -->
+<div>
+    <div class="PopupMenu" id="addFieldPopup">
+        <div class="PopupMenu2">
+            <div
+            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> {{cardStatus}}</b>
+            </div>
+        </div>
+        <div class="PopupMenu3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button  (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
+        </div>
+    </div>
+</div>
+<!--Message  Popup finish -->

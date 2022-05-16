@@ -120,6 +120,22 @@ label {
   line-height: 1.42857143;
   color: #333;
 }
+.RegNoOut{
+  display: none;
+  border-radius: 10px;
+  position: fixed;
+  width: 310px;
+  left: 45%;
+  margin-left: -50px;
+  top: 20%;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+  background: #fff;
+  animation: alertshow .2s ease;
+  border-radius: 10px;
+}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
   .inputWidth {
     width: 7cm !important;
@@ -147,4 +163,5 @@ label {
   .uploadDocOut{
     margin-left: -136px !important;
 }
+.RegNoOut{margin-left: -139px;}
 }

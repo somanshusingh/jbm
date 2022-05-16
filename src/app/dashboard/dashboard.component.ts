@@ -88,7 +88,8 @@ export class DashboardComponent implements OnInit {
               $('#ViewModel').html(this.data[i]['Model']);
               $('#ViewVehicleType').html(this.data[i]['VehicleType']);
               $('#ViewCreated_By').html(this.data[i]['Created_By']);
-              $('#ViewCreated_On').html(this.data[i]['Created_On']);
+              if(this.data[i]['Created_On'] !== null && this.data[i]['Created_On']!== '' && this.data[i]['Created_On'] !== undefined){
+              $('#ViewCreated_On').html(this.data[i]['Created_On'].split('T')[0]);}
               $('#ViewModified_By').html(this.data[i]['Modified_By']);
               if(this.data[i]['Modified_By'] == '' ||this.data[i]['Modified_By'] == null || this.data[i]['Modified_By'] == 'undefined'){
                 this.notUndefined = false;
