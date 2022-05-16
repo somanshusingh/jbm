@@ -91,10 +91,15 @@
                                 <input type="date" class="input w-full border mt-2 inputWidth" placeholder="PUC Exp Date" id="PUC_exp_date">
                                 <span class="mobileErr errMsg"></span>
                             </div>
-                            <div >
-                                <label>Vehicle Type</label>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="" id="VehicleType" maxlength="25">
-                                <span class="VehicleTypeErr errMsg"></span>
+                            <div>
+                                <label>Vehicle Type</label><br>
+                                <div class="mt-2 inputWidth">
+                                    <select data-search="true" class="tail-select w-full" id="VehicleTypeDash"
+                                        style="height: 38px;border:1px solid #dee2e6;">
+                                        <option value="">Select Vehicle Type</option>
+                                    </select>
+                                </div>
+                                <span class="VehicleTypeDashErr errMsg"></span>
                             </div>
                         </div>
                     </div>

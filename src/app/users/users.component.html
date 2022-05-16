@@ -39,7 +39,7 @@
 
 <div class="addFieldPopupTop" id="editPopupUser">
     <div class="userPopup1">
-        <div class="Popup2">
+        <div class="Popup2" style="max-height:12cm;overflow-y: scroll;">
             <div
             style="height: 35px;text-align: center ;background-color: #2569a1;padding-top: 7px;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 User Details
@@ -87,6 +87,17 @@
                                                 maxlength="10">
                                                 <span class="mobileErr errMsg"></span>
                                             </div>
+                                            <div class="mt-3">
+                                                <label>User Type</label>
+                                                <div class="mt-2 inputWidth">
+                                                    <select data-search="true" class="tail-select w-full" id="userTypeDash" style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;">
+                                                        <option value="">Select User Type</option>
+                                                        <option value="Desktop">Desktop</option>
+                                                        <option value="Mobile">Mobile</option>
+                                                    </select>
+                                                    <span class="userTypeDashErr errMsg"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-span-12 xl:col-span-6">
                                             <div class="mt-3">
@@ -130,6 +141,13 @@
                                                       <li><input id="editcheckRegister" type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
                                                     </ul>
                                                   </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>Emp Code.</label>
+                                                <input class="input w-full border mt-2 inputWidth" id="emp_codeDash" placeholder="Emp Code"
+                                                    (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
+                                                    onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
+                                                <span class="emp_codeDashErr errMsg"></span>
                                             </div>
                                         </div>
                                     </div><br>

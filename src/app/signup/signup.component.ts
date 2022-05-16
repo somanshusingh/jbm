@@ -42,7 +42,8 @@ export class SignupComponent implements OnInit {
         "outboundProcess": this.allowedMenu.outboundProcess,
         "registerCard": this.allowedMenu.registerCard
       },
-      "EmpCode":$('emp_code').val()
+      "EmpCode":$('emp_code').val(),
+      "User_Type":$('userType').val()
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {

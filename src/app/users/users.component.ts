@@ -83,6 +83,8 @@ export class UsersComponent implements OnInit {
               $('#editmobile').val(this.data[i]['Mobile']);
               $('#editemail').val(this.data[i]['Email']);
               $('#editrole').val(this.data[i]['Role']);
+              $('#emp_codeDash').val(this.data[i]['EmpCode']);
+              $('#userTypeDash').val(this.data[i]['User_Type']);
               this.selectMenu();
             }
           }
@@ -236,7 +238,9 @@ export class UsersComponent implements OnInit {
         "inboundPocess": this.allowedMenu.inboundPocess,
         "outboundProcess": this.allowedMenu.outboundProcess,
         "registerCard": this.allowedMenu.registerCard
-      }
+      },
+      "EmpCode":$('emp_codeDash').val(),
+      "User_Type":$('userTypeDash').val()
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {

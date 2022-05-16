@@ -20,9 +20,11 @@ export class DashboardComponent implements OnInit {
   Edited=false;
   notUndefined = true;
   sourcenotUndefined = true;
+  vehicleType =[];
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
+    this.getVehicleType();
     let currentDate = moment().format('YYYY-MM-DD');
     let lastDate = moment().add(3, 'years').format('YYYY-MM-DD');
     $('#editdInsurance_exp_date').attr('Min', currentDate);
@@ -124,6 +126,11 @@ export class DashboardComponent implements OnInit {
               $('#editdMake').val(this.data[i]['Make']);
               $('#editdModel').val(this.data[i]['Model']);
               $('#editdVehicleType').val(this.data[i]['VehicleType']);
+              $('#VehicleTypeEditDash').empty();
+              $('#VehicleTypeEditDash').append("<option value=''>Select Vehicle Type</option>");
+              for (var a in this.vehicleType) {
+                $('#VehicleTypeEditDash').append("<option value='" + this.vehicleType[a]['VehicleType'] + "'>" + this.vehicleType[a]['VehicleType']  + "</option>")
+              }
             }
           }
         }
@@ -146,7 +153,7 @@ export class DashboardComponent implements OnInit {
      "Model":$('#editdModel').val(),
      "Insurance_exp_date":$('#editdInsurance_exp_date').val(),
      "PUC_exp_date":$('#editdPUC_exp_date').val(),
-     "VehicleType":$('#editdVehicleType').val(),
+     "VehicleType":$('#VehicleTypeEditDash').val(),
      };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
@@ -223,5 +230,33 @@ export class DashboardComponent implements OnInit {
   }
   navigate(path){
     this.Router.navigate([path], { queryParams:{sessionID:this.serviceCall.sessionID}})
+  }
+  getVehicleType() {
+    let url = "/master/vehicletype/view"
+    var same = false;
+    this.serviceCall.getService(url).subscribe(data => {
+      for (var i in data['msg']) {
+        same = false;
+        if (this.vehicleType.length > 0) {
+          for (var a in this.vehicleType) {
+            if (this.vehicleType[a]['VehicleType'] === data['msg'][i]['VehicleType']) {
+              same = true;
+            }
+          }
+          if (same == false) {
+            this.vehicleType.push(data['msg'][i]);
+          }
+        } else {
+          this.vehicleType.push(data['msg'][i]);
+        }
+      }
+      $('#VehicleTypeEditDash').empty();
+          $('#VehicleTypeEditDash').append("<option value=''>Select Vehicle Type</option>");
+          for (var a in this.vehicleType) {
+            $('#VehicleTypeEditDash').append("<option value='" + this.vehicleType[a]['VehicleType'] + "'>" + this.vehicleType[a]['VehicleType']  + "</option>")
+          }
+    }, (error) => {
+
+    })
   }
 }

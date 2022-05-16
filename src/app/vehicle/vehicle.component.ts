@@ -17,10 +17,12 @@ export class VehicleComponent implements OnInit {
   uploadedFiles = [];
   uploadfile_name: any;
   docStatus = '';
+  vehicleType =[];
   //dtOptions:DataTables.Settings = {};
   constructor(private serviceCall: ApiService,private Router: Router) { }
 
   ngOnInit(): void {
+  this.getVehicleType();
   let currentDate = moment().format('YYYY-MM-DD');
   let lastDate = moment().add(3, 'years').format('YYYY-MM-DD');
   $('#Insurance_exp_date').attr('Min', currentDate);
@@ -55,7 +57,7 @@ export class VehicleComponent implements OnInit {
      "Model":$('#Model').val(),
      "Insurance_exp_date":$('#Insurance_exp_date').val(),
      "PUC_exp_date":$('#PUC_exp_date').val(),
-     "VehicleType":$('#VehicleType').val(),
+     "VehicleType":$('#VehicleTypeDash').val(),
      "Status":$('#Status').val(),
      "Created_By":this.serviceCall.Role
      };
@@ -128,11 +130,11 @@ export class VehicleComponent implements OnInit {
     }else{
       $('#PUC_exp_date').removeClass('errDisplay');
     }
-    if($('#VehicleType').val() == ''){
-      $('#VehicleType').addClass('errDisplay');
+    if($('#VehicleTypeDash').val() == ''){
+      $('#VehicleTypeDash').addClass('errDisplay');
       err++
     }else{
-      $('#VehicleType').removeClass('errDisplay');
+      $('#VehicleTypeDash').removeClass('errDisplay');
     }
     if($('#Status').val() == ''){
       $('#Status').addClass('errDisplay');
@@ -215,5 +217,33 @@ export class VehicleComponent implements OnInit {
     } else {
       $(".uploadDocV").hide();
     }
+  }
+  getVehicleType() {
+    let url = "/master/vehicletype/view"
+    var same = false;
+    this.serviceCall.getService(url).subscribe(data => {
+      for (var i in data['msg']) {
+        same = false;
+        if (this.vehicleType.length > 0) {
+          for (var a in this.vehicleType) {
+            if (this.vehicleType[a]['VehicleType'] === data['msg'][i]['VehicleType']) {
+              same = true;
+            }
+          }
+          if (same == false) {
+            this.vehicleType.push(data['msg'][i]);
+          }
+        } else {
+          this.vehicleType.push(data['msg'][i]);
+        }
+      }
+      $('#VehicleTypeDash').empty();
+          $('#VehicleTypeDash').append("<option value=''>Select Vehicle Type</option>");
+          for (var a in this.vehicleType) {
+            $('#VehicleTypeDash').append("<option value='" + this.vehicleType[a]['VehicleType'] + "'>" + this.vehicleType[a]['VehicleType']  + "</option>")
+          }
+    }, (error) => {
+
+    })
   }
 }
