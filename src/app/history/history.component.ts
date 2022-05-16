@@ -17,6 +17,7 @@ export class HistoryComponent implements OnInit {
   docStatus = '';
   carNoAdded = false;
   card_number;
+  currentTab = 'vehicle';
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -256,6 +257,7 @@ export class HistoryComponent implements OnInit {
     }
   }
   validateVehicleDetails() {
+    $('#tabErrOut').hide();
     var err = 0
     if ($('#vehicleMake').val() == '') {
       $('#vehicleMake').addClass('errDisplay');
@@ -319,6 +321,12 @@ export class HistoryComponent implements OnInit {
     }
     if (err == 0) {
       this.active('Material');
+      $('#tabErrOut').hide();
+    }
+    else {
+      if(this.currentTab.toLowerCase() == 'vehicle'){
+        $('#tabErrOut').show();
+      }
     }
   }
   hidePopup() {
@@ -344,6 +352,8 @@ export class HistoryComponent implements OnInit {
     }
   }
   active(className) {
+    this.currentTab = className;
+    $('#tabErrOut').hide();
     $('.vehicle, .Driver, .Material').removeClass('top-menu--active');
     $('#MaterialOut, #DriverDetailsOut, #VehcileDataOut,.addButtonOut,.tab2,.tab1').hide();
     $('.' + className).addClass('top-menu--active');

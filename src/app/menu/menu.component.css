@@ -87,8 +87,10 @@
   #popMessageReset, .PopupMessageShow{display: none;}
 .errDisplay{box-shadow: 0px 0px 3px 0px red;}
 @media (max-width: 639px) {
-  .Popup1Profile,.CardMenu {
+  .Popup1Profile{
     left: 21%;}
+    .CardMenu {width: 316px;left: 20%;}
+    .PopupMenu{margin-left: -138px;}
 }
 .disabled{
   pointer-events: none;

@@ -17,6 +17,7 @@ export class InboundComponent implements OnInit {
   docStatus = '';
   carNoAdded = false;
   storeTrip;
+  currentTab = 'vehicle';
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -280,7 +281,9 @@ export class InboundComponent implements OnInit {
       this.active('Material');
       $('#tabErr').hide();
     } else {
-      $('#tabErr').show();
+      if(this.currentTab.toLowerCase() == 'vehicle'){
+        $('#tabErr').show();
+      }
     }
   }
   hidePopup() {
@@ -314,6 +317,8 @@ export class InboundComponent implements OnInit {
     }
   }
   active(className) {
+    this.currentTab = className;
+    $('#tabErr').hide();
     $('.vehicle, .Driver, .Material').removeClass('top-menu--active');
     $('#MaterialIn, #DriverDetailsIn, #VehcileDataIn,.addButtonin,.tab2,.tab1').hide();
     $('.' + className).addClass('top-menu--active');

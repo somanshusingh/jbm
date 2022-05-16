@@ -136,6 +136,7 @@ label {
   animation: alertshow .2s ease;
   border-radius: 10px;
 }
+#tabErrOut{color:red;display: none;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
   .inputWidth {
     width: 7cm !important;
