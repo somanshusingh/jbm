@@ -75,7 +75,7 @@ export class InboundComponent implements OnInit {
     let url = '/history/inhouse_transport'
     let post_data = {
       "Trip_No": (Math.round(Math.random() * 100000)),
-      "VehicleNo": $('#inVnumber').val(),
+      "VehicleNo": $('#inVnumber').val().toString().toUpperCase(),
       // "Make": $('#vehicleMake').val(),
       // "Model": $('#VehicleModel').val(),
       // "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
@@ -90,6 +90,7 @@ export class InboundComponent implements OnInit {
       "Consignee_Name": $('#inConsignee_Name').val(),
       "Address": $('#inAddress').val(),
       "Qty_Mt_Weight": $('#qty_mt_Weight').val(),
+      "Status":"In transit"
       // "Gross_Weight": $('#inGross_Weight').val(),
       // "Tare_Weight": $('#inTare_Weight').val(),
       // "Net_Weight": $('#inNet_Weight').val()
@@ -415,7 +416,8 @@ export class InboundComponent implements OnInit {
       data => {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
           for (var i in data['msg']) {
-            if (data['msg'][i]['Status'] == 'open') {
+            // if (data['msg'][i]['Status'] == 'open') {
+              if (data['msg'][i].hasOwnProperty('Status') && (data['msg'][i]['Status'].toLowerCase() !== 'completed' || data['msg'][i]['Status'].toLowerCase() !== 'close') && data['msg'][i]['Status'].toLowerCase() !== "") {
               vehicelStatus++;
               TripsAvailable.push(data['msg'][i]);
             }
@@ -426,8 +428,11 @@ export class InboundComponent implements OnInit {
           } else {
             this.checkHistory();
           }
-        } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
+        } else if (data['status'] == 0 && data['msg'].toLowerCase() == 'no trip available') {
           this.checkHistory();
+        }else if (data['status'] == 0 && data['msg'].toLowerCase() == 'trip already exists') {
+          this.Message = 'Please Complete The Existing Trip.';
+          $('.Popup1').show(); 
         }else{
           this.Message = 'Something went wrong.';
           $('.Popup1').show(); 
@@ -446,7 +451,7 @@ export class InboundComponent implements OnInit {
       data => {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
           for (var i in data['msg']) {
-            if (data['msg'][i]['Status'] == 'open') {
+            if (data['msg'][i]['Status'].toLowerCase() == 'in transit') {
               vehicelStatus++;
               TripsAvailable.push(data['msg'][i]);
             }
@@ -509,27 +514,28 @@ export class InboundComponent implements OnInit {
     $('.RegNo').hide();
   }
   SendCardNo() {
-    var err = 0;
-    if ($('#PopUpCardNo').val() == '') {
-      $('#PopUpCardNo').addClass('errDisplay');
-      err++
-    } else {
-      $('#PopUpCardNo').removeClass('errDisplay');
-    }
-    if (err == 0) {
+    // var err = 0;
+    // if ($('#PopUpCardNo').val() == '') {
+    //   $('#PopUpCardNo').addClass('errDisplay');
+    //   err++
+    // } else {
+    //   $('#PopUpCardNo').removeClass('errDisplay');
+    // }
+    // if (err == 0) {
       let url = '/history/inhouse_transport/update'
       let post_data = { 
         "Trip_No": $("#inTripDasboard").val(),
-        "Card_Number": $("#PopUpCardNo").val()
+        "Card_Number": 'CARD10',//$("#PopUpCardNo").val(),
+        "Status":'In plant'
       }
       this.serviceCall.signin(url, post_data).subscribe(data => {
         $('.RegNo').hide();
         if (data['status'] == 1) {
-          this.Message = "Card Added Successfully.";
+          this.Message = "Card Updated Successfully.";
           $('.Popup1').show();
           this.carNoAdded = true;
         }else{
-          this.Message = 'Unable to add card.';
+          this.Message = 'Unable to update card.';
         $('.Popup1').show();
         }
       }, (error) => {
@@ -537,7 +543,7 @@ export class InboundComponent implements OnInit {
         this.Message = 'Something went wrong.';
         $('.Popup1').show();
       })
-    }
+    // }
   }
   validateDoc(){
     if(this.docStatus !== 'Documents Uploaded Successfully.' && (window.location.pathname !== '/inBound/inhouse')){

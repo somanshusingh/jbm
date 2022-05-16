@@ -71,7 +71,7 @@ export class OutboundDashboardComponent implements OnInit {
               $('#oViewMaterial_Type').html(this.data[i]['Material']);
               $('#oViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
               $('#oViewTime').html(this.data[i]['Time']);
-              $('#oViewVehicle_Mapping').html(this.data[i]['Vehicle_Mapping']);
+              $('#oViewVehicle_Mapping').html(this.data[i]['Card_Number']);
               if(this.data[i]['Document'] !== '' && this.data[i]['Document'] !== undefined && this.data[i]['Document'] !== null){
                 $('#doc1NameOut').html(this.data[i]['Document']['Doc1_Name']);
                 $('#docImage1Out').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc1_Data']);

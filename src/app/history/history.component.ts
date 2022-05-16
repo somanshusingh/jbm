@@ -14,7 +14,7 @@ export class HistoryComponent implements OnInit {
   Message = '';
   uploadedFiles = [];
   uploadfile_name: any;
-  docStatus='';
+  docStatus = '';
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -37,25 +37,59 @@ export class HistoryComponent implements OnInit {
           let PUC_exp_date = data['msg'][0]['PUC_exp_date'];
           if (moment().diff(moment(Insurance_exp_date)) <= 0) {
             if (moment().diff(moment(PUC_exp_date)) <= 0) {
-              $('#OutVehicleNumberForm').hide();
-              $('#outboundForm').show();
-              $('#vehicleMake').val(data['msg'][0]['Make']);
-              $('#VehicleModel').val(data['msg'][0]['Model']);
-              $('#vehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
-              $('#VPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
-              $('#Vnumber').val($('#checkOutVehicleNumber').val());
-              $('#Issued_By').val(this.serviceCall.Role);
-              $("#vehicleMake,#VehicleModel,#vehicleInsurance_exp_date,#VPUC_exp_date,#Vnumber").attr('disabled', 'disabled');
-              this.isVehicleDataAvailable = true;
+              let url = "/history/outside_transport/view?VehicleNo=" + $("#checkOutVehicleNumber").val();
+              this.serviceCall.getService(url).subscribe(
+                data => {
+                  let vehicelStatus = 0;
+                  if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
+                    for (var i in data['msg']) {
+                      if (data['msg'][i].hasOwnProperty('Status') && (data['msg'][i]['Status'].toLowerCase() !== 'completed' || data['msg'][i]['Status'].toLowerCase() !== 'close') && data['msg'][i]['Status'].toLowerCase() !== "") {
+                        vehicelStatus++;
+                      }
+                    }
+                    if (vehicelStatus > 0) {
+                      this.Message = 'Please Complete The Existing Trip.';
+                      $('.Popup1').show();
+                    } else {
+                      $('#OutVehicleNumberForm').hide();
+                      $('#outboundForm').show();
+                      $('#vehicleMake').val(data['msg'][0]['Make']);
+                      $('#VehicleModel').val(data['msg'][0]['Model']);
+                      $('#vehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
+                      $('#VPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
+                      $('#Vnumber').val($('#checkOutVehicleNumber').val());
+                      $('#Issued_By').val(this.serviceCall.Role);
+                      $("#vehicleMake,#VehicleModel,#vehicleInsurance_exp_date,#VPUC_exp_date,#Vnumber").attr('disabled', 'disabled');
+                      this.isVehicleDataAvailable = true;
+                    }
+                  } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
+                    $('#OutVehicleNumberForm').hide();
+                      $('#outboundForm').show();
+                      $('#vehicleMake').val(data['msg'][0]['Make']);
+                      $('#VehicleModel').val(data['msg'][0]['Model']);
+                      $('#vehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
+                      $('#VPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
+                      $('#Vnumber').val($('#checkOutVehicleNumber').val());
+                      $('#Issued_By').val(this.serviceCall.Role);
+                      $("#vehicleMake,#VehicleModel,#vehicleInsurance_exp_date,#VPUC_exp_date,#Vnumber").attr('disabled', 'disabled');
+                      this.isVehicleDataAvailable = true;
+                  } else {
+                    this.Message = 'Something went wrong.';
+                    $('.Popup1').show();
+                  }
+                }, (error) => {
+                  this.Message = 'Something went wrong.';
+                  $('.Popup1').show();
+                })
             } else {
               this.Message = "Vehicle PUC Expire";
               $('.Popup1').show();
-              $('#checkVehicleOut').attr('disabled','disabled');
+              $('#checkVehicleOut').attr('disabled', 'disabled');
             }
           } else {
             this.Message = "Vehicle Insurance Expire";
             $('.Popup1').show();
-            $('#checkVehicleOut').attr('disabled','disabled');
+            $('#checkVehicleOut').attr('disabled', 'disabled');
           }
         } else if (data['status'] == 0) {
           $('#OutVehicleNumberForm').hide();
@@ -72,7 +106,7 @@ export class HistoryComponent implements OnInit {
           this.Message = 'Something went wrong.';
           $('.Popup1').show();
         }
-      },(error)=>{
+      }, (error) => {
         this.Message = 'Something went wrong.';
         $('.Popup1').show();
       }
@@ -83,7 +117,7 @@ export class HistoryComponent implements OnInit {
     let url = '/history/outside_transport'
     let post_data = {
       // "Trip_No": (Math.round(Math.random() * 100000)),
-      "VehicleNo": $('#Vnumber').val(),
+      "VehicleNo": $('#Vnumber').val().toString().toUpperCase(),
       "Make": $('#vehicleMake').val(),
       "Model": $('#VehicleModel').val(),
       "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
@@ -102,7 +136,8 @@ export class HistoryComponent implements OnInit {
       // "Net_Weight": $('#Net_Weight').val(),
       "Qty_Mt_Weight": $('#outqty_mt_Weight').val(),
       "Vehicle": this.isVehicleDataAvailable,
-      "Card_Number":$('#outCardNumber').val()
+      "Card_Number": $('#outCardNumber').val(),
+      "Status": "In plant"
       // "LrNumber":$('#outlrNumber').val(),
       // "LrDate":$('#outlrDate').val()
     }
@@ -127,7 +162,7 @@ export class HistoryComponent implements OnInit {
         } else {
           this.Message = 'Something went wrong.';
         }
-      },(error)=>{
+      }, (error) => {
         this.Message = 'Something went wrong.';
         $(".Popup1").show();
       })
@@ -273,10 +308,10 @@ export class HistoryComponent implements OnInit {
   }
   hidePopup() {
     $(".Popup1").hide();
-    let fullUrl= window.location.href.split('?')[1];
-    let sessionID= (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1]:'';
+    let fullUrl = window.location.href.split('?')[1];
+    let sessionID = (fullUrl && fullUrl.split('=')[1]) ? fullUrl.split('=')[1] : '';
     if (this.Message == 'Trip Created Successfully') {
-      this.Router.navigate(['/outBoundDashboard'], { queryParams:{sessionID:sessionID}});
+      this.Router.navigate(['/outBoundDashboard'], { queryParams: { sessionID: sessionID } });
     }
   }
   validateVehicleNumber() {
@@ -299,12 +334,12 @@ export class HistoryComponent implements OnInit {
     $('.' + className).addClass('top-menu--active');
     if (className == "Material") {
       $('#MaterialOut ,.addButtonOut').show();
-      if(this.serviceCall.Material.length >0){
+      if (this.serviceCall.Material.length > 0) {
         $('#Material_Type').empty();
         $('#Material_Type').append("<option value=''>Select Material Type</option>");
-        for(var a in this.serviceCall.Material){
-          $('#Material_Type').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
-      }
+        for (var a in this.serviceCall.Material) {
+          $('#Material_Type').append("<option value=" + this.serviceCall.Material[a]['MaterialName'] + ">" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
+        }
       }
     }
     if (className == "Driver") {
@@ -321,11 +356,11 @@ export class HistoryComponent implements OnInit {
   hideuploadPopup() {
     $(".uploadDocOut").hide();
   }
-  hideuploadPopupok(){
-    if(this.docStatus !=='Documents Uploaded Successfully.'){
+  hideuploadPopupok() {
+    if (this.docStatus !== 'Documents Uploaded Successfully.') {
       $('.afterUploadOut,.afterUploadButtonOut').hide();
       $(".toUploadOut").show();
-    }else{
+    } else {
       $(".uploadDocOut").hide();
     }
   }
@@ -345,22 +380,22 @@ export class HistoryComponent implements OnInit {
       $('.afterUploadOut').show();
       this.docStatus = 'Please Wait...'
       let formData = new FormData();
-        formData.append("files[]", this.uploadedFiles[0],'rc.'+this.uploadedFiles['0'].name.split('.')[1]);
-        formData.append("files[]", this.uploadedFiles[1],'puc.'+this.uploadedFiles['1'].name.split('.')[1]);
+      formData.append("files[]", this.uploadedFiles[0], 'rc.' + this.uploadedFiles['0'].name.split('.')[1]);
+      formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);
       // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
       // formData.append("file_2", this.uploadedFiles['1'],'pucc');
-      formData.append("VehicleNo",$('#Vnumber').val().toString());
+      formData.append("VehicleNo", $('#Vnumber').val().toString());
       let url = '/vehicle/upload_document';
       this.serviceCall.uploadFile(url, formData).subscribe(
         data => {
           console.log(data);
           $('.afterUploadButtonOut').show();
-          if(data['status'] == 1){
-            this.docStatus ='Documents Uploaded Successfully.';
-          }else if(data['status'] == 0){
-            this.docStatus ='Documents Upload Failed.';
-          }else{
-            this.docStatus ="Technical issue, cannot upload."
+          if (data['status'] == 1) {
+            this.docStatus = 'Documents Uploaded Successfully.';
+          } else if (data['status'] == 0) {
+            this.docStatus = 'Documents Upload Failed.';
+          } else {
+            this.docStatus = "Technical issue, cannot upload."
           }
         })
     }

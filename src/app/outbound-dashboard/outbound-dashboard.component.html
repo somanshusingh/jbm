@@ -14,7 +14,8 @@
                 <th class="Consignee_Name">Consignee Name</th>
                 <th class="Make">Make</th>
                 <th class="Model">Model</th>
-                <th class="vehicle_mapping">Vehicle Mapping</th>
+                <th class="vehicle_mapping">Card Number</th>
+                <th class="status">Status</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +38,8 @@
                 <td class="Consignee_Name">{{ vehicle.Consignee_Name }}</td>
                 <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td>
-                <td class="vehicle_mapping"></td>
+                <td class="card_numbers">{{ vehicle.Card_Number }}</td>
+                <td class="status">{{ vehicle.Status }}</td>
             </tr>
         </tbody>
     </table>
@@ -284,7 +286,7 @@
                         <!-- </b> -->
                         <!-- <b><label class="viewLabel">Time:</label> <span id="oViewTime"></span><br></b> -->
                         <!-- <b> -->
-                            <label class="viewLabel">Vehicle_Mapping:</label> <span
+                            <label class="viewLabel">Card Number:</label> <span
                                 id="oViewVehicle_Mapping"></span><br>
                             <!-- </b> -->
                     </div>
