@@ -95,7 +95,8 @@
     font-size: 15px;
   }
   #outerDiv{padding: 23px;}
-  .ViewDisaplayOutbound{display: grid;grid-template-columns: 12cm 12cm;}
+  .ViewDisaplayOutbound{display: grid;grid-template-columns: 12cm 12cm;    height: 11cm;
+    overflow-y: scroll;}
   @media only screen and (max-width: 768px) {
 
     .editDiv {

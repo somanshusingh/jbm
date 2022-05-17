@@ -69,7 +69,7 @@
     position: fixed;
     /* width: 488px; */
     width: 70%;
-    height: 80%;
+    height: 83%;
     left: 38%;
     margin-left: -186px;
     /* top: 20%; */
@@ -89,7 +89,9 @@
     font-size: 15px;
   }
   #outerDiv{padding: 23px;}
-  .ViewDisaplayInbound{display: grid;grid-template-columns: 12cm 12cm;}
+  .ViewDisaplayInbound{display: grid;
+    /* grid-template-columns: 12cm 12cm; */
+  }
   @media only screen and (max-width: 768px) {
     .editDiv {
       width: unset;

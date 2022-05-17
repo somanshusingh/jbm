@@ -132,6 +132,16 @@
                                             placeholder="01-12-2021" id="VPUC_exp_date">
                                         <span class="VPUC_exp_dateErr errMsg"></span>
                                     </div>
+                                    <div class="mt-3">
+                                        <div>
+                                        <label style="padding-bottom: 13px;">RC Copy :</label><br>
+                                        <div> <input type="file" id="Rc_copy1Out" (change)="getFiles($event)"/></div></div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label style="padding-bottom: 13px;">PUC :</label><br>
+                                        <div><input type="file" id="Rc_copy2Out" (change)="getFiles($event)"/></div>
+                                        <!-- <span class="Rc_copy1OutErr errMsg"></span> -->
+                                    </div>
                                     <!-- <div class="mt-3">
                                         <label>Issued By</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
@@ -159,9 +169,10 @@
                                         <span class="Consignee_NameErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
-                                        <label>Driver Number</label><br>
+                                        <label>Mobile Number</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Driver Number" id="Driver_Number" (keyup)="ValidateNumber($event)" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Mobile')">
+                                            placeholder="Mobile Number" id="Driver_Number" (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
+                                            onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
                                         <span class="Driver_NumberErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
@@ -240,7 +251,7 @@
                             </div>
                             <div class="flex justify-end mt-4 tab1">
                                 <div style="display:flex;">
-                                <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp;
+                                <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp; -->
                                 <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateVehicleDetails()">Next</button>
                             </div>
                             </div>
@@ -283,7 +294,7 @@
             <div style="padding: 28px;text-align: center;" class="toUploadOut">
                 <span style="float: left;"><b>RC Copy :</b></span><br>
                 <input type="file" id="Rc_copy1Out" (change)="getFiles($event)" /><br><br>
-                <span style="float: left;"><b>PUCC :</b></span><br>
+                <span style="float: left;"><b>PUC :</b></span><br>
                 <input type="file" id="Rc_copy2Out" (change)="getFiles($event)" /><br><br>
                 <span id="errUploadDocOut">Please Select Two Files</span>
             </div>
@@ -311,7 +322,7 @@
             style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 
             </div>
-            <div style="padding: 28px;text-align: center;">
+            <div  class="cardpop2">
                 <b> Please show your card</b>
                 <!-- <input type="text" class="input w-full border mt-2 inputWidth"
                                     placeholder="Card Number" id="PopUpCardNo"> -->

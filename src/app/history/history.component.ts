@@ -170,6 +170,7 @@ export class HistoryComponent implements OnInit {
         if (data['status'] == 1) {
           // this.Message =JSON.stringify(data['msg']);
           this.Message = "Trip Created Successfully";
+          this.uploadDocs();
         } else if (data['status'] == 0) {
           this.Message = JSON.stringify(data['msg']);
         } else if (data['status'] == 100) {
@@ -341,15 +342,16 @@ export class HistoryComponent implements OnInit {
     }
   }
   validateVehicleNumber() {
-    var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    // var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{1,2}[A-Z]{2,3}[0-9]{4}$/
     if ($('#checkOutVehicleNumber').val() !== "") {
-      // if(!vehicleNumberPatter.test($('#checkOutVehicleNumber').val().toString().toUpperCase())){
-      //   $('#checkOutVehicleNumber').addClass('errDisplay');
-      // }else{
-      //   $('#checkOutVehicleNumber').removeClass('errDisplay');
-      //   this.checkHistory();
-      // }
-      this.checkHistory();
+      if(!vehicleNumberPatter.test($('#checkOutVehicleNumber').val().toString().toUpperCase())){
+        $('#checkOutVehicleNumber').addClass('errDisplay');
+      }else{
+        $('#checkOutVehicleNumber').removeClass('errDisplay');
+        this.checkHistory();
+      }
+      // this.checkHistory();
     } else {
       $('#checkOutVehicleNumber').addClass('errDisplay');
     }
@@ -401,15 +403,17 @@ export class HistoryComponent implements OnInit {
     }
   }
   uploadDocs() {
-    if (this.uploadedFiles.length < 2) {
-      $("#errUploadDocOut").show();
-    } else {
-      $("#errUploadDocOut, .toUploadOut").hide();
-      $('.afterUploadOut').show();
+    // if (this.uploadedFiles.length < 2) {
+    //   $("#errUploadDocOut").show();
+    // } else {
+      // $("#errUploadDocOut, .toUploadOut").hide();
+      // $('.afterUploadOut').show();
       this.docStatus = 'Please Wait...'
       let formData = new FormData();
+      if(this.uploadedFiles.length > 0){
       formData.append("files[]", this.uploadedFiles[0], 'rc.' + this.uploadedFiles['0'].name.split('.')[1]);
-      formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);
+      if(this.uploadedFiles[1] !== undefined && this.uploadedFiles[1] !== null && this.uploadedFiles[1] !== ''){
+      formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);}
       // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
       // formData.append("file_2", this.uploadedFiles['1'],'pucc');
       formData.append("VehicleNo", $('#Vnumber').val().toString());
@@ -425,8 +429,8 @@ export class HistoryComponent implements OnInit {
           } else {
             this.docStatus = "Technical issue, cannot upload."
           }
-        })
-    }
+        })}
+    // }
   }
   ValidateNumber(event) {
     if (!(/^[0-9]*$/.test(event.target.value))) {

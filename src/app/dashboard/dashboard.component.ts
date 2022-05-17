@@ -21,6 +21,9 @@ export class DashboardComponent implements OnInit {
   notUndefined = true;
   sourcenotUndefined = true;
   vehicleType =[];
+  uploadedFiles = [];
+  uploadfile_name: any;
+  docStatus = '';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -163,6 +166,7 @@ export class DashboardComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = 'Vehicle Data Updated Successfully';
+            this.uploadDocs();
            // this.Router.navigate(['/signin']);
           } else if (data['status'] == 0) {
             this.Message = 'Updated Failed';
@@ -260,4 +264,50 @@ export class DashboardComponent implements OnInit {
 
     })
   }
+
+  getFiles(event) {
+    if (event.target.files.length != 0) {
+      this.uploadedFiles.push(event.target.files[0]);
+      this.uploadfile_name = event.target.id;
+    } else {
+      this.uploadedFiles.pop();
+    }
+  }
+  uploadDocs() {
+    // if (this.uploadedFiles.length < 2) {
+      // $("#errUploadDoc").show();
+    // } else {
+      // $("#errUploadDoc, .toUpload").hide();
+      // $('.afterUpload').show();
+      this.docStatus = 'Please Wait...'
+      let formData = new FormData();
+      if(this.uploadedFiles.length > 0){
+      formData.append("files[]", this.uploadedFiles[0], 'rc.' + this.uploadedFiles['0'].name.split('.')[1]);
+      if(this.uploadedFiles[1] !== undefined && this.uploadedFiles[1] !== null && this.uploadedFiles[1] !== ''){
+      formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);}
+      // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
+      // formData.append("file_2", this.uploadedFiles['1'],'pucc');
+      formData.append("VehicleNo", $('#editdVehicleNo').val().toString());
+      let url = '/vehicle/upload_document';
+      this.serviceCall.uploadFile(url, formData).subscribe(
+        data => {
+          console.log(data);
+          // $('.afterUploadButton').show();
+          if (data['status'] == 1) {
+            this.docStatus = 'Documents Uploaded Successfully.';
+          } else if (data['status'] == 0) {
+            this.docStatus = 'Documents Upload Failed.';
+          } else {
+            this.docStatus = "Technical issue, cannot upload."
+          }
+          console.log('Vehicle Document Upload Status -------------------------------------------' + this.docStatus);
+        }, (error) => {
+          $('.afterUploadButton').show();
+          this.docStatus = "Technical issue, cannot upload."
+          console.log('Vehicle Document Upload Status -------------------------------------------' + this.docStatus);
+        })
+      }
+    // }
+  }
+
 }

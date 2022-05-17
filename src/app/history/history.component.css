@@ -124,7 +124,9 @@ label {
   display: none;
   border-radius: 10px;
   position: fixed;
-  width: 310px;
+  /* width: 310px; */
+  width: 453px;
+  height: 218px;
   left: 45%;
   margin-left: -50px;
   top: 20%;
@@ -137,6 +139,10 @@ label {
   border-radius: 10px;
 }
 #tabErrOut{color:red;display: none;}
+.cardpop2{padding: 59px;
+  text-align: center;
+  font-size: 27px;
+  color: #1818c8;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
   .inputWidth {
     width: 7cm !important;
@@ -164,5 +170,9 @@ label {
   .uploadDocOut{
     margin-left: -136px !important;
 }
-.RegNoOut{margin-left: -139px;}
+.RegNoOut{margin-left: -139px;height: 206px;width: 310px;}
+.cardpop2{padding: 45px;
+  text-align: center;
+  font-size: 22px;
+  color: #1818c8;}
 }

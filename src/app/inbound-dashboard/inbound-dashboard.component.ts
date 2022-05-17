@@ -3,7 +3,7 @@ import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-inbound-dashboard',
   templateUrl: './inbound-dashboard.component.html',
@@ -219,6 +219,28 @@ export class InboundDashboardComponent implements OnInit {
               $('#inViewMaterial_Type').html(this.data[i]['Material_Type']);
               $('#inViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
               $('#inViewTime').html(this.data[i]['Time']);
+              $('#inViewStatus').html(this.data[i]['Status']);
+              $('#inViewQty_Mt_Weight').html(this.data[i]['Qty_Mt_Weight']);
+              $('#inViewMake').html(this.data[i]['Make']);
+              $('#inViewModel').html(this.data[i]['Model']);
+              $('#inViewPUC_exp_date').html(this.data[i]['UC_exp_date']);
+              $('#inViewAddress').html(this.data[i]['Address']);
+              $('#inViewCard_Number').html(this.data[i]['Card_Number']);
+              $('#inViewInsurance_exp_date').html(this.data[i]['Insurance_exp_date']);
+              $('#inViewIssued_By').html(this.data[i]['Issued_By']);
+              $('#inViewIssued_Date').html(this.data[i]['Issued_Date']);
+              $('#inViewLrDate').html(this.data[i]['LrDate']);
+              $('#inViewLrNumber').html(this.data[i]['LrNumber']);
+              $('#inViewRemark_Field').html(this.data[i]['Remark_Field']);
+              $('#inViewTime').html(this.data[i]['Time']);
+              $('#inViewType').html(this.data[i]['Type']);
+
+              let net_weight = (this.data[i]['Gross_Weight'] -0)+(this.data[i]['Tare_Weight']-0)
+              $('#inViewNet_Weight').html(net_weight.toString());//$('#inViewNet_Weight').html(this.data[i]['Net_Weight']);
+              $('#inViewGross_Weight').html(this.data[i]['Gross_Weight']);
+              $('#inViewTare_Weight').html(this.data[i]['Tare_Weight']);
+              $('#inViewGross_Wgh_Date_time').html(moment(this.data[i]['Gross_Wgh_Date_time']).format('DD-MM-YYYY'));
+              $('#inViewTare_Wgh_Date_time').html(moment(this.data[i]['Tare_Wgh_Date_time']).format('DD-MM-YYYY'));
               if(this.data[i]['Document'] !== '' && this.data[i]['Document'] !== undefined && this.data[i]['Document'] !== null){
                 $('#doc1NameIn').html(this.data[i]['Document']['Doc1_Name']);
                 $('#docImage1In').attr('src','https://jbmapp.herokuapp.com'+this.data[i]['Document']['Doc1_Data']);

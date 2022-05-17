@@ -111,7 +111,9 @@ label {
     display: none;
     border-radius: 10px;
     position: fixed;
-    width: 310px;
+    /* width: 310px; */
+    width: 453px;
+  height: 218px;
     left: 45%;
     margin-left: -50px;
     top: 20%;
@@ -170,6 +172,10 @@ label {
     float: right;color: red;display: none;
 }
 #tabErr{color:red;display: none;}
+.cardpop2{padding: 59px;
+    text-align: center;
+    font-size: 27px;
+    color: #1818c8;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
     .inputWidth {
         width: 7cm !important;
@@ -194,6 +200,9 @@ label {
 
     .Popup1 ,.uploadDoc,.RegNo{
         margin-left: -136px !important;
+    }
+    .RegNo{
+        height: 180px;width: 315px;
     }
 
     .mobileHeight {
@@ -227,4 +236,9 @@ label {
     #MaterialIn {
         display: block;
     }
+    .cardpop2{padding: 45px;
+        text-align: center;
+        font-size: 22px;
+        color: #1818c8;}
+    
 }

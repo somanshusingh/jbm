@@ -74,18 +74,10 @@
                                 <input type="email" class="input w-full border mt-2 inputWidth" placeholder="City" id="Model" maxlength="25">
                                 <span class="emailErr errMsg"></span>
                             </div>
-                            <div >
+                            <!-- <div >
                                 <label>Upload Document</label><br>
                                 <button id="uploadDocV" type="button" style="width: 170px; color: white;border: none;border-radius: 4px;height: 37px;padding: 5px;background-color:#0067ac" (click)="uploadDocument()">Upload Document</button><br>
                                 <span class="uploadErrVehicle" >Please upload Documents to continue</span>
-                            </div>
-                            <!-- <div >
-                                <label>RC Copy :</label><br>
-                                <div style="text-align: left;" class="toUpload">
-                                    <div>
-                                    <input type="file" id="Rc_copy1" (change)="getFiles($event)" /></div>
-                                </div>
-                                <span id="errUploadDocRC errMsg"></span>
                             </div> -->
                         </div>
                         <div>
@@ -111,6 +103,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="s1div">
+                    <div >
+                        <label>RC Copy :</label><br>
+                        <div style="text-align: left;" class="toUpload">
+                            <div>
+                            <input type="file" id="Rc_copy1" (change)="getFiles($event)" /></div>
+                        </div>
+                        <span id="errUploadDocRC errMsg"></span>
+                    </div>
+                    <div >
+                        <label>PUC :</label><br>
+                        <div style="text-align: left;" class="toUpload">
+                            <div>
+                            <input type="file" id="Rc_copy2" (change)="getFiles($event)" /></div>
+                        </div>
+                        <span id="errUploadDocPUC errMsg"></span>
+                    </div>
+                    </div>
+                    <span id="docErrVeh" style="color: red;"></span>
                     
         </div>
         <div class="justify-end mt-4" style="background-color: #2569a1;">
@@ -153,7 +164,7 @@
             <div style="padding: 28px;text-align: center;" class="toUpload">
                 <span style="float: left;"><b>RC Copy :</b></span><br>
                 <input type="file" id="Rc_copy1" (change)="getFiles($event)" /><br><br>
-                <span style="float: left;"><b>PUCC :</b></span><br>
+                <span style="float: left;"><b>PUC :</b></span><br>
                 <input type="file" id="Rc_copy2" (change)="getFiles($event)" /><br><br>
                 <span id="errUploadDoc">Please Select Two Files</span>
             </div>

@@ -394,6 +394,9 @@ export class MenuComponent implements OnInit {
   }
   hidePopup() {
     $('.PopupMenu').hide();
+    if(this.cardStatus === 'Trip Closed Successfully.'){
+      window.location.reload();
+    }
   }
   hideCardView(){
     $('.CardViewPopup').hide();

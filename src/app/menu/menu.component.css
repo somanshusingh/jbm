@@ -60,8 +60,10 @@
     display: none;
     border-radius: 10px;
     position: fixed;
-    width: 387px;
-    height: 168px;
+    /* width: 387px; */
+    /* height: 168px; */
+    width: 453px;
+  height: 218px;
     left: 45%;
     margin-left: -50px;
     top: 20%;
@@ -116,10 +118,14 @@
   font-size: 15px;
 }
 #cardViewGrid{display: grid;grid-template-columns: 1fr 1fr;}
+.cardpop2{padding: 59px;
+  text-align: center;
+  font-size: 27px;
+  color: #1818c8;}
 @media (max-width: 639px) {
   .Popup1Profile{
     left: 21%;}
-    .CardMenu {width: 316px;left: 20%;}
+    .CardMenu {width: 316px;left: 20%;height: 206px;}
     .PopupMenu{margin-left: -138px;}
     .viewLabel {
       width: 3.5cm !important;
@@ -130,6 +136,10 @@
       overflow-y: scroll;
   }
   #cardViewGrid{display: block;}
+  .cardpop2{padding: 45px;
+    text-align: center;
+    font-size: 22px;
+    color: #1818c8;}
 }
 .disabled{
   pointer-events: none;

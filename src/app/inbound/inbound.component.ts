@@ -113,9 +113,9 @@ export class InboundComponent implements OnInit {
           // this.Message =JSON.stringify(data['msg']);
           this.Message = "Trip Created Successfully";
         } else if (data['status'] == 0) {
-          this.Message = JSON.stringify(data['msg']);
+          this.Message = JSON.stringify(data['msg']) == ''? 'Something went wrong':JSON.stringify(data['msg']);
         } else if (data['status'] == 100) {
-          this.Message = JSON.stringify(data['msg']);
+          this.Message = JSON.stringify(data['msg']) == ''? 'Something went wrong':JSON.stringify(data['msg']);
         } else {
           this.Message = 'Something went wrong.';
         }

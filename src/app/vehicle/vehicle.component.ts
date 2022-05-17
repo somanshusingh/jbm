@@ -67,6 +67,7 @@ export class VehicleComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = 'Vehicle Added Successfully';
+            this.uploadDocs();
            // this.Router.navigate(['/signin']);
           } else if (data['status'] == 0) {
             this.Message = data['msg'];
@@ -151,6 +152,12 @@ export class VehicleComponent implements OnInit {
     //   $('#uploadDocV').removeClass('docErr');
     //   $('.uploadErrVehicle').hide();
     // }
+    if(this.uploadedFiles.length < 2){
+      err++
+      $('#docErrVeh').html('Please select both documents');
+    }else{
+      $('#docErrVeh').html('');
+    }
 
     if(err === 0){
       this.addVehcile();
@@ -173,11 +180,11 @@ export class VehicleComponent implements OnInit {
     }
   }
   uploadDocs() {
-    if (this.uploadedFiles.length < 2) {
-      $("#errUploadDoc").show();
-    } else {
-      $("#errUploadDoc, .toUpload").hide();
-      $('.afterUpload').show();
+    // if (this.uploadedFiles.length < 2) {
+      // $("#errUploadDoc").show();
+    // } else {
+      // $("#errUploadDoc, .toUpload").hide();
+      // $('.afterUpload').show();
       this.docStatus = 'Please Wait...'
       let formData = new FormData();
       formData.append("files[]", this.uploadedFiles[0], 'rc.' + this.uploadedFiles['0'].name.split('.')[1]);
@@ -189,7 +196,7 @@ export class VehicleComponent implements OnInit {
       this.serviceCall.uploadFile(url, formData).subscribe(
         data => {
           console.log(data);
-          $('.afterUploadButton').show();
+          // $('.afterUploadButton').show();
           if (data['status'] == 1) {
             this.docStatus = 'Documents Uploaded Successfully.';
           } else if (data['status'] == 0) {
@@ -197,11 +204,13 @@ export class VehicleComponent implements OnInit {
           } else {
             this.docStatus = "Technical issue, cannot upload."
           }
+          console.log('Vehicle Document Upload Status -------------------------------------------' + this.docStatus);
         }, (error) => {
           $('.afterUploadButton').show();
           this.docStatus = "Technical issue, cannot upload."
+          console.log('Vehicle Document Upload Status -------------------------------------------' + this.docStatus);
         })
-    }
+    // }
   }
   uploadDocument() {
     $('.uploadDocV').show();
