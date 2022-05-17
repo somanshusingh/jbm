@@ -18,11 +18,12 @@ export class UsersComponent implements OnInit {
   Edited = false;
   menuSelected = 0;
   allowedMenu = {
+    gateprocess:'no',
     users: 'no',
     vehicles: 'no',
-    inboundPocess: 'no',
-    outboundProcess: 'no',
-    registerCard: 'no'
+    tripMaster: 'no',
+    getCardInfo: 'no',
+    tripReprint: 'no'
   }
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -233,11 +234,12 @@ export class UsersComponent implements OnInit {
       "Address": "work",
       "Role": $('#editrole').val(),
       "Allowed_Menu": {
+        "gateprocess":this.allowedMenu.gateprocess,
         "users": this.allowedMenu.users,
         "vehicles": this.allowedMenu.vehicles,
-        "inboundPocess": this.allowedMenu.inboundPocess,
-        "outboundProcess": this.allowedMenu.outboundProcess,
-        "registerCard": this.allowedMenu.registerCard
+        "tripMaster": this.allowedMenu.tripMaster,
+        "getCardInfo": this.allowedMenu.getCardInfo,
+        "tripReprint": this.allowedMenu.tripReprint
       },
       "EmpCode":$('#emp_codeDash').val(),
       "User_Type":$('#userTypeDash').val()
@@ -280,6 +282,15 @@ export class UsersComponent implements OnInit {
       (<HTMLInputElement>document.getElementById("list2")).classList.add('visible');
   }
   menuVal(isChecked, id) {
+    if (id == 'gateProcess' && isChecked) {
+      $('#editmenuOptionGateProcess').show();
+      this.menuSelected++;
+      this.allowedMenu.gateprocess = 'yes';
+    } else if (id == 'gateProcess') {
+      $('#editmenuOptionGateProcess').hide();
+      this.menuSelected--;
+      this.allowedMenu.gateprocess = 'no';
+    }
 
     if (id == 'users' && isChecked) {
       $('#editmenuOptionUsers').show();
@@ -299,32 +310,32 @@ export class UsersComponent implements OnInit {
       this.menuSelected--;
       this.allowedMenu.vehicles = 'no';
     }
-    if (id == 'inboundProcess' && isChecked) {
-      $('#editmenuOptionInbound').show();
+    if (id == 'tripMaster' && isChecked) {
+      $('#editmenuOptionTripMaster').show();
       this.menuSelected++;
-      this.allowedMenu.inboundPocess = 'yes';
-    } else if (id == 'inboundProcess') {
-      $('#editmenuOptionInbound').hide();
+      this.allowedMenu.tripMaster = 'yes';
+    } else if (id == 'tripMaster') {
+      $('#editmenuOptionTripMaster').hide();
       this.menuSelected--;
-      this.allowedMenu.inboundPocess = 'no';
+      this.allowedMenu.tripMaster = 'no';
     }
-    if (id == 'outboundProcess' && isChecked) {
-      $('#editmenuOptionOutbound').show();
+    if (id == 'getCardInfo' && isChecked) {
+      $('#editmenuOptionGetCardInfo').show();
       this.menuSelected++;
-      this.allowedMenu.outboundProcess = 'yes';
-    } else if (id == 'outboundProcess') {
-      $('#editmenuOptionOutbound').hide();
+      this.allowedMenu.getCardInfo = 'yes';
+    } else if (id == 'getCardInfo') {
+      $('#editmenuOptionGetCardInfo').hide();
       this.menuSelected--;
-      this.allowedMenu.outboundProcess = 'no';
+      this.allowedMenu.getCardInfo = 'no';
     }
-    if (id == 'registerCard' && isChecked) {
-      $('#editmenuOptionRegister').show();
+    if (id == 'tripReprint' && isChecked) {
+      $('#editmenuOptionTripReprint').show();
       this.menuSelected++;
-      this.allowedMenu.registerCard = 'yes';
-    } else if (id == 'registerCard') {
-      $('#editmenuOptionRegister').hide();
+      this.allowedMenu.tripReprint = 'yes';
+    } else if (id == 'tripReprint') {
+      $('#editmenuOptionTripReprint').hide();
       this.menuSelected--;
-      this.allowedMenu.registerCard = 'no';
+      this.allowedMenu.tripReprint = 'no';
     }
     if (this.menuSelected == 0) {
       $('#editmenuOptionNone').show();
@@ -339,37 +350,41 @@ export class UsersComponent implements OnInit {
   }
   selectMenu(){
     if($('#editrole').val() === 'Admin'){
-      $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
+      $('#editcheckGateProcess,#editcheckUsers,#editcheckVehicles,#editcheckTripMaster,#editcheckGetCardInfo,#editcheckTripReprint').prop('checked', true);
+      this.menuVal(true,'gateProcess');
       this.menuVal(true,'users');
       this.menuVal(true,'vehicles');
-      this.menuVal(true,'inboundProcess');
-      this.menuVal(true,'outboundProcess');
-      this.menuVal(true,'registerCard');
+      this.menuVal(true,'tripMaster');
+      this.menuVal(true,'getCardInfo');
+      this.menuVal(true,'tripReprint');
     }
     else if($('#editrole').val() === 'Supervisor'){
-      $('#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', true);
-      $('#editcheckUsers,#editcheckVehicles').prop('checked', false);
+      $('#editcheckVehicles,#editcheckTripMaster').prop('checked', true);
+      $('#editcheckGateProcess,#editcheckUsers,#editcheckGetCardInfo,#editcheckTripReprint').prop('checked', false);
+      this.menuVal(false,'gateProcess');
       this.menuVal(false,'users');
-      this.menuVal(false,'vehicles');
-      this.menuVal(true,'inboundProcess');
-      this.menuVal(true,'outboundProcess');
-      this.menuVal(true,'registerCard');
+      this.menuVal(true,'vehicles');
+      this.menuVal(true,'tripMaster');
+      this.menuVal(false,'getCardInfo');
+      this.menuVal(false,'tripReprint');
     }
     else if($('#editrole').val() === 'GateUser'){
-      $('#editcheckUsers').prop('checked', true);
-      $('#editcheckVehicles,#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', false);
-      this.menuVal(true,'users');
+      $('#editcheckGateProcess,#editcheckGetCardInfo,#editcheckTripReprint').prop('checked', true);
+      $('#editcheckVehicles,#editcheckTripMaster,#editcheckUsers').prop('checked', false);
+      this.menuVal(true,'gateProcess');
+      this.menuVal(false,'users');
       this.menuVal(false,'vehicles');
-      this.menuVal(false,'inboundProcess');
-      this.menuVal(false,'outboundProcess');
-      this.menuVal(false,'registerCard');
+      this.menuVal(false,'tripMaster');
+      this.menuVal(true,'getCardInfo');
+      this.menuVal(true,'tripReprint');
     }else{
         $('#editcheckUsers,#editcheckVehicles,#editcheckInbound,#editcheckOutbound,#editcheckRegister').prop('checked', false);
+        this.menuVal(false,'gateProcess');
         this.menuVal(false,'users');
         this.menuVal(false,'vehicles');
-        this.menuVal(false,'inboundProcess');
-        this.menuVal(false,'outboundProcess');
-        this.menuVal(false,'registerCard');
+        this.menuVal(false,'tripMaster');
+        this.menuVal(false,'getCardInfo');
+        this.menuVal(false,'tripReprint');
         this.menuVal(true,'SelectRole');
     }
   }

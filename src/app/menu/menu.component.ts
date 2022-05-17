@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   toggle = 'show';
   Message = '';
   data: any;
-  cardStatus='';
+  cardStatus = '';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -23,23 +23,23 @@ export class MenuComponent implements OnInit {
     feather.replace();
     this.getSession();
     this.getMaterial();
-    if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
-      if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
-        $('.mobileUsers ,.desktopUsers').show();
-      }
-      if (this.serviceCall.Allowed_Menu['vehicles'] == 'yes') {
-        $('.mobileVehicles ,.desktopVehicles').show();
-      }
-      if (this.serviceCall.Allowed_Menu['registerCard'] == 'yes') {
-        $('.mobileRegisterCard,.desktopRegisterCard').show();
-      }
-      if (this.serviceCall.Allowed_Menu['inboundPocess'] == 'yes') {
-        $('.mobileInboundProcess,.desktopInboundProcess').show();
-      }
-      if (this.serviceCall.Allowed_Menu['outboundProcess'] == 'yes') {
-        $('.mobileOutboundProcess,.desktopOutboundProcess').show();
-      }
-    }
+    // if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
+    //   if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
+    //     $('.mobileUsers ,.desktopUsers').show();
+    //   }
+    //   if (this.serviceCall.Allowed_Menu['vehicles'] == 'yes') {
+    //     $('.mobileVehicles ,.desktopVehicles').show();
+    //   }
+    //   if (this.serviceCall.Allowed_Menu['registerCard'] == 'yes') {
+    //     $('.mobileRegisterCard,.desktopRegisterCard').show();
+    //   }
+    //   if (this.serviceCall.Allowed_Menu['inboundPocess'] == 'yes') {
+    //     $('.mobileInboundProcess,.desktopInboundProcess').show();
+    //   }
+    //   if (this.serviceCall.Allowed_Menu['outboundProcess'] == 'yes') {
+    //     $('.mobileOutboundProcess,.desktopOutboundProcess').show();
+    //   }
+    // }
     // if (this.serviceCall.Role == undefined || this.serviceCall.Role == '' || this.serviceCall.Role == null) {
     //    this.Router.navigate(['/signin']);
     // }
@@ -232,21 +232,25 @@ export class MenuComponent implements OnInit {
       } else {
         this.Router.navigate(['/signin'])
       }
+      // this.serviceCall.Allowed_Menu = { gateprocess: 'yes', users: 'yes', vehicles: 'yes', tripMaster: 'yes', getCardInfo: 'yes', tripReprint: 'yes' }
       if (this.serviceCall.Allowed_Menu.hasOwnProperty('users')) {
+        if (this.serviceCall.Allowed_Menu['gateprocess'] == 'yes') {
+          $('.mobileGate ,.desktopGate').show();
+        }
         if (this.serviceCall.Allowed_Menu['users'] == 'yes') {
           $('.mobileUsers ,.desktopUsers').show();
         }
         if (this.serviceCall.Allowed_Menu['vehicles'] == 'yes') {
           $('.mobileVehicles ,.desktopVehicles').show();
         }
-        if (this.serviceCall.Allowed_Menu['registerCard'] == 'yes') {
-          $('.mobileRegisterCard,.desktopRegisterCard').show();
-        }
-        if (this.serviceCall.Allowed_Menu['inboundPocess'] == 'yes') {
+        if (this.serviceCall.Allowed_Menu['tripMaster'] == 'yes') {
           $('.mobileInboundProcess,.desktopInboundProcess').show();
         }
-        if (this.serviceCall.Allowed_Menu['outboundProcess'] == 'yes') {
-          $('.mobileOutboundProcess,.desktopOutboundProcess').show();
+        if (this.serviceCall.Allowed_Menu['getCardInfo'] == 'yes') {
+          $('.mobileGetCardInfo,.desktopGetCardInfo').show();
+        }
+        if (this.serviceCall.Allowed_Menu['tripReprint'] == 'yes') {
+          $('.mobileTripReprint,.desktopTripReprint').show();
         }
       }
 
@@ -298,32 +302,86 @@ export class MenuComponent implements OnInit {
       $("#id_gateprocess").attr('class', 'fa-solid fa-chevron-left');
     }
   }
-  OpenCardPopup(){
+  OpenCardPopup(source) {
     $('.CardMenu').show();
+    if (source == 'changeStatus') {
+      $('#cardStatusChange').show();
+      $('#getCardInfoOk').hide();
+    } else if (source == 'getInfo') { $('#cardStatusChange').hide(); $('#getCardInfoOk').show(); }
   }
-  hideCardPopup(){
+  hideCardPopup() {
     $('.CardMenu').hide();
   }
-  SendCardNo() {
+  SendCardNo(source) {
     let url = '/getData';
     this.serviceCall.getCardNumber(url).subscribe(
       data => {
         $('.CardMenu').hide();
         if (data['status'] == 1 && data['msg']) {
-          let url = '/history/card/out/' + data['msg'];//'27002298E479'
-          this.serviceCall.getService(url).subscribe(data=>{
-            if (data['status'] == 1) {
-              this.cardStatus = 'Trip Closed Successfully.';
-              $('.PopupMenu').show();
-            }else{
-              this.cardStatus = 'Error - '+JSON.stringify(data['msg']);
+          if (source == 'cardStatusChange') {
+            let url = '/history/card/out/' + data['msg'];//'27002298E479'
+            this.serviceCall.getService(url).subscribe(data => {
+
+              if (data['status'] == 1) {
+                this.cardStatus = 'Trip Closed Successfully.';
+                $('.PopupMenu').show();
+              } else {
+                this.cardStatus = JSON.stringify(data['msg']);
+                $('.PopupMenu').show();
+
+              }
+            }, (error) => {
+              this.cardStatus = 'Something went wrong.';
               $('.PopupMenu').show();
             }
-          }, (error) => {
-            this.cardStatus = 'Something went wrong.';
-            $('.PopupMenu').show();
+            )
+          } else if (source == 'getCardInfoOk') {
+            let url = '/history/getcardinfo/' +data['msg'];// '27002298E479';
+            this.serviceCall.getService(url).subscribe(data => {
+              if (data['status'] == 1 && data['msg'].length>0) { 
+                $('#menuViewCard_Number').html(data['msg'][0]['Card_Number']);
+                $('#menuViewAddress').html(data['msg'][0]['Address']);
+                $('#menuViewConsignee_Name').html(data['msg'][0]['Consignee_Name']);
+                $('#menuViewDriver_Name').html(data['msg'][0]['Driver_Name']);
+                $('#menuViewDriver_Number').html(data['msg'][0]['Driver_Number']);
+                // $('#menuViewFront_image').val(data['msg'][0]['Front_image']);
+                $('#menuViewGate_In_Date_time').html(data['msg'][0]['Gate_In_Date_time']);
+                $('#menuViewGate_Out_Date_time').html(data['msg'][0]['Gate_Out_Date_time']);
+                // $('#menuViewGross_Weight').val(data['msg'][0]['Gross_Weight']);
+                // $('#menuViewGross_Wgh_Date_time').val(data['msg'][0]['Gross_Wgh_Date_time']);
+                $('#menuViewInsurance_exp_date').html(data['msg'][0]['Insurance_exp_date']);
+                $('#menuViewIssued_By').html(data['msg'][0]['Issued_By']);
+                $('#menuViewIssued_Date').html(data['msg'][0]['Issued_Date']);
+                $('#menuViewLrDate').html(data['msg'][0]['LrDate']);
+                $('#menuViewLrNumber').html(data['msg'][0]['LrNumber']);
+                $('#menuViewMake').html(data['msg'][0]['Make']);
+                $('#menuViewMaterial').html(data['msg'][0]['Material']);
+                $('#menuViewMaterial_Type').html(data['msg'][0]['Material_Type']);
+                $('#menuViewModel').html(data['msg'][0]['Model']);
+                $('#menuViewNet_Weight').html(data['msg'][0]['Net_Weight']);
+                $('#menuViewPUC_exp_date').html(data['msg'][0]['PUC_exp_date']);
+                $('#menuViewQty_Mt_Weight').html(data['msg'][0]['Qty_Mt_Weight ']);
+                // $('#menuViewRear_Image').val(data['msg'][0]['Rear_Image']);
+                $('#menuViewRemark_Field').html(data['msg'][0]['Remark_Field']);
+                $('#menuViewStatus').html(data['msg'][0]['Status']);
+                // $('#menuViewTare_Weight').val(data['msg'][0]['Tare_Weight']);
+                // $('#menuViewTare_Wgh_Date_time').val(data['msg'][0]['Tare_Wgh_Date_time']);
+                // $('#menuViewTime').val(data['msg'][0]['Time']);
+                $('#menuViewTrip_No').html(data['msg'][0]['Trip_No']);
+                $('#menuViewType').html(data['msg'][0]['Type']);
+                $('#menuViewVehicleNo').html(data['msg'][0]['VehicleNo']);
+                $('.CardViewPopup').show();
+                // $('#menuViewVehicle_Mapping').val(data['msg'][0]['Vehicle_Mapping']);
+              }else{
+                this.cardStatus = 'Could not get card info';
+                $('.PopupMenu').show();
+              }
+            }, (error) => {
+              $('.CardMenu').hide();
+              this.cardStatus = 'Something went wrong.';
+              $('.PopupMenu').show();
+            })
           }
-          )
         } else {
           this.cardStatus = 'Unable to get card number.';
           $('.PopupMenu').show();
@@ -334,7 +392,10 @@ export class MenuComponent implements OnInit {
         $('.PopupMenu').show();
       })
   }
-  hidePopup(){
+  hidePopup() {
     $('.PopupMenu').hide();
+  }
+  hideCardView(){
+    $('.CardViewPopup').hide();
   }
 }

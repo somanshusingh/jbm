@@ -37,7 +37,8 @@
                 <td class="vehicle_mapping">{{ vehicle.Card_Number }}</td>
                 <td *ngIf="vehicle.Status === 'In transit'" style="background-color: #3939ff ;" class="status">{{ vehicle.Status }}</td>
                 <td *ngIf="vehicle.Status === 'In plant'" style="background-color: yellow ;" class="status">{{ vehicle.Status }}</td>
-                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed' || vehicle.Status === 'Close' || vehicle.Status === 'close' " style="background-color: green ;" class="status">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'" style="background-color: green ;" class="status">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'" style="background-color: rgb(141, 141, 141) ;" class="status">{{ vehicle.Status }}</td>
                 <!-- <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td> -->
             </tr>

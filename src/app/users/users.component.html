@@ -129,18 +129,20 @@
                                                 <div id="list2" class="dropdown-check-list mt-2 w-full inputWidth" tabindex="100">
                                                     <span class="anchor" (click)="showCheckbox()" style="min-height: 39px;max-height: fit-content;width: 100%;border: 1px solid #dee2e6;border-radius: 8px;">
                                                         <span id="editmenuOptionNone" >Select Menu Options </span>&nbsp;
+                                                        <span id="editmenuOptionGateProcess" class="menuDisplay">Gate Process </span>&nbsp;
                                                         <span id="editmenuOptionUsers" class="menuDisplay">Users </span>&nbsp;
                                                         <span id="editmenuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
-                                                        <span id="editmenuOptionInbound" class="menuDisplay">InboundProcess </span>&nbsp;
-                                                        <span id="editmenuOptionOutbound" class="menuDisplay">OutboundProcess </span>&nbsp;
-                                                        <span id="editmenuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
+                                                        <span id="editmenuOptionTripMaster" class="menuDisplay">Trip Master </span>&nbsp;
+                                                        <span id="editmenuOptionGetCardInfo" class="menuDisplay">Get Card Info </span>&nbsp;
+                                                        <span id="editmenuOptionTripReprint" class="menuDisplay">Trip Reprint </span>&nbsp;
                                                     </span>
                                                     <ul class="items" style="position: absolute;background-color: white;width: 286px;padding-left: 13px;text-align:initial">
+                                                      <li><input id="editcheckGateProcess" type="checkbox" (click)="menuVal($event.target.checked,'gateProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Gate Process</li>
                                                       <li><input id="editcheckUsers" type="checkbox" (click)="menuVal($event.target.checked,'users')"/>&nbsp;&nbsp;&nbsp;&nbsp;Users</li>
                                                       <li><input id="editcheckVehicles" type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"/>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles</li>
-                                                      <li><input id="editcheckInbound" type="checkbox" (click)="menuVal($event.target.checked,'inboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Inbound Process </li>
-                                                      <li><input id="editcheckOutbound" type="checkbox" (click)="menuVal($event.target.checked,'outboundProcess')"/>&nbsp;&nbsp;&nbsp;&nbsp;Outbound Process </li>
-                                                      <li><input id="editcheckRegister" type="checkbox" (click)="menuVal($event.target.checked,'registerCard')"/>&nbsp;&nbsp;&nbsp;&nbsp;Register Card </li>
+                                                      <li><input id="editcheckTripMaster" type="checkbox" (click)="menuVal($event.target.checked,'tripMaster')"/>&nbsp;&nbsp;&nbsp;&nbsp;Trip Master</li>
+                                                      <li><input id="editcheckGetCardInfo" type="checkbox" (click)="menuVal($event.target.checked,'getCardInfo')"/>&nbsp;&nbsp;&nbsp;&nbsp;Get Card Info</li>
+                                                      <li><input id="editcheckTripReprint" type="checkbox" (click)="menuVal($event.target.checked,'tripReprint')"/>&nbsp;&nbsp;&nbsp;&nbsp;Trip Reprint</li>
                                                     </ul>
                                                   </div>
                                             </div>
@@ -198,6 +200,8 @@
                     <label class="viewLabel">Role: </label><span id="ViewUserRole"></span><br>
                 <!-- </b> -->
                 <!-- <b> -->
+                    <!-- <label class="viewLabel">Emp Code: </label><span id="ViewUserEmp_Code"></span><br>
+                    <label class="viewLabel">User Type: </label><span id="ViewUserCreated_On"></span><br> -->
                     <label class="viewLabel">Created By:</label> <span id="ViewUserCreated_By"></span><br>
                 <!-- </b> -->
                 <!-- <b> -->

@@ -29,7 +29,7 @@
                         <span class="menu">
                             <div class="menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
                             <!-- <div class="menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out </div> -->
-                            <div class="menu__title" (click)="OpenCardPopup()"> Gate Out </div>
+                            <div class="menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out </div>
                         </span>
                         <ul class="Gate2mobile">
                             <li>
@@ -106,7 +106,7 @@
             <li class="mobileGetCardInfo">
                 <span class="menu">
                     <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                    <div class="menu__title" (click)="OpenCardPopup()"> Get Card Info </div>
+                    <div class="menu__title" (click)="OpenCardPopup('getInfo')"> Get Card Info </div>
                 </span>
             </li>
             <li class="mobileTripReprint">
@@ -210,7 +210,7 @@
                                 <span class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
                                     <!-- <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out -->
-                                    <div class="side-menu__title" (click)="OpenCardPopup()"> Gate Out
+                                    <div class="side-menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out
                                     </div>
                                 </span>
                             </li>
@@ -264,7 +264,8 @@
                 <li class="desktopGetCardInfo">
                     <span class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick" (click)="OpenCardPopup()"> Get Card Info</div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="OpenCardPopup('getInfo')"> Get Card Info
+                        </div>
                     </span>
                 </li>
                 <li class="desktopTripReprint">
@@ -365,7 +366,7 @@
     <div class="Popup1Profile">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Reset Password
             </div>
             <div style="padding: 28px;" id="popOptions">
@@ -392,12 +393,14 @@
             </div>
         </div>
         <div class="Popup3 PopupMessagebutton"
-        style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="PopupMessagebutton"
-                (click)="changePassword()" style="color:white;width: 3cm;">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="PopupMessagebutton" (click)="hideProfilePopup()" style="color:white;width: 3cm;">Close</button>
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button class="PopupMessagebutton" (click)="changePassword()"
+                style="color:white;width: 3cm;">Reset</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="PopupMessagebutton" (click)="hideProfilePopup()"
+                style="color:white;width: 3cm;">Close</button>
         </div>
-        <div class="Popup3 PopupMessageShow" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+        <div class="Popup3 PopupMessageShow"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button (click)="hidePopupMsg()" style="color:white;width: 3cm;">Ok</button>
         </div>
     </div>
@@ -409,8 +412,8 @@
     <div class="CardMenu">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
             </div>
             <div style="padding: 28px;text-align: center;">
                 <b> Please show your card</b>
@@ -418,8 +421,12 @@
                                     placeholder="Card Number" id="PopUpCardNo"> -->
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
-            <button class="Popupbutton" (click)="SendCardNo()" style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
+            <button id="cardStatusChange" class="Popupbutton" (click)="SendCardNo('cardStatusChange')"
+                style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="getCardInfoOk" class="Popupbutton" (click)="SendCardNo('getCardInfoOk')"
+                style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
         </div>
     </div>
@@ -431,16 +438,87 @@
     <div class="PopupMenu" id="addFieldPopup">
         <div class="PopupMenu2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
             </div>
             <div style="padding: 28px;text-align: center;">
                 <b> {{cardStatus}}</b>
             </div>
         </div>
-        <div class="PopupMenu3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button  (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
+        <div class="PopupMenu3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>
 </div>
 <!--Message  Popup finish -->
+
+
+<!--Card View Popup start -->
+
+<div>
+    <div class="CardViewPopup">
+        <div class="Popup2">
+            <div
+                style="height: 35px;text-align: center ;background-color: #2569a1;padding-top: 7px;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                Card Information
+            </div>
+            <div style="padding: 28px 28px 0px 28px;">
+                <div id="cardViewGrid">
+                    <div>
+                        <!-- <label class="viewLabel">menuViewGross_Weight:</label><span id="menuViewGross_Weight"></span><br> -->
+                        <!-- <label class="viewLabel">menuViewGross_Wgh_Date_time:</label><span id="menuViewGross_Wgh_Date_time"></span><br> -->
+                        <label class="viewLabel">Make:</label><span id="menuViewMake"></span><br>
+                        <label class="viewLabel">Model:</label><span id="menuViewModel"></span><br>
+                        <label class="viewLabel">VehicleNo:</label><span id="menuViewVehicleNo"></span><br>
+                        <label class="viewLabel">Insurance_exp_date:</label><span
+                            id="menuViewInsurance_exp_date"></span><br>
+                        <label class="viewLabel">PUC_exp_date:</label><span id="menuViewPUC_exp_date"></span><br><br>
+                    <!-- </div>
+                    <div> -->
+                        <label class="viewLabel">Driver Name:</label><span id="menuViewDriver_Name"></span><br>
+                        <label class="viewLabel">Driver Number: </label><span id="menuViewDriver_Number"></span><br>
+                        <label class="viewLabel">Address: </label> <span id="menuViewAddress"></span><br>
+                        <label class="viewLabel">Consignee Name:</label><span id="menuViewConsignee_Name"></span><br>
+                        <label class="viewLabel">Issued_By:</label><span id="menuViewIssued_By"></span><br>
+                        <label class="viewLabel">Issued_Date:</label><span id="menuViewIssued_Date"></span><br>
+                    </div>
+                    <div>
+                        <label class="viewLabel">Card Number:</label><span id="menuViewCard_Number"></span><br>
+                        <label class="viewLabel">Trip_No:</label><span id="menuViewTrip_No"></span><br>
+                        <!-- <label class="viewLabel">menuViewFront_image: </label><span id="menuViewFront_image"></span><br> -->
+                        <label class="viewLabel">Gate In Date time:</label><span
+                            id="menuViewGate_In_Date_time"></span><br>
+                        <label class="viewLabel">Gate Out Date time:</label><span
+                            id="menuViewGate_Out_Date_time"></span><br>
+                    <!-- </div>
+                    <div> -->
+                        <label class="viewLabel">Material:</label><span id="menuViewMaterial"></span><br>
+                        <label class="viewLabel">Material_Type:</label><span id="menuViewMaterial_Type"></span><br>
+                        <label class="viewLabel">Qty_Mt_Weight:</label><span id="menuViewQty_Mt_Weight"></span><br>
+                        <label class="viewLabel">ViewNet_Weight:</label><span id="menuViewNet_Weight"></span><br>
+                    <!-- </div>
+                    <div> -->
+                        <label class="viewLabel">LrDate:</label><span id="menuViewLrDate"></span><br>
+                        <label class="viewLabel">LrNumber:</label><span id="menuViewLrNumber"></span><br>
+                        <!-- <label class="viewLabel">menuViewRear_Image:</label><span id="menuViewRear_Image"></span><br> -->
+                        <label class="viewLabel">Remark_Field:</label><span id="menuViewRemark_Field"></span><br>
+                        <label class="viewLabel">ViewStatus:</label><span id="menuViewStatus"></span><br>
+                        <!-- <label class="viewLabel">menuViewTare_Weight:</label><span id="menuViewTare_Weight"></span><br> -->
+                        <!-- <label class="viewLabel">menuViewTare_Wgh_Date_time:</label><span id="menuViewTare_Wgh_Date_time"></span><br> -->
+                        <!-- <label class="viewLabel">menuViewTime:</label><span id="menuViewTime"></span><br> -->
+                        <label class="viewLabel">Type:</label><span id="menuViewType"></span><br>
+                        <!-- <label class="viewLabel">Vehicle_Mapping:</label><span id="menuViewVehicle_Mapping"></span><br> -->
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;"></div>
+        </div>
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hideCardView()" style="color:white;width: 3cm;">OK</button>
+        </div>
+    </div>
+</div>
+<!--Card View Popup finish -->

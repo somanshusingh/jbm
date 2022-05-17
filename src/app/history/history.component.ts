@@ -171,7 +171,7 @@ export class HistoryComponent implements OnInit {
           // this.Message =JSON.stringify(data['msg']);
           this.Message = "Trip Created Successfully";
         } else if (data['status'] == 0) {
-          this.Message = 'Error - ' + JSON.stringify(data['msg']);
+          this.Message = JSON.stringify(data['msg']);
         } else if (data['status'] == 100) {
           this.Message = JSON.stringify(data['msg']);
         } else {
@@ -325,7 +325,10 @@ export class HistoryComponent implements OnInit {
     }
     else {
       if(this.currentTab.toLowerCase() == 'vehicle'){
-        $('#tabErrOut').show();
+        // $('#tabErrOut').show();
+        // if(this.isVehicleDataAvailable && $('#vehicleMake').val() !== '' && $('#VehicleModel').val() !== ''&&$('#vehicleInsurance_exp_date').val() !== '' &&$('#VPUC_exp_date').val() !== '' && $('#Vnumber').val() !== ''){
+        // this.active('Driver');}
+        this.validateVehicleDetails();
       }
     }
   }

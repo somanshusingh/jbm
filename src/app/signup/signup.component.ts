@@ -11,11 +11,12 @@ export class SignupComponent implements OnInit {
   Message: any;
   menuSelected = 0;
   allowedMenu = {
+    gateprocess:'no',
     users: 'no',
     vehicles: 'no',
-    inboundPocess: 'no',
-    outboundProcess: 'no',
-    registerCard: 'no'
+    tripMaster: 'no',
+    getCardInfo: 'no',
+    tripReprint: 'no'
   }
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
@@ -36,11 +37,12 @@ export class SignupComponent implements OnInit {
       "Role": $('#role').val(),
       "Created_By":this.serviceCall.UserName,
       "Allowed_Menu": {
+        "gateprocess":this.allowedMenu.gateprocess,
         "users": this.allowedMenu.users,
         "vehicles": this.allowedMenu.vehicles,
-        "inboundPocess": this.allowedMenu.inboundPocess,
-        "outboundProcess": this.allowedMenu.outboundProcess,
-        "registerCard": this.allowedMenu.registerCard
+        "tripMaster": this.allowedMenu.tripMaster,
+        "getCardInfo": this.allowedMenu.getCardInfo,
+        "tripReprint": this.allowedMenu.tripReprint
       },
       "EmpCode":$('emp_code').val(),
       "User_Type":$('userType').val()
@@ -244,32 +246,41 @@ export class SignupComponent implements OnInit {
       this.menuSelected--;
       this.allowedMenu.vehicles = 'no';
     }
-    if (id == 'inboundProcess' && isChecked) {
-      $('#menuOptionInbound').show();
+    if (id == 'tripMaster' && isChecked) {
+      $('#menuOptionTripMaster').show();
       this.menuSelected++;
-      this.allowedMenu.inboundPocess = 'yes';
-    } else if (id == 'inboundProcess') {
-      $('#menuOptionInbound').hide();
+      this.allowedMenu.tripMaster = 'yes';
+    } else if (id == 'tripMaster') {
+      $('#menuOptionTripMaster').hide();
       this.menuSelected--;
-      this.allowedMenu.inboundPocess = 'no';
+      this.allowedMenu.tripMaster = 'no';
     }
-    if (id == 'outboundProcess' && isChecked) {
-      $('#menuOptionOutbound').show();
+    if (id == 'getCardInfo' && isChecked) {
+      $('#menuOptionGetCardInfo').show();
       this.menuSelected++;
-      this.allowedMenu.outboundProcess = 'yes';
-    } else if (id == 'outboundProcess') {
-      $('#menuOptionOutbound').hide();
+      this.allowedMenu.getCardInfo = 'yes';
+    } else if (id == 'getCardInfo') {
+      $('#menuOptionGetCardInfo').hide();
       this.menuSelected--;
-      this.allowedMenu.outboundProcess = 'no';
+      this.allowedMenu.getCardInfo = 'no';
     }
-    if (id == 'registerCard' && isChecked) {
-      $('#menuOptionRegister').show();
+    if (id == 'tripReprint' && isChecked) {
+      $('#menuOptionTripReprint').show();
       this.menuSelected++;
-      this.allowedMenu.registerCard = 'yes';
-    } else if (id == 'registerCard') {
-      $('#menuOptionRegister').hide();
+      this.allowedMenu.tripReprint = 'yes';
+    } else if (id == 'tripReprint') {
+      $('#menuOptionTripReprint').hide();
       this.menuSelected--;
-      this.allowedMenu.registerCard = 'no';
+      this.allowedMenu.tripReprint = 'no';
+    }
+    if (id == 'GateProcess' && isChecked) {
+      $('#menuOptionGateProcess').show();
+      this.menuSelected++;
+      this.allowedMenu.gateprocess = 'yes';
+    } else if (id == 'GateProcess') {
+      $('#menuOptionGateProcess').hide();
+      this.menuSelected--;
+      this.allowedMenu.gateprocess = 'no';
     }
     if (this.menuSelected == 0 || (isChecked && id=='SelectRole')) {
       $('#menuOptionNone').show();
@@ -279,37 +290,41 @@ export class SignupComponent implements OnInit {
   }
   selectMenu(){
     if($('#role').val() === 'Admin'){
-      $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
+      $('#checkGateProcess,#checkUsers,#checkVehicles,#checkTripMaster,#checkGetCardInfo,#checkTripReprint').prop('checked', true);
+      this.menuVal(true,'GateProcess');
       this.menuVal(true,'users');
       this.menuVal(true,'vehicles');
-      this.menuVal(true,'inboundProcess');
-      this.menuVal(true,'outboundProcess');
-      this.menuVal(true,'registerCard');
+      this.menuVal(true,'tripMaster');
+      this.menuVal(true,'getCardInfo');
+      this.menuVal(true,'tripReprint');
     }
     else if($('#role').val() === 'Supervisor'){
-      $('#checkInbound,#checkOutbound,#checkRegister').prop('checked', true);
-      $('#checkUsers,#checkVehicles').prop('checked', false);
+      $('#checkTripMaster,#checkVehicles').prop('checked', true);
+      $('#checkGateProcess,#checkUsers,#checkGetCardInfo,#checkTripReprint').prop('checked', false);
+      this.menuVal(false,'GateProcess');
       this.menuVal(false,'users');
-      this.menuVal(false,'vehicles');
-      this.menuVal(true,'inboundProcess');
-      this.menuVal(true,'outboundProcess');
-      this.menuVal(true,'registerCard');
+      this.menuVal(true,'vehicles');
+      this.menuVal(true,'tripMaster');
+      this.menuVal(false,'getCardInfo');
+      this.menuVal(false,'tripReprint');
     }
     else if($('#role').val() === 'GateUser'){
-      $('#checkUsers').prop('checked', true);
-      $('#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
-      this.menuVal(true,'users');
+      $('#checkGateProcess,#checkGetCardInfo,#checkTripReprint').prop('checked', true);
+      $('#checkUsers,#checkVehicles,#checkTripMaster').prop('checked', false);
+      this.menuVal(true,'GateProcess');
+      this.menuVal(false,'users');
       this.menuVal(false,'vehicles');
-      this.menuVal(false,'inboundProcess');
-      this.menuVal(false,'outboundProcess');
-      this.menuVal(false,'registerCard');
+      this.menuVal(false,'tripMaster');
+      this.menuVal(true,'getCardInfo');
+      this.menuVal(true,'tripReprint');
     }else{
-        $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
+        $('#checkGateProcess,#checkUsers,#checkVehicles,#checkTripMaster,#checkGetCardInfo,#checkTripReprint').prop('checked', false);
+        this.menuVal(false,'GateProcess');
         this.menuVal(false,'users');
         this.menuVal(false,'vehicles');
-        this.menuVal(false,'inboundProcess');
-        this.menuVal(false,'outboundProcess');
-        this.menuVal(false,'registerCard');
+        this.menuVal(false,'tripMaster');
+        this.menuVal(false,'getCardInfo');
+        this.menuVal(false,'tripReprint');
         this.menuVal(true,'SelectRole');
     }
   }
@@ -323,12 +338,13 @@ export class SignupComponent implements OnInit {
     $('#role').val('');
     $('#emp_code').val('');
     $('#userType').val('');
-    $('#checkUsers,#checkVehicles,#checkInbound,#checkOutbound,#checkRegister').prop('checked', false);
+    $('#checkGateProcess,#checkUsers,#checkVehicles,#checkTripMaster,#checkGetCardInfo,#checkTripReprint').prop('checked', false);
+    this.menuVal(false,'GateProcess');
         this.menuVal(false,'users');
         this.menuVal(false,'vehicles');
-        this.menuVal(false,'inboundProcess');
-        this.menuVal(false,'outboundProcess');
-        this.menuVal(false,'registerCard');
+        this.menuVal(false,'tripMaster');
+        this.menuVal(false,'getCardInfo');
+        this.menuVal(false,'tripReprint');
         this.menuVal(true,'SelectRole');
   }
 

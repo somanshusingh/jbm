@@ -188,14 +188,18 @@
                                 <span class="anchor inputWidth" (click)="showCheckbox()"
                                     style="min-height: 39px;max-height: fit-content;width: 100%;border: 1px solid #dee2e6;border-radius: 8px;">
                                     <span id="menuOptionNone">Select Menu Options </span>&nbsp;
+                                    <span id="menuOptionGateProcess" class="menuDisplay">Gate Process </span>&nbsp;
                                     <span id="menuOptionUsers" class="menuDisplay">Users </span>&nbsp;
                                     <span id="menuOptionVehicles" class="menuDisplay">Vehicles </span>&nbsp;
-                                    <span id="menuOptionInbound" class="menuDisplay">InboundProcess </span>&nbsp;
-                                    <span id="menuOptionOutbound" class="menuDisplay">OutboundProcess </span>&nbsp;
-                                    <span id="menuOptionRegister" class="menuDisplay">RegisterCard </span>&nbsp;
+                                    <span id="menuOptionTripMaster" class="menuDisplay">Trip Master </span>&nbsp;
+                                    <span id="menuOptionGetCardInfo" class="menuDisplay">Get Card Info </span>&nbsp;
+                                    <span id="menuOptionTripReprint" class="menuDisplay">Trip Reprint </span>&nbsp;
                                 </span>
                                 <ul class="items"
                                     style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
+                                    <li><input type="checkbox"
+                                        (click)="menuVal($event.target.checked,'GateProcess')" id="checkGateProcess" />&nbsp;&nbsp;&nbsp;&nbsp;Gate Process
+                                </li>
                                     <li><input type="checkbox"
                                             (click)="menuVal($event.target.checked,'users')" id="checkUsers" />&nbsp;&nbsp;&nbsp;&nbsp;Users
                                     </li>
@@ -203,14 +207,14 @@
                                             (click)="menuVal($event.target.checked,'vehicles')" id="checkVehicles" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
                                     </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'inboundProcess')" id="checkInbound" />&nbsp;&nbsp;&nbsp;&nbsp;Inbound
-                                        Process </li>
+                                            (click)="menuVal($event.target.checked,'tripMaster')" id="checkTripMaster" />&nbsp;&nbsp;&nbsp;&nbsp;Trip Master
+                                         </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'outboundProcess')" id="checkOutbound" />&nbsp;&nbsp;&nbsp;&nbsp;Outbound
-                                        Process </li>
+                                            (click)="menuVal($event.target.checked,'getCardInfo')" id="checkGetCardInfo" />&nbsp;&nbsp;&nbsp;&nbsp;Get Card Info
+                                         </li>
                                     <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'registerCard')" id="checkRegister"/>&nbsp;&nbsp;&nbsp;&nbsp;Register
-                                        Card </li>
+                                            (click)="menuVal($event.target.checked,'tripReprint')" id="checkTripReprint"/>&nbsp;&nbsp;&nbsp;&nbsp;Trip Reprint
+                                         </li>
                                 </ul>
                             </div>
                         </div>

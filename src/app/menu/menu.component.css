@@ -1,13 +1,19 @@
+.mobileGate ,
 .mobileUsers,
 .mobileVehicles,
 .mobileInboundProcess,
 .mobileOutboundProcess,
 .mobileRegisterCard,
+.mobileGetCardInfo,
+.mobileTripReprint,
+.desktopGate,
 .desktopUsers,
 .desktopVehicles,
 .desktopInboundProcess,
+.desktopGetCardInfo,
+.desktopTripReprint,
 .desktopOutboundProcess,
-.desktopRegisterCard {
+.desktopRegisterCard{
     display: none;
 }
 .Popup1Profile {
@@ -86,11 +92,44 @@
   .dropdown-toggle::after {display: none !important;}
   #popMessageReset, .PopupMessageShow{display: none;}
 .errDisplay{box-shadow: 0px 0px 3px 0px red;}
+.CardViewPopup {
+  display: none;
+  border-radius: 10px;
+  position: fixed;
+  width: 908px;
+  height: 12cm;
+  left: 27%;
+  margin-left: -50px;
+  top: 10%;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+  background: #fff;
+  animation: alertshow .2s ease;
+  border-radius: 10px;
+}
+.viewLabel {
+  width: 5cm;
+  font-family: sans-serif;
+  min-height: 28px;
+  font-size: 15px;
+}
+#cardViewGrid{display: grid;grid-template-columns: 1fr 1fr;}
 @media (max-width: 639px) {
   .Popup1Profile{
     left: 21%;}
     .CardMenu {width: 316px;left: 20%;}
     .PopupMenu{margin-left: -138px;}
+    .viewLabel {
+      width: 3.5cm !important;
+    }
+    .CardViewPopup{    width: 325px;
+      height: 14cm;
+      left: 19%;
+      overflow-y: scroll;
+  }
+  #cardViewGrid{display: block;}
 }
 .disabled{
   pointer-events: none;

@@ -121,9 +121,10 @@
                                 <span class="Issued_DateErr errMsg"></span>
                             </div> -->
                             <div class="mt-3">
-                                <label>Driver Number</label><br>
+                                <label>Mobile Number</label><br>
                                 <input class="input w-full border mt-2 inputWidth"
-                                    placeholder="Driver Number" id="inDriver_Number" (keyup)="ValidateNumber($event)" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Mobile')">
+                                    placeholder="Mobile Number" id="inDriver_Number" (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
+                                    onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
                                 <span class="Driver_NumberErr errMsg"></span>
                             </div>
                             <div class="mt-3">

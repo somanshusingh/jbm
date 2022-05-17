@@ -77,10 +77,10 @@ export class InboundComponent implements OnInit {
     let post_data = {
       "Trip_No": (Math.round(Math.random() * 100000)),
       "VehicleNo": $('#inVnumber').val().toString().toUpperCase(),
-      // "Make": $('#vehicleMake').val(),
-      // "Model": $('#VehicleModel').val(),
-      // "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
-      // "PUC_exp_date": $('#VPUC_exp_date').val(),
+      "Make": $('#invehicleMake').val(),
+      "Model": $('#inVehicleModel').val(),
+      "Insurance_exp_date": $('#invehicleInsurance_exp_date').val(),
+      "PUC_exp_date": $('#inVPUC_exp_date').val(),
       "Material": $('#inMaterial_Type').val(),
       // "Material": $('#inMaterial').val(),
       "Issued_By": this.serviceCall.UserId,
@@ -113,7 +113,7 @@ export class InboundComponent implements OnInit {
           // this.Message =JSON.stringify(data['msg']);
           this.Message = "Trip Created Successfully";
         } else if (data['status'] == 0) {
-          this.Message = 'Error - ' + JSON.stringify(data['msg']);
+          this.Message = JSON.stringify(data['msg']);
         } else if (data['status'] == 100) {
           this.Message = JSON.stringify(data['msg']);
         } else {
@@ -127,6 +127,7 @@ export class InboundComponent implements OnInit {
 
   validate(source) {
     var err = 0
+    var mobilePattern = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
     // if($('#vehicleMake').val() == ''){
     //   $('#vehicleMake').addClass('errDisplay');
     //   err++
@@ -185,6 +186,10 @@ export class InboundComponent implements OnInit {
       $('#inDriver_Number').addClass('errDisplay');
       err++
     } else {
+      if (!mobilePattern.test($("#inDriver_Number").val().toString())) {
+        $('#inDriver_Number').addClass('errDisplay');
+      err++
+      }
       $('#inDriver_Number').removeClass('errDisplay');
     }
     // if($('#inTime').val() == ''){
@@ -283,6 +288,7 @@ export class InboundComponent implements OnInit {
     } else {
       if(this.currentTab.toLowerCase() == 'vehicle'){
         $('#tabErr').show();
+        this.active('Driver');
       }
     }
   }
@@ -294,7 +300,8 @@ export class InboundComponent implements OnInit {
       this.Router.navigate(['/inBoundDashboard'], { queryParams: { sessionID: sessionID } });
     }
     if (this.carNoAdded == true) {
-      window.location.reload();
+      // window.location.reload();
+      this.Router.navigate(['/inBoundDashboard'], { queryParams: { sessionID: sessionID } });
     }
   }
   validateVehicleNumber() {
