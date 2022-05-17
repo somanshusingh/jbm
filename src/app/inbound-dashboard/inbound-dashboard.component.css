@@ -89,9 +89,13 @@
     font-size: 15px;
   }
   #outerDiv{padding: 23px;}
-  .ViewDisaplayInbound{display: grid;
+  .ViewDisaplayInbound{display: grid;max-height: 11.5cm;overflow-y: scroll;
     /* grid-template-columns: 12cm 12cm; */
   }
+  .tabinview1{display: grid;grid-template-columns: 12cm 12cm;}
+  .tabinview2{padding: 20px 0px 0px 20px;}
+  .tabinview3{display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;}
+  .tabinview4{padding: 0px 0px 4px 20px;display: grid;grid-template-columns: 12cm 12cm;}
   @media only screen and (max-width: 768px) {
     .editDiv {
       width: unset;
@@ -124,5 +128,9 @@
     #outerDiv{padding: 0px;}
     .inPopup1message {margin-left: -97px !important;}
     .ViewDisaplayInbound{display: grid;grid-template-columns:1fr;}
+    .tabinview1{display: block;}
+  .tabinview2{padding: 20px 0px 0px 20px;}
+  .tabinview3{display: grid;grid-template-columns: 3.5cm 3.5cm;column-gap: 10px;}
+  .tabinview4{display: block;}
   }
   

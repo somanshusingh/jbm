@@ -218,66 +218,71 @@
                 Trip Details
             </div>
             <!-- <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span> -->
-            <div class="ViewDisaplayInbound" style="max-height: 11.5cm;overflow-y: scroll;">
-                <div style="display: grid;grid-template-columns: 12cm 12cm;">
-                <div style="padding: 20px;">
-                    <!-- <b> -->
-                    <label class="viewLabel">Trip Number:</label><span id="inViewTrip_No"></span><br>
-                    <!-- </b> -->
-                    <!-- <b> -->
-                    <label class="viewLabel">Vehicle Number: </label> <span id="inViewVehicleNo"></span><br>
-                    <!-- </b> -->
-                    <!-- <b> -->
-                    <label class="viewLabel">Driver Name:</label><span id="inViewDriver_Name"></span><br>
-                    <!-- </b> -->
-                    <!-- <b> -->
-                    <label class="viewLabel">Driver Number:</label><span id="inViewDriver_Number"></span><br>
-                    <!-- </b> -->
-                    <!-- <b> -->
-                    <label class="viewLabel">Consignee Name: </label><span id="inViewConsignee_Name"></span><br>
-                    <!-- </b> -->
-                    <!-- <b><label class="viewLabel">Issued By: </label><span id="inViewIssued_By"></span><br></b> -->
-                    <!-- <b><label class="viewLabel">Issued Date:</label> <span id="inViewIssued_Date"></span><br></b> -->
-                    <!-- <b><label class="viewLabel">Material: </label><span id="inViewMaterial"></span><br></b> -->
-                    <!-- <b> -->
-                    <label class="viewLabel">Material:</label><span id="inViewMaterial_Type"></span><br>
-                    <label class="viewLabel">Status:</label><span id="inViewStatus"></span><br><br>
-                    <!-- </b> -->
-                    <!-- <b> -->
-                    <!-- <b><label class="viewLabel">Time:</label> <span id="inViewTime"></span><br></b><br> -->
-                    <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
-                </div>
-                <div style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;">
-                    <div>
-                        <span id="docViewStatusIn"></span>
-                        <label id="doc1NameIn"></label><br>
-                        <img class="docImgIn" id="docImage1In" style="max-height: 185px;"><br><br>
+            <div class="ViewDisaplayInbound">
+                <div class="tabinview1">
+                    <div class="tabinview2">
+                        <!-- <b> -->
+                        <label class="viewLabel">Trip Number:</label><span id="inViewTrip_No"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                        <label class="viewLabel">Vehicle Number: </label> <span id="inViewVehicleNo"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                        <label class="viewLabel">Driver Name:</label><span id="inViewDriver_Name"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                        <label class="viewLabel">Driver Number:</label><span id="inViewDriver_Number"></span><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                        <label class="viewLabel">Consignee Name: </label><span id="inViewConsignee_Name"></span><br>
+                        <!-- </b> -->
+                        <!-- <b><label class="viewLabel">Issued By: </label><span id="inViewIssued_By"></span><br></b> -->
+                        <!-- <b><label class="viewLabel">Issued Date:</label> <span id="inViewIssued_Date"></span><br></b> -->
+                        <!-- <b><label class="viewLabel">Material: </label><span id="inViewMaterial"></span><br></b> -->
+                        <!-- <b> -->
+                        <label class="viewLabel">Material:</label><span id="inViewMaterial_Type"></span><br>
+                        <label class="viewLabel">Status:</label><span id="inViewStatus"></span><br><br>
+                        <!-- </b> -->
+                        <!-- <b> -->
+                        <!-- <b><label class="viewLabel">Time:</label> <span id="inViewTime"></span><br></b><br> -->
+                        <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
                     </div>
-                    <div>
-                        <label id="doc2NameIn"></label><br>
-                        <img class="docImgIn" id="docImage2In" style="max-height: 185px;">
+                    <div class="tabinview3">
+                        <div>
+                            <span id="docViewStatusIn"></span>
+                            <label id="doc1NameIn"></label><br>
+                            <img class="docImgIn" id="docImage1In" style="max-height: 185px;"><br><br>
+                        </div>
+                        <div>
+                            <label id="doc2NameIn"></label><br>
+                            <img class="docImgIn" id="docImage2In" style="max-height: 185px;">
+                        </div>
                     </div>
                 </div>
-            </div>
                 <!-- <div>
                 </div>
                 <div>
                 </div> -->
-                <div style="padding: 20px;">
-                    <label class="viewLabel">Qty Mt Weight:</label><span id="inViewQty_Mt_Weight"></span><br>
-                    <!-- </b> -->
-                    <label class="viewLabel">Net Weight:</label><span id="inViewNet_Weight"></span><br>
-                    <label class="viewLabel">Gross Weight:</label><span
-                        id="inViewGross_Weight"></span>&nbsp;&nbsp;<label class="">Date : </label><span
-                        id="inViewGross_Wgh_Date_time"></span><br>
-                    <label class="viewLabel">Tare Weight:</label><span id="inViewTare_Weight"></span>&nbsp;&nbsp;<label
-                        class="">Date : </label><span id="inViewTare_Wgh_Date_time"></span><br>
+                <div class="tabinview4">
+                    <div>
+                        <label class="viewLabel">Qty Mt Weight:</label><span id="inViewQty_Mt_Weight"></span><br>
+                        <!-- </b> -->
+                        <label class="viewLabel">Net Weight:</label><span id="inViewNet_Weight"></span><br>
+                        <label class="viewLabel">Gross Weight:</label><span
+                            id="inViewGross_Weight"></span>&nbsp;&nbsp;<label class="">Date : </label><span
+                            id="inViewGross_Wgh_Date_time"></span><br>
+                        <label class="viewLabel">Tare Weight:</label><span
+                            id="inViewTare_Weight"></span>&nbsp;&nbsp;<label class="">Date : </label><span
+                            id="inViewTare_Wgh_Date_time"></span><br>
                         <label class="viewLabel">Make:</label><span id="inViewMake"></span><br>
                         <label class="viewLabel">Model:</label><span id="inViewModel"></span><br>
                         <label class="viewLabel">PUC_exp_date:</label><span id="inViewPUC_exp_date"></span><br>
                         <label class="viewLabel">Address:</label><span id="inViewAddress"></span><br>
                         <label class="viewLabel">Card_Number:</label><span id="inViewCard_Number"></span><br>
-                        <label class="viewLabel">Insurance_exp_date:</label><span id="inViewInsurance_exp_date"></span><br>
+                    </div>
+                    <div>
+                        <label class="viewLabel">Insurance_exp_date:</label><span
+                            id="inViewInsurance_exp_date"></span><br>
                         <label class="viewLabel">Issued_By:</label><span id="inViewIssued_By"></span><br>
                         <label class="viewLabel">Issued_Date:</label><span id="inViewIssued_Date"></span><br>
                         <label class="viewLabel">LrDate:</label><span id="inViewLrDate"></span><br>
@@ -287,6 +292,7 @@
                         <label class="viewLabel">Remark_Field:</label><span id="inViewRemark_Field"></span><br>
                         <label class="viewLabel">Time:</label><span id="inViewTime"></span><br>
                         <label class="viewLabel">Type:</label><span id="inViewType"></span><br>
+                    </div>
                 </div>
             </div>
         </div>
