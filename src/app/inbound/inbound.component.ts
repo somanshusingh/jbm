@@ -305,20 +305,20 @@ export class InboundComponent implements OnInit {
     }
   }
   validateVehicleNumber() {
-    var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    // var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
+    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/
     if ($('#checkVehicleNumber').val() !== "") {
-      // if(!vehicleNumberPatter.test($('#checkVehicleNumber').val().toString().toUpperCase())){
-      //   $('#checkVehicleNumber').addClass('errDisplay');
-      // }else{
-      //   $('#checkVehicleNumber').removeClass('errDisplay');
-      //   this.checkHistory();
-      // }
-      // this.checkHistory();
-      if (window.location.pathname == '/inBound/inhouse') {
-        this.getInHouseStatus();
-      } else {
-        this.getInboundStatus();
+      if(!vehicleNumberPatter.test($('#checkVehicleNumber').val().toString().toUpperCase())){
+        $('#checkVehicleNumber').addClass('errDisplay');
+      }else{
+        $('#checkVehicleNumber').removeClass('errDisplay');
+        if (window.location.pathname == '/inBound/inhouse') {
+          this.getInHouseStatus();
+        } else {
+          this.getInboundStatus();
+        }
       }
+      // this.checkHistory();
     } else {
       $('#checkVehicleNumber').addClass('errDisplay');
     }

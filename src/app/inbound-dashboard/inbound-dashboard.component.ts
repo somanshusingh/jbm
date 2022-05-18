@@ -268,7 +268,7 @@ export class InboundDashboardComponent implements OnInit {
               $('#editinVnumber').val(this.data[i]['VehicleNo']);
               // $('#editinVehicleModel').val(this.data[i]['VehicleType']);
               // $('#editinVPUC_exp_date').val(this.data[i]['VehicleType']);
-              $('#editinMaterial_Type').val(this.data[i]['Material']);
+              // $('#editinMaterial_Type').val(this.data[i]['Material']);
               // $('#editinIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#editinDriver_Number').val(this.data[i]['Driver_Number']);
               $('#editinAddress').val(this.data[i]['Address']);
@@ -278,9 +278,12 @@ export class InboundDashboardComponent implements OnInit {
                 $('#editinMaterial_Type').empty();
                 $('#editinMaterial_Type').append("<option value=''>Select Material Type</option>");
                 for(var a in this.serviceCall.Material){
-                  $('#editinMaterial_Type').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
+                  $('#editinMaterial_Type').append("<option value='"+this.serviceCall.Material[a]['MaterialName']+"'>"+this.serviceCall.Material[a]['MaterialName']+"</option>")
               }
               }
+              $('#editinlrDate').val(moment(this.data[i]['LrDate']).format('YYYY-MM-DD'));
+              $('#editinlrNumber').val(this.data[i]['LrNumber']);
+              $('#editinMaterial_Type').val(this.data[i]['Material']);
             }
           }
         }

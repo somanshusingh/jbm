@@ -111,7 +111,7 @@ export class HistoryComponent implements OnInit {
           $('#outboundForm').show();
           this.isVehicleDataAvailable = false;
           $('#Vnumber').val($('#checkOutVehicleNumber').val());
-          $("#Vnumber").attr('disabled', 'disabled');
+          // $("#Vnumber").attr('disabled', 'disabled'); //removed disabled
           // this.Message =data['msg'];
           // $('.Popup1').show();
         } else if (data['status'] == 100) {
@@ -343,7 +343,7 @@ export class HistoryComponent implements OnInit {
   }
   validateVehicleNumber() {
     // var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
-    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{1,2}[A-Z]{2,3}[0-9]{4}$/
+    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/
     if ($('#checkOutVehicleNumber').val() !== "") {
       if(!vehicleNumberPatter.test($('#checkOutVehicleNumber').val().toString().toUpperCase())){
         $('#checkOutVehicleNumber').addClass('errDisplay');
@@ -368,7 +368,7 @@ export class HistoryComponent implements OnInit {
         $('#Material_Type').empty();
         $('#Material_Type').append("<option value=''>Select Material Type</option>");
         for (var a in this.serviceCall.Material) {
-          $('#Material_Type').append("<option value=" + this.serviceCall.Material[a]['MaterialName'] + ">" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
+          $('#Material_Type').append("<option value='" + this.serviceCall.Material[a]['MaterialName'] + "'>" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
         }
       }
     }

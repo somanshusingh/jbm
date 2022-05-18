@@ -129,12 +129,13 @@ export class DashboardComponent implements OnInit {
               $('#editdPUC_exp_date').val(this.data[i]['PUC_exp_date'].split('T')[0]);
               $('#editdMake').val(this.data[i]['Make']);
               $('#editdModel').val(this.data[i]['Model']);
-              $('#editdVehicleType').val(this.data[i]['VehicleType']);
+              // $('#editdVehicleType').val(this.data[i]['VehicleType']);
               $('#VehicleTypeEditDash').empty();
               $('#VehicleTypeEditDash').append("<option value=''>Select Vehicle Type</option>");
               for (var a in this.vehicleType) {
                 $('#VehicleTypeEditDash').append("<option value='" + this.vehicleType[a]['VehicleType'] + "'>" + this.vehicleType[a]['VehicleType']  + "</option>")
               }
+              $('#VehicleTypeEditDash').val(this.data[i]['VehicleType'])
             }
           }
         }

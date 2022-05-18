@@ -95,16 +95,23 @@ export class VehicleComponent implements OnInit {
   };
   validate(){
     var err = 0 
+    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/
     if($('#VehicleNo').val() == ''){
       $('#VehicleNo').addClass('errDisplay');
       err++
     }else{
       let tempVehicleNo = $('#VehicleNo').val() as any;
-      if ([9, 10, 11].indexOf(tempVehicleNo.length) > -1) {
-        $('#VehicleNo').removeClass('errDisplay');
-      } else{
+      // if ([9, 10, 11].indexOf(tempVehicleNo.length) > -1) {
+      //   $('#VehicleNo').removeClass('errDisplay');
+      // } else{
+      //   $('#VehicleNo').addClass('errDisplay');
+      //   err++
+      // }
+      if(!vehicleNumberPatter.test($('#VehicleNo').val().toString().toUpperCase())){
         $('#VehicleNo').addClass('errDisplay');
         err++
+      }else{
+        $('#VehicleNo').removeClass('errDisplay');
       }
     }
     if($('#Make').val() == ''){

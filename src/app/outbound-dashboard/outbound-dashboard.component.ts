@@ -3,6 +3,7 @@ import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 
 
 @Component({
@@ -106,7 +107,7 @@ export class OutboundDashboardComponent implements OnInit {
               $('#outEditVnumber').val(this.data[i]['VehicleNo']);
               $('#outEditVehicleModel').val(this.data[i]['Model']);
               $('#outEditVPUC_exp_date').val(this.data[i]['PUC_exp_date'].split('T')[0]);
-              $('#outEditMaterial_Type').val(this.data[i]['Material']);
+              // $('#outEditMaterial_Type').val(this.data[i]['Material']);
               $('#outEditIssued_Date').val(this.data[i]['Issued_Date'].split('T')[0]);
               $('#outEditDriver_Number').val(this.data[i]['Driver_Number']);
               $('#outEditTrip_No').val(this.data[i]['Trip_No']);
@@ -114,9 +115,12 @@ export class OutboundDashboardComponent implements OnInit {
                 $('#outEditM').empty();
                 $('#outEditM').append("<option value=''>Select Material Type</option>")
                 for(var a in this.serviceCall.Material){
-                  $('#outEditM').append("<option value="+this.serviceCall.Material[a]['MaterialName']+">"+this.serviceCall.Material[a]['MaterialName']+"</option>")
+                  $('#outEditM').append("<option value='"+this.serviceCall.Material[a]['MaterialName']+"'>"+this.serviceCall.Material[a]['MaterialName']+"</option>")
               }
               }
+              $('#outEditlrDate').val(moment(this.data[i]['LrDate']).format('YYYY-MM-DD'));
+              $('#outEditlrNumber').val(this.data[i]['LrNumber']);
+              $('#outEditMaterial_Type').val(this.data[i]['Material']);
             }
           }
         }
