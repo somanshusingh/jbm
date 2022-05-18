@@ -247,8 +247,8 @@ export class OutboundDashboardComponent implements OnInit {
       "VehicleNo": $('#outEditVnumber').val(),
       "Make": $('#outEditvehicleMake').val(),
       "Model": $('#outEditVehicleModel').val(),
-      "Insurance_exp_date": $('#outEditvehicleInsurance_exp_date').val(),
-      "PUC_exp_date": $('#outEditVPUC_exp_date').val(),
+      "Insurance_exp_date": moment($('#outEditvehicleInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
+      "PUC_exp_date": moment($('#outEditVPUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
       // "Material_Type": $('#outEditMaterial_Type').val(),
       "Material": $('#outEditMaterial_Type').val(),//$('#outEditMaterial').val(),
       "Issued_By":this.serviceCall.UserId,
@@ -261,7 +261,7 @@ export class OutboundDashboardComponent implements OnInit {
       "Qty_Mt_Weight": $('#outEditoutqty_mt_Weight').val()
     }
     if($('#outEditlrDate').val() !== '' && $('#outEditlrDate').val() !== null &&$('#outEditlrDate').val() !== undefined ){
-      post_data['LrDate'] = $('#outEditlrDate').val();
+      post_data['LrDate'] = moment($('#outEditlrDate').val()).format('YYYY-MM-DD hh:mm:ss');
     }
     if($('#outEditlrNumber').val() !== '' &&$('#outEditlrNumber').val() !== null&&$('#outEditlrNumber').val() !== undefined ){
       post_data['LrNumber'] = $('#outEditlrNumber').val();

@@ -112,7 +112,7 @@
             <li class="mobileTripReprint">
                 <span class="menu">
                     <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                    <div class="menu__title"> Trip Reprint </div>
+                    <div class="menu__title" (click)="showRprint()"> Trip Reprint </div>
                 </span>
             </li>
             <!-- <li class="mobileOutboundProcess">
@@ -271,7 +271,7 @@
                 <li class="desktopTripReprint">
                     <span class="side-menu users">
                         <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick"> Trip Reprint</div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="showRprint()"> Trip Reprint</div>
                     </span>
                 </li>
                 <!-- <li class="desktopOutboundProcess">
@@ -522,3 +522,48 @@
     </div>
 </div>
 <!--Card View Popup finish -->
+
+<!-- Trip Reprint Popup start -->
+
+<div>
+    <div class="TripReprint">
+        <div class="Popup2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
+            </div>
+            <div class="TripReprintInput">
+                <b> Enter Trip Number</b>
+                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Trip Number" id="TripReprintNoMenu">
+            </div>
+        </div>
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
+            <button id="TripReprintOk" class="Popupbutton" (click)="TripReprint()"
+                style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="TripReprintCancel" (click)="hideTripReprint()" style="color:white;width: 3cm;">Cancel</button>
+        </div>
+    </div>
+</div>
+<!-- Trip Reprint Popup finish -->
+
+<!--Message Reprint Popup start -->
+<div>
+    <div class="ReprintMsg">
+        <div class="PopupMenu2">
+            <div
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
+            </div>
+            <div style="padding: 28px;text-align: center;">
+                <b> {{reprintStatus}}</b>
+            </div>
+        </div>
+        <div class="PopupMenu3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hideReprintMsg()" style="color:white;width: 3cm;">OK</button>
+        </div>
+    </div>
+</div>
+<!--Message Reprint Popup finish -->

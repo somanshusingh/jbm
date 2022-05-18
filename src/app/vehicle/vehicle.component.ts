@@ -55,8 +55,8 @@ export class VehicleComponent implements OnInit {
      "VehicleNo":$('#VehicleNo').val().toString().toUpperCase(),
      "Make":$('#Make').val(),
      "Model":$('#Model').val(),
-     "Insurance_exp_date":$('#Insurance_exp_date').val(),
-     "PUC_exp_date":$('#PUC_exp_date').val(),
+     "Insurance_exp_date":moment($('#Insurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
+     "PUC_exp_date":moment($('#PUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
      "VehicleType":$('#VehicleTypeDash').val(),
      "Status":$('#Status').val(),
      "Created_By":this.serviceCall.Role

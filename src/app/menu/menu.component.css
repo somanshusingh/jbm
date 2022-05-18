@@ -122,6 +122,42 @@
   text-align: center;
   font-size: 27px;
   color: #1818c8;}
+  .TripReprint{
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    /* width: 387px; */
+    /* height: 168px; */
+    width: 453px;
+  height: 218px;
+    left: 45%;
+    margin-left: -50px;
+    top: 20%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+  }
+  .TripReprintInput{padding: 36px;}
+  .ReprintMsg{
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    width: 310px;
+    left: 45%;
+    margin-left: -50px;
+    top: 20%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    background: #fff;
+    animation: alertshow .2s ease;
+    border-radius: 10px;
+  }
 @media (max-width: 639px) {
   .Popup1Profile{
     left: 21%;}
@@ -140,6 +176,8 @@
     text-align: center;
     font-size: 22px;
     color: #1818c8;}
+  .TripReprint{width: 330px;height: 197px;left: 18%;}
+  .ReprintMsg{left: 21%;}
 }
 .disabled{
   pointer-events: none;

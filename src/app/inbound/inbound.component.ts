@@ -79,8 +79,8 @@ export class InboundComponent implements OnInit {
       "VehicleNo": $('#inVnumber').val().toString().toUpperCase(),
       "Make": $('#invehicleMake').val(),
       "Model": $('#inVehicleModel').val(),
-      "Insurance_exp_date": $('#invehicleInsurance_exp_date').val(),
-      "PUC_exp_date": $('#inVPUC_exp_date').val(),
+      "Insurance_exp_date": moment($('#invehicleInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
+      "PUC_exp_date": moment($('#inVPUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
       "Material": $('#inMaterial_Type').val(),
       // "Material": $('#inMaterial').val(),
       "Issued_By": this.serviceCall.UserId,
@@ -99,7 +99,7 @@ export class InboundComponent implements OnInit {
       // "LrDate":$('#lrDate').val()
     }
     if ($('#lrDate').val() !== '' && $('#lrDate').val() !== null && $('#lrDate').val() !== undefined) {
-      post_data['LrDate'] = $('#lrDate').val();
+      post_data['LrDate'] = moment($('#lrDate').val()).format('YYYY-MM-DD hh:mm:ss');
     }
     if ($('#lrNumber').val() !== '' && $('#lrNumber').val() !== null && $('#lrNumber').val() !== undefined) {
       post_data['LrNumber'] = $('#lrNumber').val();

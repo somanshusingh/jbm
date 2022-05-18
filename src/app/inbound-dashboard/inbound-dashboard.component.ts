@@ -176,7 +176,7 @@ export class InboundDashboardComponent implements OnInit {
       "Qty_Mt_Weight": $('#editqty_mt_Weight').val()
     }
     if ($('#editinlrDate').val() !== '' && $('#editinlrDate').val() !== null && $('#editinlrDate').val() !== undefined) {
-      post_data['LrDate'] = $('#editinlrDate').val();
+      post_data['LrDate'] = moment($('#editinlrDate').val()).format('YYYY-MM-DD hh:mm:ss');
     }
     if ($('#editinlrNumber').val() !== '' && $('#editinlrNumber').val() !== null && $('#editinlrNumber').val() !== undefined) {
       post_data['LrNumber'] = $('#editinlrNumber').val();

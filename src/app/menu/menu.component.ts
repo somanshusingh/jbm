@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
   Message = '';
   data: any;
   cardStatus = '';
+  reprintStatus='';
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
   ngOnInit(): void {
@@ -400,5 +401,33 @@ export class MenuComponent implements OnInit {
   }
   hideCardView(){
     $('.CardViewPopup').hide();
+  }
+  hideTripReprint(){
+    $('.TripReprint').hide();
+  }
+  showRprint(){$('.TripReprint').show();}
+  TripReprint(){
+    if($('#TripReprintNoMenu').val() !== ''){
+      $('#TripReprintNoMenu').removeClass('errDisplay');
+    var url =  "/history/print_trip/"+$('#TripReprintNoMenu').val();
+    this.serviceCall.getService(url).subscribe(data => {
+      $('.TripReprint').hide();
+      if (data.hasOwnProperty('status') && data['status'] == 1 && data.hasOwnProperty('msg') && data['msg'] !== '' && data['msg'] !== null && data['msg'] !== undefined) {
+        window.open(' https://jbmapp.herokuapp.com/pdf/'+data['msg'], '_blank');
+      }else{
+        $('.ReprintMsg').show();
+        this.reprintStatus = 'Something went wrong.'
+      }
+    }, (error) => {
+      $('.TripReprint').hide();
+      $('.ReprintMsg').show();
+      this.reprintStatus = 'Something went wrong.'
+    })
+  }else{
+    $('#TripReprintNoMenu').addClass('errDisplay');
+  }
+  }
+  hideReprintMsg(){
+    $('.ReprintMsg').hide();
   }
 }

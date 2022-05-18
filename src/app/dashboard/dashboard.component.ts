@@ -156,8 +156,8 @@ export class DashboardComponent implements OnInit {
      "VehicleNo":$('#editdVehicleNo').val(),
      "Make":$('#editdMake').val(),
      "Model":$('#editdModel').val(),
-     "Insurance_exp_date":$('#editdInsurance_exp_date').val(),
-     "PUC_exp_date":$('#editdPUC_exp_date').val(),
+     "Insurance_exp_date":moment($('#editdInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
+     "PUC_exp_date":moment($('#editdPUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
      "VehicleType":$('#VehicleTypeEditDash').val(),
      };
     this.serviceCall.signin(url, post_data).subscribe(

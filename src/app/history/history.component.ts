@@ -135,8 +135,8 @@ export class HistoryComponent implements OnInit {
       "VehicleNo": $('#Vnumber').val().toString().toUpperCase(),
       "Make": $('#vehicleMake').val(),
       "Model": $('#VehicleModel').val(),
-      "Insurance_exp_date": $('#vehicleInsurance_exp_date').val(),
-      "PUC_exp_date": $('#VPUC_exp_date').val(),
+      "Insurance_exp_date": moment($('#vehicleInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
+      "PUC_exp_date": moment($('#VPUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
       // "Material_Type": $('#Material_Type').val(),
       "Material": $('#Material_Type').val(),
       "Issued_By": this.serviceCall.UserId,//$('#Issued_By').val(),
@@ -157,7 +157,7 @@ export class HistoryComponent implements OnInit {
       // "LrDate":$('#outlrDate').val()
     }
     if ($('#outlrDate').val() !== '' && $('#outlrDate').val() !== null && $('#outlrDate').val() !== undefined) {
-      post_data['LrDate'] = $('#outlrDate').val();
+      post_data['LrDate'] = moment($('#outlrDate').val()).format('YYYY-MM-DD hh:mm:ss');
     }
     if ($('#outlrNumber').val() !== '' && $('#outlrNumber').val() !== null && $('#outlrNumber').val() !== undefined) {
       post_data['LrNumber'] = $('#outlrNumber').val();
