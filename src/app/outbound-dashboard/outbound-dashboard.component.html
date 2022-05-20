@@ -1,10 +1,21 @@
 <div id="outerDiv">
-    <!-- <button class="buttonCss" routerLink="/outbound">Create Trip</button><br><br> -->
-    <button (click)="navigate('/outbound')"
+    <div class="card">
+    <!-- <button (click)="navigate('/outbound')"
         style="color: white;background: #1d40aa;border: none;border-radius: 4px;height: 36px;padding: 5px 5px 5px 5px;width: 110px;">Create
-        Trip</button><br><br>
-    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap"
-        [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="width:100%">
+        Trip</button><br><br> -->
+        <div class="card-header text-light" style="background-color: #0067ac;">
+            <span class="pt-5 fs-5 text-violet">TRIP MASTER</span>
+            <div class="card-tools float-right">
+                <button (click)="navigate('/outbound')" class="btn btn-sm fluffy">
+                    <i class="fa-solid fa-plus"></i> Create Trip
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 table-responsive">
+    <table datatable class="table table-striped table-bordered table-hover"
+        [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  style="width: 100%; border-top: 2px solid #e2e8f0;">
         <thead>
             <tr>
                 <th class="imageDiv">&nbsp;&nbsp;&nbsp;</th>
@@ -21,37 +32,41 @@
         </thead>
         <tbody>
             <tr *ngFor="let vehicle of data" height="55px">
-                <td>
+                <!-- <td>
                     <div style="display: flex;" class="imageDiv">
                         <div (click)="viewData('edit',vehicle.Trip_No)">
-                            <!-- <i data-feather="edit" style="height: 18px;"></i> -->
                             <img src="assets/images/edit-icon3.png" style="height: 22px;">
                         </div>&nbsp;&nbsp;
                         <div (click)="viewData('view',vehicle.Trip_No)">
-                            <!-- <i data-feather="eye" style="height: 18px;"></i> -->
                             <img src="assets/images/eye-icon2.png" style="height: 20px;">
                         </div>
                     </div>
+                </td> -->
+                <td class="text-center">
+                    <i class="fa-solid fa-pencil text-primary"
+                        (click)="viewData('edit',vehicle.Trip_No)"></i>
                 </td>
-                <td class="Trip_No">{{ vehicle.Trip_No }}</td>
-                <td class="VehicleNo">{{ vehicle.VehicleNo }}</td>
-                <td class="Driver_Name">{{ vehicle.Driver_Name }}</td>
-                <td class="Consignee_Name">{{ vehicle.Consignee_Name }}</td>
-                <td class="Make">{{ vehicle.Make }}</td>
-                <td class="Model">{{ vehicle.Model }}</td>
-                <td class="card_numbers">{{ vehicle.Card_Number }}</td>
+                <td class="Trip_No" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Trip_No }}</td>
+                <td class="VehicleNo" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.VehicleNo }}</td>
+                <td class="Driver_Name" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Driver_Name }}</td>
+                <td class="Consignee_Name" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Consignee_Name }}</td>
+                <td class="Make" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Make }}</td>
+                <td class="Model" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Model }}</td>
+                <td class="card_numbers" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Card_Number }}</td>
                 <!-- <td class="vehicleType">{{ vehicle.Type }}</td> -->
-                <td *ngIf="vehicle.Status === 'In transit'" style="color: #3939ff ;" class="status">{{ vehicle.Status }}
+                <td *ngIf="vehicle.Status === 'In transit'" style="text-transform: capitalize;font-weight: bold;" class="status text-primary">{{ vehicle.Status }}
                 </td>
-                <td *ngIf="vehicle.Status === 'In plant'" style="color: yellow ;" class="status">{{ vehicle.Status }}
+                <td *ngIf="vehicle.Status === 'In plant'" style="text-transform: capitalize;font-weight: bold;" class="status text-warning">{{ vehicle.Status }}
                 </td>
-                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'" style="color: green ;"
-                    class="status">{{ vehicle.Status }}</td>
-                <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'" style="color: rgb(141, 141, 141) ;"
-                    class="status">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'" style="text-transform: capitalize;font-weight: bold;" class="status text-success">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'" style="text-transform: capitalize;font-weight: bold;" class="status text-secondary">{{ vehicle.Status }}</td>
             </tr>
         </tbody>
     </table>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Edit Popup start -->

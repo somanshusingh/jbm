@@ -467,6 +467,7 @@ export class InboundComponent implements OnInit {
 
   getInHouseStatus() {
     let vehicelStatus = 0;
+    let inplant = 0;
     let TripsAvailable = [];
     let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val();
     this.serviceCall.getService(url).subscribe(
@@ -477,12 +478,19 @@ export class InboundComponent implements OnInit {
               vehicelStatus++;
               TripsAvailable.push(data['msg'][i]);
             }
+            if (data['msg'][i]['Status'].toLowerCase() == 'in plant'){
+              inplant ++;
+            }
           }
           if (TripsAvailable.length > 0) {
             this.checkHistoryInhouse(TripsAvailable[0]);
           } else {
-            this.Message = 'No Trip Available.';
+            if(inplant >0){
+              this.Message = 'Vehicle In Plant.';
             $('.Popup1').show();
+            }else{
+            this.Message = 'No Trip Available.';
+            $('.Popup1').show();}
           }
         } else if (data['status'] == 0 && data['msg'] == 'No trip available') {
           this.Message = 'No Trip Available.';

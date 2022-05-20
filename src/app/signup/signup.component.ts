@@ -44,8 +44,8 @@ export class SignupComponent implements OnInit {
         "getCardInfo": this.allowedMenu.getCardInfo,
         "tripReprint": this.allowedMenu.tripReprint
       },
-      "EmpCode":$('emp_code').val(),
-      "User_Type":$('userType').val()
+      "EmpCode":$('#emp_code').val(),
+      "User_Type":$('#userType').val()
     };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
