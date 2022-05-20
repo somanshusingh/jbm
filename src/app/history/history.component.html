@@ -1,71 +1,35 @@
-<!-- <div class="outerdiv" style="max-width: 540px;margin: 5% auto;">
-    <div style="padding: 15px;">
-        <div id="Message">{{Message}}</div>
-        <label>Book No</label>
-        <input type="text" placeholder="Book No" id="BookNo" class="inputWidth"><br>
-        <label>Vehicle No</label>
-        <input type="text" placeholder="Vehicle No" id="VehicleNo" class="inputWidth">&nbsp;<button class="Button"
-            (click)=checkHistory()>Check Vehicle</button><br>
-        <div id="hiddenFields" style="display: none;">
-            <label>Make</label>
-            <input type="text" placeholder="Make" id="Make1" class="inputWidth" disabled><br>
-            <label>Model</label>
-            <input type="text" placeholder="Model" id="Model1" class="inputWidth" disabled><br>
-            <label>Insurance exp date</label>
-            <input type="text" placeholder="Insurance exp date" id="Insurance_exp_date" class="inputWidth" disabled><br>
-            <label>PUC exp date</label>
-            <input type="text" placeholder="PUC exp date" id="PUC_exp_date" class="inputWidth" disabled><br>
-        </div>
-        <label>Material</label>
-        <input type="text" placeholder="Material" id="Material" class="inputWidth" disabled><br>
-        <label>Material Type</label>
-        <input type="text" placeholder="Material Type" id="Material_Type" class="inputWidth" disabled><br>
-        <label>Issued By</label>
-        <input type="text" placeholder="Issued By" id="Issued_By" class="inputWidth" disabled><br>
-        <label>Issued Date</label>
-        <input type="text" placeholder="Issued Date" id="Issued_Date" class="inputWidth" disabled><br>
-        <label>Driver Name</label>
-        <input type="text" placeholder="Driver Name" id="Driver_Name" class="inputWidth" disabled><br>
-        <label>Driver Number</label>
-        <input type="text" placeholder="Driver Number" id="Driver_Number" class="inputWidth" disabled><br>
-        <label>Time</label>
-        <input type="text" placeholder="Time" id="Time" class="inputWidth" disabled><br>
-        <label>Consignee Name</label>
-        <input type="text" placeholder="Consignee Name" id="Consignee_Name" class="inputWidth" disabled><br>
-        <label>Address</label>
-        <input type="text" placeholder="Address" id="Address" class="inputWidth" disabled><br>
-        <label>Trip No</label>
-        <input type="text" placeholder="Trip No" id="Trip_No" class="inputWidth" disabled><br>
-        <label>Gross Weight</label>
-        <input type="text" placeholder="Gross Weight" id="Gross_Weight" class="inputWidth" disabled><br>
-        <label>Tare Weight</label>
-        <input type="text" placeholder="Tare Weight" id="Tare_Weight" class="inputWidth" disabled><br>
-        <label>Net Weight</label>
-        <input type="text" placeholder="Net Weight" id="Net_Weight" class="inputWidth" disabled><br>
-        <button id="addVehicleData" class="Button" (click)="validate()" disabled>Add</button>
-    </div>
-</div> -->
 <div class="content" id="OutVehicleNumberForm">
     <div class="bigDiv">
-        <div class="intro-y flex items-center mt-8 addUser">
-            <h2 class="text-lg font-medium mr-auto">
-                Create Trip
-            </h2>
-        </div>
-        <div class="vnin">
-            <div style="padding:11px !important;">
-                <div>
-                    <div>
-                        <label>Vehicle Number</label><br>
-                        <input type="text" class="input w-full border mt-2" id="checkOutVehicleNumber"
-                            placeholder="Vehicle Number" style="text-transform:uppercase" maxlength="10">
-                        <span class="nameErr errMsg"></span>
-                    </div>
-                </div>
-                <div class="flex justify-start mt-1" style="padding-top: 12px;">
-                    <button type="button" class="buttonCss" id="checkVehicleOut" (click)="validateVehicleNumber()">OK</button>
+        <div class="card">
+            <div class="card-header text-light" style="background-color: #0067ac;">
+                <span class="pt-5 fs-5 text-violet">CREATE NEW TRIP</span>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="checkOutVehicleNumber">Vehicle Number</label><br>
+                    <input type="text" class="input w-full border mr-2 inputWidth" placeholder="Vehicle Number"
+                        id="checkOutVehicleNumber" style="text-transform:uppercase" maxlength="10">
+                    <button type="button" class="btn fluffy" id="checkVehicleOut" (click)="validateVehicleNumber()"> OK
+                    </button><br>
+                    <small class="text-danger ml-3"></small>
                 </div>
             </div>
+            <!-- <div class="vnin">
+                <div style="padding:11px !important;">
+                    <div>
+                        <div>
+                            <label>Vehicle Number</label><br>
+                            <input type="text" class="input w-full border mt-2" id="checkOutVehicleNumber"
+                                placeholder="Vehicle Number" style="text-transform:uppercase" maxlength="10">
+                            <span class="nameErr errMsg"></span>
+                        </div>
+                    </div>
+                    <div class="flex justify-start mt-1" style="padding-top: 12px;">
+                        <button type="button" class="buttonCss" id="checkVehicleOut"
+                            (click)="validateVehicleNumber()">OK</button>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -79,7 +43,7 @@
                 <ul style="margin:0;">
                     <li (click)="active('vehicle')">
                         <a class="top-menu vehicle top-menu--active mobileHeight">
-                            <div class="top-menu__icon">  <i data-feather="truck"></i> </div>
+                            <div class="top-menu__icon"> <i data-feather="truck"></i> </div>
                             <div class="top-menu__title"> Vehicle </div>
                         </a>
                     </li>
@@ -91,174 +55,186 @@
                     </li>
                     <li (click)="validateDirverDetails()">
                         <a class="top-menu Material mobileHeight">
-                            <div class="top-menu__icon">  <i data-feather="package"></i> </div>
+                            <div class="top-menu__icon"> <i data-feather="package"></i> </div>
                             <div class="top-menu__title"> Material </div>
                         </a>
                     </li>
                 </ul>
             </nav>
             <div class="smainDiv">
-                        <div style="padding:11px !important;">
-                            <div >
-                                <span id="tabErrOut">Please fill up the details and got to next tab.</span>
-                                <div id="VehcileDataOut">
-                                    <div class="mt-3">
-                                        <label>Vehicle No</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="MH02AB1234" id="Vnumber" maxlength="10" style="text-transform:uppercase">
-                                        <span class="VnumberErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <!-- <label>Make</label><br> -->
-                                        <label>Manufacturer</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Honda" id="vehicleMake" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
-                                        <span class="vehicleMakeErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <!-- <label>Model</label><br> -->
-                                        <label>Vehicle Model</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="City" id="VehicleModel" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
-                                        <span class="VehicleModelErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Insurance exp date</label><br>
-                                        <input type="date" class="input w-full border mt-2 inputWidth"
-                                            placeholder="01-12-2021" id="vehicleInsurance_exp_date">
-                                        <span class="vehicleInsurance_exp_dateErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>PUC exp date</label><br>
-                                        <input type="date" class="input w-full border mt-2 inputWidth"
-                                            placeholder="01-12-2021" id="VPUC_exp_date">
-                                        <span class="VPUC_exp_dateErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <div>
-                                        <label style="padding-bottom: 13px;">RC Copy :</label><br>
-                                        <div> <input type="file" id="Rc_copy1Out" (change)="getFiles($event)"/></div></div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label style="padding-bottom: 13px;">PUC :</label><br>
-                                        <div><input type="file" id="Rc_copy2Out" (change)="getFiles($event)"/></div>
-                                        <!-- <span class="Rc_copy1OutErr errMsg"></span> -->
-                                    </div>
-                                    <!-- <div class="mt-3">
+                <div style="padding:11px !important;">
+                    <div>
+                        <span id="tabErrOut">Please fill up the details and got to next tab.</span>
+                        <div id="VehcileDataOut">
+                            <div class="mt-3">
+                                <label>Vehicle No</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="MH02AB1234"
+                                    id="Vnumber" maxlength="10" style="text-transform:uppercase">
+                                <span class="VnumberErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <!-- <label>Make</label><br> -->
+                                <label>Manufacturer</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Honda"
+                                    id="vehicleMake" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
+                                <span class="vehicleMakeErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <!-- <label>Model</label><br> -->
+                                <label>Vehicle Model</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="City"
+                                    id="VehicleModel" maxlength="25" (keypress)="KeyPressEvent($event,'VarChar')">
+                                <span class="VehicleModelErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Insurance exp date</label><br>
+                                <input type="date" class="input w-full border mt-2 inputWidth" placeholder="01-12-2021"
+                                    id="vehicleInsurance_exp_date">
+                                <span class="vehicleInsurance_exp_dateErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>PUC exp date</label><br>
+                                <input type="date" class="input w-full border mt-2 inputWidth" placeholder="01-12-2021"
+                                    id="VPUC_exp_date">
+                                <span class="VPUC_exp_dateErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label for="Rc_copy1Out" class="form-label">RC Copy :</label>
+                                <input class="form-control inputWidth" type="file" id="Rc_copy1Out"
+                                    (change)="getFiles($event)">
+                            </div>
+                            <div class="mt-3">
+                                <label for="Rc_copy2Out" class="form-label">PUC :</label>
+                                <input class="form-control inputWidth" type="file" id="Rc_copy2Out"
+                                    (change)="getFiles($event)">
+                            </div>
+                            <!-- <div class="mt-3">
                                         <label>Issued By</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
                                             placeholder="Issued By" id="Issued_By">
                                         <span class="Issued_ByErr errMsg"></span>
                                     </div> -->
-                                </div>
-                                <div id="DriverDetailsOut">
-                                    <!-- <div class="mt-3">
+                        </div>
+                        <div id="DriverDetailsOut">
+                            <!-- <div class="mt-3">
                                         <label>Issued Date</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
                                             placeholder="Issued Date" id="Issued_Date">
                                         <span class="Issued_DateErr errMsg"></span>
                                     </div> -->
-                                    <div class="mt-3">
-                                        <label>Driver Name</label><br>
-                                        <label>Driver Full Name</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Driver Name" id="Driver_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
-                                        <span class="Driver_NameErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Consignee Name</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Consignee Name" id="Consignee_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
-                                        <span class="Consignee_NameErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Mobile Number</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Mobile Number" id="Driver_Number" (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
-                                            onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
-                                        <span class="Driver_NumberErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Address</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Address" id="Address" maxlength="150">
-                                        <span class="AddressErr errMsg"></span>
-                                    </div>
-                                </div>
-                                <div id="MaterialOut">
-                                    <!-- <div class="mt-3">
+                            <div class="mt-3">
+                                <label>Driver Name</label><br>
+                                <label>Driver Full Name</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Driver Name"
+                                    id="Driver_Name" maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
+                                <span class="Driver_NameErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Consignee Name</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Consignee Name" id="Consignee_Name" maxlength="50"
+                                    (keypress)="KeyPressEvent($event,'Text')">
+                                <span class="Consignee_NameErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Mobile Number</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Mobile Number" id="Driver_Number"
+                                    (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)"
+                                    inputmode="numeric" onKeyPress="if(this.value.length==10) return false;"
+                                    pattern="[0-9]*" maxlength="10">
+                                <span class="Driver_NumberErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Address</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address"
+                                    id="Address" maxlength="150">
+                                <span class="AddressErr errMsg"></span>
+                            </div>
+                        </div>
+                        <div id="MaterialOut">
+                            <!-- <div class="mt-3">
                                         <label>Material</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
                                             placeholder="Material" id="Material">
                                         <span class="MaterialErr errMsg"></span>
                                     </div> -->
-                                    <div class="mt-3">
-                                        <label>Material Type</label><br>
-                                        <!-- <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="Material_Type"> -->
-                                        <div class="mt-2 inputWidth">
-                                            <select data-search="true" class="tail-select w-full" id="Material_Type"
-                                                style="height: 38px;border:1px solid #dee2e6;">
-                                                <option value="">Select Material Type</option>
-                                                <!-- <option value="Iron">Iron</option>
+                            <div class="mt-3">
+                                <label>Material Type</label><br>
+                                <!-- <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="Material_Type"> -->
+                                <div class="mt-2 inputWidth">
+                                    <select data-search="true" class="tail-select w-full" id="Material_Type"
+                                        style="height: 38px;border:1px solid #dee2e6;">
+                                        <option value="">Select Material Type</option>
+                                        <!-- <option value="Iron">Iron</option>
                                                 <option value="Steel">Steel</option> -->
-                                            </select>
-                                        </div>
-                                        <span class="Material_TypeErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Quantity Material Weight(MT)</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Quantity Material Weight" id="outqty_mt_Weight" pattern="[0-9]*" inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
-                                        <span class="outqty_mt_WeightErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>LR Number</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="LR Number" id="outlrNumber" maxlength="10" (keypress)="KeyPressEvent($event,'VarChar')">
-                                        <span class="outlrNumberErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>LR Date</label><br>
-                                        <input type="date" class="input w-full border mt-2 inputWidth" id="outlrDate">
-                                        <span class="outlrDateErr errMsg"></span>
-                                    </div>
-                                    <!-- <div class="mt-3">
+                                    </select>
+                                </div>
+                                <span class="Material_TypeErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>Quantity Material Weight(MT)</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                    placeholder="Quantity Material Weight" id="outqty_mt_Weight" pattern="[0-9]*"
+                                    inputmode="numeric" (keypress)="KeyPressEvent($event,'Double')">
+                                <span class="outqty_mt_WeightErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>LR Number</label><br>
+                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="LR Number"
+                                    id="outlrNumber" maxlength="10" (keypress)="KeyPressEvent($event,'VarChar')">
+                                <span class="outlrNumberErr errMsg"></span>
+                            </div>
+                            <div class="mt-3">
+                                <label>LR Date</label><br>
+                                <input type="date" class="input w-full border mt-2 inputWidth" id="outlrDate">
+                                <span class="outlrDateErr errMsg"></span>
+                            </div>
+                            <!-- <div class="mt-3">
                                         <label>Card Number</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
                                             placeholder="Card Number" id="outCardNumber"  (keypress)="KeyPressEvent($event,'VarChar')">
                                         <span class="outCardErr errMsg"></span>
                                     </div> -->
-                                </div>
-                            </div>
-                            <div class="flex justify-end mt-4 addButtonOut">
-                                <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                                <div style="display:flex;">
-                                    <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
-                                <button type="button" class="button w-20 bg-theme-1 ml-auto " style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;color: black !important;
-                                width: 65px;"
-                                    (click)="validate()">
-                                    <span class="registerCardHover">
-                                        <img class="w-6" src="assets/images/registerCard.png" style="height:33px; width:39px;">
-                                        <div class="hoverText">
-                                            Register Card
-                                        </div>
-                                    </span>
-                                </button>
-                            </div>
-                            </div>
-                            <div class="flex justify-end mt-4 tab2">
-                                <div style="display:flex;">
-                                <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="active('vehicle')">Previous</button>&nbsp;&nbsp;
-                                <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateDirverDetails()">Next</button>
-                            </div>
-                            </div>
-                            <div class="flex justify-end mt-4 tab1">
-                                <div style="display:flex;">
-                                <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp; -->
-                                <button type="button" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;" (click)="validateVehicleDetails()">Next</button>
-                            </div>
-                            </div>
                         </div>
+                    </div>
+                    <div class="flex justify-end mt-4 addButtonOut">
+                        <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
+                        <div style="display:flex;">
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
+                            <button type="button" class="button w-20 bg-theme-1 ml-auto " style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;color: black !important;
+                                width: 65px;" (click)="validate()">
+                                <span class="registerCardHover">
+                                    <img class="w-6" src="assets/images/registerCard.png"
+                                        style="height:33px; width:39px;">
+                                    <div class="hoverText">
+                                        Register Card
+                                    </div>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-4 tab2">
+                        <div style="display:flex;">
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="active('vehicle')">Previous</button>&nbsp;&nbsp;
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="validateDirverDetails()">Next</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-4 tab1">
+                        <div style="display:flex;">
+                            <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload Document</button>&nbsp;&nbsp;&nbsp; -->
+                            <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
+                                style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
+                                (click)="validateVehicleDetails()">Next</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -270,15 +246,16 @@
     <div class="Popup1" id="addFieldPopup">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
             </div>
             <div style="padding: 28px;text-align: center;">
                 <b> {{Message}}</b>
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button  (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
             <!-- <button class="Popupbutton" (click)="hidePopup()"><i style="background-color: red;color: white;border-radius: 14px;" data-feather="x"></i></button> -->
         </div>
     </div>
@@ -291,7 +268,7 @@
     <div class="uploadDocOut">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Upload Documents
             </div>
             <div style="padding: 28px;text-align: center;" class="toUploadOut">
@@ -305,11 +282,13 @@
                 {{docStatus}}
             </div>
         </div>
-        <div class="Popup3 toUploadOut" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button  (click)="uploadDocs()" style="color:white;width: 3cm;">Upload</button>&nbsp;&nbsp;
-            <button  (click)="hideuploadPopup()" style="color:white;width: 3cm;">Cancel</button>
+        <div class="Popup3 toUploadOut"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button (click)="uploadDocs()" style="color:white;width: 3cm;">Upload</button>&nbsp;&nbsp;
+            <button (click)="hideuploadPopup()" style="color:white;width: 3cm;">Cancel</button>
         </div>
-        <div class="Popup3 afterUploadButtonOut" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+        <div class="Popup3 afterUploadButtonOut"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button (click)="hideuploadPopupok()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>
@@ -322,17 +301,19 @@
     <div class="RegNoOut">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
             </div>
-            <div  class="cardpop2">
+            <div class="cardpop2">
                 <b> Please show your card</b>
                 <!-- <input type="text" class="input w-full border mt-2 inputWidth"
                                     placeholder="Card Number" id="PopUpCardNo"> -->
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="Popupbutton" (click)="SendCardNo()" style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="Popup3"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+            <button class="Popupbutton" (click)="SendCardNo()"
+                style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
         </div>
     </div>

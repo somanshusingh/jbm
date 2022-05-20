@@ -67,7 +67,8 @@ export class UsersComponent implements OnInit {
               $('#ViewUserMobile').html(this.data[i]['Mobile']);
               $('#ViewUserRole').html(this.data[i]['Role']);
               $('#ViewUserCreated_By').html(this.data[i]['Created_By']);
-              $('#ViewUserCreated_On').html(this.data[i]['Created_On'].split('T')[0]);
+              // $('#ViewUserCreated_On').html(this.data[i]['Created_On'].split('T')[0]);
+              $('#ViewUserCreated_On').html(this.data[i]['Created_On']);
               $('#ViewUserModified_By').html(this.data[i]['Modified_By']);
               $('#ViewUserModified_On').html(this.data[i]['Modified_On']);
               $('#ViewUserStatus').html(this.data[i]['Status']);

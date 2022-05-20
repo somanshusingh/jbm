@@ -1,8 +1,17 @@
 <div id="outerDiv">
-    <!-- <button class="buttonCss" style="color: white;" routerLink="/signup">Add User</button><br><br> -->
-    <button style="color: white;background: #1d40aa;border: none;border-radius: 4px;height: 36px;padding: 5px 5px 5px 8px;width: 110px;" (click)="navigate('/signup')"><div style="display: flex;"><i data-feather="plus-circle"></i> &nbsp;&nbsp;&nbsp;Add User</div></button><br><br>
-    <table datatable class="table table-striped table-bordered table-sm row-border hover display nowrap" [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger" style="width:100%">
+    <div class="card">
+    <!-- <button style="color: white;background: #1d40aa;border: none;border-radius: 4px;height: 36px;padding: 5px 5px 5px 8px;width: 110px;" (click)="navigate('/signup')"><div style="display: flex;"><i data-feather="plus-circle"></i> &nbsp;&nbsp;&nbsp;Add User</div></button><br><br> -->
+    <div class="card-header text-light" style="background-color: #0067ac;">
+        <span class="pt-5 fs-5 text-violet">USER MASTER</span>
+        <div class="card-tools float-right">
+            <button class="btn btn-sm fluffy" (click)="navigate('/signup')">
+                <i class="fa-solid fa-plus"></i> Add User
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+    <table datatable class="table table-striped table-bordered table-hover" [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger" style="width: 100%; border-top: 2px solid #e2e8f0;">
         <thead>
             <tr>
                 <th class="imageDiv">&nbsp;&nbsp;&nbsp;</th>
@@ -16,7 +25,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of data" height="55px">
-                <td>
+                <!-- <td>
                     <div style="display: flex;" class="imageDiv">
                         <div (click)="viewData('edit',user.UserId)">
                             <img src="assets/images/edit-icon3.png" style="height: 22px;">
@@ -25,16 +34,21 @@
                             <img src="assets/images/eye-icon2.png" style="height: 20px;">
                         </div>
                     </div>
+                </td> -->
+                <td class="text-center">
+                    <i class="fa-solid fa-pencil text-info" (click)="viewData('edit',user.UserId)"></i>
                 </td>
-                <td class="Id">{{ user.UserId }}</td>
-                <td class="Name">{{ user.FirstName }}&nbsp;{{ user.LastName }}</td>
+                <td class="Id" (click)="viewData('view',user.UserId)">{{ user.UserId }}</td>
+                <td class="Name" (click)="viewData('view',user.UserId)">{{ user.FirstName }}&nbsp;{{ user.LastName }}</td>
                 <!-- <td class="Insurance_exp_date">{{ user.Email }}</td> -->
-                <td class="Mobile">{{ user.Mobile }}</td>
-                <td class="Role">{{ user.Role }}</td>
-                <td class="User_Type">{{ user.User_Type }}</td>
+                <td class="Mobile" (click)="viewData('view',user.UserId)">{{ user.Mobile }}</td>
+                <td class="Role" (click)="viewData('view',user.UserId)">{{ user.Role }}</td>
+                <td class="User_Type" (click)="viewData('view',user.UserId)">{{ user.User_Type }}</td>
             </tr>
         </tbody>
     </table>
+</div>
+    </div>
 </div>
 
 <!-- Edit Popup start -->

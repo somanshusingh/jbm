@@ -100,11 +100,12 @@
 <!-- BEGIN: Content -->
 <div class="content">
     <div class="bigDiv">
-        <div class="intro-y flex items-center mt-8 addUser">
-            <h2 class="text-lg font-medium mr-auto">
-                Add User
-            </h2>
-        </div>
+        <div class="card">
+        <!-- <div class="intro-y flex items-center mt-8 addUser"> -->
+            <div class="card-header text-light" style="background-color: #0067ac;">
+                <span class="pt-5 fs-5 text-violet">ADD USER</span>
+            </div>
+        <!-- </div> -->
         <div class="smainDiv">
             <div style="padding:11px !important;">
                 <div class="s1div">
@@ -118,13 +119,15 @@
                         <div class="mt-3">
                             <label>First Name</label>
                             <input type="text" class="input w-full border mt-2 inputWidth" id="Name" name="names"
-                                placeholder="First Name" maxlength="50" (keypress)="KeyPressEvent($event,'OnlyText')" (keyup)="ValidateText($event)">
+                                placeholder="First Name" maxlength="50" (keypress)="KeyPressEvent($event,'OnlyText')"
+                                (keyup)="ValidateText($event)">
                             <span class="nameErr errMsg"></span>
                         </div>
                         <div class="mt-3">
                             <label>Last Name</label>
                             <input type="text" class="input w-full border mt-2 inputWidth" id="Surname" name="surname"
-                                placeholder="Last Name" maxlength="50" (keypress)="KeyPressEvent($event,'OnlyText')"  (keyup)="ValidateText($event)">
+                                placeholder="Last Name" maxlength="50" (keypress)="KeyPressEvent($event,'OnlyText')"
+                                (keyup)="ValidateText($event)">
                             <span class="SurnameErr errMsg"></span>
                         </div>
                         <div class="mt-3">
@@ -136,7 +139,8 @@
                         <div class="mt-3">
                             <label>User Type</label>
                             <div class="mt-2 inputWidth">
-                                <select data-search="true" class="tail-select w-full" id="userType" style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;">
+                                <select data-search="true" class="tail-select w-full" id="userType"
+                                    style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;">
                                     <option value="">Select User Type</option>
                                     <option value="Desktop">Desktop</option>
                                     <option value="Mobile">Mobile</option>
@@ -173,7 +177,9 @@
                         <div class="mt-3">
                             <label>Role</label>
                             <div class="mt-2 inputWidth">
-                                <select data-search="true" class="tail-select w-full" id="role" style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;" (change)="selectMenu()">
+                                <select data-search="true" class="tail-select w-full" id="role"
+                                    style="height: 38px;border: 1px solid #dee2e6;border-radius: 8px;"
+                                    (change)="selectMenu()">
                                     <option value="">Select Role</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Supervisor">Supervisor</option>
@@ -197,44 +203,46 @@
                                 </span>
                                 <ul class="items"
                                     style="position: absolute;background-color: white;width: 286px;padding-left: 13px;">
-                                    <li><input type="checkbox"
-                                        (click)="menuVal($event.target.checked,'GateProcess')" id="checkGateProcess" />&nbsp;&nbsp;&nbsp;&nbsp;Gate Process
-                                </li>
-                                    <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'users')" id="checkUsers" />&nbsp;&nbsp;&nbsp;&nbsp;Users
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'GateProcess')"
+                                            id="checkGateProcess" />&nbsp;&nbsp;&nbsp;&nbsp;Gate Process
                                     </li>
-                                    <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'vehicles')" id="checkVehicles" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'users')"
+                                            id="checkUsers" />&nbsp;&nbsp;&nbsp;&nbsp;Users
                                     </li>
-                                    <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'tripMaster')" id="checkTripMaster" />&nbsp;&nbsp;&nbsp;&nbsp;Trip Master
-                                         </li>
-                                    <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'getCardInfo')" id="checkGetCardInfo" />&nbsp;&nbsp;&nbsp;&nbsp;Get Card Info
-                                         </li>
-                                    <li><input type="checkbox"
-                                            (click)="menuVal($event.target.checked,'tripReprint')" id="checkTripReprint"/>&nbsp;&nbsp;&nbsp;&nbsp;Trip Reprint
-                                         </li>
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'vehicles')"
+                                            id="checkVehicles" />&nbsp;&nbsp;&nbsp;&nbsp;Vehicles
+                                    </li>
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'tripMaster')"
+                                            id="checkTripMaster" />&nbsp;&nbsp;&nbsp;&nbsp;Trip Master
+                                    </li>
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'getCardInfo')"
+                                            id="checkGetCardInfo" />&nbsp;&nbsp;&nbsp;&nbsp;Get Card Info
+                                    </li>
+                                    <li><input type="checkbox" (click)="menuVal($event.target.checked,'tripReprint')"
+                                            id="checkTripReprint" />&nbsp;&nbsp;&nbsp;&nbsp;Trip Reprint
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mt-3">
                             <label>Emp Code.</label>
                             <input class="input w-full border mt-2 inputWidth" id="emp_code" placeholder="Emp Code"
-                                (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)" inputmode="numeric"
-                                onKeyPress="if(this.value.length==10) return false;" pattern="[0-9]*" maxlength="10">
+                                (keypress)="KeyPressEvent($event,'Mobile')" (keyup)="ValidateNumber($event)"
+                                inputmode="numeric" onKeyPress="if(this.value.length==10) return false;"
+                                pattern="[0-9]*" maxlength="10">
                             <span class="emp_codeErr errMsg"></span>
                         </div>
                     </div>
                 </div>
-                
+
 
             </div>
-            <div class="justify-end mt-4" style="background-color: #2569a1;">
+            <div class="card-footer" style="background-color: #0067ac;">
                 <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
-                <button type="button" class="buttonCss" (click)="validate()">Save</button>
-                <button type="button" class="buttonCss" style="color:#e58624" (click)="reset()">Reset</button>
+                <button type="button" class="btn fluffy mr-2" (click)="validate()">Save</button>
+                <button type="button" class="btn fluffy" style="color:#e58624" (click)="reset()">Reset</button>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -247,14 +255,15 @@
     <div class="Popup1" id="addFieldPopup">
         <div class="Popup2">
             <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                
+                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+
             </div>
             <div style="padding: 28px;text-align: center;">
                 <b> {{Message}}</b>
             </div>
         </div>
-        <div class="Popup3" style="height: 30px;padding: 4px;" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+        <div class="Popup3" style="height: 30px;padding: 4px;"
+            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
             <button (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>

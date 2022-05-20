@@ -9,9 +9,19 @@
                     class="w-8 h-8 text-white transform -rotate-90"></i> </a>
         </div>
         <ul class="border-t border-theme-24 py-5 hidden menuToggleMobile">
+            <li class="mobileInboundProcess">
+                <span class="menu">
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-road-bridge"></i>
+                    </div>
+                    <div class="menu__title" (click)="navigate('/inBoundDashboard')"> Trip Master </div>
+                </span>
+            </li>
             <li class="mobileGate">
                 <span class="menu" (click)="hideshowMobile($event,'Gate1mobile')">
-                    <div class="menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-torii-gate"></i>
+                    </div>
                     <div class="menu__title"> Gate Process</div>
                     <div style="width: 70%; text-align: right;">
                         <i class="fa-solid fa-chevron-left gateprocess"></i>
@@ -20,33 +30,32 @@
                 <ul class="Gate1mobile">
                     <li>
                         <span class="menu" (click)="hideshowMobile($event,'Gate2mobile')">
-                            <div class="menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
+                            <div class="menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
                             <div class="menu__title"> Gate In </div>
                             <div style="width: 100%; text-align: right;">
                                 <i class="fa-solid fa-chevron-left gatein"></i>
                             </div>
                         </span>
                         <span class="menu">
-                            <div class="menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
-                            <!-- <div class="menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out </div> -->
+                            <div class="menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
                             <div class="menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out </div>
                         </span>
                         <ul class="Gate2mobile">
                             <li>
                                 <span class="menu">
                                     <div class="menu__icon">
-                                        <div style="display: flex;width: 31px;"><i data-feather="arrow-left"></i><i
-                                                data-feather="truck"></i></div>
+                                        <div style="display: flex;width: 31px;">
+                                            <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                        </div>
                                     </div>
-                                    <!-- <div class="menu__title" routerLink="/inBound/inhouse"> Inhouse </div> -->
                                     <div class="menu__title" (click)="navigate('/inBound/inhouse')"> JBM Vehicle </div>
                                 </span>
                                 <span class="menu">
                                     <div class="menu__icon">
-                                        <div style="display: flex;width: 31px;"><i data-feather="arrow-right"></i><i
-                                                data-feather="truck"></i></div>
+                                        <div style="display: flex;width: 31px;">
+                                            <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                        </div>
                                     </div>
-                                    <!-- <div class="menu__title" routerLink="/outbound"> Outhouse </div> -->
                                     <div class="menu__title" (click)="navigate('/outbound')"> Other Vehicle </div>
                                 </span>
                             </li>
@@ -54,79 +63,36 @@
                     </li>
                 </ul>
             </li>
-            <li class="mobileUsers">
-                <span class="menu" (click)="hideshowMobile($event,'usersOption')">
-                    <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <!-- <div class="menu__title" routerLink="/users"> Users </div> -->
-                    <div class="menu__title" (click)="navigate('/users')"> Users </div>
-                </span>
-                <!-- <ul class="usersOption">
-                    <li>
-                        <a class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/users"> All Users </div>
-                        </a>
-                    </li>
-                </ul> -->
-            </li>
-            <li class="mobileVehicles">
-                <span class="menu">
-                    <div class="menu__icon"> <i data-feather="truck"></i> </div>
-                    <!-- <div class="menu__title" routerLink="/dashboard"> Vehicles </div> -->
-                    <div class="menu__title" (click)="navigate('/dashboard')"> Vehicles </div>
-                </span>
-                <!-- <ul class="vehiclesOption">
-                    <li>
-                        <a class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/dashboard"> Vehicle List </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Vehicles</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="menu">
-                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="menu__title" routerLink="/outBoundDashboard"> Outbound Vehicles</div>
-                        </a>
-                    </li>
-                </ul> -->
-            </li>
-            <li class="mobileInboundProcess">
-                <span class="menu">
-                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
-                    <!-- <div class="menu__title" routerLink="/inBoundDashboard"> Inbound Process </div> -->
-                    <div class="menu__title" (click)="navigate('/inBoundDashboard')"> Trip Master </div>
-                </span>
-            </li>
             <li class="mobileGetCardInfo">
                 <span class="menu">
-                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-id-card-clip"></i>
+                    </div>
                     <div class="menu__title" (click)="OpenCardPopup('getInfo')"> Get Card Info </div>
                 </span>
             </li>
             <li class="mobileTripReprint">
                 <span class="menu">
-                    <div class="menu__icon"> <i data-feather="arrow-down-circle"></i> </div>
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-print"></i>
+                    </div>
                     <div class="menu__title" (click)="showRprint()"> Trip Reprint </div>
                 </span>
             </li>
-            <!-- <li class="mobileOutboundProcess">
-                <a class="menu" >
-                    <div class="menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
-                    <div class="menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
-                </a>
-            </li> -->
-            <!-- <li class="mobileRegisterCard">
-                <a class="menu">
-                    <div class="menu__icon"> <i data-feather="credit-card"></i> </div>
-                    <div class="menu__title"> Register Card </div>
-                </a>
-            </li> -->
+            <li class="mobileUsers">
+                <span class="menu" (click)="hideshowMobile($event,'usersOption')">
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-users"></i>
+                    </div>
+                    <div class="menu__title" (click)="navigate('/users')"> Users </div>
+                </span>
+            </li>
+            <li class="mobileVehicles">
+                <span class="menu">
+                    <div class="menu__icon"> <i class="fa-xl fa-solid fa-truck-moving"></i> </div>
+                    <div class="menu__title" (click)="navigate('/dashboard')"> Vehicles </div>
+                </span>
+            </li>
         </ul>
     </div>
     <!-- END: Mobile Menu -->
@@ -142,29 +108,20 @@
             </span>
             <div class="side-nav__devider my-6"></div>
             <ul class="disableOnClick" style="padding-left: 0px;">
-                <!-- <li class="desktopUsers">
-                    <a class="side-menu users">
-                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                        <div class="side-menu__title"> Users <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
-                    </a>
-                    <ul class="usersOption">
-                        <li>
-                            <a class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                <div class="side-menu__title" routerLink="/users"> All Users </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                <div class="side-menu__title" routerLink="/signup"> Register </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
+                <li class="desktopInboundProcess">
+                    <span class="side-menu users">
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-road-bridge"></i>
+                        </div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/inBoundDashboard')"> Trip
+                            Master</div>
+                    </span>
+                </li>
                 <li class="desktopGate">
                     <span class="side-menu vehicles" (click)="hideshow($event,'vehiclesOption')">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="home"></i> </div>
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-torii-gate"></i>
+                        </div>
                         <div class="side-menu__title side-menu--open hideMenuOnClick"> Gate Process</div>
                         <div style="width: 70%; text-align: right;">
                             <i class="fa-solid fa-chevron-left gateprocess"></i>
@@ -174,7 +131,7 @@
                         <div id="subs">
                             <li>
                                 <span class="side-menu" (click)="hideshow($event,'Gate1Option')">
-                                    <div class="side-menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
+                                    <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
                                     <div class="side-menu__title"> Gate In </div>
                                     <div style="width: 100%; text-align: right;">
                                         <i class="fa-solid fa-chevron-left gatein"></i>
@@ -184,8 +141,9 @@
                                     <li>
                                         <span class="side-menu">
                                             <div class="side-menu__icon">
-                                                <div style="display: flex;width: 31px;"><i
-                                                        data-feather="arrow-left"></i><i data-feather="truck"></i></div>
+                                                <div style="display: flex;width: 31px;">
+                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                                </div>
                                             </div>
                                             <!-- <div class="side-menu__title" routerLink="/inBound/inhouse" [queryParams]="{sessionID:{{serviceCall.sessionID}} }"> Inhouse </div> -->
                                             <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> JBM
@@ -195,8 +153,8 @@
                                     <li>
                                         <span class="side-menu">
                                             <div class="side-menu__icon">
-                                                <div style="display: flex;width: 31px;"><i
-                                                        data-feather="arrow-right"></i><i data-feather="truck"></i>
+                                                <div style="display: flex;width: 31px;">
+                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
                                                 </div>
                                             </div>
                                             <!-- <div class="side-menu__title" routerLink="/outbound"> Outhouse</div> -->
@@ -208,7 +166,7 @@
                             </li>
                             <li>
                                 <span class="side-menu">
-                                    <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
+                                    <div class="side-menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
                                     <!-- <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out -->
                                     <div class="side-menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out
                                     </div>
@@ -217,17 +175,37 @@
                         </div>
                     </ul>
                 </li>
+                <li class="desktopGetCardInfo">
+                    <span class="side-menu users">
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-id-card-clip"></i>
+                        </div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="OpenCardPopup('getInfo')"> Get Card Info
+                        </div>
+                    </span>
+                </li>
+                <li class="desktopTripReprint">
+                    <span class="side-menu users">
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-print"></i>
+                        </div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="showRprint()"> Trip Reprint</div>
+                    </span>
+                </li>
                 <li class="desktopUsers">
                     <!-- <a class="side-menu users desktopUsersOption" (click)="addActive('desktopUsersOption')"> -->
                     <span class="side-menu users">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-users"></i>
+                        </div>
                         <!-- <div class="side-menu__title hideMenuOnClick" routerLink="/users"> Users </div> -->
                         <div class="side-menu__title hideMenuOnClick" (click)="navigate('/users')"> Users </div>
                     </span>
                 </li>
                 <li class="desktopVehicles">
                     <span class="side-menu vehicles">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="truck"></i> </div>
+                        <div class="side-menu__icon disableOnClick"> <i class="fa-xl fa-solid fa-truck-moving"></i>
+                        </div>
                         <!-- <div class="side-menu__title side-menu--open hideMenuOnClick" routerLink="/dashboard"> Vehicles</div> -->
                         <div class="side-menu__title side-menu--open hideMenuOnClick" (click)="navigate('/dashboard')">
                             Vehicles</div>
@@ -253,39 +231,7 @@
                         </li>
                     </ul> -->
                 </li>
-                <li class="desktopInboundProcess">
-                    <span class="side-menu users">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <!-- <div class="side-menu__title hideMenuOnClick" routerLink="/inBoundDashboard"> Inbound Process</div> -->
-                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/inBoundDashboard')"> Trip
-                            Master</div>
-                    </span>
-                </li>
-                <li class="desktopGetCardInfo">
-                    <span class="side-menu users">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick" (click)="OpenCardPopup('getInfo')"> Get Card Info
-                        </div>
-                    </span>
-                </li>
-                <li class="desktopTripReprint">
-                    <span class="side-menu users">
-                        <div class="side-menu__icon disableOnClick"> <i data-feather="arrow-down-circle"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick" (click)="showRprint()"> Trip Reprint</div>
-                    </span>
-                </li>
-                <!-- <li class="desktopOutboundProcess">
-                    <a class="side-menu users">
-                        <div class="side-menu__icon"> <i data-feather="arrow-up-circle"></i> </div>
-                        <div class="side-menu__title" routerLink="/outBoundDashboard"> Outbound Process</div>
-                    </a>
-                </li> -->
-                <!-- <li class="desktopRegisterCard">
-                    <a class="side-menu users">
-                        <div class="side-menu__icon"> <i data-feather="credit-card"></i> </div>
-                        <div class="side-menu__title hideMenuOnClick"> Register Card</div>
-                    </a>
-                </li> -->
+
             </ul>
         </nav>
         <!-- END: Side Menu -->
@@ -312,25 +258,18 @@
                                 <div class="text-xs text-theme-41 dark:text-gray-600">{{Role}}</div>
                             </div>
                             <div class="p-2" style="background-color: #0067ac;" (click)="showChangeOpt()">
-                                <a
+                                <a style="cursor: pointer;color: white;text-decoration: none;"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-lock w-4 h-4 mr-2">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                    </svg> <span style="color: white;">Reset Password </span></a>
+                                    <i class="fa-solid fa-unlock-keyhole mr-3"></i>
+                                    Reset Password
+                                </a>
                             </div>
-                            <!-- <div class="p-2 border-t border-theme-40 " style="background-color: #0067ac;">
-                                <a 
-                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                            </div> -->
                             <div class="p-2 border-t border-theme-40 " style="background-color: #0067ac;">
-                                <a
+                                <a style="cursor: pointer;color: white;text-decoration: none;"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i><span style="color: white;"
-                                        (click)="endSession()">Logout</span> </a>
+                                    <i class="fa-solid fa-power-off mr-3"></i>
+                                    <span (click)="endSession()">Logout</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -474,7 +413,7 @@
                         <label class="viewLabel">Insurance_exp_date:</label><span
                             id="menuViewInsurance_exp_date"></span><br>
                         <label class="viewLabel">PUC_exp_date:</label><span id="menuViewPUC_exp_date"></span><br><br>
-                    <!-- </div>
+                        <!-- </div>
                     <div> -->
                         <label class="viewLabel">Driver Name:</label><span id="menuViewDriver_Name"></span><br>
                         <label class="viewLabel">Driver Number: </label><span id="menuViewDriver_Number"></span><br>
@@ -491,13 +430,13 @@
                             id="menuViewGate_In_Date_time"></span><br>
                         <label class="viewLabel">Gate Out Date time:</label><span
                             id="menuViewGate_Out_Date_time"></span><br>
-                    <!-- </div>
+                        <!-- </div>
                     <div> -->
                         <label class="viewLabel">Material:</label><span id="menuViewMaterial"></span><br>
                         <label class="viewLabel">Material_Type:</label><span id="menuViewMaterial_Type"></span><br>
                         <label class="viewLabel">Qty_Mt_Weight:</label><span id="menuViewQty_Mt_Weight"></span><br>
                         <label class="viewLabel">ViewNet_Weight:</label><span id="menuViewNet_Weight"></span><br>
-                    <!-- </div>
+                        <!-- </div>
                     <div> -->
                         <label class="viewLabel">LrDate:</label><span id="menuViewLrDate"></span><br>
                         <label class="viewLabel">LrNumber:</label><span id="menuViewLrNumber"></span><br>
@@ -534,15 +473,16 @@
             </div>
             <div class="TripReprintInput">
                 <b> Enter Trip Number</b>
-                <input type="text" class="input w-full border mt-2 inputWidth"
-                                    placeholder="Trip Number" id="TripReprintNoMenu">
+                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Trip Number"
+                    id="TripReprintNoMenu">
             </div>
         </div>
         <div class="Popup3"
             style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
             <button id="TripReprintOk" class="Popupbutton" (click)="TripReprint()"
                 style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="TripReprintCancel" (click)="hideTripReprint()" style="color:white;width: 3cm;">Cancel</button>
+            <button class="TripReprintCancel" (click)="hideTripReprint()"
+                style="color:white;width: 3cm;">Cancel</button>
         </div>
     </div>
 </div>
