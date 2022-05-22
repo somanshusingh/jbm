@@ -17,7 +17,7 @@
                         <th class="VehicleNo">Vehicle Number</th>
                         <th class="Insurance_exp_date">Insurance Expire Date</th>
                         <th class="PUC_exp_date">PUC Expire Date</th>
-                        <th class="Make">Make</th>
+                        <th class="Make">Manufacturer</th>
                         <th class="Model">Model</th>
                         <th class="Source">Source</th>
                     </tr>
@@ -64,8 +64,8 @@
                                 </h2>
                             </div> -->
                                 <div class="p-5 mobileWidth" style="padding:11px !important;">
-                                    <div class="grid grid-cols-12 gap-3">
-                                        <div class="col-span-12 xl:col-span-6">
+                                    <div class="s1div">
+                                        <!-- <div> -->
                                             <div>
                                                 <label>Vehicle No</label>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
@@ -73,8 +73,19 @@
                                                     maxlength="10" style="text-transform:uppercase">
                                                 <span class="nameErr errMsg"></span>
                                             </div>
+                                            <div>
+                                                <label>Vehicle Type</label><br>
+                                                <div class="mt-2 inputWidth">
+                                                    <select data-search="true" class="tail-select w-full"
+                                                        id="VehicleTypeEditDash"
+                                                        style="height: 38px;border:1px solid #dee2e6;">
+                                                        <option value="">Select Vehicle Type</option>
+                                                    </select>
+                                                </div>
+                                                <span class="VehicleTypeEditDashErr errMsg"></span>
+                                            </div>
                                             <div class="mt-3">
-                                                <label>Make</label>
+                                                <label>Manufacturer</label>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Honda" id="editdMake" name="namesurname"
                                                     maxlength="25">
@@ -86,32 +97,25 @@
                                                     placeholder="City" id="editdModel" maxlength="25">
                                                 <span class="editdModelErr errMsg"></span>
                                             </div>
-                                        </div>
-                                        <div class="col-span-12 xl:col-span-6">
-                                            <div>
+                                            <div class="mt-3">
                                                 <label>Insurance Exp Date</label>
                                                 <input type="date" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Insurance Exp Date" id="editdInsurance_exp_date">
                                                 <span class="mobileErr errMsg"></span>
                                             </div>
+                                            
+                                        <!-- </div> -->
+                                        <!-- <div> -->
+                                    
+                                           
                                             <div class="mt-3">
                                                 <label>PUC exp date</label>
                                                 <input type="date" class="input w-full border mt-2 inputWidth"
                                                     placeholder="PUC Exp Date" id="editdPUC_exp_date">
                                                 <span class="mobileErr errMsg"></span>
                                             </div>
-                                            <div class="mt-3">
-                                                <label>Vehicle Type</label><br>
-                                                <div class="mt-2 inputWidth">
-                                                    <select data-search="true" class="tail-select w-full"
-                                                        id="VehicleTypeEditDash"
-                                                        style="height: 38px;border:1px solid #dee2e6;">
-                                                        <option value="">Select Vehicle Type</option>
-                                                    </select>
-                                                </div>
-                                                <span class="VehicleTypeEditDashErr errMsg"></span>
-                                            </div>
-                                        </div>
+                                            
+                                        <!-- </div> -->
                                     </div>
                                     <div class="s1div">
                                         <div class="mt-3">
@@ -174,7 +178,7 @@
                 <label class="viewLabel">PUC Expire Date:</label><span id="ViewPUCCExpireDate"></span><br>
                 <!-- </b> -->
                 <!-- <b> -->
-                <label class="viewLabel">Make:</label><span id="ViewMake"></span><br>
+                <label class="viewLabel">Manufacturer:</label><span id="ViewMake"></span><br>
                 <!-- </b> -->
                 <!-- <b> -->
                 <label class="viewLabel">Model: </label><span id="ViewModel"></span><br>

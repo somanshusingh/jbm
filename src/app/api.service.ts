@@ -11,7 +11,7 @@ export class ApiService {
   UserId='';
   Material=[];
   sessionID='';
-  origin = "https://jbmapp.herokuapp.com";//"http://localhost:5000"
+  origin = "https://jbmapp.herokuapp.com";//"http://192.1.73.106:81" ;
   constructor(private http: HttpClient) { }
 
   signin(url,post_data){
@@ -32,7 +32,7 @@ export class ApiService {
     return this.http.get(url, {withCredentials:true});
   }
   getCardNumber(url){
-    url = "https://jbmapp.herokuapp.com" + url;
+    url = "http://localhost:8888" + url;
     return this.http.get(url);
   }
 }

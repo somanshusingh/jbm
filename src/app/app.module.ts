@@ -17,6 +17,7 @@ import { UsersComponent } from './users/users.component';
 import { OutboundDashboardComponent } from './outbound-dashboard/outbound-dashboard.component';
 import { InboundDashboardComponent } from './inbound-dashboard/inbound-dashboard.component';
 import { InboundComponent } from './inbound/inbound.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InboundComponent } from './inbound/inbound.component';
     UsersComponent,
     OutboundDashboardComponent,
     InboundDashboardComponent,
-    InboundComponent
+    InboundComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

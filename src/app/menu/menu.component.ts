@@ -56,6 +56,7 @@ export class MenuComponent implements OnInit {
     $('.inbounddiv').hide();
     $('.outBoundDashboarddiv').hide();
     $('.inBoundDashboarddiv').hide();
+    $('.reportdiv').hide();
     this.changeView(window.location.pathname);
   }
   hideshow(event, childName) {
@@ -121,6 +122,9 @@ export class MenuComponent implements OnInit {
     } else if (view == '/inBound' || view == '/inBound/inhouse') {
       $('.dashboarddiv, .signupdiv').hide();
       $('.inbounddiv').fadeIn();
+    } else if (view == '/report') {
+      $('.dashboarddiv, .signupdiv').hide();
+      $('.reportdiv').fadeIn();
     } else {
       $('.dashboarddiv, .signupdiv,.vehiclediv').hide();
     }

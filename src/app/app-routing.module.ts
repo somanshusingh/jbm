@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { UsersComponent } from './users/users.component';
 import { OutboundDashboardComponent } from './outbound-dashboard/outbound-dashboard.component';
+import { ReportComponent } from './report/report.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'inBoundDashboard', component:MenuComponent},
   { path: 'inBound', component:MenuComponent},
   { path: 'inBound/inhouse', component:MenuComponent},
+  { path: 'report',component:MenuComponent},
   { path: '**', component:ErrorpageComponent}
 
 ];

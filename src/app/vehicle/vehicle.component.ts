@@ -114,12 +114,12 @@ export class VehicleComponent implements OnInit {
         $('#VehicleNo').removeClass('errDisplay');
       }
     }
-    if($('#Make').val() == ''){
-      $('#Make').addClass('errDisplay');
-      err++
-    }else{
-      $('#Make').removeClass('errDisplay');
-    }
+    // if($('#Make').val() == ''){
+    //   $('#Make').addClass('errDisplay');
+    //   err++
+    // }else{
+    //   $('#Make').removeClass('errDisplay');
+    // }
     if($('#Model').val() == ''){
       $('#Model').addClass('errDisplay');
       err++

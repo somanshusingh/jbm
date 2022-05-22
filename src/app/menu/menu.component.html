@@ -93,6 +93,14 @@
                     <div class="menu__title" (click)="navigate('/dashboard')"> Vehicles </div>
                 </span>
             </li>
+            <li class="mobileReport">
+                <span class="menu">
+                    <div class="menu__icon">
+                        <i class="fa-xl fa-solid fa-file"></i>
+                    </div>
+                    <div class="menu__title" (click)="navigate('/report')"> Report </div>
+                </span>
+            </li>
         </ul>
     </div>
     <!-- END: Mobile Menu -->
@@ -231,6 +239,14 @@
                         </li>
                     </ul> -->
                 </li>
+                <li class="desktopReport">
+                    <span class="side-menu report">
+                        <div class="side-menu__icon disableOnClick">
+                            <i class="fa-xl fa-solid fa-file"></i>
+                        </div>
+                        <div class="side-menu__title hideMenuOnClick" (click)="navigate('/report')"> Report </div>
+                    </span>
+                </li>
 
             </ul>
         </nav>
@@ -291,6 +307,7 @@
             <app-outbound-dashboard class="outBoundDashboarddiv"></app-outbound-dashboard>
             <app-inbound-dashboard class="inBoundDashboarddiv"></app-inbound-dashboard>
             <app-inbound class="inbounddiv"></app-inbound>
+            <app-report class="reportdiv"></app-report>
         </div>
         <!-- END: Content -->
     </div>
@@ -407,7 +424,7 @@
                     <div>
                         <!-- <label class="viewLabel">menuViewGross_Weight:</label><span id="menuViewGross_Weight"></span><br> -->
                         <!-- <label class="viewLabel">menuViewGross_Wgh_Date_time:</label><span id="menuViewGross_Wgh_Date_time"></span><br> -->
-                        <label class="viewLabel">Make:</label><span id="menuViewMake"></span><br>
+                        <label class="viewLabel">Manufacturer:</label><span id="menuViewMake"></span><br>
                         <label class="viewLabel">Model:</label><span id="menuViewModel"></span><br>
                         <label class="viewLabel">VehicleNo:</label><span id="menuViewVehicleNo"></span><br>
                         <label class="viewLabel">Insurance_exp_date:</label><span

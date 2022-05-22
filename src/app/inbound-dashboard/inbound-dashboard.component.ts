@@ -249,10 +249,10 @@ export class InboundDashboardComponent implements OnInit {
                 $('#docViewStatusIn').html('');
               }else{
                 $('#doc1NameIn').html('');
-                $('#docImage1In').attr('src','');
+                $('#docImage1In').attr('src','assets/images/blankImg.jpg');
                 $('#doc2NameIn').html('');
-                $('#docImage2In').attr('src','');
-                $('#docViewStatusIn').html('Documents Not Available.')
+                $('#docImage2In').attr('src','assets/images/blankImg.jpg');
+                // $('#docViewStatusIn').html('Documents Not Available.')
               }
             }
             if (source == 'edit') {

@@ -23,7 +23,7 @@
                 <th class="VehicleNo">Vehicle No.</th>
                 <th class="Driver_Name">Driver Name</th>
                 <th class="Consignee_Name">Consignee Name</th>
-                <th class="Make">Make</th>
+                <th class="Make">Manufacturer</th>
                 <th class="Model">Model</th>
                 <th class="vehicle_mapping">Card Number</th>
                 <!-- <th class="vehicleType">Type</th> -->
@@ -54,12 +54,12 @@
                 <td class="Model" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Model }}</td>
                 <td class="card_numbers" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Card_Number }}</td>
                 <!-- <td class="vehicleType">{{ vehicle.Type }}</td> -->
-                <td *ngIf="vehicle.Status === 'In transit'" style="text-transform: capitalize;font-weight: bold;" class="status text-primary">{{ vehicle.Status }}
+                <td *ngIf="vehicle.Status === 'In transit'" style="text-transform: capitalize;font-weight: bold;" class="status text-primary" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Status }}
                 </td>
-                <td *ngIf="vehicle.Status === 'In plant'" style="text-transform: capitalize;font-weight: bold;" class="status text-warning">{{ vehicle.Status }}
+                <td *ngIf="vehicle.Status === 'In plant'" style="text-transform: capitalize;font-weight: bold;" class="status text-warning" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Status }}
                 </td>
-                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'" style="text-transform: capitalize;font-weight: bold;" class="status text-success">{{ vehicle.Status }}</td>
-                <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'" style="text-transform: capitalize;font-weight: bold;" class="status text-secondary">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'" style="text-transform: capitalize;font-weight: bold;" class="status text-success" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Status }}</td>
+                <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'" style="text-transform: capitalize;font-weight: bold;" class="status text-secondary" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Status }}</td>
             </tr>
         </tbody>
     </table>
@@ -93,7 +93,7 @@
                                     <div class="grid grid-cols-12 gap-3">
                                         <div class="col-span-12 xl:col-span-6">
                                             <div class="">
-                                                <label>Make</label><br>
+                                                <label>Manufacturer</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Make" id="outEditvehicleMake" maxlength="25"
                                                     (keypress)="KeyPressEvent($event,'VarChar')">
@@ -263,7 +263,7 @@
                         <label class="viewLabel">PUC Expire Date:</label><span id="oViewPUC_exp_date"></span><br>
                         <!-- </b> -->
                         <!-- <b> -->
-                        <label class="viewLabel">Make:</label><span id="oViewMake"></span><br>
+                        <label class="viewLabel">Manufacturer:</label><span id="oViewMake"></span><br>
                         <!-- </b> -->
                         <!-- <b> -->
                         <label class="viewLabel">Model: </label><span id="oViewModel"></span><br>
