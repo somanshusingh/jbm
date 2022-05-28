@@ -118,7 +118,9 @@
   font-size: 15px;
 }
 #cardViewGrid{display: grid;grid-template-columns: 1fr 1fr;}
-.cardpop2{padding: 59px;
+.cardpop2{
+  padding: 59px;
+  /* padding: 20px; */
   text-align: center;
   font-size: 27px;
   color: #1818c8;}

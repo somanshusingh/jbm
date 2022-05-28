@@ -3,7 +3,7 @@ import * as $ from "jquery";
 import { ApiService } from '../api.service';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-users',
@@ -68,9 +68,10 @@ export class UsersComponent implements OnInit {
               $('#ViewUserRole').html(this.data[i]['Role']);
               $('#ViewUserCreated_By').html(this.data[i]['Created_By']);
               // $('#ViewUserCreated_On').html(this.data[i]['Created_On'].split('T')[0]);
-              $('#ViewUserCreated_On').html(this.data[i]['Created_On']);
+              $('#ViewUserCreated_On').html(moment(this.data[i]['Created_On']).format('YYYY-MM-DD hh:mm'));
               $('#ViewUserModified_By').html(this.data[i]['Modified_By']);
-              $('#ViewUserModified_On').html(this.data[i]['Modified_On']);
+              if(this.data[i]['Modified_On'] !== '' || this.data[i]['Modified_On']!==null){
+              $('#ViewUserModified_On').html(moment(this.data[i]['Modified_On']).format('YYYY-MM-DD hh:mm'));}
               $('#ViewUserStatus').html(this.data[i]['Status']);
             }
             if (source == 'edit') {

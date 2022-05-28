@@ -143,6 +143,7 @@ label {
   text-align: center;
   font-size: 27px;
   color: #1818c8;}
+.checkVNoErr{color: red;display: none;}
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
   .inputWidth {
     width: 7cm !important;

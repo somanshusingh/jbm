@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'inBound', component:MenuComponent},
   { path: 'inBound/inhouse', component:MenuComponent},
   { path: 'report',component:MenuComponent},
+  { path: 'tripList',component:MenuComponent},
   { path: '**', component:ErrorpageComponent}
 
 ];

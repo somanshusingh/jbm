@@ -32,7 +32,7 @@ export class ApiService {
     return this.http.get(url, {withCredentials:true});
   }
   getCardNumber(url){
-    url = "http://localhost:8888" + url;
+    url = "http://192.1.73.106:83" + url;
     return this.http.get(url);
   }
 }

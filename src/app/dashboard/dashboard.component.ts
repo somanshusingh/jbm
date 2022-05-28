@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
               $('#ViewCreated_By').html(this.data[i]['Created_By']);
               if(this.data[i]['Created_On'] !== null && this.data[i]['Created_On']!== '' && this.data[i]['Created_On'] !== undefined){
               // $('#ViewCreated_On').html(this.data[i]['Created_On'].split('T')[0]);
-              $('#ViewCreated_On').html(this.data[i]['Created_On']);
+              $('#ViewCreated_On').html(moment(this.data[i]['Created_On']).format('YYYY-MM-DD hh:mm'));
             }
               $('#ViewModified_By').html(this.data[i]['Modified_By']);
               if(this.data[i]['Modified_By'] == '' ||this.data[i]['Modified_By'] == null || this.data[i]['Modified_By'] == 'undefined'){
@@ -155,12 +155,13 @@ export class DashboardComponent implements OnInit {
     this.Message ='Please Wait...'
     var url = '/vehicle/data/update';
     var post_data = {
-     "VehicleNo":$('#editdVehicleNo').val(),
+     "VehicleNo":$('#editdVehicleNo').val().toString().toUpperCase(),
      "Make":$('#editdMake').val(),
      "Model":$('#editdModel').val(),
      "Insurance_exp_date":moment($('#editdInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
      "PUC_exp_date":moment($('#editdPUC_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
      "VehicleType":$('#VehicleTypeEditDash').val(),
+     "Modified_By":this.serviceCall.UserId
      };
     this.serviceCall.signin(url, post_data).subscribe(
       data => {
@@ -290,7 +291,7 @@ export class DashboardComponent implements OnInit {
       formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);}
       // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
       // formData.append("file_2", this.uploadedFiles['1'],'pucc');
-      formData.append("VehicleNo", $('#editdVehicleNo').val().toString());
+      formData.append("VehicleNo", $('#editdVehicleNo').val().toString().toUpperCase());
       let url = '/vehicle/upload_document';
       this.serviceCall.uploadFile(url, formData).subscribe(
         data => {

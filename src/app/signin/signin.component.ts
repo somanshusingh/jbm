@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
         if (data.hasOwnProperty('status')) {
           if (data['status'] == 1) {
             this.Message = data['msg'];
-            this.Router.navigate(['/dashboard'], { queryParams:{sessionID:data['msg']['sessionID']}});
+            this.Router.navigate(['/report'], { queryParams:{sessionID:data['msg']['sessionID']}});
           } else if (data['status'] == 0) {
             $('#username').val('');
             $('#password').val('');

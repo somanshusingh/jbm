@@ -22,7 +22,7 @@
                 <th class="Trip_No">Trip No.</th>
                 <th class="VehicleNo">Vehicle No.</th>
                 <th class="Driver_Name">Driver Name</th>
-                <th class="Consignee_Name">Consignee Name</th>
+                <th class="Consignee_Name">Consignee</th>
                 <th class="Make">Manufacturer</th>
                 <th class="Model">Model</th>
                 <th class="vehicle_mapping">Card Number</th>
@@ -100,9 +100,9 @@
                                                 <span class="vehicleMakeErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>Insurance exp date</label><br>
+                                                <label>Insurance Exp Date</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Insurance exp date" id="outEditvehicleIns_exp_date">
+                                                    placeholder="Insurance Exp Date" id="outEditvehicleIns_exp_date">
                                                 <span class="vehicleInsurance_exp_dateErr errMsg"></span>
                                             </div>
                                             <!-- <div class="mt-3">
@@ -123,9 +123,9 @@
                                                 <span class="Driver_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>Consignee Name</label><br>
+                                                <label>Consignee</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Consignee Name" id="outEditConsignee_Name"
+                                                    placeholder="Consignee" id="outEditConsignee_Name"
                                                     maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Consignee_NameErr errMsg"></span>
                                             </div>
@@ -144,12 +144,18 @@
                                                     (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="outEditlrNumberErr errMsg"></span>
                                             </div>
+                                            <div class="mt-3">
+                                                <label>Ward</label><br>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Ward" id="outEditWard" maxlength="150">
+                                                <span class="WardErr errMsg"></span>
+                                            </div>
                                         </div>
                                         <div class="col-span-12 xl:col-span-6">
                                             <div>
                                                 <label>Vehicle No</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Vehicle No" id="outEditVnumber" maxlength="15"
+                                                    placeholder="Vehicle No" id="outEditVnumber" maxlength="10"
                                                     style="text-transform:uppercase">
                                                 <span class="VnumberErr errMsg"></span>
                                             </div>
@@ -161,9 +167,9 @@
                                                 <span class="VehicleModelErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>PUC exp date</label><br>
+                                                <label>PUC Exp Date</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="PUC exp date" id="outEditVPUC_exp_date">
+                                                    placeholder="PUC Exp Date" id="outEditVPUC_exp_date">
                                                 <span class="VPUC_exp_dateErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -193,9 +199,9 @@
                                                 <span class="Driver_NumberErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>Address</label><br>
+                                                <label>Zone</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Address" id="outEditAddress" maxlength="150">
+                                                    placeholder="Zone" id="outEditAddress" maxlength="150">
                                                 <span class="AddressErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -269,7 +275,7 @@
                         <label class="viewLabel">Model: </label><span id="oViewModel"></span><br>
                         <!-- </b> -->
                         <!-- <b> -->
-                        <label class="viewLabel">Address:</label> <span id="oViewAddress"></span><br>
+                        <label class="viewLabel">Zone:</label> <span id="oViewAddress"></span><br>
                         <label class="viewLabel">Status:</label><span id="oViewStatus"></span><br><br>
                         <label class="viewLabel">Qty Mt Weight:</label><span id="oViewQty_Mt_Weight"></span><br>
                         <label class="viewLabel">Net Weight:</label><span id="oViewNet_Weight"></span><br>

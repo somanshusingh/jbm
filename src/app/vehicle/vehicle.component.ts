@@ -107,7 +107,9 @@ export class VehicleComponent implements OnInit {
       //   $('#VehicleNo').addClass('errDisplay');
       //   err++
       // }
-      if(!vehicleNumberPatter.test($('#VehicleNo').val().toString().toUpperCase())){
+      // if(!vehicleNumberPatter.test($('#VehicleNo').val().toString().toUpperCase())){
+      let a = $('#VehicleNo').val() as any
+      if(a.length < 4 || a.length > 10){
         $('#VehicleNo').addClass('errDisplay');
         err++
       }else{
@@ -198,7 +200,7 @@ export class VehicleComponent implements OnInit {
       formData.append("files[]", this.uploadedFiles[1], 'puc.' + this.uploadedFiles['1'].name.split('.')[1]);
       // formData.append("files", this.uploadedFiles['0'],'rc'+this.uploadedFiles['0'].name.split('.'));
       // formData.append("file_2", this.uploadedFiles['1'],'pucc');
-      formData.append("VehicleNo", $('#VehicleNo').val().toString());
+      formData.append("VehicleNo", $('#VehicleNo').val().toString().toUpperCase());
       let url = '/vehicle/upload_document';
       this.serviceCall.uploadFile(url, formData).subscribe(
         data => {

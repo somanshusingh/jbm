@@ -18,6 +18,7 @@ import { OutboundDashboardComponent } from './outbound-dashboard/outbound-dashbo
 import { InboundDashboardComponent } from './inbound-dashboard/inbound-dashboard.component';
 import { InboundComponent } from './inbound/inbound.component';
 import { ReportComponent } from './report/report.component';
+import { TripListComponent } from './trip-list/trip-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReportComponent } from './report/report.component';
     OutboundDashboardComponent,
     InboundDashboardComponent,
     InboundComponent,
-    ReportComponent
+    ReportComponent,
+    TripListComponent
   ],
   imports: [
     BrowserModule,

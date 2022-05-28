@@ -30,25 +30,34 @@
                                     <i class="fa-solid fa-pencil text-primary"
                                         (click)="viewData('edit',vehicle.Trip_No)"></i>
                                 </td>
-                                <td class="Trip_No" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Trip_No }}</td>
-                                <td class="Consignee_Name" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Consignee_Name }}</td>
-                                <td class="VehicleNo" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.VehicleNo }}</td>
-                                <td class="Driver_Name" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Driver_Name }}</td>
-                                <td class="vehicle_mapping" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Card_Number }}</td>
+                                <td class="Trip_No" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.Trip_No }}
+                                </td>
+                                <td class="Consignee_Name" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    vehicle.Consignee_Name }}</td>
+                                <td class="VehicleNo" (click)="viewData('view',vehicle.Trip_No)">{{ vehicle.VehicleNo }}
+                                </td>
+                                <td class="Driver_Name" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    vehicle.Driver_Name }}</td>
+                                <td class="vehicle_mapping" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    vehicle.Card_Number }}</td>
                                 <!-- <td class="vehicleType">{{ vehicle.Type }}</td> -->
                                 <td *ngIf="vehicle.Status === 'In transit'"
-                                    style="text-transform: capitalize;font-weight: bold;" class="status text-primary" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    style="text-transform: capitalize;font-weight: bold;" class="status text-primary"
+                                    (click)="viewData('view',vehicle.Trip_No)">{{
                                     vehicle.Status }}
                                 </td>
                                 <td *ngIf="vehicle.Status === 'In plant'"
-                                    style="text-transform: capitalize;font-weight: bold;" class="status text-warning" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    style="text-transform: capitalize;font-weight: bold;" class="status text-warning"
+                                    (click)="viewData('view',vehicle.Trip_No)">{{
                                     vehicle.Status }}
                                 </td>
                                 <td *ngIf="vehicle.Status === 'Completed' || vehicle.Status === 'completed'"
-                                    style="text-transform: capitalize;font-weight: bold;" class="status text-success" (click)="viewData('view',vehicle.Trip_No)">{{
+                                    style="text-transform: capitalize;font-weight: bold;" class="status text-success"
+                                    (click)="viewData('view',vehicle.Trip_No)">{{
                                     vehicle.Status }}</td>
                                 <td *ngIf="vehicle.Status === 'Close' || vehicle.Status === 'close'"
-                                    style="text-transform: capitalize;font-weight: bold;" class="status text-secondary" (click)="viewData('view',vehicle.Trip_No)">
+                                    style="text-transform: capitalize;font-weight: bold;" class="status text-secondary"
+                                    (click)="viewData('view',vehicle.Trip_No)">
                                     {{ vehicle.Status }}</td>
                                 <!-- <td class="Make">{{ vehicle.Make }}</td>
                 <td class="Model">{{ vehicle.Model }}</td> -->
@@ -65,7 +74,7 @@
 
 <div>
     <div class="editInPopup1">
-        <div class="Popup2">
+        <div class="Popup2" style="height: 12cm;overflow-y: scroll;">
             <div
                 style="height: 35px;text-align: center ;background-color: #2569a1;padding-top: 7px;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
                 Edit Data
@@ -79,27 +88,27 @@
                                 <div class="p-5 mobileWidth" style="padding:11px !important;">
                                     <div class="grid grid-cols-12 gap-3">
                                         <div class="col-span-12 xl:col-span-6">
-                                            <!-- <div class="">
-                                                <label>Make</label><br>
+                                            <div class="">
+                                                <label>Manufacturer</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Make" id="editinvehicleMake">
                                                 <span class="vehicleMakeErr errMsg"></span>
-                                            </div> -->
-                                            <!-- <div class="mt-3">
+                                            </div>
+                                            <div class="mt-3">
                                                 <label>Insurance exp date</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Insurance exp date" id="editinvehicleInsurance_exp_date">
+                                                <input type="date" class="input w-full border mt-2 inputWidth" placeholder="Insurance exp date" id="editinvehicleInsurance_exp_date">
                                                 <span class="vehicleInsurance_exp_dateErr errMsg"></span>
-                                            </div> -->
-                                            <!-- <div >
+                                            </div>
+                                            <div class="mt-3">
                                                 <label>Material</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material" id="editinMaterial">
                                                 <span class="MaterialErr errMsg"></span>
-                                            </div> -->
+                                            </div>
                                             <!-- <div class="mt-3">
                                                 <label>Issued By</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By" id="editinIssued_By">
                                                 <span class="Issued_ByErr errMsg"></span>
                                             </div> -->
-                                            <div>
+                                            <div class="mt-3">
                                                 <label>Driver Name</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Driver Name" id="editinDriver_Name" maxlength="50"
@@ -107,9 +116,9 @@
                                                 <span class="Driver_NameErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
-                                                <label>Consignee Name</label><br>
+                                                <label>Consignee</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Consignee Name" id="editinConsignee_Name"
+                                                    placeholder="Consignee" id="editinConsignee_Name"
                                                     maxlength="50" (keypress)="KeyPressEvent($event,'Text')">
                                                 <span class="Consignee_NameErr errMsg"></span>
                                             </div>
@@ -127,9 +136,9 @@
                                                 <span class="editinTimeErr errMsg"></span>
                                             </div> -->
                                             <div class="mt-3">
-                                                <label>Address</label><br>
+                                                <label>Zone</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="Address" id="editinAddress" maxlength="150">
+                                                    placeholder="Zone" id="editinAddress" maxlength="150">
                                                 <span class="AddressErr errMsg"></span>
                                             </div>
                                             <div class="mt-3">
@@ -139,24 +148,26 @@
                                                     (keypress)="KeyPressEvent($event,'VarChar')">
                                                 <span class="editinlrNumberErr errMsg"></span>
                                             </div>
+
                                         </div>
                                         <div class="col-span-12 xl:col-span-6">
                                             <div>
                                                 <label>Vehicle No</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
-                                                    placeholder="MH02AB1234" id="editinVnumber" disabled>
+                                                    placeholder="MH02AB1234" id="editinVnumber"
+                                                    style="text-transform:uppercase" maxlength="10">
                                                 <span class="VnumberErr errMsg"></span>
                                             </div>
-                                            <!-- <div class="mt-3">
+                                            <div class="mt-3">
                                                 <label>Model</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Model" id="editinVehicleModel">
                                                 <span class="VehicleModelErr errMsg"></span>
-                                            </div> -->
-                                            <!-- <div class="mt-3">
+                                            </div>
+                                            <div class="mt-3">
                                                 <label>PUC exp date</label><br>
-                                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="PUC exp date" id="editinVPUC_exp_date">
+                                                <input type="date" class="input w-full border mt-2 inputWidth"  id="editinVPUC_exp_date">
                                                 <span class="VPUC_exp_dateErr errMsg"></span>
-                                            </div> -->
+                                            </div>
                                             <div class="mt-3">
                                                 <label>Material</label><br>
                                                 <div class="mt-2 inputWidth">
@@ -177,7 +188,7 @@
                                                 <span class="Issued_DateErr errMsg"></span>
                                             </div> -->
                                             <div class="mt-3">
-                                                <label>Driver Number</label><br>
+                                                <label>Mobile Number</label><br>
                                                 <input type="text" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Driver Number" id="editinDriver_Number"
                                                     (keyup)="ValidateNumber($event)" pattern="[0-9]*"
@@ -189,6 +200,12 @@
                                                 <input type="date" class="input w-full border mt-2 inputWidth"
                                                     placeholder="Gross Weight" id="editinlrDate">
                                                 <span class="editinlrDateErr errMsg"></span>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label>Ward</label><br>
+                                                <input type="text" class="input w-full border mt-2 inputWidth"
+                                                    placeholder="Ward" id="editinWard" maxlength="150">
+                                                <span class="WardErr errMsg"></span>
                                             </div>
                                             <div class="mt-3" style="display: none;">
                                                 <label>Trip No</label><br>
@@ -225,43 +242,119 @@
                 Trip Details
             </div>
             <!-- <span style="padding: 27px;font-size: 20px;font-weight: 700;">Trip Details</span> -->
-            <div class="ViewDisaplayInbound" style="max-height: 11.5cm;overflow-y: scroll;">
-                <div style="display: grid;grid-template-columns: 11cm 12cm;">
-                    <div style="padding: 20px;">
-                        <!-- <b> -->
-                        <label class="viewLabel">Trip Number:</label><span id="inViewTrip_No"></span><br>
-                        <!-- </b> -->
-                        <!-- <b> -->
-                        <label class="viewLabel">Vehicle Number: </label> <span id="inViewVehicleNo"></span><br>
-                        <!-- </b> -->
-                        <!-- <b> -->
-                        <label class="viewLabel">Driver Name:</label><span id="inViewDriver_Name"></span><br>
-                        <!-- </b> -->
-                        <!-- <b> -->
-                        <label class="viewLabel">Driver Number:</label><span id="inViewDriver_Number"></span><br>
-                        <!-- </b> -->
-                        <!-- <b> -->
-                        <label class="viewLabel">Consignee Name: </label><span id="inViewConsignee_Name"></span><br>
-                        <!-- </b> -->
+            <div class="ViewDisaplayInbound">
+                <div class="mview1">
+                    <div style="padding: 20px;height: 11cm;
+                    overflow-y: scroll;">
+                        <div class="inViewTrip_No">
+                            <b><label class="viewLabel">Trip Number:</label></b><span
+                                id="inViewTrip_No"></span>&nbsp;&nbsp;<button (click)="copyText('inViewTrip_No')" title="Copy Trip No"
+                              ><i class="fa-solid fa-copy" style="color: #2569a1;"></i></button> &nbsp;&nbsp;<span class="copied" id="copyTrip">Copied To Clipboard</span><br>
+                        </div>
+                        <div class="inViewVehicleNo">
+                            <b><label class="viewLabel">Vehicle No: </label> </b> <span
+                                id="inViewVehicleNo"></span>&nbsp;&nbsp;<button (click)="copyText('inViewVehicleNo')" title="Copy Vehicle No"    
+                                ><i class="fa-solid fa-copy" style="color: #2569a1;"></i></button> &nbsp;&nbsp;<span class="copied" id="copyVN">Copied To Clipboard</span><br>
+                        </div>
+                        <div class="inViewDriver_Name">
+                            <b><label class="viewLabel">Driver Name:</label></b><span id="inViewDriver_Name"></span><br>
+                        </div>
+                        <div class="inViewDriver_Number">
+                            <b><label class="viewLabel">Driver No:</label></b><span id="inViewDriver_Number"></span><br>
+                        </div>
+                        <div class="inViewConsignee_Name">
+                            <b><label class="viewLabel">Consignee: </label></b><span
+                                id="inViewConsignee_Name"></span><br>
+                        </div>
+
                         <!-- <b><label class="viewLabel">Issued By: </label><span id="inViewIssued_By"></span><br></b> -->
                         <!-- <b><label class="viewLabel">Issued Date:</label> <span id="inViewIssued_Date"></span><br></b> -->
                         <!-- <b><label class="viewLabel">Material: </label><span id="inViewMaterial"></span><br></b> -->
-                        <!-- <b> -->
-                        <label class="viewLabel">Material:</label><span id="inViewMaterial_Type"></span><br>
-                        <label class="viewLabel">Status:</label><span id="inViewStatus"></span><br><br>
-                        <!-- </b> -->
+                        <div class="inViewMaterial_Type">
+                            <b><label class="viewLabel">Material:</label></b><span id="inViewMaterial_Type"></span><br>
+                        </div>
+                        <div class="inViewStatus">
+                            <b><label class="viewLabel">Status:</label></b><span id="inViewStatus"></span><br>
+                        </div>
+
                         <!-- <b> -->
                         <!-- <b><label class="viewLabel">Time:</label> <span id="inViewTime"></span><br></b><br> -->
                         <!-- <div style="text-align: center;"><button class="buttonCss" (click)="hideView()">Close</button></div> -->
+                        <div class="inViewQty_Mt_Weight">
+                            <b><label class="viewLabel">Qty Material Wgh.:</label></b><span
+                                id="inViewQty_Mt_Weight"></span><br>
+                        </div>
+                        <div class="inViewNet_Weight">
+                            <b><label class="viewLabel">Net Weight:</label></b><span id="inViewNet_Weight"></span><br>
+                        </div>
+                        <div class="inViewGross_Weight">
+                            <b><label class="viewLabel">Gross Weight:</label></b><span
+                                id="inViewGross_Weight"></span>&nbsp;&nbsp;<span
+                                id="inViewGross_Wgh_Date_time"></span><br>
+                        </div>
+                        <div class="inViewTare_Wgh_Date_time">
+                            <b><label class="viewLabel">Tare Weight:</label></b><span
+                                id="inViewTare_Weight"></span>&nbsp;&nbsp;<span
+                                id="inViewTare_Wgh_Date_time"></span><br>
+                        </div>
+                        <div class="inViewMake">
+                            <b><label class="viewLabel">Manufacturer:</label></b><span id="inViewMake"></span><br>
+                        </div>
+                        <div class="inViewModel">
+                            <b><label class="viewLabel">Model:</label></b><span id="inViewModel"></span><br>
+                        </div>
+                        <div class="inViewPUC_exp_date">
+                            <b><label class="viewLabel">PUC Exp Date:</label></b><span
+                                id="inViewPUC_exp_date"></span><br>
+                        </div>
+                        <div class="inViewAddress">
+                            <b>
+                                <label class="viewLabel">Zone:</label></b><span id="inViewAddress"></span><br>
+                        </div>
+                        <div class="inViewCard_Number">
+                            <b>
+                                <label class="viewLabel">Card No:</label></b><span id="inViewCard_Number"></span><br>
+                        </div>
+                        <div class="inViewInsurance_exp_date">
+                            <b>
+                                <label class="viewLabel">Insurance Exp Date:</label></b><span
+                                id="inViewInsurance_exp_date"></span><br>
+                        </div>
+                        <div class="inViewIssued_By">
+                            <b>
+                                <label class="viewLabel">Issued By:</label></b><span id="inViewIssued_By"></span><br>
+                        </div>
+                        <div class="inViewIssued_Date">
+                            <b>
+                                <label class="viewLabel">Issued Date:</label></b><span
+                                id="inViewIssued_Date"></span><br>
+                        </div>
+                        <div class="inViewLrDate">
+                            <b>
+                                <label class="viewLabel">LR Date:</label></b><span id="inViewLrDate"></span><br>
+                        </div>
+                        <div class="inViewLrNumber">
+                            <b>
+                                <label class="viewLabel">LR Number:</label></b><span id="inViewLrNumber"></span><br>
+                        </div>
+                        <!-- <label class="viewLabel">Rear_Image:</label><span id="inViewRear_Image"></span><br> -->
+                        <!-- <label class="viewLabel">Front_Image:</label><span id="inViewFront_Image"></span><br> -->
+                        <div class="inViewRemark_Field">
+                            <b>
+                                <label class="viewLabel">Remark Field:</label></b><span
+                                id="inViewRemark_Field"></span><br>
+                        </div>
+                        <!-- <label class="viewLabel">Time:</label><span id="inViewTime"></span><br>
+                        <label class="viewLabel">Type:</label><span id="inViewType"></span><br> -->
                     </div>
-                    <div style="display: grid;grid-template-columns: 6cm 6cm;column-gap: 10px;">
-                        <div>
-                            <span id="docViewStatusIn"></span>
-                            <label id="doc1NameIn"></label><br>
+                    <div style="display: grid;grid-template-columns: 6cm;column-gap: 2px;height: 11cm;">
+                        <div style="height: 5cm;padding: 10px;">
+                            <!-- <span id="docViewStatusIn"></span>
+                            <label id="doc1NameIn"></label><br> -->
                             <img class="docImgIn" id="docImage1In" style="max-height: 185px;"><br><br>
                         </div>
-                        <div>
-                            <label id="doc2NameIn"></label><br>
+                        <div style="height: 5cm;padding: 10px;">
+                            <!-- <label id="doc2NameIn"></label><br> -->
                             <img class="docImgIn" id="docImage2In" style="max-height: 185px;">
                         </div>
                     </div>
@@ -271,29 +364,7 @@
                 <div>
                 </div> -->
                 <div style="padding: 20px;">
-                    <label class="viewLabel">Qty Mt Weight:</label><span id="inViewQty_Mt_Weight"></span><br>
-                    <!-- </b> -->
-                    <label class="viewLabel">Net Weight:</label><span id="inViewNet_Weight"></span><br>
-                    <label class="viewLabel">Gross Weight:</label><span
-                        id="inViewGross_Weight"></span>&nbsp;&nbsp;<label class="">Date : </label><span
-                        id="inViewGross_Wgh_Date_time"></span><br>
-                    <label class="viewLabel">Tare Weight:</label><span id="inViewTare_Weight"></span>&nbsp;&nbsp;<label
-                        class="">Date : </label><span id="inViewTare_Wgh_Date_time"></span><br>
-                    <label class="viewLabel">Manufacturer:</label><span id="inViewMake"></span><br>
-                    <label class="viewLabel">Model:</label><span id="inViewModel"></span><br>
-                    <label class="viewLabel">PUC exp date:</label><span id="inViewPUC_exp_date"></span><br>
-                    <label class="viewLabel">Address:</label><span id="inViewAddress"></span><br>
-                    <label class="viewLabel">Card Number:</label><span id="inViewCard_Number"></span><br>
-                    <label class="viewLabel">Insurance exp date:</label><span id="inViewInsurance_exp_date"></span><br>
-                    <label class="viewLabel">Issued By:</label><span id="inViewIssued_By"></span><br>
-                    <label class="viewLabel">Issued Date:</label><span id="inViewIssued_Date"></span><br>
-                    <label class="viewLabel">Lr Date:</label><span id="inViewLrDate"></span><br>
-                    <label class="viewLabel">Lr Number:</label><span id="inViewLrNumber"></span><br>
-                    <!-- <label class="viewLabel">Rear_Image:</label><span id="inViewRear_Image"></span><br> -->
-                    <!-- <label class="viewLabel">Front_Image:</label><span id="inViewFront_Image"></span><br> -->
-                    <label class="viewLabel">Remark Field:</label><span id="inViewRemark_Field"></span><br>
-                    <label class="viewLabel">Time:</label><span id="inViewTime"></span><br>
-                    <label class="viewLabel">Type:</label><span id="inViewType"></span><br>
+
                 </div>
             </div>
         </div>

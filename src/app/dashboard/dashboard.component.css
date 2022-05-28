@@ -92,7 +92,9 @@
   display: none;
   border-radius: 10px;
   position: fixed;
-  width: 196px;
+  /* width: 196px; */
+  width: 289px;
+  height: 134px;
   left: 50%;
   margin-left: -50px;
   top: 30%;

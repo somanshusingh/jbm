@@ -57,6 +57,7 @@ export class MenuComponent implements OnInit {
     $('.outBoundDashboarddiv').hide();
     $('.inBoundDashboarddiv').hide();
     $('.reportdiv').hide();
+    $('.tripListdiv').hide();
     this.changeView(window.location.pathname);
   }
   hideshow(event, childName) {
@@ -125,6 +126,9 @@ export class MenuComponent implements OnInit {
     } else if (view == '/report') {
       $('.dashboarddiv, .signupdiv').hide();
       $('.reportdiv').fadeIn();
+    }else if (view == '/tripList') {
+      $('.dashboarddiv, .signupdiv').hide();
+      $('.tripListdiv').fadeIn();
     } else {
       $('.dashboarddiv, .signupdiv,.vehiclediv').hide();
     }
@@ -133,7 +137,7 @@ export class MenuComponent implements OnInit {
     if ($('.menuToggleMobile').is(":visible")) {
       $('.menuToggleMobile').attr('style', 'display:none');
     } else {
-      $('.menuToggleMobile').attr('style', 'display:block');
+      $('.menuToggleMobile').attr('style', 'display:block;position:absolute;width:100%;z-index:9999;background-color:#0067ac;');
     }
   }
 

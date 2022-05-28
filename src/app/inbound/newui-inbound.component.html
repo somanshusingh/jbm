@@ -2,33 +2,27 @@
     <div class="bigDiv">
         <div class="card">
             <div class="card-header text-light" style="background-color: #0067ac;">
-                <!-- <span class="pt-5 fs-5 text-violet">CREATE NEW TRIP</span> -->
-                <span class="pt-5 fs-5 text-violet">JBM GATE ENTRY</span>
+                <span class="pt-5 fs-5 text-violet">CREATE NEW TRIP</span>
             </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="checkVehicleNumber">Vehicle Number</label><br>
-                    <input type="text" class="input w-full border mr-2 inputWidth" placeholder="Vehicle Number"
-                        id="checkVehicleNumber" style="text-transform:uppercase" maxlength="10">
+                    <input type="text" class="input w-full border mr-2 inputWidth" placeholder="Vehicle Number" id="checkVehicleNumber"
+                        style="text-transform:uppercase">
                     <button type="button" class="btn fluffy" id="checkVehicleIn" (click)="validateVehicleNumber()"> OK
                     </button><br>
-                    <span class="checkinVNoErr">Please enter valid vehicle number</span>
                     <small class="text-danger ml-3"></small>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="content" id="inboundForm">
-    <div class="bigDiv">
-        <div class="card">
-            <div class="card-header text-light" style="background-color: #0067ac;">
-                <span class="pt-5 fs-5 text-violet">ADD INBOUND</span>
-            </div>
-            <div class="card-body">
-                <div>
+    <div class="content" id="inboundForm">
+        <div class="bigDiv">
+            <div class="card">
+                <div class="card-header text-light" style="background-color: #0067ac;">
+                    <span class="pt-5 fs-5 text-violet">ADD INBOUND</span> 
+                </div>
+                <div class="card-body">
                     <nav class="top-nav" style="background-color: #15329a;">
                         <ul style="margin:0;">
                             <li (click)="active('vehicle')">
@@ -57,57 +51,46 @@
                                 <span id="tabErr">Please fill up the next tab details.</span>
                                 <div id="VehcileDataIn">
                                     <div class="mt-3">
-                                        <label>Vehicle No</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="MH02AB1234" id="inVnumber" style="text-transform:uppercase"
-                                            maxlength="10" disabled>
-                                        <span class="VnumberErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                    <div><label>Vehicle Type</label><br>
-                                        <div class="mt-2 inputWidth">
-                                            <select data-search="true" class="tail-select w-full" id="inBVehicleType"
-                                                style="height: 38px;border:1px solid #dee2e6;" disabled>
-                                                <option value="">Select Vehicle Type</option>
-                                            </select>
-                                        </div>
-                                        <span class="inBVehicleTypeErr errMsg"></span>
-                                    </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Manufacturer</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Honda" id="invehicleMake" disabled>
+                                        <label>Make</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Honda"
+                                            id="invehicleMake" disabled>
                                         <span class="vehicleMakeErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Model</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="City" id="inVehicleModel" disabled>
-                                        <span class="VehicleModelErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>PUC Exp Date</label><br>
-                                        <input type="date" class="input w-full border mt-2 inputWidth"
-                                            placeholder="PUC Exp Date" id="inVPUC_exp_date" disabled>
-                                        <span class="VPUC_exp_dateErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
                                         <label>Insurance Exp Date</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Insurance Exp Date" id="invehicleInsurance_exp_date" disabled>
+                                            placeholder="Insurance Exp date" id="invehicleInsurance_exp_date" disabled>
                                         <span class="vehicleInsurance_exp_dateErr errMsg"></span>
                                     </div>
+                                    <div class="mt-3">
+                                        <label>Vehicle No</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth"
+                                            placeholder="MH02AB1234" id="inVnumber" style="text-transform:uppercase"
+                                            disabled>
+                                        <span class="VnumberErr errMsg"></span>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label>Model</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth" placeholder="City"
+                                            id="inVehicleModel" disabled>
+                                        <span class="VehicleModelErr errMsg"></span>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label>PUC Exp Date</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth"
+                                            placeholder="PUC Exp Date" id="inVPUC_exp_date" disabled>
+                                        <span class="VPUC_exp_dateErr errMsg"></span>
+                                    </div>
                                     <!-- <div class="mt-3">
-                                <label>Gross Weight</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="inGross_Weight">
-                                <span class="Gross_WeightErr errMsg"></span>
-                            </div> -->
+                                    <label>Gross Weight</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Gross Weight" id="inGross_Weight">
+                                    <span class="Gross_WeightErr errMsg"></span>
+                                </div> -->
                                     <!-- <div class="mt-3">
-                                <label>Net Weight</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Net Weight" id="inNet_Weight">
-                                <span class="Net_WeightErr errMsg"></span>
-                            </div> -->
+                                    <label>Net Weight</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth"  placeholder="Net Weight" id="inNet_Weight">
+                                    <span class="Net_WeightErr errMsg"></span>
+                                </div> -->
                                 </div>
                                 <div id="DriverDetailsIn">
                                     <div class="mt-3">
@@ -118,18 +101,18 @@
                                         <span class="Driver_NameErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
-                                        <label>Consignee</label><br>
+                                        <label>Consignee Name</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Consignee" id="inConsignee_Name" maxlength="50"
+                                            placeholder="Consignee Name" id="inConsignee_Name" maxlength="50"
                                             (keypress)="KeyPressEvent($event,'Text')">
                                         <span class="Consignee_NameErr errMsg"></span>
                                     </div>
                                     <!-- <div class="mt-3">
-                                <label>Issued Date</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued Date"
-                                    id="inIssued_Date">
-                                <span class="Issued_DateErr errMsg"></span>
-                            </div> -->
+                                    <label>Issued Date</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued Date"
+                                        id="inIssued_Date">
+                                    <span class="Issued_DateErr errMsg"></span>
+                                </div> -->
                                     <div class="mt-3">
                                         <label>Mobile Number</label><br>
                                         <input class="input w-full border mt-2 inputWidth" placeholder="Mobile Number"
@@ -140,28 +123,16 @@
                                         <span class="Driver_NumberErr errMsg"></span>
                                     </div>
                                     <div class="mt-3">
-                                        <label>Zone</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Zone" id="inAddress" maxlength="150">
+                                        <label>Address</label><br>
+                                        <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Address"
+                                            id="inAddress" maxlength="150">
                                         <span class="AddressErr errMsg"></span>
                                     </div>
-                                    <div class="mt-3">
-                                        <label>Ward</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Ward" id="inWard" maxlength="150">
-                                        <span class="WardErr errMsg"></span>
-                                    </div>
-                                    <div class="mt-3">
-                                        <label>Sub Party Name</label><br>
-                                        <input type="text" class="input w-full border mt-2 inputWidth"
-                                            placeholder="Sub Party Name" id="inSubParty" maxlength="150">
-                                        <span class="inSubPartyErr errMsg"></span>
-                                    </div>
                                     <!-- <div class="mt-3">
-                                <label>Tare Weight</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Tare Weight" id="inTare_Weight">
-                                <span class="Tare_WeightErr errMsg"></span>
-                            </div> -->
+                                    <label>Tare Weight</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Tare Weight" id="inTare_Weight">
+                                    <span class="Tare_WeightErr errMsg"></span>
+                                </div> -->
                                 </div>
                                 <div id="MaterialIn">
                                     <div class="mt-3">
@@ -172,36 +143,31 @@
                                         <span class="qty_mt_WeightErr errMsg"></span>
                                     </div>
                                     <!-- <div class="mt-3">
-                                <label>Time</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Time"
-                                    id="inTime">
-                                <span class="inTimeErr errMsg"></span>
-                            </div> -->
+                                    <label>Time</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Time"
+                                        id="inTime">
+                                    <span class="inTimeErr errMsg"></span>
+                                </div> -->
                                     <!-- <div class="mt-3">
-                                <label>Material</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material"
-                                    id="inMaterial">
-                                <span class="MaterialErr errMsg"></span>
-                            </div> -->
-                            <div class="mt-3">
-                                <label>Material</label><br>
-                                <div class="inputWidth">
-                                   <input type="text" id="inMaterial_Type"  class="input w-full border mt-2 inputWidth"  placeholder="Material">
-                                    <span class="roleErr errMsg"></span>
-                                </div>
-                                <span class="Material_TypeErr errMsg"></span>
-                            </div>
-                                    <!-- <div class="mt-3">
+                                    <label>Material</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material"
+                                        id="inMaterial">
+                                    <span class="MaterialErr errMsg"></span>
+                                </div> -->
+                                    <div class="mt-3">
                                         <label>Material</label><br>
+                                        <!-- <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Material Type" id="inMaterial_Type"> -->
                                         <div class="mt-2 inputWidth">
                                             <select data-search="true" class="tail-select w-full" id="inMaterial_Type"
                                                 style="height: 38px;border:1px solid #dee2e6;">
                                                 <option value="">Select Material Type</option>
+                                                <!-- <option value="Iron">Iron</option>
+                                            <option value="Steel">Steel</option> -->
                                             </select>
                                             <span class="roleErr errMsg"></span>
                                         </div>
                                         <span class="Material_TypeErr errMsg"></span>
-                                    </div> -->
+                                    </div>
                                     <div class="mt-3">
                                         <label>LR Number</label><br>
                                         <input type="text" class="input w-full border mt-2 inputWidth"
@@ -221,28 +187,28 @@
                                             placeholder="LR Number" id="inTripDasboard">
                                     </div>
                                     <!-- <div class="mt-3">
-                                <label>Issued By</label><br>
-                                <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By"
-                                    id="inIssued_By">
-                                <span class="Issued_ByErr errMsg"></span>
-                            </div> -->
+                                    <label>Issued By</label><br>
+                                    <input type="text" class="input w-full border mt-2 inputWidth" placeholder="Issued By"
+                                        id="inIssued_By">
+                                    <span class="Issued_ByErr errMsg"></span>
+                                </div> -->
                                 </div>
                             </div>
                             <div class="flex justify-end mt-4 addButtonin">
                                 <!-- <a href="" class="text-theme-6 flex items-center"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete Account </a> -->
                                 <!-- <input type="image" class="button w-20 bg-theme-1 text-white ml-auto" style="background-color: #abd3f4;"
-                            (click)="validate('add')" src="assets/images/registerCard.png"/> -->
+                                (click)="validate('add')" src="assets/images/registerCard.png"/> -->
                                 <div style="display:flex;">
                                     <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
                                         style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
                                         (click)="active('Driver')">Previous</button>&nbsp;&nbsp;
                                     <button id="inboundSubmitFinal" type="button" class="button w-20 bg-theme-1 ml-auto"
                                         style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
-                        width: 65px;" (click)="validate('add')">Submit
+                            width: 65px;" (click)="validate('add')">Submit
                                     </button>
-                                    <button id="inboundRegisterFinal" type="button"
-                                        class="button w-20 bg-theme-1 ml-auto" style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
-                        width: 65px;" (click)="validate('add')">
+                                    <button id="inboundRegisterFinal" type="button" class="button w-20 bg-theme-1 ml-auto"
+                                        style="background-color: #abd3f4;padding: 0px 5px 0px 13px;height: 32px;
+                            width: 65px;" (click)="validate('add')">
                                         <span class="registerCardHover">
                                             <img class="w-6" src="assets/images/registerCard.png"
                                                 style="height:33px; width:39px;">
@@ -267,93 +233,50 @@
                             <div class="flex justify-end mt-4 tab1">
                                 <div style="display:flex;">
                                     <!-- <button type="button" class="buttonCss" (click)="uploadDocument()">Upload
-                                Document</button>&nbsp;&nbsp;&nbsp; -->
+                                    Document</button>&nbsp;&nbsp;&nbsp; -->
                                     <button type="button" class="button w-20 bg-theme-1 text-white ml-auto"
                                         style="background-color: #abd3f4;padding: 5px;height: 32px;color: black !important;"
                                         (click)="active('Driver')">Next</button>
                                 </div>
                             </div>
-
+    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--  Popup start -->
-
-<div class="addFieldPopupTop" id="addFieldPopupTop">
-    <div class="Popup1" id="addFieldPopup">
-        <div class="Popup2">
-            <div
-                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-
+    <div class="addFieldPopupTop" id="addFieldPopupTop">
+        <div class="Popup1" id="addFieldPopup">
+            <div class="Popup2">
+                <div
+                    style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                </div>
+                <div style="padding: 28px;text-align: center;">
+                    <b><span style="color: black !important;"> {{ Message }}</span></b>
+                </div>
             </div>
-            <div style="padding: 28px;text-align: center;">
-                <b><span style="color: black !important;"> {{ Message }}</span></b>
+            <div class="Popup3"
+                style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+                <button class="Popupbutton" (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
             </div>
-        </div>
-        <div class="Popup3"
-            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="Popupbutton" (click)="hidePopup()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>
-</div>
-<!--  Popup finish -->
-
-<!-- upload Doc Popup start -->
-
-<!-- <div>
-    <div class="uploadDoc">
-        <div class="Popup2">
-            <div
-            style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-                Upload Documents
+    <div>
+        <div class="RegNo">
+            <div class="Popup2">
+                <div
+                    style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
+                </div>
+                <div class="cardpop2">
+                    <b> Please show your card</b>
+                </div>
             </div>
-            <div style="padding: 28px;text-align: center;" class="toUpload">
-                <span style="float: left;"><b>RC Copy :</b></span><br>
-                <input type="file" id="Rc_copy1" (change)="getFiles($event)" /><br><br>
-                <span style="float: left;"><b>PUCC :</b></span><br>
-                <input type="file" id="Rc_copy2" (change)="getFiles($event)" /><br><br>
-                <span id="errUploadDoc">Please Select Two Files</span>
+            <div class="Popup3"
+                style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
+                <button class="Popupbutton" (click)="SendCardNo()"
+                    style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
             </div>
-            <div style="padding: 28px;text-align: center;" class="afterUpload">
-                {{docStatus}}
-            </div>
-        </div>
-        <div class="Popup3 toUpload" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="Popupbutton" (click)="uploadDocs()" style="color:white;width: 3cm;">Upload</button>&nbsp;&nbsp;
-            <button class="Popupbutton" (click)="hideuploadPopup()" style="color:white;width: 3cm;">Cancel</button>
-        </div>
-        <div class="Popup3 afterUploadButton" style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="Popupbutton" (click)="hideuploadPopupok()" style="color:white;width: 3cm;">OK</button>
         </div>
     </div>
-</div> -->
-<!-- upload Doc Popup finish -->
-
-<!-- RegNo Popup start -->
-
-<div>
-    <div class="RegNo">
-        <div class="Popup2">
-            <div
-                style="height: 27px;text-align: center ;background-color: #2569a1;padding: 0;font-weight: 700;color: white;border-radius: 8px 8px 0px 0px;">
-
-            </div>
-            <div class="cardpop2">
-                <b> Please show your card</b>
-                <!-- <input type="text" class="input w-full border mt-2 inputWidth"
-                                    placeholder="Card Number" id="PopUpCardNo"> -->
-            </div>
-        </div>
-        <div class="Popup3"
-            style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;">
-            <button class="Popupbutton" (click)="SendCardNo()"
-                style="color:white;width: 3cm;">OK</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="Popupbutton" (click)="hideCardPopup()" style="color:white;width: 3cm;">Cancel</button>
-        </div>
-    </div>
-</div>
-<!-- RegNo Popup finish -->

@@ -18,6 +18,7 @@ export class InboundComponent implements OnInit {
   carNoAdded = false;
   storeTrip;
   currentTab = 'vehicle';
+  vehicleType =[];
 
   constructor(private serviceCall: ApiService, private Router: Router) { }
 
@@ -25,7 +26,7 @@ export class InboundComponent implements OnInit {
     $('#MaterialIn, #DriverDetailsIn,.addButtonin,.tab2').hide();
   }
   checkHistory() {
-    let url = '/vehicle/view/' + $("#checkVehicleNumber").val();
+    let url = '/vehicle/view/' + $("#checkVehicleNumber").val().toString().toUpperCase().replace(/\s/g,'');
     this.serviceCall.getService(url).subscribe(
       data => {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
@@ -36,11 +37,12 @@ export class InboundComponent implements OnInit {
             if (moment().diff(moment(PUC_exp_date)) <= 0) {
               $('#VehicleNumberForm').hide();
               $('#inboundForm').show();
+              this.getVehicleType(data['msg'][0]['VehicleType']);
               $('#invehicleMake').val(data['msg'][0]['Make']);
               $('#inVehicleModel').val(data['msg'][0]['Model']);
               $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
               $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
-              $('#inVnumber').val($("#checkVehicleNumber").val());
+              $('#inVnumber').val($("#checkVehicleNumber").val().toString().toUpperCase().replace(/\s/g,''));
               $('#inIssued_By').val(this.serviceCall.Role);
               this.isVehicleDataAvailable = true;
               $('#inboundRegisterFinal').hide();
@@ -91,7 +93,10 @@ export class InboundComponent implements OnInit {
       "Consignee_Name": $('#inConsignee_Name').val(),
       "Address": $('#inAddress').val(),
       "Qty_Mt_Weight": $('#qty_mt_Weight').val(),
-      "Status": "In transit"
+      "Status": "In transit",
+      "ward":$('#inWard').val(),
+      "VehicleType": $('#inBVehicleType').val(),
+      "subPartyName":$('#inSubParty').val()
       // "Gross_Weight": $('#inGross_Weight').val(),
       // "Tare_Weight": $('#inTare_Weight').val(),
       // "Net_Weight": $('#inNet_Weight').val()
@@ -204,12 +209,12 @@ export class InboundComponent implements OnInit {
     } else {
       $('#inConsignee_Name').removeClass('errDisplay');
     }
-    if ($('#inAddress').val() == '') {
-      $('#inAddress').addClass('errDisplay');
-      err++
-    } else {
-      $('#inAddress').removeClass('errDisplay');
-    }
+    // if ($('#inAddress').val() == '') {
+    //   $('#inAddress').addClass('errDisplay');
+    //   err++
+    // } else {
+    //   $('#inAddress').removeClass('errDisplay');
+    // }
     // if($('#inTrip_No').val() == ''){
     //   $('#inTrip_No').addClass('errDisplay');
     //   err++
@@ -276,12 +281,12 @@ export class InboundComponent implements OnInit {
     } else {
       $('#inConsignee_Name').removeClass('errDisplay');
     }
-    if ($('#inAddress').val() == '') {
-      $('#inAddress').addClass('errDisplay');
-      err++
-    } else {
-      $('#inAddress').removeClass('errDisplay');
-    }
+    // if ($('#inAddress').val() == '') {
+    //   $('#inAddress').addClass('errDisplay');
+    //   err++
+    // } else {
+    //   $('#inAddress').removeClass('errDisplay');
+    // }
     if (err == 0) {
       this.active('Material');
       $('#tabErr').hide();
@@ -307,11 +312,16 @@ export class InboundComponent implements OnInit {
   validateVehicleNumber() {
     // var vehicleNumberPatter = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/
     var vehicleNumberPatter =/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/
+    // var vehicleNumberPatter =/^[A-Z]{2}\s?[0-9]{2}\s?[A-Z]{1,2}\s?[0-9]{4}$/ ; //with space
     if ($('#checkVehicleNumber').val() !== "") {
-      if(!vehicleNumberPatter.test($('#checkVehicleNumber').val().toString().toUpperCase())){
+      // if(!vehicleNumberPatter.test($('#checkVehicleNumber').val().toString().toUpperCase())){
+        let a = $('#checkVehicleNumber').val() as any
+      if(a.length < 4 || a.length > 10){
         $('#checkVehicleNumber').addClass('errDisplay');
+        $('.checkinVNoErr').show();
       }else{
         $('#checkVehicleNumber').removeClass('errDisplay');
+        $('.checkinVNoErr').hide();
         if (window.location.pathname == '/inBound/inhouse') {
           this.getInHouseStatus();
         } else {
@@ -338,7 +348,8 @@ export class InboundComponent implements OnInit {
           $('#inMaterial_Type').append("<option value='" + this.serviceCall.Material[a]['MaterialName'] + "'>" + this.serviceCall.Material[a]['MaterialName'] + "</option>")
         }
       }
-      $('#inMaterial_Type').val(this.storeTrip['Material']);
+      if (window.location.pathname == '/inBound/inhouse') {
+      $('#inMaterial_Type').val(this.storeTrip['Material']);}
     }
     if (className == "Driver") {
       $('#DriverDetailsIn,.tab2').show();
@@ -423,7 +434,7 @@ export class InboundComponent implements OnInit {
   getInboundStatus() {
     let vehicelStatus = 0;
     let TripsAvailable = [];
-    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val();
+    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val().toString().toUpperCase().replace(/\s/g,'');
     this.serviceCall.getService(url).subscribe(
       data => {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
@@ -469,7 +480,7 @@ export class InboundComponent implements OnInit {
     let vehicelStatus = 0;
     let inplant = 0;
     let TripsAvailable = [];
-    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val();
+    let url = '/history/inhouse_transport/view?VehicleNo=' + $("#checkVehicleNumber").val().toString().toUpperCase().replace(/\s/g,'');
     this.serviceCall.getService(url).subscribe(
       data => {
         if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
@@ -510,11 +521,12 @@ export class InboundComponent implements OnInit {
       if (data['status'] == 1 && data['msg'] && data['msg'].length > 0) {
         $('#VehicleNumberForm').hide();
         $('#inboundForm').show();
+        this.getVehicleType(data['msg'][0]['VehicleType']);
         $('#invehicleMake').val(data['msg'][0]['Make']);
         $('#inVehicleModel').val(data['msg'][0]['Model']);
         $('#invehicleInsurance_exp_date').val(data['msg'][0]['Insurance_exp_date'].split('T')[0]);
         $('#inVPUC_exp_date').val(data['msg'][0]['PUC_exp_date'].split('T')[0]);
-        $('#inVnumber').val($("#checkVehicleNumber").val());
+        $('#inVnumber').val($("#checkVehicleNumber").val().toString().toUpperCase().replace(/\s/g,''));
         // $('#inIssued_By').val(this.serviceCall.Role);
         $('#inDriver_Name').val(Trip['Driver_Name']);
         $('#inDriver_Number').val(Trip['Driver_Number']);
@@ -599,5 +611,34 @@ export class InboundComponent implements OnInit {
       $('.uploadErr').hide();
       this.active('Driver');
     }
+  }
+  getVehicleType(type) {
+    let url = "/master/vehicletype/view"
+    var same = false;
+    this.serviceCall.getService(url).subscribe(data => {
+      for (var i in data['msg']) {
+        same = false;
+        if (this.vehicleType.length > 0) {
+          for (var a in this.vehicleType) {
+            if (this.vehicleType[a]['VehicleType'] === data['msg'][i]['VehicleType']) {
+              same = true;
+            }
+          }
+          if (same == false) {
+            this.vehicleType.push(data['msg'][i]);
+          }
+        } else {
+          this.vehicleType.push(data['msg'][i]);
+        }
+      }
+      $('#inBVehicleType').empty();
+          $('#inBVehicleType').append("<option value=''>Select Vehicle Type</option>");
+          for (var a in this.vehicleType) {
+            $('#inBVehicleType').append("<option value='" + this.vehicleType[a]['VehicleType'] + "'>" + this.vehicleType[a]['VehicleType']  + "</option>")
+          }
+          $('#inBVehicleType').val(type);
+    }, (error) => {
+
+    })
   }
 }

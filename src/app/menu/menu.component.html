@@ -29,18 +29,45 @@
                 </span>
                 <ul class="Gate1mobile">
                     <li>
-                        <span class="menu" (click)="hideshowMobile($event,'Gate2mobile')">
+                        <!-- <span class="menu" (click)="hideshowMobile($event,'Gate2mobile')">
                             <div class="menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
                             <div class="menu__title"> Gate In </div>
                             <div style="width: 100%; text-align: right;">
                                 <i class="fa-solid fa-chevron-left gatein"></i>
                             </div>
+                        </span> -->
+                        <span class="menu">
+                            <div class="menu__icon">
+                                <!-- <div style="display: flex;width: 31px;">
+                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                </div> -->
+                                <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
+                            </div>
+                            <div class="menu__title" (click)="navigate('/inBound/inhouse')"> JBM Gate Entry
+                            </div>
+                        </span>
+                        <span class="menu">
+                            <div class="menu__icon">
+                                <!-- <div style="display: flex;width: 31px;">
+                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                </div> -->
+                                <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
+                            </div>
+                            <div class="menu__title" (click)="navigate('/outbound')"> Other Gate Entry </div>
                         </span>
                         <span class="menu">
                             <div class="menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
                             <div class="menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out </div>
                         </span>
-                        <ul class="Gate2mobile">
+                        <span class="menu">
+                            <div class="menu__icon">
+                                <div style="display: flex;width: 31px;">
+                                    <i class="fa-xl fa-solid fa-list-alt"></i>
+                                </div>
+                            </div>
+                            <div class="menu__title" (click)="navigate('/tripList')"> Trip List </div>
+                        </span>
+                        <!-- <ul class="Gate2mobile">
                             <li>
                                 <span class="menu">
                                     <div class="menu__icon">
@@ -48,7 +75,8 @@
                                             <i class="fa-xl fa-solid fa-truck-pickup"></i>
                                         </div>
                                     </div>
-                                    <div class="menu__title" (click)="navigate('/inBound/inhouse')"> JBM Vehicle </div>
+                                    <div class="menu__title" (click)="navigate('/inBound/inhouse')"> JBM Gate Entry
+                                    </div>
                                 </span>
                                 <span class="menu">
                                     <div class="menu__icon">
@@ -56,10 +84,10 @@
                                             <i class="fa-xl fa-solid fa-truck-pickup"></i>
                                         </div>
                                     </div>
-                                    <div class="menu__title" (click)="navigate('/outbound')"> Other Vehicle </div>
+                                    <div class="menu__title" (click)="navigate('/outbound')"> Other Gate Entry </div>
                                 </span>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                 </ul>
             </li>
@@ -137,46 +165,73 @@
                     </span>
                     <ul class="vehiclesOption">
                         <div id="subs">
-                            <li>
-                                <span class="side-menu" (click)="hideshow($event,'Gate1Option')">
+                            <!-- <li> -->
+                            <!-- <span class="side-menu" (click)="hideshow($event,'Gate1Option')"> -->
+                            <!-- <span class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
-                                    <div class="side-menu__title"> Gate In </div>
-                                    <div style="width: 100%; text-align: right;">
+                                    <div class="side-menu__title"> Gate In </div> -->
+                            <!-- <div style="width: 100%; text-align: right;">
                                         <i class="fa-solid fa-chevron-left gatein"></i>
+                                    </div> -->
+                            <!-- </span> -->
+                            <!-- <ul class="Gate1Option">
+                                    <li>
+                                        <span class="side-menu">
+                                            <div class="side-menu__icon">
+                                                <div style="display: flex;width: 31px;">
+                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                                </div>
+                                            </div>
+                                            <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> JBM Gate Entry </div>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="side-menu">
+                                            <div class="side-menu__icon">
+                                                <div style="display: flex;width: 31px;">
+                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                                </div>
+                                            </div>
+                                            <div class="side-menu__title" (click)="navigate('/outbound')"> Other Gate Entry
+                                            </div>
+                                        </span>
+                                    </li>
+                                </ul> -->
+                            <!-- </li> -->
+                            <li>
+                                <span class="side-menu">
+                                    <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
+                                    <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> JBM Gate Entry
                                     </div>
                                 </span>
-                                <ul class="Gate1Option">
-                                    <li>
-                                        <span class="side-menu">
-                                            <div class="side-menu__icon">
-                                                <div style="display: flex;width: 31px;">
-                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="side-menu__title" routerLink="/inBound/inhouse" [queryParams]="{sessionID:{{serviceCall.sessionID}} }"> Inhouse </div> -->
-                                            <div class="side-menu__title" (click)="navigate('/inBound/inhouse')"> JBM
-                                                Vehicle </div>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="side-menu">
-                                            <div class="side-menu__icon">
-                                                <div style="display: flex;width: 31px;">
-                                                    <i class="fa-xl fa-solid fa-truck-pickup"></i>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="side-menu__title" routerLink="/outbound"> Outhouse</div> -->
-                                            <div class="side-menu__title" (click)="navigate('/outbound')"> Other Vehicle
-                                            </div>
-                                        </span>
-                                    </li>
-                                </ul>
+                            </li>
+                            <li>
+                                <span class="side-menu">
+                                    <!-- <div style="display: flex;width: 31px;">
+                                        <i class="fa-xl fa-solid fa-truck-pickup"></i>
+                                    </div> -->
+                                    <div class="side-menu__icon"> <i data-feather="arrow-right-circle"></i> </div>
+                                    <div class="side-menu__title" (click)="navigate('/outbound')">  Other Gate Entry
+                                    </div>
+                                </span>
                             </li>
                             <li>
                                 <span class="side-menu">
                                     <div class="side-menu__icon"> <i data-feather="arrow-left-circle"></i> </div>
                                     <!-- <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out -->
                                     <div class="side-menu__title" (click)="OpenCardPopup('changeStatus')"> Gate Out
+                                    </div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="side-menu">
+                                    <div class="side-menu__icon">
+                                        <div style="display: flex;width: 31px;">
+                                            <i class="fa-xl fa-solid fa-list-alt"></i>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="side-menu__title" (click)="navigate('/outBoundDashboard')"> Gate Out -->
+                                    <div class="side-menu__title" (click)="navigate('/tripList')"> Trip List
                                     </div>
                                 </span>
                             </li>
@@ -257,8 +312,8 @@
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
                 <div class="-intro-x breadcrumb mr-auto hidden sm:flex" id="header101"></div>
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex" style="padding-top: 17px;">USER : &nbsp;<b>
-                        {{UserName}} </b> &nbsp;|&nbsp; ROLE :&nbsp; <b> {{Role}} </b></div>
+                <div class="-intro-x breadcrumb mr-auto hidden sm:flex" style="padding-top: 17px;">&nbsp;<b>
+                        {{UserName}} </b> &nbsp;&nbsp; ROLE :&nbsp; <b> {{Role}} </b></div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8" style="padding-top: 5px;">
@@ -308,6 +363,7 @@
             <app-inbound-dashboard class="inBoundDashboarddiv"></app-inbound-dashboard>
             <app-inbound class="inbounddiv"></app-inbound>
             <app-report class="reportdiv"></app-report>
+            <app-trip-list class="tripListdiv"></app-trip-list>
         </div>
         <!-- END: Content -->
     </div>
@@ -332,14 +388,12 @@
                 <div class="changePass">
                     <div>
                         <label>Password</label>
-                        <input id="menuPassword" type="password" class="input w-full border mt-2 inputWidth"
-                            placeholder="Password">
+                        <input id="menuPassword" type="password" class="input w-full border mt-2 inputWidth">
                         <span class="menupasswordErr errMsg"></span>
                     </div>
                     <div>
                         <label>Confirm Password</label>
-                        <input id="menuConfirmPassword" type="password" class="input w-full border mt-2 inputWidth"
-                            placeholder="Confirm Password">
+                        <input id="menuConfirmPassword" type="password" class="input w-full border mt-2 inputWidth">
                         <span class="menucpasswordErr errMsg"></span>
                     </div>
                 </div>
@@ -376,6 +430,9 @@
                 <!-- <input type="text" class="input w-full border mt-2 inputWidth"
                                     placeholder="Card Number" id="PopUpCardNo"> -->
             </div>
+            <!-- <div class="cardpop2" style="display: flex;">
+                <img src="assets/images/scanCard.png" style="height:123px;"><div style="padding-top: 36px;"><b> Please show your card</b></div>
+            </div> -->
         </div>
         <div class="Popup3"
             style="height: 30px;padding: 4px;bottom:0;width: 100%;background-color: #2569a1;height: 30px;border-radius: 0px 0px 8px 8px;position: absolute;">
@@ -435,7 +492,7 @@
                         <label class="viewLabel">Driver Name:</label><span id="menuViewDriver_Name"></span><br>
                         <label class="viewLabel">Driver Number: </label><span id="menuViewDriver_Number"></span><br>
                         <label class="viewLabel">Address: </label> <span id="menuViewAddress"></span><br>
-                        <label class="viewLabel">Consignee Name:</label><span id="menuViewConsignee_Name"></span><br>
+                        <label class="viewLabel">Consignee:</label><span id="menuViewConsignee_Name"></span><br>
                         <label class="viewLabel">Issued_By:</label><span id="menuViewIssued_By"></span><br>
                         <label class="viewLabel">Issued_Date:</label><span id="menuViewIssued_Date"></span><br>
                     </div>

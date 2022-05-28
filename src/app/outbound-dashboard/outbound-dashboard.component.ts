@@ -135,6 +135,7 @@ export class OutboundDashboardComponent implements OnInit {
   }
   validateEdit(){
     var err = 0 
+    var vehicleNumberPatter =/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/;
     if($('#outEditvehicleMake').val() == ''){
       $('#outEditvehicleMake').addClass('errDisplay');
       err++
@@ -229,7 +230,14 @@ export class OutboundDashboardComponent implements OnInit {
       $('#outEditVnumber').addClass('errDisplay');
       err++
     }else{
-      $('#outEditVnumber').removeClass('errDisplay');
+      // if(!vehicleNumberPatter.test($('#outEditVnumber').val().toString().toUpperCase())){
+      let a = $('#outEditVnumber').val() as any
+      if(a.length < 4 || a.length > 10){
+        $('#outEditVnumber').addClass('errDisplay');
+        err++
+      }else{
+        $('#outEditVnumber').removeClass('errDisplay');
+      }
     }
 
     if(err == 0){
@@ -244,7 +252,7 @@ export class OutboundDashboardComponent implements OnInit {
     let url = '/history/outside_transport/update'
     let post_data = {
       "Trip_No": $('#outEditTrip_No').val(),
-      "VehicleNo": $('#outEditVnumber').val(),
+      "VehicleNo": $('#outEditVnumber').val().toString().toUpperCase(),
       "Make": $('#outEditvehicleMake').val(),
       "Model": $('#outEditVehicleModel').val(),
       "Insurance_exp_date": moment($('#outEditvehicleInsurance_exp_date').val()).format('YYYY-MM-DD hh:mm:ss'),
